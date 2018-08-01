@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use Illuminate\Foundation\Application;
 
 class HomeController extends Controller
 {

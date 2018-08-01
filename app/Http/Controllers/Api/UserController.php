@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Notifications\SignupActivate;     
 use Carbon\Carbon;
-
+use Illuminate\Foundation\Application;
 
 class UserController extends Controller
 {

@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+$admin_path = config('app.project.admin_panel_slug');
+/* Admin Routes */
+Route::group(['prefix' => $admin_path,'middleware'=>['admin'],'namespace'=>'Admin'], function () 
+{
+	Route::get('/', 'AuthController@login');
+	Route::get('login', 'AuthController@login');
+	Route::post('process_login', 'AuthController@process_login');
+	Route::get('logout', 'AuthController@logout');
+	Route::get('dashboard', 'DashboardController@dashboard');
+	
+});

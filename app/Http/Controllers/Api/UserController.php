@@ -1,14 +1,15 @@
 <?php
 namespace App\Http\Controllers\Api;
 
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
-use App\Notifications\SignupActivate;     
+use App\Notifications\SignupActivate;
 use Carbon\Carbon;
-use Illuminate\Foundation\Application;
+
 
 class UserController extends Controller
 {
@@ -22,7 +23,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login(Request $request){
+    public function login(Request $request){ 
 		$request->validate([
 			'email' => 'required|string|email',
 			'password' => 'required|string',
@@ -69,11 +70,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
-    {
+    {  
+		//dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
+			'mobile' => 'required|numeric',
             'c_password' => 'required|same:password',
         ]);
 
@@ -81,12 +84,12 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);            
         }
-
+	
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $input['activation_token'] = str_random(60);
-        $input['user_type'] = 1;
+        //$input['user_type'] = 1;
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')->accessToken;
         $success['name'] =  $user->name;

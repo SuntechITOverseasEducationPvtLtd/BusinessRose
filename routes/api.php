@@ -24,4 +24,5 @@ Route::get('signup/activate/{token}', 'Api\UserController@signupActivate');
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('details', 'Api\UserController@details');
 	Route::post('filters', 'Api\HomeController@filters');
+	Route::post('dashboard-members', 'Api\HomeController@getAllMembers');
 });

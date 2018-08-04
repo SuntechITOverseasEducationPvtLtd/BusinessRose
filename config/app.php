@@ -147,6 +147,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 		Laravel\Passport\PassportServiceProvider::class,
+		Collective\Html\HtmlServiceProvider::class,
+		Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -209,7 +211,14 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+		'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class
 
     ],
+	'project' => [
+        'name'      =>'Business Rose',
+        'img_path'  =>[],
+        'admin_panel_slug'=>'admin'            
+	],
 
 ];

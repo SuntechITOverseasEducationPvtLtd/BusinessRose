@@ -1,0 +1,405 @@
+ 
+ .form-fields>li .form-field .smergers-file-btn {
+    position: relative;
+    display: inline-block;
+    overflow: hidden
+}
+
+ .form-fields>li .form-field .smergers-file-btn input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: inherit
+}
+ .formset-label {
+    color: #444;
+    padding: 0;
+    padding-right: 15px
+}
+label { font-family: 'Nunito', sans-serif;  
+    font-size: 13px;}
+ .bold-label {
+    line-height: 16px;
+    font-size: 13px
+}
+
+ .sub-label {
+    font-size: 12px;
+    color: #999
+}
+
+ .form-currency-container {
+    display: none;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd
+}
+
+ .select2-choice {
+    border: none;
+    box-shadow: none
+}
+
+ .select2-choice {
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    background-image: none
+}
+
+ .select2-arrow {
+    border-left: none;
+    background: none
+}
+
+ 
+ .why-needed {
+    color: #999;
+     
+    text-decoration-style: dotted;
+    text-decoration-color: #aaa;
+    font-size: 11px;
+  
+}
+
+ .form-fields>li {
+    display: table;
+    width: 100%;
+    table-layout: fixed
+}
+
+ .form-fields>li.columns-1 {
+    display: block
+}
+
+ .form-fields>li.columns-1>.field-label-wrapper,
+ .form-fields>li.columns-1>.form-field-wrapper {
+    display: block
+}
+
+.form-fields>li.columns-2>.field-label-wrapper {
+    display: table-cell;
+    width: 40%;
+    vertical-align: middle
+}
+
+.form-fields>li.columns-2>.form-field-wrapper {
+    display: table-cell;
+    width: 60%;
+    vertical-align: middle
+}
+
+ .form-fields>li.columns-3>.field-label-wrapper {
+    display: table-cell;
+    width: 40%;
+    vertical-align: middle
+}
+
+ .form-fields>li.columns-3>.form-field-wrapper {
+    display: table-cell;
+    width: 60%;
+    vertical-align: middle;
+    overflow: hidden
+}
+
+ .form-field,
+ .field-note {
+    float: left;
+    width: 50%
+}
+
+ .field-note {
+    padding-left: 10px
+}
+
+ 
+ 
+ .field-label-wrapper {
+    display: none
+}
+
+ .field-note {
+    text-align: right
+}
+
+ .image-preview-wrapper {
+    position: relative;
+    display: none
+}
+
+ .image-preview {
+    width: 100%;
+    padding: 50%;
+    background-size: cover;
+    background-position: center
+}
+
+ .delete-image {
+    position: absolute;
+    font-size: 10px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .3);
+    color: #fff;
+    top: 0;
+    right: 0
+}
+
+ .delete-image i {
+    line-height: 20px
+}
+
+ .delete-image:hover {
+    background-color: rgba(0, 0, 0, .7)
+}
+
+ .document-preview-wrapper {
+    position: relative;
+    display: none
+}
+
+ .image-preview {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 34px
+}
+
+ .delete-document {
+    position: absolute;
+    font-size: 10px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .3);
+    color: #fff;
+    top: -10px;
+    right: -10px;
+    z-index: 2
+}
+
+ .delete-document i {
+    line-height: 20px
+}
+
+ .delete-document:hover {
+    background-color: rgba(0, 0, 0, .7)
+}
+
+.businessrole-input-group {
+    position: relative;
+    padding: 0
+}
+
+.businessrole-input-group input::-webkit-input-placeholder {
+    font-size: 13px;
+    color: #aaa;
+    padding: 1px 0
+}
+
+.businessrole-input-group input::-moz-placeholder {
+    font-size: 13px;
+    color: #aaa;
+    padding: 1px 0
+}
+
+.businessrole-input-group input:-moz-placeholder {
+    font-size: 13px;
+    color: #aaa;
+    padding: 1px 0
+}
+
+.businessrole-input-group input:-ms-input-placeholder {
+    font-size: 13px;
+    color: #aaa;
+    padding: 1px 0
+}
+
+ input , textarea  {
+    width: 100%;
+    color: #555;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+      padding: 8px 3px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15) inset;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    margin: 0px 6px;
+    width: 99%;
+}
+
+ 
+ .form-section {
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 #bfbfbf;
+    margin-bottom: 15px
+}
+
+  .form-section-title {
+     border-top: 2px solid #4267b2;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    font-size: 17px;
+   font-family: 'Nunito', sans-serif;
+}
+
+ .form-section-subtitle {
+    color: #777;
+    line-height: 1.3em;
+    font-size: 13px;
+   font-family: 'Nunito', sans-serif;
+    margin-top: 3px
+}
+
+ .form-field-errors-wrapper {
+    color: #c32148
+}
+
+ .form-field-errors {
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 #bfbfbf;
+    border: none;
+    border-top: 1px solid #c32148;
+    border-radius: 0;
+    margin-bottom: 15px
+}
+
+ .form-fields-wrapper {
+    padding: 0px;
+    border: none
+}
+
+ .form-fields-wrapper .form-fields>li {
+    padding: 10px 0;
+    border: none
+}
+
+ .form-fields {
+    padding: 10px
+}
+
+ .form-navigation {
+    border: none
+}
+
+ section { float: left;
+    width: 100% }
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-top: 2px!important;
+    vertical-align: top!important
+}
+
+.form-field, .field-note {
+    float: left;
+    width: 100%;
+}
+
+.radio input[type=radio]{
+  position: absolute;
+ 
+  margin-top: -6px;
+  margin-left: -20px;
+  opacity:0;
+}
+.radio  span.inner{
+  background-image: url(../images/radio_uncheck.png);
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+ margin-left: -18px;
+    margin-top: 3px;
+  cursor:pointer;
+}
+.radio input[type=radio]:checked + span{
+  background-image: url(../images/radio_check.png);
+}
+.ubuntuRegText {     font-size: 14px; padding-left: 6px; cursor: pointer; }
+
+.h5, h5 {
+    font-size: 17px;
+    color: #4267b2;
+}
+
+input[type=checkbox] {
+  
+  margin-top: -6px;
+  margin-left: -20px;
+  opacity: 0;
+}
+.checkbox span.inner {
+  background-image: url(../images/checkbox_uncheck.png);
+  display: block;
+  width: 20px;
+  height: 20px;
+      position: absolute;
+  
+    cursor: pointer;
+    margin-top: -20px;
+  
+  
+  
+  cursor: pointer;
+}
+.checkbox input[type=checkbox]:checked ~ span {
+  background-image: url(../images/checkbox_check.png);
+}
+.checkbox input[type=checkbox]:checked ~ font {
+    color:#ccc;
+    text-decoration:line-through;
+}
+
+.preview-image {
+    display: none;
+    border-radius: 8px;
+    height: 90px;
+    width: 90px;
+    border: 1px solid #54B0F4;
+    vertical-align: middle;
+}
+
+.btn {
+    padding: 6px 6px !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #4267b2;
+    border-color: #4267b2;
+}
+.submitbutton {width: 100px;
+    background: #4267b2;
+    color: #fff;
+    box-shadow: 0px 0px 0px #fff;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    float: right;}
+
+.hideinvest { display: none }
+.Skillpersonform {display: none}
+.color1 {color: #4267b2}
+.flotleft {float: left !important;}
+.sctionsc {float: left; width: 100%; height: 50px;}
+.invertcl {width: 50%;   float: left; padding-left: 9px;}
+.investcls {font-size: 16px; font-weight: 600;}
+
+.invsetclss {width: 50%;     padding-left: 15px;  float: left;}
+
+
+.width33 {width: 33.33%;   float: left;}

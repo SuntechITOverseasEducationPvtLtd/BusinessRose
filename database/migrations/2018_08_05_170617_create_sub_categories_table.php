@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTypesTable extends Migration
+class CreateSubCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUserTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('sub_categories', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('user_type');
-			$table->boolean('status')->default(false);
-            $table->timestamps();
-			$table->integer('created_by');
+            $table->integer('cat_id');
+            $table->string('cat_name', 250);
+            $table->tinyInteger('status');
+            $table->integer('created_by');
+            $table->timestamps();       
         });
     }
 
@@ -29,6 +30,6 @@ class CreateUserTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists('sub_categories');
     }
 }

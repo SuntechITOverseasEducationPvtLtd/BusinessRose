@@ -25,13 +25,14 @@ class DashboardController extends Controller
 {
 	public function __construct()
 	{
-		$this->arr_view_data      		= [];		
 		$this->module_view_folder 		= "admin.dashboard";
 		$this->admin_url_path     		= url(config('app.project.admin_panel_slug'));
 	}
    
     public function dashboard()
     {    	
+    	$arr_view_data['cats'] = "1";
+    	$arr_view_data['sub_cats'] = "2";
     	return view($this->module_view_folder.'.home',$this->arr_view_data);
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class NewColsUsersTable4 extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class NewColsUsersTable4 extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('mobile',20)->nullable()->change();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('cat_name', 250);
+            $table->tinyInteger('status');
+            $table->integer('created_by');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class NewColsUsersTable4 extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('categories');
     }
 }

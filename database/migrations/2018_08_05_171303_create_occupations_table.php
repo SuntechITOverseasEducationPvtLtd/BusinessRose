@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class NewColsUsersTable2 extends Migration
+class CreateOccupationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class NewColsUsersTable2 extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-           $table->integer('created_by');
+        Schema::create('occupations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('occupation');
+            $table->boolean('status')->default(false);
+            $table->timestamps();
+            $table->integer('created_by');
         });
     }
 
@@ -25,8 +29,6 @@ class NewColsUsersTable2 extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('occupations');
     }
 }

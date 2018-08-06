@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubscriptionsTable extends Migration
+class CreateExperiencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
+        Schema::create('experiences', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('time_period');
-			$table->float('price', 14, 2);
-			$table->boolean('status')->default(false);
+            $table->string('experience');
+            $table->longText('desc');
+            $table->boolean('status')->default(false);
             $table->timestamps();
-			$table->integer('created_by');
+            $table->integer('created_by');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('experiences');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvestmentRangeTable extends Migration
+class CreateQualificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateInvestmentRangeTable extends Migration
      */
     public function up()
     {
-        Schema::create('investment_range', function (Blueprint $table) {
+        Schema::create('qualifications', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('range');
-			$table->longText('desc');
-			$table->boolean('status')->default(false);
+            $table->string('qualification');
+            $table->boolean('status')->default(false);
             $table->timestamps();
-			$table->integer('created_by');
+            $table->integer('created_by');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateInvestmentRangeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('investment_range');
+        Schema::dropIfExists('qualifications');
     }
 }

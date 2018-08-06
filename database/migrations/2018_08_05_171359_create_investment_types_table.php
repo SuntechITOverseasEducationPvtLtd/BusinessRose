@@ -15,11 +15,11 @@ class CreateInvestmentTypesTable extends Migration
     {
         Schema::create('investment_types', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('investment_type');
-			$table->longText('desc');
-			$table->boolean('status')->default(false);
+            $table->string('investment_type');
+            $table->longText('desc');
+            $table->boolean('status')->default(false);
             $table->timestamps();
-			$table->integer('created_by');
+            $table->integer('created_by');
         });
     }
 

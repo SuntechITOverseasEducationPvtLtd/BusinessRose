@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class NewColsUsersTable3 extends Migration
+class CreateUserTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class NewColsUsersTable3 extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('gender')->nullable()->after('email');
+        Schema::create('user_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('user_type');
+            $table->boolean('status')->default(false);
+            $table->timestamps();
+            $table->integer('created_by');
         });
     }
 
@@ -25,8 +29,6 @@ class NewColsUsersTable3 extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('user_types');
     }
 }

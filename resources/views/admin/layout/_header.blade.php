@@ -96,38 +96,7 @@
 									</div>
 								</li>
 
-								<li class="media">
-									<div class="mr-3">
-										<a href="#" class="btn bg-transparent border-warning text-warning rounded-round border-2 btn-icon"><i class="icon-git-commit"></i></a>
-									</div>
-									
-									<div class="media-body">
-										Add full font overrides for popovers and tooltips
-										<div class="text-muted font-size-sm">36 minutes ago</div>
-									</div>
-								</li>
-
-								<li class="media">
-									<div class="mr-3">
-										<a href="#" class="btn bg-transparent border-info text-info rounded-round border-2 btn-icon"><i class="icon-git-branch"></i></a>
-									</div>
-									
-									<div class="media-body">
-										<a href="#">Chris Arney</a> created a new <span class="font-weight-semibold">Design</span> branch
-										<div class="text-muted font-size-sm">2 hours ago</div>
-									</div>
-								</li>
-
-								<li class="media">
-									<div class="mr-3">
-										<a href="#" class="btn bg-transparent border-success text-success rounded-round border-2 btn-icon"><i class="icon-git-merge"></i></a>
-									</div>
-									
-									<div class="media-body">
-										<a href="#">Eugene Kopyov</a> merged <span class="font-weight-semibold">Master</span> and <span class="font-weight-semibold">Dev</span> branches
-										<div class="text-muted font-size-sm">Dec 18, 18:36</div>
-									</div>
-								</li>
+								
 
 								<li class="media">
 									<div class="mr-3">
@@ -158,7 +127,7 @@
 			</span>
 
 			<ul class="navbar-nav">
-				<li class="nav-item dropdown">
+				<!-- <li class="nav-item dropdown">
 					<a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
 						<i class="icon-people"></i>
 						<span class="d-md-none ml-2">Users</span>
@@ -234,7 +203,7 @@
 							<a href="#" class="text-grey"><i class="icon-gear"></i></a>
 						</div>
 					</div>
-				</li>
+				</li> -->
 
 				<li class="nav-item dropdown">
 					<a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
@@ -268,55 +237,7 @@
 									</div>
 								</li>
 
-								<li class="media">
-									<div class="mr-3 position-relative">
-										<img src="{{ url('/') }}/theme_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
-									</div>
-
-									<div class="media-body">
-										<div class="media-title">
-											<a href="#">
-												<span class="font-weight-semibold">Margo Baker</span>
-												<span class="text-muted float-right font-size-sm">12:16</span>
-											</a>
-										</div>
-
-										<span class="text-muted">That was something he was unable to do because...</span>
-									</div>
-								</li>
-
-								<li class="media">
-									<div class="mr-3">
-										<img src="{{ url('/') }}/theme_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
-									</div>
-									<div class="media-body">
-										<div class="media-title">
-											<a href="#">
-												<span class="font-weight-semibold">Jeremy Victorino</span>
-												<span class="text-muted float-right font-size-sm">22:48</span>
-											</a>
-										</div>
-
-										<span class="text-muted">But that would be extremely strained and suspicious...</span>
-									</div>
-								</li>
-
-								<li class="media">
-									<div class="mr-3">
-										<img src="{{ url('/') }}/theme_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
-									</div>
-									<div class="media-body">
-										<div class="media-title">
-											<a href="#">
-												<span class="font-weight-semibold">Beatrix Diaz</span>
-												<span class="text-muted float-right font-size-sm">Tue</span>
-											</a>
-										</div>
-
-										<span class="text-muted">What a strenuous career it is that I've chosen...</span>
-									</div>
-								</li>
-
+								
 								<li class="media">
 									<div class="mr-3">
 										<img src="{{ url('/') }}/theme_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
@@ -343,16 +264,16 @@
 
 				<li class="nav-item dropdown dropdown-user">
 					<a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
-						<img src="{{ url('/') }}/theme_assets/images/placeholders/placeholder.jpg" class="rounded-circle" alt="">
-						<span>Victoria</span>
+						<!-- <img src="{{ url('/') }}/theme_assets/images/placeholders/placeholder.jpg" class="rounded-circle" alt=""> -->
+						<span>Admin</span>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
-						<a href="#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
-						<a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a>
+						<!-- <a href="#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
+						<a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a> -->
 						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
+						<a href="#" class="dropdown-item"><i class="icon-cog5"></i> Change Password</a>
 						<a href="{{ url('/') }}/admin/logout" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
 					</div>
 				</li>

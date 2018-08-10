@@ -21,25 +21,35 @@ use DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
-class DashboardController extends Controller
+class InvestorController extends Controller
 {
 	public function __construct()
 	{
-		$this->module_view_folder 		= "admin.dashboard";
+		$this->module_view_folder 		= "admin.investors";
 		$this->admin_url_path     		= url(config('app.project.admin_panel_slug'));
 	}
    
-    public function dashboard()
+    public function investorActivations()
     {    	
     	$arr_view_data['cats'] = "1";
     	$arr_view_data['sub_cats'] = "2";
-    	return view($this->module_view_folder.'.home',$arr_view_data);
+    	return view($this->module_view_folder.'.activations',$arr_view_data);
     }
 
-    public function priceList()
+    public function investorProfiles()
     {       
-        $arr_view_data['priceList'] = "1";
-        return view('admin.prices.priceList',$arr_view_data);
+        $arr_view_data['cats'] = "1";
+        $arr_view_data['sub_cats'] = "2";
+        return view($this->module_view_folder.'.Profiles',$arr_view_data);
     }
+
+    public function investorPurchases()
+    {       
+        $arr_view_data['cats'] = "1";
+        $arr_view_data['sub_cats'] = "2";
+        return view($this->module_view_folder.'.purchases',$arr_view_data);
+    }
+
+    
 
 }

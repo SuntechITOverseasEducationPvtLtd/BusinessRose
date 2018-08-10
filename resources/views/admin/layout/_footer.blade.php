@@ -1,3 +1,4 @@
+</div>
 <!-- Footer -->
 <div class="navbar navbar-expand-lg navbar-light">
 	<div class="text-center d-lg-none w-100">
@@ -19,4 +20,5 @@
 		</ul>
 	</div>
 </div>
+
 <!-- /footer -->

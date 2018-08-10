@@ -222,7 +222,7 @@ label { font-family: 'Nunito', sans-serif;
     padding: 1px 0
 }
 
- input , textarea  {
+ input , textarea , select  {
     width: 100%;
     color: #555;
     font-size: 13px;

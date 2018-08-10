@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Notifications\SignupActivate;
-use Carbon\Carbon;
+//use Carbon\Carbon;
 
 
 class UserController extends Controller
@@ -39,13 +39,13 @@ class UserController extends Controller
 		$tokenResult = $user->createToken('Personal Access Token');
 		$token = $tokenResult->token;
 		if ($request->remember_me)
-			$token->expires_at = Carbon::now()->addWeeks(1);
+			//$token->expires_at = Carbon::now()->addWeeks(1);
 		$token->save();
 		return response()->json([
 			'success' => $token,
 			'access_token' => $tokenResult->accessToken,
 			'token_type' => 'Bearer',
-			'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
+			//'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
 		],$this->successStatus);
 	
     }
@@ -89,8 +89,13 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $input['activation_token'] = str_random(60);
+        $input['views'] = 0;
+        $input['linked_in_url'] = '';
+        $input['profile_pic'] = '';
+        $input['is_accept_terms'] = 1;
         //$input['user_type'] = 1;
         $user = User::create($input);
+		//print_r($user); die;
         $success['token'] =  $user->createToken('MyApp')->accessToken;
         $success['name'] =  $user->name;
 		

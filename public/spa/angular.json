@@ -32,6 +32,7 @@
               "src/assets/css/owl.theme.css",
               "src/assets/css/owl.transitions.css", 
               "src/assets/css/style.css", 
+              "src/assets/css/form.css", 
               "src/assets/css/material-design-iconic-font.min.css",
 			  "node_modules/font-awesome/css/font-awesome.css"
             ],

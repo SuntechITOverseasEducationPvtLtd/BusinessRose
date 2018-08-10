@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','activation_token', 'user_type', 'gender', 'mobile', 'date_of_birth', 'state', 'city', 'qualification', 'occupation', 'experience', 'non_experienced', 'business_category', 'sub_category', 'business_category_others', 'investment_range', 'investment_type', 'linked_in_url', 'profile_pic', 'about_me', 'is_data_confirmation', 'is_accept', 'is_accept', 'highlights_of_business', 'products_and_services', 'monthly_yearly_sales', 'personal_details', 'active', 'remember_token', 'created_at', 'updated_at', 'deleted_at', 'created_by', 'revenue_seeking_status','skills_experience_acheivements_growthrate', 'required_skills_experience', 'required_investment_locations', 'co_investment', 'views'
+        'name', 'email', 'password','activation_token', 'user_type', 'gender', 'mobile', 'date_of_birth', 'qualification', 'occupation', 'experience', 'whatsup_number', 'category', 'sub_category', 'religion', 'investment_range', 'investment_type', 'linked_in_url', 'profile_pic', 'mother_tongue', 'known_languages', 'is_accept_terms','country', 'state', 'city', 'relationship_status', 'active', 'remember_token', 'created_at', 'updated_at', 'deleted_at', 'created_by', 'revenue_seeking_status', 'description_of_skills_experience', 'co_investment', 'views', 'description_you_family', 'description_of_profound_value', 'description_of_sales', 'description_you_family', 'description_place_business', 'description_relocation_preferance', 'profile_created_by'
 	];
 
     /**

@@ -1,0 +1,2111 @@
+
+<!-- Start Registion -->
+<section class="section bg-light" id="services" >
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">  
+				<div class="text-center">
+					<h3 class="mb-0 text-capitalize">Register <span class="font-weight-bold color1" >  Profile</span></h3>
+					<div class="main-title-border mx-auto"></div>
+					<p class="text-muted sec_subtitle mx-auto mt-2">Information entered here will not be publicly displayed. Display company details to introduced members so that they can know about my company </p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<div class="container">
+
+ 
+<div class="col-md-8 col-lg-8 flotleft"  >
+ 
+ 
+<div class="form-section">
+<div class="form-section-title sctionsc" >
+	<div class="radio smallinvestor invertcl" >
+		<label class="ubuntuRegText investcls" >
+		<input type="radio" name="user_type" id="user_type_investor" value="2"  checked="checked" class="allsiteadd">
+		<span class="inner"></span>
+		Small Business Investor
+		</label>
+	</div>
+	<div class="radio skillperson invsetclss" >
+		<label class="ubuntuRegText investcls" >
+		<input type="radio" name="user_type"  id="user_type_skill_person" value="3"  class="allsiteadd">
+		<span class="inner"></span>
+		Experience/Skill Person
+		</label>
+	</div>
+</div>
+
+<form action=""  [formGroup]="investorForm"  (ngSubmit)="investorSubmit()" method="Post" class="Investorform">
+<div class="form-fields-wrapper">
+	<ul class="form-fields">
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<input class="form-control select2-focusser" type="text"  formControlName="name"  value="" placeholder="Name" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedinv && inv.name.errors }">
+							<div *ngIf="submittedSp && inv.name.errors" class="invalid-feedback">
+								<div *ngIf="inv.name.errors.required">First Name is required</div>
+							</div>
+						</div> 			 
+					</div>
+				</div>	 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<input class="form-control select2-focusser" type="text"  formControlName="email"  value="" placeholder="Email" [ngClass]="{ 'is-invalid': submittedinv && inv.email.errors }">
+							<div *ngIf="submittedSp && inv.email.errors" class="invalid-feedback">
+								<div *ngIf="inv.email.errors.required">Email is required</div>
+							</div>
+						</div>	 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<input class="form-control select2-focusser" type="text"  formControlName="password"  value="" placeholder="Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedinv && inv.password.errors }">
+							<div *ngIf="submittedinv && inv.password.errors" class="invalid-feedback">
+								<div *ngIf="inv.password.errors.required">Password is required</div>
+							</div>
+						</div> 			 
+					</div>
+				</div>	 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<input class="form-control select2-focusser" type="text"  formControlName="c_password"  value="" placeholder="Confirm Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedinv && inv.c_password.errors }">
+							<div *ngIf="submittedinv && inv.c_password.errors" class="invalid-feedback">
+								<div *ngIf="inv.c_password.errors.required">Confirm Password is required</div>
+							</div>
+						</div> 			 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div class="radio width30">
+								<label>DOB </label>
+							</div>                             
+							<div class="radio" style="width: 68%;   float: left;">
+								<input class="form-control select2-focusser" type="date" formControlName="date_of_birth" value="" placeholder="DOM" [ngClass]="{ 'is-invalid': submittedinv && inv.date_of_birth.errors }">
+								<div *ngIf="submittedinv && inv.date_of_birth.errors" class="invalid-feedback">
+									<div *ngIf="inv.date_of_birth.errors.required">DOB is required</div>
+								</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container"  >
+							<div class="radio width33 padding-l-5">
+								<label>Gender</label> 
+							</div>
+							<div class="radio width33">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="gender" id="sp_gender_male" value="1" checked="checked" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
+								<span class="inner"></span>
+								Male
+								</label>
+							</div>                             
+							<div class="radio width33">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="gender" id="sp_gender_female"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
+								<span class="inner"></span>
+								Female
+								<div *ngIf="submittedinv && inv.gender.errors" class="invalid-feedback">
+									<div *ngIf="inv.gender.errors.required">Gender is required</div>
+								</div>
+								</label>
+									
+							</div>
+							
+						</div>  
+					</div>
+				</div> 
+			</div>
+			
+		</li>
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<div class="radio width30">
+								<label>Phone No. </label>
+							</div>
+							<div class="radio" style="width: 18%;   float: left;">
+								<input class="select2-focusser" type="text"   name="" value="+91" >
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<input class="form-control select2-focusser" type="text" formControlName="mobile" value="" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedinv && inv.mobile.errors }">
+								<div *ngIf="submittedinv && inv.mobile.errors" class="invalid-feedback">
+									<div *ngIf="inv.mobile.errors.required">Phone Number is required</div>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div> 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<div class="radio padding-l-5 width30">
+								<label>Whatsapp No. </label>
+							</div>
+							<div class="radio" style="width: 18%;   float: left;">
+								<input class="select2-focusser" type="text"   name="" value="+91" >
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<input class="form-control select2-focusser" type="text" formControlName="whatsup_number" value="" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedinv && inv.whatsup_number.errors }">
+								<div *ngIf="submittedinv && inv.whatsup_number.errors" class="invalid-feedback">
+									<div *ngIf="inv.whatsup_number.errors.required">Whatsapp Number is required</div>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div> 
+			</div>
+			
+		</li>
+		<li class="columns-2" style="padding-top: 28px;"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Profile Created By</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field">
+					<div class="businessrole-input-group form-group"> 
+						<div class="select2-container ">
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" name="profile_created_by"   value="1" checked="checked" class="allsiteadd form-control" formControlName="profile_created_by" [ngClass]="{ 'is-invalid': submittedinv && inv.profile_created_by.errors }">
+								<span class="inner"></span>
+								Self
+								<div *ngIf="submittedinv && inv.profile_created_by.errors" class="invalid-feedback">
+									<div *ngIf="inv.profile_created_by.errors.required">Profile Created By is required</div>
+								</div>
+								</label>
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" value="2"   class="allsiteadd form-control"  formControlName="profile_created_by" [ngClass]="{ 'is-invalid': submittedinv && inv.profile_created_by.errors }">
+								<span class="inner"></span>
+								Sibling/Friend/Others
+								</label>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Qualification</label>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="1"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Doctorate</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="2"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">IIT / IIM</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="3"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Masters</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="4"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Honors Degree</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="5"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Bachelors</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="6"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Under Graduate</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="7"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Associate Degree</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="8"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Diploma</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="9"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Trade School</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="10"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">High School</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">	
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="11" [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Less than High School</font>
+									<span class="inner"></span>
+									<div *ngIf="submittedinv && inv.qualification.errors" class="invalid-feedback">
+										<div *ngIf="inv.qualification.errors.required">Qualification is required</div>
+									</div>
+									</label>
+								</div> 
+							</div>
+						</div>
+					</div>	 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2" style="padding-top: 28px;"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Occupation</label>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+					 
+						<div class="select2-container "  >
+							<div class="radio" style="width: 33.33%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="occupation"  value="1" checked="checked" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.occupation.errors }">
+								<span class="inner"></span>
+								Employee
+								<div *ngIf="submittedinv && inv.occupation.errors" class="invalid-feedback">
+										<div *ngIf="inv.occupation.errors.required">Occupation is required</div>
+								</div>
+								</label>
+							</div>
+							<div class="radio" style="width: 33.33%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="occupation"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.occupation.errors }">
+								<span class="inner"></span>
+								Business
+								</label>
+							</div>
+							<div class="radio" style="width: 33.33%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="occupation"  value="3"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.occupation.errors }">
+								<span class="inner"></span>
+								None								
+								</label>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Experience</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="1" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">1-5 Years</font>
+									<span class="inner"></span>									
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="2" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">5-10 Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="3" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">10-20 Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="4" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">20-30 Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="5" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">30+ Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="6" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">None</font>
+									<span class="inner"></span>
+									<div *ngIf="submittedinv && inv.experience.errors" class="invalid-feedback">
+										<div *ngIf="inv.experience.errors.required">Experience is required</div>
+									</div>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Business Category</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group from-group">
+						<div class="select2-container" >
+							<input class="form-control select2-focusser" type="text" formControlName="category" value="" [ngClass]="{ 'is-invalid': submittedinv && inv.category.errors }">
+							<div *ngIf="submittedinv && inv.category.errors" class="invalid-feedback">
+								<div *ngIf="inv.category.errors.required">Category is required</div>
+							</div>
+						</div> 		 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Sub-Category</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<input class="form-control select2-focusser" type="text" formControlName="sub_category" value="" [ngClass]="{ 'is-invalid': submittedinv && inv.sub_category.errors }">
+							<div *ngIf="submittedinv && inv.sub_category.errors" class="invalid-feedback">
+								<div *ngIf="inv.sub_category.errors.required">Sub Category is required</div>
+							</div>
+						</div> 		 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+					<label id="field_label_id_type" for="id_type">Religion </label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="religion" [ngClass]="{ 'is-invalid': submittedinv && inv.religion.errors }" >      
+							<option value="1">Hinduism</option>      
+							<option value="2">Islam</option>      
+							<option value="3">Christianity</option>      
+							<option value="4">Buddhism</option>      
+							<option value="5">Sikhism</option>
+							<option value="6">Jainism</option>
+							<option value="7">Others</option>
+							</select> 
+							<div *ngIf="submittedinv && inv.religion.errors" class="invalid-feedback">
+								<div *ngIf="inv.religion.errors.required">Religion is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Mother Tongue </label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="mother_tongue" [ngClass]="{ 'is-invalid': submittedinv && inv.mother_tongue.errors }">      
+								<option value="1">Assamese</option>
+								<option value="2">Bengali</option>
+								<option value="3">English</option>
+								<option value="4">Gujarati</option>
+								<option value="5">Hindi</option>
+								<option value="6">Kannada</option>
+								<option value="7">Konkani</option>
+								<option value="8">Malayalam</option>
+								<option value="9">Marathi</option>
+								<option value="10">Marwari</option>
+								<option value="11">Odia</option>
+								<option value="12">Punjabi</option>
+								<option value="13">Sindhi</option>
+								<option value="14">Tamil</option>
+								<option value="15">Telugu</option>
+								<option value="16">Urdu</option>    
+							</select>
+							<div *ngIf="submittedinv && inv.mother_tongue.errors" class="invalid-feedback">
+								<div *ngIf="inv.mother_tongue.errors.required">Mother Tongue is required</div>
+							</div>	
+						</div> 
+					</div>
+				</div> 
+			</div>
+		</li>		
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Language Know </label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="known_languages" [ngClass]="{ 'is-invalid': submittedinv && inv.known_languages.errors }">      
+								<option value="1">Assamese</option>
+								<option value="2">Bengali</option>
+								<option value="3">English</option>
+								<option value="4">Gujarati</option>
+								<option value="5">Hindi</option>
+								<option value="6">Kannada</option>
+								<option value="7">Konkani</option>
+								<option value="8">Malayalam</option>
+								<option value="9">Marathi</option>
+								<option value="10">Marwari</option>
+								<option value="11">Odia</option>
+								<option value="12">Punjabi</option>
+								<option value="13">Sindhi</option>
+								<option value="14">Tamil</option>
+								<option value="15">Telugu</option>
+								<option value="16">Urdu</option>
+							</select>
+							<div *ngIf="submittedinv && inv.known_languages.errors" class="invalid-feedback">
+								<div *ngIf="inv.known_languages.errors.required">Known Languages is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Country Living In </label>
+					</div>
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="country" [ngClass]="{ 'is-invalid': submittedinv && inv.country.errors }">
+								<option value="1">India</option>
+								<option value="2">Usa</option>
+							</select> 
+							<div *ngIf="submittedinv && inv.country.errors" class="invalid-feedback">
+								<div *ngIf="inv.country.errors.required">Country is required</div>
+							</div>
+						</div> 
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">State Living In</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="state" [ngClass]="{ 'is-invalid': submittedinv && inv.state.errors }"> 
+								<option value="1">Andhra Pradesh</option>
+								<option value="2">Andaman & Nicobar</option>
+								<option value="3">Arunachal Pradesh</option>
+								<option value="4">Assam</option>
+								<option value="5">Bihar</option>
+								<option value="6">Chattisgarh</option>
+								<option value="7">Chandigarh </option>
+								<option value="8">Delhi-NCR</option>
+								<option value="9">Goa</option>
+								<option value="10">Gujarat</option>
+								<option value="11">Haryana</option>
+								<option value="12">Himachal Pradesh  </option>
+								<option value="13">Jammu Kashmir</option>
+								<option value="14">Jharkhand</option>
+								<option value="15">Karnataka</option>
+								<option value="16">Kerala</option>
+								<option value="17">Lakshadweep</option>
+								<option value="18">Madhya Pradesh</option>
+								<option value="19">Maharashtra</option>
+								<option value="20">Manipur</option>
+								<option value="21">Meghalaya</option>
+								<option value="22">Mizoram</option>
+								<option value="23">Nagaland</option>
+								<option value="24">Orrissa</option>
+								<option value="25">Pondicherry</option>
+								<option value="26">Punjab</option>
+								<option value="27">Rajasthan</option>
+								<option value="28">Sikkim</option>
+								<option value="29">Tamilnadu</option>
+								<option value="31">Telangana</option>
+								<option value="32">Tripura</option>
+								<option value="33">Uttar Pradesh</option> 
+								<option value="34">Uttaranchal</option>
+								<option value="35">West Bengal</option>
+							</select> 
+							<div *ngIf="submittedinv && inv.state.errors" class="invalid-feedback">
+								<div *ngIf="inv.state.errors.required">State is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">City Living In</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="city" [ngClass]="{ 'is-invalid': submittedinv && inv.city.errors }">
+								<option value="1">Hyderabad</option>
+							</select> 
+							<div *ngIf="submittedinv && inv.city.errors" class="invalid-feedback">
+								<div *ngIf="inv.city.errors.required">City is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Relationship Status</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="relationship_status" [ngClass]="{ 'is-invalid': submittedinv && inv.relationship_status.errors }">  
+								<option value="1">Single</option>
+								<option value="2">In a relationship</option>
+								<option value="3">Engaged</option>
+								<option value="4">Married</option>
+								<option value="5">Seperated</option>
+								<option value="6">Divorced</option>
+								<option value="7">Widowed</option>
+								<option value="8">Dont want to specify</option>
+							</select> 
+							<div *ngIf="submittedinv && inv.relationship_status.errors" class="invalid-feedback">
+								<div *ngIf="inv.relationship_status.errors.required">Relationship Status is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Investment Range</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">			 
+						<div class="select2-container">	
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="1"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.investment_range.errors }" id="investment_range_1_5">
+								<span class="inner"></span>
+								1,00,000 To 5,00,000
+								</label>
+							</div>											 
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.investment_range.errors }" id="investment_range_5_10">
+								<span class="inner"></span>
+								5,00,000 to 10,00,000
+								</label>
+							</div>
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="3"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.investment_range.errors }" id="investment_range_10_20">
+								<span class="inner"></span>
+								10,00,000 To 20,00,000
+								</label>
+							</div>											 
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="4"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.investment_range.errors }" id="investment_range_20_50">
+								<span class="inner"></span>
+								20,00,000 to 50,00,000
+								</label>
+							</div>
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="5"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.investment_range.errors }" id="investment_range_50_100">
+								<span class="inner"></span>
+								50,00,000 To 100,00,000
+								<div *ngIf="submittedinv && inv.investment_range.errors" class="invalid-feedback">
+									<div *ngIf="inv.investment_range.errors.required">Sub Category is required</div>
+								</div>
+								</label>
+							</div>											 
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText" [ngClass]="{ 'is-invalid': submittedinv && inv.investment_range.errors }">
+								<input type="radio" formControlName="investment_range"  value="6"   class="form-control allsiteadd" id="investment_range_100">
+								<span class="inner"></span>
+								100,00,000*
+								</label>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+					<label id="field_label_id_type" for="id_type">About commission, Profit, Salary, benefit</label><br>
+					<span href="#" class="why-needed">(contract work follow)</span>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div style="width: 100%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value="" class="form-control"  [ngClass]="{ 'is-invalid': submittedinv && inv.investment_type.errors }"> <font style="padding-left: 24px;">Let coonect and discuss (negotiable)</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value=""  class="form-control"  [ngClass]="{ 'is-invalid': submittedinv && inv.investment_type.errors }"> <font style="padding-left: 24px;">Sales Commition</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type"  class="form-control"  [ngClass]="{ 'is-invalid': submittedinv && inv.investment_type.errors }"> <font style="padding-left: 24px;">Low salary & Profite</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value=""  class="form-control"  [ngClass]="{ 'is-invalid': submittedinv && inv.investment_type.errors }"> <font style="padding-left: 24px;">Salary Only</font>
+									<span class="inner"></span>
+									<div *ngIf="submittedinv && inv.investment_type.errors" class="invalid-feedback">
+										<div *ngIf="inv.investment_type.errors.required">Investment type is required</div>
+									</div>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value=""  class="form-control"  [ngClass]="{ 'is-invalid': submittedinv && inv.investment_type.errors }"> <font style="padding-left: 24px;">Very Good Salary</font>
+									<span class="inner"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2" style="padding-top: 28px"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Linkedin URL</label>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<input class="form-control select2-focusser form-control" name="linked_in_url"  type="text" value="">
+						</div>  
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Profile Pic.</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group ">
+						<div class="select2-container" >
+							<script>
+								function readURL1(input) {
+
+								if (input.files && input.files[0]) {
+									var reader = new FileReader();
+
+									reader.onload = function (e) {
+										$('#upload-file-info1').html(input.files[0].name);
+										$('#img2291').attr('src', e.target.result);
+										$('#img2291').css('display','inline-block');
+									}
+
+									reader.readAsDataURL(input.files[0]);
+								}
+								}
+							</script>     
+						  
+							<div style="position:relative; padding-left: 8px;">
+								<img id="img229" class="preview-image" src="#" alt="Your image">
+								<a class="btn btn-primary" href="javascript:;">
+								Choose a Pic
+								<input id="imgInp" type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="profile_pic" size="40" onchange="readURL(this);">
+								</a>
+								&nbsp;
+								<span id="upload-file-info"></span>
+							</div>
+						</div> 
+					</div>
+				</div>
+			 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="description_of_skills_experience">Skill and  experience i am looking for...</label>
+						<span href="#" class="why-needed"  >Why is this needed?</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group">
+						<textarea formControlName="description_of_skills_experience" value=""  [ngClass]="{ 'is-invalid': submittedinv && inv.description_of_skills_experience.errors }" class="form-control" autocomplete="off"   rows="4" cols="40"  ></textarea>
+						<div *ngIf="submittedinv && inv.description_of_skills_experience.errors" class="invalid-feedback">
+							<div *ngIf="inv.description_of_skills_experience.errors.required">Skill and  experience is required</div>
+						</div>
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="description_place_business">Place of business , I want to invest in Odisha, Hyderabad. </label><br>
+						<span href="#" class="why-needed"  >Why is this needed?</span>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group">
+						<textarea formControlName="description_place_business" value=""  [ngClass]="{ 'is-invalid': submittedinv && inv.description_place_business.errors }" class="form-control" rows="4" cols="40" ></textarea> 
+						<div *ngIf="submittedinv && inv.description_place_business.errors" class="invalid-feedback">
+							<div *ngIf="inv.description_place_business.errors.required">Place of business is required</div>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="description_you_family">About Me  </label><br>
+						<span href="#" class="why-needed"  >Why is this needed?</span>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<textarea  formControlName="description_you_family" value=""  [ngClass]="{ 'is-invalid': submittedinv && inv.description_you_family.errors }" class="form-control"  rows="4" cols="40" ></textarea>
+						<div *ngIf="submittedinv && inv.description_you_family.errors" class="invalid-feedback">
+							<div *ngIf="inv.description_you_family.errors.required">About Me is required</div>
+						</div>						
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<div style="width: 30px;float: right;height: 30px;margin-top: -35px;">
+							<div class="checkbox ubuntuRegText form-group">
+								<label>
+								<input type="checkbox" formControlName="is_accept_terms" value=""  [ngClass]="{ 'is-invalid': submittedinv && inv.is_accept_terms.errors }" class="form-control" > 
+								<div *ngIf="submittedinv && inv.is_accept_terms.errors" class="invalid-feedback">
+									<div *ngIf="inv.is_accept_terms.errors.required">Terms&Conditions is required</div>
+								</div>
+								<span class="inner"></span>
+								</label>
+							</div>
+						</div>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group">
+					<font style="font-size: 14px;">I love by clarity that above like information is true and accurate, I will provied key info when required, I accept terms & condition.</font>
+					<input type="submit" name="submit" value="Submit" class="submitbutton">
+					</div>
+				</div>
+			</div>
+		</li>
+
+	</ul>
+ 
+</div>
+
+</form>
+
+<!-- investor form end -->
+
+
+<form action=""   [formGroup]="skillPersonForm" (ngSubmit)="skillPersonSubmit()" method="Post" class ="Skillpersonform">
+<div class="form-fields-wrapper">
+	<ul class="form-fields">
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<input class="form-control select2-focusser" type="text"  formControlName="name"  value="" placeholder="Name" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedSp && sp.name.errors }">
+							<div *ngIf="submittedSp && sp.name.errors" class="invalid-feedback">
+								<div *ngIf="sp.name.errors.required">First Name is required</div>
+							</div>
+						</div> 			 
+					</div>
+				</div>	 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<input class="form-control select2-focusser" type="text"  formControlName="email"  value="" placeholder="Email" [ngClass]="{ 'is-invalid': submittedSp && sp.email.errors }">
+							<div *ngIf="submittedSp && sp.email.errors" class="invalid-feedback">
+								<div *ngIf="sp.email.errors.required">Email is required</div>
+							</div>
+						</div>	 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<input class="form-control select2-focusser" type="text"  formControlName="password"  value="" placeholder="Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedSp && sp.password.errors }">
+							<div *ngIf="submittedSp && sp.password.errors" class="invalid-feedback">
+								<div *ngIf="sp.password.errors.required">Password is required</div>
+							</div>
+						</div> 			 
+					</div>
+				</div>	 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<input class="form-control select2-focusser" type="text"  formControlName="c_password"  value="" placeholder="Confirm Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedSp && sp.c_password.errors }">
+							<div *ngIf="submittedSp && sp.c_password.errors" class="invalid-feedback">
+								<div *ngIf="sp.c_password.errors.required">Confirm Password is required</div>
+							</div>
+						</div> 			 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div class="radio width30">
+								<label>DOB </label>
+							</div>                             
+							<div class="radio" style="width: 68%;   float: left;">
+								<input class="form-control select2-focusser" type="date" formControlName="date_of_birth" value="" placeholder="DOM" [ngClass]="{ 'is-invalid': submittedSp && sp.date_of_birth.errors }">
+								<div *ngIf="submittedSp && sp.date_of_birth.errors" class="invalid-feedback">
+									<div *ngIf="sp.date_of_birth.errors.required">DOB is required</div>
+								</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container"  >
+							<div class="radio width33 padding-l-5">
+								<label>Gender</label> 
+							</div>
+							<div class="radio width33">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="gender" id="sp_gender_male" value="1" checked="checked" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.gender.errors }">
+								<span class="inner"></span>
+								Male
+								</label>
+							</div>                             
+							<div class="radio width33">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="gender" id="sp_gender_female"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.gender.errors }">
+								<span class="inner"></span>
+								Female
+								<div *ngIf="submittedSp && sp.gender.errors" class="invalid-feedback">
+									<div *ngIf="sp.gender.errors.required">Gender is required</div>
+								</div>
+								</label>
+									
+							</div>
+							
+						</div>  
+					</div>
+				</div> 
+			</div>
+			
+		</li>
+		<li class="columns-2 " >
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<div class="radio width30">
+								<label>Phone No. </label>
+							</div>
+							<div class="radio" style="width: 18%;   float: left;">
+								<input class="select2-focusser" type="text"   name="" value="+91" >
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<input class="form-control select2-focusser" type="text" formControlName="mobile" value="" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedSp && sp.mobile.errors }">
+								<div *ngIf="submittedSp && sp.mobile.errors" class="invalid-feedback">
+									<div *ngIf="sp.mobile.errors.required">Phone Number is required</div>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div> 
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container">
+							<div class="radio padding-l-5 width30">
+								<label>Whatsapp No. </label>
+							</div>
+							<div class="radio" style="width: 18%;   float: left;">
+								<input class="select2-focusser" type="text"   name="" value="+91" >
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<input class="form-control select2-focusser" type="text" formControlName="whatsup_number" value="" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedSp && sp.whatsup_number.errors }">
+								<div *ngIf="submittedSp && sp.whatsup_number.errors" class="invalid-feedback">
+									<div *ngIf="sp.whatsup_number.errors.required">Whatsapp Number is required</div>
+								</div>
+							</div>
+						</div> 
+					</div>
+				</div> 
+			</div>
+			
+		</li>
+		<li class="columns-2" style="padding-top: 28px;"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Profile Created By</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field">
+					<div class="businessrole-input-group form-group"> 
+						<div class="select2-container ">
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" name="profile_created_by"   value="1" checked="checked" class="allsiteadd form-control" formControlName="profile_created_by" [ngClass]="{ 'is-invalid': submittedSp && sp.profile_created_by.errors }">
+								<span class="inner"></span>
+								Self
+								<div *ngIf="submittedSp && sp.profile_created_by.errors" class="invalid-feedback">
+									<div *ngIf="sp.profile_created_by.errors.required">Profile Created By is required</div>
+								</div>
+								</label>
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" value="2"   class="allsiteadd form-control"  formControlName="profile_created_by" [ngClass]="{ 'is-invalid': submittedSp && sp.profile_created_by.errors }">
+								<span class="inner"></span>
+								Sibling/Friend/Others
+								</label>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Qualification</label>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="1"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Doctorate</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="2"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">IIT / IIM</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="3"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Masters</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="4"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Honors Degree</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="5"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Bachelors</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="6"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Under Graduate</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="7"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Associate Degree</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="8"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Diploma</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="9"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Trade School</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="10"  [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">High School</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">	
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="11" [ngClass]="{ 'is-invalid': submittedSp && sp.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Less than High School</font>
+									<span class="inner"></span>
+									<div *ngIf="submittedSp && sp.qualification.errors" class="invalid-feedback">
+										<div *ngIf="sp.qualification.errors.required">Qualification is required</div>
+									</div>
+									</label>
+								</div> 
+							</div>
+						</div>
+					</div>	 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2" style="padding-top: 28px;"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Occupation</label>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+					 
+						<div class="select2-container "  >
+							<div class="radio" style="width: 33.33%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="occupation"  value="1" checked="checked" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.occupation.errors }">
+								<span class="inner"></span>
+								Employee
+								<div *ngIf="submittedSp && sp.occupation.errors" class="invalid-feedback">
+										<div *ngIf="sp.occupation.errors.required">Occupation is required</div>
+								</div>
+								</label>
+							</div>
+							<div class="radio" style="width: 33.33%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="occupation"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.occupation.errors }">
+								<span class="inner"></span>
+								Business
+								</label>
+							</div>
+							<div class="radio" style="width: 33.33%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="occupation"  value="3"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.occupation.errors }">
+								<span class="inner"></span>
+								None								
+								</label>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Experience</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="1" [ngClass]="{ 'is-invalid': submittedSp && sp.experience.errors }" class="form-control"> <font style="padding-left: 24px;">1-5 Years</font>
+									<span class="inner"></span>									
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="2" [ngClass]="{ 'is-invalid': submittedSp && sp.experience.errors }" class="form-control"> <font style="padding-left: 24px;">5-10 Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="3" [ngClass]="{ 'is-invalid': submittedSp && sp.experience.errors }" class="form-control"> <font style="padding-left: 24px;">10-20 Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="4" [ngClass]="{ 'is-invalid': submittedSp && sp.experience.errors }" class="form-control"> <font style="padding-left: 24px;">20-30 Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="5" [ngClass]="{ 'is-invalid': submittedSp && sp.experience.errors }" class="form-control"> <font style="padding-left: 24px;">30+ Years</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="experience" value="6" [ngClass]="{ 'is-invalid': submittedSp && sp.experience.errors }" class="form-control"> <font style="padding-left: 24px;">None</font>
+									<span class="inner"></span>
+									<div *ngIf="submittedSp && sp.experience.errors" class="invalid-feedback">
+										<div *ngIf="sp.experience.errors.required">Experience is required</div>
+									</div>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Business Category</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group from-group">
+						<div class="select2-container" >
+							<input class="form-control select2-focusser" type="text" formControlName="category" value="" [ngClass]="{ 'is-invalid': submittedSp && sp.category.errors }">
+							<div *ngIf="submittedSp && sp.category.errors" class="invalid-feedback">
+								<div *ngIf="sp.category.errors.required">Category is required</div>
+							</div>
+						</div> 		 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Sub-Category</label>
+					</div>		 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<input class="form-control select2-focusser" type="text" formControlName="sub_category" value="" [ngClass]="{ 'is-invalid': submittedSp && sp.sub_category.errors }">
+							<div *ngIf="submittedSp && sp.sub_category.errors" class="invalid-feedback">
+								<div *ngIf="sp.sub_category.errors.required">Sub Category is required</div>
+							</div>
+						</div> 		 
+					</div>
+				</div>	 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+					<label id="field_label_id_type" for="id_type">Religion </label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="religion" [ngClass]="{ 'is-invalid': submittedSp && sp.religion.errors }" >      
+							<option value="1">Hinduism</option>      
+							<option value="2">Islam</option>      
+							<option value="3">Christianity</option>      
+							<option value="4">Buddhism</option>      
+							<option value="5">Sikhism</option>
+							<option value="6">Jainism</option>
+							<option value="7">Others</option>
+							</select> 
+							<div *ngIf="submittedSp && sp.religion.errors" class="invalid-feedback">
+								<div *ngIf="sp.religion.errors.required">Religion is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Mother Tongue </label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="mother_tongue" [ngClass]="{ 'is-invalid': submittedSp && sp.mother_tongue.errors }">      
+								<option value="1">Assamese</option>
+								<option value="2">Bengali</option>
+								<option value="3">English</option>
+								<option value="4">Gujarati</option>
+								<option value="5">Hindi</option>
+								<option value="6">Kannada</option>
+								<option value="7">Konkani</option>
+								<option value="8">Malayalam</option>
+								<option value="9">Marathi</option>
+								<option value="10">Marwari</option>
+								<option value="11">Odia</option>
+								<option value="12">Punjabi</option>
+								<option value="13">Sindhi</option>
+								<option value="14">Tamil</option>
+								<option value="15">Telugu</option>
+								<option value="16">Urdu</option>    
+							</select>
+							<div *ngIf="submittedSp && sp.mother_tongue.errors" class="invalid-feedback">
+								<div *ngIf="sp.mother_tongue.errors.required">Mother Tongue is required</div>
+							</div>	
+						</div> 
+					</div>
+				</div> 
+			</div>
+		</li>		
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Language Know </label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="known_languages" [ngClass]="{ 'is-invalid': submittedSp && sp.known_languages.errors }">      
+								<option value="1">Assamese</option>
+								<option value="2">Bengali</option>
+								<option value="3">English</option>
+								<option value="4">Gujarati</option>
+								<option value="5">Hindi</option>
+								<option value="6">Kannada</option>
+								<option value="7">Konkani</option>
+								<option value="8">Malayalam</option>
+								<option value="9">Marathi</option>
+								<option value="10">Marwari</option>
+								<option value="11">Odia</option>
+								<option value="12">Punjabi</option>
+								<option value="13">Sindhi</option>
+								<option value="14">Tamil</option>
+								<option value="15">Telugu</option>
+								<option value="16">Urdu</option>
+							</select>
+							<div *ngIf="submittedSp && sp.known_languages.errors" class="invalid-feedback">
+								<div *ngIf="sp.known_languages.errors.required">Known Languages is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Country Living In </label>
+					</div>
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="country" [ngClass]="{ 'is-invalid': submittedSp && sp.country.errors }">
+								<option value="1">India</option>
+								<option value="2">Usa</option>
+							</select> 
+							<div *ngIf="submittedSp && sp.country.errors" class="invalid-feedback">
+								<div *ngIf="sp.country.errors.required">Country is required</div>
+							</div>
+						</div> 
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">State Living In</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="state" [ngClass]="{ 'is-invalid': submittedSp && sp.state.errors }"> 
+								<option value="1">Andhra Pradesh</option>
+								<option value="2">Andaman & Nicobar</option>
+								<option value="3">Arunachal Pradesh</option>
+								<option value="4">Assam</option>
+								<option value="5">Bihar</option>
+								<option value="6">Chattisgarh</option>
+								<option value="7">Chandigarh </option>
+								<option value="8">Delhi-NCR</option>
+								<option value="9">Goa</option>
+								<option value="10">Gujarat</option>
+								<option value="11">Haryana</option>
+								<option value="12">Himachal Pradesh  </option>
+								<option value="13">Jammu Kashmir</option>
+								<option value="14">Jharkhand</option>
+								<option value="15">Karnataka</option>
+								<option value="16">Kerala</option>
+								<option value="17">Lakshadweep</option>
+								<option value="18">Madhya Pradesh</option>
+								<option value="19">Maharashtra</option>
+								<option value="20">Manipur</option>
+								<option value="21">Meghalaya</option>
+								<option value="22">Mizoram</option>
+								<option value="23">Nagaland</option>
+								<option value="24">Orrissa</option>
+								<option value="25">Pondicherry</option>
+								<option value="26">Punjab</option>
+								<option value="27">Rajasthan</option>
+								<option value="28">Sikkim</option>
+								<option value="29">Tamilnadu</option>
+								<option value="31">Telangana</option>
+								<option value="32">Tripura</option>
+								<option value="33">Uttar Pradesh</option> 
+								<option value="34">Uttaranchal</option>
+								<option value="35">West Bengal</option>
+							</select> 
+							<div *ngIf="submittedSp && sp.state.errors" class="invalid-feedback">
+								<div *ngIf="sp.state.errors.required">State is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">City Living In</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="city" [ngClass]="{ 'is-invalid': submittedSp && sp.city.errors }">
+								<option value="1">Hyderabad</option>
+							</select> 
+							<div *ngIf="submittedSp && sp.city.errors" class="invalid-feedback">
+								<div *ngIf="sp.city.errors.required">City is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2">
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Relationship Status</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="relationship_status" [ngClass]="{ 'is-invalid': submittedSp && sp.relationship_status.errors }">  
+								<option value="1">Single</option>
+								<option value="2">In a relationship</option>
+								<option value="3">Engaged</option>
+								<option value="4">Married</option>
+								<option value="5">Seperated</option>
+								<option value="6">Divorced</option>
+								<option value="7">Widowed</option>
+								<option value="8">Dont want to specify</option>
+							</select> 
+							<div *ngIf="submittedSp && sp.relationship_status.errors" class="invalid-feedback">
+								<div *ngIf="sp.relationship_status.errors.required">Relationship Status is required</div>
+							</div>
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Investor Needed</label>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">			 
+						<div class="select2-container">	
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="1"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.investment_range.errors }" id="investment_range_1_5">
+								<span class="inner"></span>
+								1,00,000 To 5,00,000
+								</label>
+							</div>											 
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.investment_range.errors }" id="investment_range_5_10">
+								<span class="inner"></span>
+								5,00,000 to 10,00,000
+								</label>
+							</div>
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="3"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.investment_range.errors }" id="investment_range_10_20">
+								<span class="inner"></span>
+								10,00,000 To 20,00,000
+								</label>
+							</div>											 
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="4"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.investment_range.errors }" id="investment_range_20_50">
+								<span class="inner"></span>
+								20,00,000 to 50,00,000
+								</label>
+							</div>
+							<div class="radio" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="investment_range"  value="5"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.investment_range.errors }" id="investment_range_50_100">
+								<span class="inner"></span>
+								50,00,000 To 100,00,000
+								<div *ngIf="submittedSp && sp.investment_range.errors" class="invalid-feedback">
+									<div *ngIf="sp.investment_range.errors.required">Sub Category is required</div>
+								</div>
+								</label>
+							</div>											 
+							<div class="radio" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText" [ngClass]="{ 'is-invalid': submittedSp && sp.investment_range.errors }">
+								<input type="radio" formControlName="investment_range"  value="6"   class="form-control allsiteadd" id="investment_range_100">
+								<span class="inner"></span>
+								100,00,000*
+								</label>
+							</div>
+						</div>
+					</div>		 
+				</div>
+			</div>
+		</li>
+
+		<li class="columns-2 "  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Financials (about profit sharing, benefits, compensation/salary)</label><br>
+						<span href="#" class="why-needed">(contract work follow)</span>
+					</div>	 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div style="width: 100%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value="" class="form-control"  [ngClass]="{ 'is-invalid': submittedSp && sp.investment_type.errors }"> <font style="padding-left: 24px;">Let coonect and discuss (negotiable)</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value=""  class="form-control"  [ngClass]="{ 'is-invalid': submittedSp && sp.investment_type.errors }"> <font style="padding-left: 24px;">Sales Commition</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type"  class="form-control"  [ngClass]="{ 'is-invalid': submittedSp && sp.investment_type.errors }"> <font style="padding-left: 24px;">Low salary & Profite</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value=""  class="form-control"  [ngClass]="{ 'is-invalid': submittedSp && sp.investment_type.errors }"> <font style="padding-left: 24px;">Salary Only</font>
+									<span class="inner"></span>
+									<div *ngIf="submittedSp && sp.investment_type.errors" class="invalid-feedback">
+										<div *ngIf="sp.investment_type.errors.required">Investment type is required</div>
+									</div>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="investment_type" value=""  class="form-control"  [ngClass]="{ 'is-invalid': submittedSp && sp.investment_type.errors }"> <font style="padding-left: 24px;">Very Good Salary</font>
+									<span class="inner"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2" style="padding-top: 28px;"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Can you Invest?</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group"> 
+						<div class="select2-container"> 
+							<div class="radio investshow" style="width: 50%;   float: left; padding-left: 18px;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="co_investment"  value="1"  class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.co_investment.errors }">
+								<span class="inner"></span>
+								Yes
+								<div *ngIf="submittedSp && sp.co_investment.errors" class="invalid-feedback">
+										<div *ngIf="sp.co_investment.errors.required">Co-Investment is required</div>
+								</div>
+								</label>
+							</div>                             
+							<div class="radio investhides" style="width: 50%;   float: left;">
+								<label class="ubuntuRegText">
+								<input type="radio" formControlName="co_investment"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedSp && sp.co_investment.errors }">
+								<span class="inner"></span>
+								No
+								</label>
+							</div>
+							<div style="width: 16%; float: left; height: 30px;" class="hideinvest">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" name="nameoption" value="" > 
+									<font style="padding-left: 24px;">Little</font>
+									<span class="inner"></span>
+									</label>
+								</div>
+							</div>
+							<div style="width: 18%; float: left; height: 30px;" class="hideinvest">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" name="nameoption" value="" > 
+									<font style="padding-left: 24px;">Midum</font>
+									<span class="inner"></span>
+									</label>
+								</div>
+							</div>
+							<div style="width: 31%; float: left; height: 30px;" class="hideinvest">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" name="nameoption" value="" > 
+									<font style="padding-left: 24px;">5% of Invest</font>
+									<span class="inner"></span>
+									</label>
+								</div>
+							</div>
+							<div style="width: 35%;float: left;height: 30px;padding-top: 14px;padding-left: 7px;" class="hideinvest">
+								<select style="font-size: 12px;">
+								<option>10%</option>
+								<option>15%</option>
+								<option>20%</option>
+								</select> <label>% of Invest</label>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</li>
+		<li class="columns-2" style="padding-top: 28px"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Linkedin URL</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<div class="select2-container" >
+							<input class="form-control select2-focusser" name="linked_in_url"  type="text" value="">
+						</div>  
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2"  >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Profile Pic.</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group ">
+						<div class="select2-container" >
+						<script>
+							function readURL(input) {
+
+								if (input.files && input.files[0]) {
+									var reader = new FileReader();
+
+									reader.onload = function (e) {
+										$('#upload-file-info').html(input.files[0].name);
+										$('#img229').attr('src', e.target.result);
+										$('#img229').css('display','inline-block');
+									}
+
+									reader.readAsDataURL(input.files[0]);
+								}
+							}
+						</script>     
+						  
+							<div style="position:relative; padding-left: 8px;">
+								<img id="img229" class="preview-image" src="#" alt="Your image">
+								<a class="btn btn-primary" href="javascript:;">
+								Choose a Pic
+								<input id="imgInp" type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="profile_pic" size="40" onchange="readURL(this);">
+								</a>
+								&nbsp;
+								<span id="upload-file-info"></span>
+							</div>
+						</div> 
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="id_description_of_business">Mention about your skill, experience, achivment, your role etc</label>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<textarea formControlName="description_of_skills_experience" autocomplete="off"   rows="4" cols="40" [ngClass]="{ 'is-invalid': submittedSp && sp.description_of_skills_experience.errors }" class="form-control"  ></textarea> 
+						<div *ngIf="submittedSp && sp.description_of_skills_experience.errors" class="invalid-feedback">
+								<div *ngIf="sp.description_of_skills_experience.errors.required">Skill, experience, achivment is required</div>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="id_description_of_business">No. of cients/customer and average sales in one month, year?</label>
+						<span href="#" class="why-needed"  >Why is this needed?</span>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<textarea formControlName="description_of_sales" autocomplete="off"   rows="4" cols="40" [ngClass]="{ 'is-invalid': submittedSp && sp.description_of_sales.errors }" class="form-control" ></textarea> 
+						<div *ngIf="submittedSp && sp.description_of_sales.errors" class="invalid-feedback">
+								<div *ngIf="sp.description_of_sales.errors.required">Sales Description is required</div>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="description_you_family">About Me and my family etc  </label><br>
+						<span href="#" class="why-needed"  >Why is this needed?</span>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<textarea formControlName="description_you_family"  rows="4" cols="40"  [ngClass]="{ 'is-invalid': submittedSp && sp.description_you_family.errors }" class="form-control"></textarea> 
+						<div *ngIf="submittedSp && sp.description_you_family.errors" class="invalid-feedback">
+								<div *ngIf="sp.description_you_family.errors.required">About your family is required</div>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="id_description_of_business">Describe your profound value etc  </label><br>
+						<span href="#" class="why-needed"  >Why is this needed?</span>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<textarea formControlName="description_of_profound_value"  rows="4" cols="40"  [ngClass]="{ 'is-invalid': submittedSp && sp.description_of_profound_value.errors }" class="form-control"></textarea> 
+						<div *ngIf="submittedSp && sp.description_of_profound_value.errors" class="invalid-feedback">
+								<div *ngIf="sp.description_of_profound_value.errors.required">Profound value Description is required</div>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<label id="field_label_id_description_of_business" for="id_description_of_business">Relocation preferance Are you will to relocate. </label><br>
+						<span href="#" class="why-needed"  >Why is this needed?</span>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group form-group">
+						<textarea formControlName="description_relocation_preferance"  rows="4" cols="40"  [ngClass]="{ 'is-invalid': submittedSp && sp.description_relocation_preferance.errors }" class="form-control" ></textarea>
+						<div *ngIf="submittedSp && sp.description_relocation_preferance.errors" class="invalid-feedback">
+							<div *ngIf="sp.description_relocation_preferance.errors.required">Relocation Description is required</div>
+						</div>						
+					</div>
+				</div> 
+			</div>
+		</li>
+		<li class="columns-2 " >
+			<div class="field-label-wrapper">
+				<div class="field-label">
+					<div class="bold-label">
+						<div style="width: 100%; float: left; height: 30px;">
+							<div class="checkbox ubuntuRegText form-group">
+								<label>
+								<input type="checkbox" formControlName="is_accept_terms" value=""  [ngClass]="{ 'is-invalid': submittedSp && sp.is_accept_terms.errors }" class="form-control" > 
+								<div *ngIf="submittedSp && sp.is_accept_terms.errors" class="invalid-feedback">
+									<div *ngIf="sp.is_accept_terms.errors.required">Terms&Conditions is required</div>
+								</div>
+								<font style="padding-left: 24px;">I accept terms and condition.</font>
+								<span class="inner"></span>
+								</label>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="form-field-wrapper">
+				<div class="form-field ">
+					<div class="businessrole-input-group">
+						<input type="submit" name="submit" value="Submit" class="submitbutton">
+					</div>
+				</div> 
+			</div>
+		</li>
+	</ul>
+</div>
+</form>
+<!-- SKillperson form end -->
+
+</div>
+</div>
+
+<div class="col-md-4 col-lg-4" style="    float: left;     text-align: justify; " >
+<h5 class="font-weight-bold">When can be used?</h5>
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+<h5 class="font-weight-bold">How to Contact an Author?</h5>
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+</div>
+<div class="clear"></div>
+</div>
+</section>
+<!-- End Registion -->
+
+

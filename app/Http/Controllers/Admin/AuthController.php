@@ -36,7 +36,7 @@ class AuthController extends Controller
   }
 
   public function process_login(Request $request)
-  {
+  {//dd($request->all());
      $validator = Validator::make($request->all(), [
           'email' => 'required|max:255',
           'password' => 'required',

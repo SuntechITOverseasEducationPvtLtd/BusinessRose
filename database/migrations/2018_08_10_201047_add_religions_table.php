@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQualificationsTable extends Migration
+class AddReligionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,85 +13,85 @@ class AddQualificationsTable extends Migration
      */
     public function up()
     {
-        DB::table('qualifications')->insert(array(
+        DB::table('religions')->insert(array(
             array(
-                'qualification' => 'Doctorate',
+                'religion' => 'Hindu',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1,            
+            ),
+            array(
+                'religion' => 'Muslim',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'IIT / IIM',
+                'religion' => 'Christian',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Masters',
+                'religion' => 'Sikh',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Honors degree',
+                'religion' => 'Parsi',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Bachelors',
+                'religion' => 'Jain',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Undergraduate',
+                'religion' => 'Buddhist',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Associates degree',
+                'religion' => 'Jewish',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Diploma',
+                'religion' => 'No Religion',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'High school',
+                'religion' => 'Spiritual',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Less than high school',
+                'religion' => 'Other',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
-            ),
-            array(
-                'qualification' => 'Trade school',
-                'status' => 1,
-                'created_at' => '2018-07-31',
-                'updated_at' => '2018-07-31',
-                'created_by' => 1
-            ))
-        );
+            )
+        ));
     }
 
     /**
@@ -101,7 +101,7 @@ class AddQualificationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('qualifications', function (Blueprint $table) {
+        Schema::table('religions', function (Blueprint $table) {
             //
         });
     }

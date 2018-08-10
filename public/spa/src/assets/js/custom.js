@@ -91,3 +91,31 @@ $("#owl-demo").owlCarousel({
     singleItem: true,
     autoHeight: true,
 });
+
+
+$(document).ready(function(){
+    $(".investshow").click(function(){
+        $('.hideinvest').css('display','block');
+    });
+
+    $(".investhides").click(function(){
+        $('.hideinvest').css('display','none');
+    });
+
+
+     $(".skillperson").click(function(){
+        $('.Investorform').css('display','none');
+
+        $('.Skillpersonform').css('display','block');
+    });
+
+$(".smallinvestor").click(function(){
+        $('.Investorform').css('display','block');
+
+        $('.Skillpersonform').css('display','none');
+    });
+
+
+
+});
+

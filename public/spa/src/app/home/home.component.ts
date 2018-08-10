@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 @Component({templateUrl: 'home.component.html'})
-export class HomeComponent {
-	
+export class HomeComponent implements OnInit {
+	ngOnInit() {
+        //this.loadAllUsers();
+    }
 }

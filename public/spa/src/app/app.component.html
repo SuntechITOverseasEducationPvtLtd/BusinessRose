@@ -1,3 +1,67 @@
+<!--Navbar Start-->
+<nav class="navbar navbar-expand-lg fixed-top custom-nav sticky">
+	<div class="container">
+		<!-- LOGO -->
+		<div class="row">
+		
+		<div class="col-lg-2">
+		<a class="logo navbar-brand" [routerLink]="['/']">
+			<b>Business Rose </b>
+		   
+		</a>
+		</div>
+			
+			
+		<div class="col-lg-7">
+			
+			
+				<div class="text-center subcribe-newslatter top-search">
+					<form class="mx-auto position-relative" [formGroup]="searchForm">
+						<input type="text" placeholder="Search" formControlName="search"  required="" style="color: #4267b2 !important;font-size: 14px;">
+						<button type="submit" class="btn btn-custom search-btn"><i class="pe-7s-search"></i></button>
+					</form>
+				</div>
+			
+			
+		</div>
+		
+		<div class="col-lg-3">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<i class="mdi mdi-menu"></i>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav" id="mySidenav" style="margin-right: auto!important;">
+				<li class="nav-item active">
+					<a [routerLink]="['/dashboard']" class="nav-link">Home</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link">Blog</a>
+				</li>
+				<li class="nav-item">
+					<div *ngIf="authUser == null">
+						<a href="#" class="nav-link"  data-toggle="modal" data-target="#exampleModalCenter">Login</a>
+					</div>
+					<div *ngIf="authUser!=null">
+						<a href="#" class="nav-link"  (click)="logout()">Logout</a>
+					</div>
+				</li>
+				
+			 
+			</ul>
+			<div>
+			   <!-- <ul class="text-right list-unstyled list-inline mb-0 social_menu">
+					<li class="list-inline-item"><a href="#"><i class="mdi mdi-twitter"></i></a></li>
+					<li class="list-inline-item"><a href="#"><i class="mdi mdi-instagram"></i></a></li>
+					<li class="list-inline-item"><a href="#"><i class="mdi mdi-facebook"></i></a></li>
+				</ul>-->
+			</div>
+		</div>
+		
+		  </div>
+		</div>
+	</div>
+</nav>
+<!-- Navbar End -->
 <router-outlet></router-outlet>
 <div class="modal fade" id="exampleModalCenter">
 	<div class="modal-dialog modal-dialog-centered" role="document">
@@ -13,12 +77,12 @@
 					<div class="container-login100">
 						<div class="wrap-login100">
 							
-							<form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">					
-								<div class="wrap-input100 validate-input" data-validate = "Enter username">
-									<input class="input100" type="text" formControlName="username" placeholder="Username" autocomplete="off"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+							<form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">					
+								<div class="wrap-input100 validate-input" data-validate = "Enter email">
+									<input class="input100" type="text" formControlName="email" placeholder="Email" autocomplete="off"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
 									<span class="focus-input100" data-placeholder="&#xf207;"></span>
-									<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-										<div *ngIf="f.username.errors.required">Username is required</div>
+									<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+										<div *ngIf="f.email.errors.required">Email is required</div>
 									</div>
 								</div>
 

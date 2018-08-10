@@ -5,13 +5,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
+import { DashboardComponent } from './dashboard';
+import { RegistrationComponent } from './registration';
 import { routing }        from './app.routing';
-import { AuthenticationService } from './services';
+import { AuthenticationService, GlobalService, UserService } from './services';
+import { AuthGuard } from './guards';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,10 @@ import { AuthenticationService } from './services';
 	HttpClientModule
   ],
   providers: [
-  AuthenticationService
+  AuthenticationService,
+  UserService,
+  GlobalService,
+  AuthGuard
   ],
   bootstrap: [AppComponent]
 })

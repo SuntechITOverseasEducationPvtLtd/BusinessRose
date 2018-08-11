@@ -11,4 +11,9 @@ export class GlobalService {
 	public registerUrl = this.baseUrl+'/api/register';
 	public detailsUrl = this.baseUrl+'/api/getUserProfile/';
 	
+	export const CO_INVESTMENT_YES: number = 1;
+	export const CO_INVESTMENT_NO: number = 2;
+	export const MALE: number = 1;
+	export const FEMALE: number = 2;
+	
 }

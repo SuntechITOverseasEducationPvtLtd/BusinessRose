@@ -23,6 +23,6 @@ Route::get('signup/activate/{token}', 'Api\UserController@signupActivate');
 
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('allusers', 'Api\HomeController@getAllMembers');
-	Route::get('getUserProfile/{id}', 'Api\HomeController@getMemberProfile');
+	Route::get('getUserProfile/{authUser}/{userId}', 'Api\HomeController@getMemberProfile');
 	Route::post('filters', 'Api\HomeController@filters');
 });

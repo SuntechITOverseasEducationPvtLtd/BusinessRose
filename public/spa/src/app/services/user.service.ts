@@ -15,6 +15,8 @@ export class UserService {
 	
 	private registerUrl = this.global.registerUrl;
 	private detailsUrl = this.global.detailsUrl;
+	private currentEncUserId = btoa(localStorage.getItem('currentUserId')); 	
+		
 	
 
     getAll() {
@@ -22,7 +24,7 @@ export class UserService {
     }
 
     getById(id: string) {
-		return this.http.get(this.detailsUrl + id, httpOptions);
+		return this.http.get(this.detailsUrl + this.currentEncUserId + '/' + id, httpOptions);
     }
 
     register(user: User) {

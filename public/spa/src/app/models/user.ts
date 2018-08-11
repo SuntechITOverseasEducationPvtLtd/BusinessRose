@@ -20,7 +20,7 @@ export class User {
     sub_category: number;
     religion: number;
     mother_tongue: number;
-    known_languages: number;
+    known_languages: string;
     co_investment: number;
     investment_range: number;
     investment_type: number;

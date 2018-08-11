@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  private currentUserId = btoa(localStorage.getItem('currentUserId')); 	
+  private userId = btoa(1); 	
   constructor() { 
  
   }

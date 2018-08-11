@@ -9,6 +9,7 @@ use App\SubCategory;
 use App\Qualification;
 use App\Experience;
 use App\User;
+use Input;
 
 class HomeController extends Controller
 {
@@ -57,9 +58,9 @@ class HomeController extends Controller
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 	
-	public function getMemberProfile(Request $request){ 
-		$user_id = $request['id'];
-		$data['users '] = User::where(['id'=>$user_id, 'active'=>1, 'deleted_at'=>null])->get(); 		
+	public function getMemberProfile($user_id){ 
+		$user_id = base64_decode($user_id);
+		$data = User::where(['id'=>$user_id, 'active'=>1, 'deleted_at'=>null])->first(); 		
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 }

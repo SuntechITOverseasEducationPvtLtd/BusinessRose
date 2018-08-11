@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models';
 import { GlobalService } from './global.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+};
 
 @Injectable()
 export class UserService {
@@ -10,14 +14,15 @@ export class UserService {
     constructor(private http: HttpClient, private global:GlobalService) { }
 	
 	private registerUrl = this.global.registerUrl;
+	private detailsUrl = this.global.detailsUrl;
 	
 
     getAll() {
         return this.http.get<User[]>(`/users`);
     }
 
-    getById(id: number) {
-        return this.http.get(`/users/` + id);
+    getById(id: string) {
+		return this.http.get(this.detailsUrl + id, httpOptions);
     }
 
     register(user: User) {

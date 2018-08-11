@@ -10,13 +10,15 @@ import { RegistrationComponent } from './registration';
 import { routing }        from './app.routing';
 import { AuthenticationService, GlobalService, UserService } from './services';
 import { AuthGuard } from './guards';
+import { DetailsComponent } from './details';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DashboardComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

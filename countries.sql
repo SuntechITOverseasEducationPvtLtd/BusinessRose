@@ -1,0 +1,313 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 11, 2018 at 05:49 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 7.1.17
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `businessrose`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `country_code` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phonecode` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_name` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `country_code`, `phonecode`, `country_name`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 'AF', '93', 'Afghanistan', 1, 0, NULL, NULL),
+(2, 'AL', '355', 'Albania', 1, 0, NULL, NULL),
+(3, 'DZ', '213', 'Algeria', 1, 0, NULL, NULL),
+(4, 'AS', '1684', 'American Samoa', 1, 0, NULL, NULL),
+(5, 'AD', '376', 'Andorra', 1, 0, NULL, NULL),
+(6, 'AO', '244', 'Angola', 1, 0, NULL, NULL),
+(7, 'AI', '1264', 'Anguilla', 1, 0, NULL, NULL),
+(8, 'AQ', '0', 'Antarctica', 1, 0, NULL, NULL),
+(9, 'AG', '1268', 'Antigua And Barbuda', 1, 0, NULL, NULL),
+(10, 'AR', '54', 'Argentina', 1, 0, NULL, NULL),
+(11, 'AM', '374', 'Armenia', 1, 0, NULL, NULL),
+(12, 'AW', '297', 'Aruba', 1, 0, NULL, NULL),
+(13, 'AU', '61', 'Australia', 1, 0, NULL, NULL),
+(14, 'AT', '43', 'Austria', 1, 0, NULL, NULL),
+(15, 'AZ', '994', 'Azerbaijan', 1, 0, NULL, NULL),
+(16, 'BS', '1242', 'Bahamas The', 1, 0, NULL, NULL),
+(17, 'BH', '973', 'Bahrain', 1, 0, NULL, NULL),
+(18, 'BD', '880', 'Bangladesh', 1, 0, NULL, NULL),
+(19, 'BB', '1246', 'Barbados', 1, 0, NULL, NULL),
+(20, 'BY', '375', 'Belarus', 1, 0, NULL, NULL),
+(21, 'BE', '32', 'Belgium', 1, 0, NULL, NULL),
+(22, 'BZ', '501', 'Belize', 1, 0, NULL, NULL),
+(23, 'BJ', '229', 'Benin', 1, 0, NULL, NULL),
+(24, 'BM', '1441', 'Bermuda', 1, 0, NULL, NULL),
+(25, 'BT', '975', 'Bhutan', 1, 0, NULL, NULL),
+(26, 'BO', '591', 'Bolivia', 1, 0, NULL, NULL),
+(27, 'BA', '387', 'Bosnia and Herzegovina', 1, 0, NULL, NULL),
+(28, 'BW', '267', 'Botswana', 1, 0, NULL, NULL),
+(29, 'BV', '0', 'Bouvet Island', 1, 0, NULL, NULL),
+(30, 'BR', '55', 'Brazil', 1, 0, NULL, NULL),
+(31, 'IO', '246', 'British Indian Ocean Territory', 1, 0, NULL, NULL),
+(32, 'BN', '673', 'Brunei', 1, 0, NULL, NULL),
+(33, 'BG', '359', 'Bulgaria', 1, 0, NULL, NULL),
+(34, 'BF', '226', 'Burkina Faso', 1, 0, NULL, NULL),
+(35, 'BI', '257', 'Burundi', 1, 0, NULL, NULL),
+(36, 'KH', '855', 'Cambodia', 1, 0, NULL, NULL),
+(37, 'CM', '237', 'Cameroon', 1, 0, NULL, NULL),
+(38, 'CA', '1', 'Canada', 1, 0, NULL, NULL),
+(39, 'CV', '238', 'Cape Verde', 1, 0, NULL, NULL),
+(40, 'KY', '1345', 'Cayman Islands', 1, 0, NULL, NULL),
+(41, 'CF', '236', 'Central African Republic', 1, 0, NULL, NULL),
+(42, 'TD', '235', 'Chad', 1, 0, NULL, NULL),
+(43, 'CL', '56', 'Chile', 1, 0, NULL, NULL),
+(44, 'CN', '86', 'China', 1, 0, NULL, NULL),
+(45, 'CX', '61', 'Christmas Island', 1, 0, NULL, NULL),
+(46, 'CC', '672', 'Cocos (Keeling) Islands', 1, 0, NULL, NULL),
+(47, 'CO', '57', 'Colombia', 1, 0, NULL, NULL),
+(48, 'KM', '269', 'Comoros', 1, 0, NULL, NULL),
+(49, 'CG', '242', 'Republic Of The Congo', 1, 0, NULL, NULL),
+(50, 'CD', '242', 'Democratic Republic Of The Congo', 1, 0, NULL, NULL),
+(51, 'CK', '682', 'Cook Islands', 1, 0, NULL, NULL),
+(52, 'CR', '506', 'Costa Rica', 1, 0, NULL, NULL),
+(53, 'CI', '225', 'Cote D''Ivoire (Ivory Coast)', 1, 0, NULL, NULL),
+(54, 'HR', '385', 'Croatia (Hrvatska)', 1, 0, NULL, NULL),
+(55, 'CU', '53', 'Cuba', 1, 0, NULL, NULL),
+(56, 'CY', '357', 'Cyprus', 1, 0, NULL, NULL),
+(57, 'CZ', '420', 'Czech Republic', 1, 0, NULL, NULL),
+(58, 'DK', '45', 'Denmark', 1, 0, NULL, NULL),
+(59, 'DJ', '253', 'Djibouti', 1, 0, NULL, NULL),
+(60, 'DM', '1767', 'Dominica', 1, 0, NULL, NULL),
+(61, 'DO', '1809', 'Dominican Republic', 1, 0, NULL, NULL),
+(62, 'TP', '670', 'East Timor', 1, 0, NULL, NULL),
+(63, 'EC', '593', 'Ecuador', 1, 0, NULL, NULL),
+(64, 'EG', '20', 'Egypt', 1, 0, NULL, NULL),
+(65, 'SV', '503', 'El Salvador', 1, 0, NULL, NULL),
+(66, 'GQ', '240', 'Equatorial Guinea', 1, 0, NULL, NULL),
+(67, 'ER', '291', 'Eritrea', 1, 0, NULL, NULL),
+(68, 'EE', '372', 'Estonia', 1, 0, NULL, NULL),
+(69, 'ET', '251', 'Ethiopia', 1, 0, NULL, NULL),
+(70, 'XA', '61', 'External Territories of Australia', 1, 0, NULL, NULL),
+(71, 'FK', '500', 'Falkland Islands', 1, 0, NULL, NULL),
+(72, 'FO', '298', 'Faroe Islands', 1, 0, NULL, NULL),
+(73, 'FJ', '679', 'Fiji Islands', 1, 0, NULL, NULL),
+(74, 'FI', '358', 'Finland', 1, 0, NULL, NULL),
+(75, 'FR', '33', 'France', 1, 0, NULL, NULL),
+(76, 'GF', '594', 'French Guiana', 1, 0, NULL, NULL),
+(77, 'PF', '689', 'French Polynesia', 1, 0, NULL, NULL),
+(78, 'TF', '0', 'French Southern Territories', 1, 0, NULL, NULL),
+(79, 'GA', '241', 'Gabon', 1, 0, NULL, NULL),
+(80, 'GM', '220', 'Gambia The', 1, 0, NULL, NULL),
+(81, 'GE', '995', 'Georgia', 1, 0, NULL, NULL),
+(82, 'DE', '49', 'Germany', 1, 0, NULL, NULL),
+(83, 'GH', '233', 'Ghana', 1, 0, NULL, NULL),
+(84, 'GI', '350', 'Gibraltar', 1, 0, NULL, NULL),
+(85, 'GR', '30', 'Greece', 1, 0, NULL, NULL),
+(86, 'GL', '299', 'Greenland', 1, 0, NULL, NULL),
+(87, 'GD', '1473', 'Grenada', 1, 0, NULL, NULL),
+(88, 'GP', '590', 'Guadeloupe', 1, 0, NULL, NULL),
+(89, 'GU', '1671', 'Guam', 1, 0, NULL, NULL),
+(90, 'GT', '502', 'Guatemala', 1, 0, NULL, NULL),
+(91, 'XU', '44', 'Guernsey and Alderney', 1, 0, NULL, NULL),
+(92, 'GN', '224', 'Guinea', 1, 0, NULL, NULL),
+(93, 'GW', '245', 'Guinea-Bissau', 1, 0, NULL, NULL),
+(94, 'GY', '592', 'Guyana', 1, 0, NULL, NULL),
+(95, 'HT', '509', 'Haiti', 1, 0, NULL, NULL),
+(96, 'HM', '0', 'Heard and McDonald Islands', 1, 0, NULL, NULL),
+(97, 'HN', '504', 'Honduras', 1, 0, NULL, NULL),
+(98, 'HK', '852', 'Hong Kong S.A.R.', 1, 0, NULL, NULL),
+(99, 'HU', '36', 'Hungary', 1, 0, NULL, NULL),
+(100, 'IS', '354', 'Iceland', 1, 0, NULL, NULL),
+(101, 'IN', '91', 'India', 1, 0, NULL, NULL),
+(102, 'ID', '62', 'Indonesia', 1, 0, NULL, NULL),
+(103, 'IR', '98', 'Iran', 1, 0, NULL, NULL),
+(104, 'IQ', '964', 'Iraq', 1, 0, NULL, NULL),
+(105, 'IE', '353', 'Ireland', 1, 0, NULL, NULL),
+(106, 'IL', '972', 'Israel', 1, 0, NULL, NULL),
+(107, 'IT', '39', 'Italy', 1, 0, NULL, NULL),
+(108, 'JM', '1876', 'Jamaica', 1, 0, NULL, NULL),
+(109, 'JP', '81', 'Japan', 1, 0, NULL, NULL),
+(110, 'XJ', '44', 'Jersey', 1, 0, NULL, NULL),
+(111, 'JO', '962', 'Jordan', 1, 0, NULL, NULL),
+(112, 'KZ', '7', 'Kazakhstan', 1, 0, NULL, NULL),
+(113, 'KE', '254', 'Kenya', 1, 0, NULL, NULL),
+(114, 'KI', '686', 'Kiribati', 1, 0, NULL, NULL),
+(115, 'KP', '850', 'Korea North', 1, 0, NULL, NULL),
+(116, 'KR', '82', 'Korea South', 1, 0, NULL, NULL),
+(117, 'KW', '965', 'Kuwait', 1, 0, NULL, NULL),
+(118, 'KG', '996', 'Kyrgyzstan', 1, 0, NULL, NULL),
+(119, 'LA', '856', 'Laos', 1, 0, NULL, NULL),
+(120, 'LV', '371', 'Latvia', 1, 0, NULL, NULL),
+(121, 'LB', '961', 'Lebanon', 1, 0, NULL, NULL),
+(122, 'LS', '266', 'Lesotho', 1, 0, NULL, NULL),
+(123, 'LR', '231', 'Liberia', 1, 0, NULL, NULL),
+(124, 'LY', '218', 'Libya', 1, 0, NULL, NULL),
+(125, 'LI', '423', 'Liechtenstein', 1, 0, NULL, NULL),
+(126, 'LT', '370', 'Lithuania', 1, 0, NULL, NULL),
+(127, 'LU', '352', 'Luxembourg', 1, 0, NULL, NULL),
+(128, 'MO', '853', 'Macau S.A.R.', 1, 0, NULL, NULL),
+(129, 'MK', '389', 'Macedonia', 1, 0, NULL, NULL),
+(130, 'MG', '261', 'Madagascar', 1, 0, NULL, NULL),
+(131, 'MW', '265', 'Malawi', 1, 0, NULL, NULL),
+(132, 'MY', '60', 'Malaysia', 1, 0, NULL, NULL),
+(133, 'MV', '960', 'Maldives', 1, 0, NULL, NULL),
+(134, 'ML', '223', 'Mali', 1, 0, NULL, NULL),
+(135, 'MT', '356', 'Malta', 1, 0, NULL, NULL),
+(136, 'XM', '44', 'Man (Isle of)', 1, 0, NULL, NULL),
+(137, 'MH', '692', 'Marshall Islands', 1, 0, NULL, NULL),
+(138, 'MQ', '596', 'Martinique', 1, 0, NULL, NULL),
+(139, 'MR', '222', 'Mauritania', 1, 0, NULL, NULL),
+(140, 'MU', '230', 'Mauritius', 1, 0, NULL, NULL),
+(141, 'YT', '269', 'Mayotte', 1, 0, NULL, NULL),
+(142, 'MX', '52', 'Mexico', 1, 0, NULL, NULL),
+(143, 'FM', '691', 'Micronesia', 1, 0, NULL, NULL),
+(144, 'MD', '373', 'Moldova', 1, 0, NULL, NULL),
+(145, 'MC', '377', 'Monaco', 1, 0, NULL, NULL),
+(146, 'MN', '976', 'Mongolia', 1, 0, NULL, NULL),
+(147, 'MS', '1664', 'Montserrat', 1, 0, NULL, NULL),
+(148, 'MA', '212', 'Morocco', 1, 0, NULL, NULL),
+(149, 'MZ', '258', 'Mozambique', 1, 0, NULL, NULL),
+(150, 'MM', '95', 'Myanmar', 1, 0, NULL, NULL),
+(151, 'NA', '264', 'Namibia', 1, 0, NULL, NULL),
+(152, 'NR', '674', 'Nauru', 1, 0, NULL, NULL),
+(153, 'NP', '977', 'Nepal', 1, 0, NULL, NULL),
+(154, 'AN', '599', 'Netherlands Antilles', 1, 0, NULL, NULL),
+(155, 'NL', '31', 'Netherlands The', 1, 0, NULL, NULL),
+(156, 'NC', '687', 'New Caledonia', 1, 0, NULL, NULL),
+(157, 'NZ', '64', 'New Zealand', 1, 0, NULL, NULL),
+(158, 'NI', '505', 'Nicaragua', 1, 0, NULL, NULL),
+(159, 'NE', '227', 'Niger', 1, 0, NULL, NULL),
+(160, 'NG', '234', 'Nigeria', 1, 0, NULL, NULL),
+(161, 'NU', '683', 'Niue', 1, 0, NULL, NULL),
+(162, 'NF', '672', 'Norfolk Island', 1, 0, NULL, NULL),
+(163, 'MP', '1670', 'Northern Mariana Islands', 1, 0, NULL, NULL),
+(164, 'NO', '47', 'Norway', 1, 0, NULL, NULL),
+(165, 'OM', '968', 'Oman', 1, 0, NULL, NULL),
+(166, 'PK', '92', 'Pakistan', 1, 0, NULL, NULL),
+(167, 'PW', '680', 'Palau', 1, 0, NULL, NULL),
+(168, 'PS', '970', 'Palestinian Territory Occupied', 1, 0, NULL, NULL),
+(169, 'PA', '507', 'Panama', 1, 0, NULL, NULL),
+(170, 'PG', '675', 'Papua new Guinea', 1, 0, NULL, NULL),
+(171, 'PY', '595', 'Paraguay', 1, 0, NULL, NULL),
+(172, 'PE', '51', 'Peru', 1, 0, NULL, NULL),
+(173, 'PH', '63', 'Philippines', 1, 0, NULL, NULL),
+(174, 'PN', '0', 'Pitcairn Island', 1, 0, NULL, NULL),
+(175, 'PL', '48', 'Poland', 1, 0, NULL, NULL),
+(176, 'PT', '351', 'Portugal', 1, 0, NULL, NULL),
+(177, 'PR', '1787', 'Puerto Rico', 1, 0, NULL, NULL),
+(178, 'QA', '974', 'Qatar', 1, 0, NULL, NULL),
+(179, 'RE', '262', 'Reunion', 1, 0, NULL, NULL),
+(180, 'RO', '40', 'Romania', 1, 0, NULL, NULL),
+(181, 'RU', '70', 'Russia', 1, 0, NULL, NULL),
+(182, 'RW', '250', 'Rwanda', 1, 0, NULL, NULL),
+(183, 'SH', '290', 'Saint Helena', 1, 0, NULL, NULL),
+(184, 'KN', '1869', 'Saint Kitts And Nevis', 1, 0, NULL, NULL),
+(185, 'LC', '1758', 'Saint Lucia', 1, 0, NULL, NULL),
+(186, 'PM', '508', 'Saint Pierre and Miquelon', 1, 0, NULL, NULL),
+(187, 'VC', '1784', 'Saint Vincent And The Grenadines', 1, 0, NULL, NULL),
+(188, 'WS', '684', 'Samoa', 1, 0, NULL, NULL),
+(189, 'SM', '378', 'San Marino', 1, 0, NULL, NULL),
+(190, 'ST', '239', 'Sao Tome and Principe', 1, 0, NULL, NULL),
+(191, 'SA', '966', 'Saudi Arabia', 1, 0, NULL, NULL),
+(192, 'SN', '221', 'Senegal', 1, 0, NULL, NULL),
+(193, 'RS', '381', 'Serbia', 1, 0, NULL, NULL),
+(194, 'SC', '248', 'Seychelles', 1, 0, NULL, NULL),
+(195, 'SL', '232', 'Sierra Leone', 1, 0, NULL, NULL),
+(196, 'SG', '65', 'Singapore', 1, 0, NULL, NULL),
+(197, 'SK', '421', 'Slovakia', 1, 0, NULL, NULL),
+(198, 'SI', '386', 'Slovenia', 1, 0, NULL, NULL),
+(199, 'XG', '44', 'Smaller Territories of the UK', 1, 0, NULL, NULL),
+(200, 'SB', '677', 'Solomon Islands', 1, 0, NULL, NULL),
+(201, 'SO', '252', 'Somalia', 1, 0, NULL, NULL),
+(202, 'ZA', '27', 'South Africa', 1, 0, NULL, NULL),
+(203, 'GS', '0', 'South Georgia', 1, 0, NULL, NULL),
+(204, 'SS', '211', 'South Sudan', 1, 0, NULL, NULL),
+(205, 'ES', '34', 'Spain', 1, 0, NULL, NULL),
+(206, 'LK', '94', 'Sri Lanka', 1, 0, NULL, NULL),
+(207, 'SD', '249', 'Sudan', 1, 0, NULL, NULL),
+(208, 'SR', '597', 'Suriname', 1, 0, NULL, NULL),
+(209, 'SJ', '47', 'Svalbard And Jan Mayen Islands', 1, 0, NULL, NULL),
+(210, 'SZ', '268', 'Swaziland', 1, 0, NULL, NULL),
+(211, 'SE', '46', 'Sweden', 1, 0, NULL, NULL),
+(212, 'CH', '41', 'Switzerland', 1, 0, NULL, NULL),
+(213, 'SY', '963', 'Syria', 1, 0, NULL, NULL),
+(214, 'TW', '886', 'Taiwan', 1, 0, NULL, NULL),
+(215, 'TJ', '992', 'Tajikistan', 1, 0, NULL, NULL),
+(216, 'TZ', '255', 'Tanzania', 1, 0, NULL, NULL),
+(217, 'TH', '66', 'Thailand', 1, 0, NULL, NULL),
+(218, 'TG', '228', 'Togo', 1, 0, NULL, NULL),
+(219, 'TK', '690', 'Tokelau', 1, 0, NULL, NULL),
+(220, 'TO', '676', 'Tonga', 1, 0, NULL, NULL),
+(221, 'TT', '1868', 'Trinidad And Tobago', 1, 0, NULL, NULL),
+(222, 'TN', '216', 'Tunisia', 1, 0, NULL, NULL),
+(223, 'TR', '90', 'Turkey', 1, 0, NULL, NULL),
+(224, 'TM', '7370', 'Turkmenistan', 1, 0, NULL, NULL),
+(225, 'TC', '1649', 'Turks And Caicos Islands', 1, 0, NULL, NULL),
+(226, 'TV', '688', 'Tuvalu', 1, 0, NULL, NULL),
+(227, 'UG', '256', 'Uganda', 1, 0, NULL, NULL),
+(228, 'UA', '380', 'Ukraine', 1, 0, NULL, NULL),
+(229, 'AE', '971', 'United Arab Emirates', 1, 0, NULL, NULL),
+(230, 'GB', '44', 'United Kingdom', 1, 0, NULL, NULL),
+(231, 'US', '1', 'United States', 1, 0, NULL, NULL),
+(232, 'UM', '1', 'United States Minor Outlying Islands', 1, 0, NULL, NULL),
+(233, 'UY', '598', 'Uruguay', 1, 0, NULL, NULL),
+(234, 'UZ', '998', 'Uzbekistan', 1, 0, NULL, NULL),
+(235, 'VU', '678', 'Vanuatu', 1, 0, NULL, NULL),
+(236, 'VA', '39', 'Vatican City State (Holy See)', 1, 0, NULL, NULL),
+(237, 'VE', '58', 'Venezuela', 1, 0, NULL, NULL),
+(238, 'VN', '84', 'Vietnam', 1, 0, NULL, NULL),
+(239, 'VG', '1284', 'Virgin Islands (British)', 1, 0, NULL, NULL),
+(240, 'VI', '1340', 'Virgin Islands (US)', 1, 0, NULL, NULL),
+(241, 'WF', '681', 'Wallis And Futuna Islands', 1, 0, NULL, NULL),
+(242, 'EH', '212', 'Western Sahara', 1, 0, NULL, NULL),
+(243, 'YE', '967', 'Yemen', 1, 0, NULL, NULL),
+(244, 'YU', '38', 'Yugoslavia', 1, 0, NULL, NULL),
+(245, 'ZM', '260', 'Zambia', 1, 0, NULL, NULL),
+(246, 'ZW', '263', 'Zimbabwe', 1, 0, NULL, NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

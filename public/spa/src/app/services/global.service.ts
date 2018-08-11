@@ -9,5 +9,6 @@ export class GlobalService {
 	public loginUrl = this.baseUrl+'/api/login';
 	public homeUrl = this.baseUrl+'/api/login';
 	public registerUrl = this.baseUrl+'/api/register';
+	public detailsUrl = this.baseUrl+'/api/getUserProfile/';
 	
 }

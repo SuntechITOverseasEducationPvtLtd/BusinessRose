@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQualificationsTable extends Migration
+class AddRelationshipStatussesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,85 +13,57 @@ class AddQualificationsTable extends Migration
      */
     public function up()
     {
-        DB::table('qualifications')->insert(array(
+        DB::table('relationship_statusses')->insert(array(
             array(
-                'qualification' => 'Doctorate',
+                'relation' => 'Single',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1,            
+            ),
+            array(
+                'relation' => 'In a relationship',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'IIT / IIM',
+                'relation' => 'Engaged',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Masters',
+                'relation' => 'Married',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Honors degree',
+                'relation' => 'Seperated',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Bachelors',
+                'relation' => 'Divorced',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Undergraduate',
+                'relation' => 'Widowed',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
-            ),
-            array(
-                'qualification' => 'Associates degree',
-                'status' => 1,
-                'created_at' => '2018-07-31',
-                'updated_at' => '2018-07-31',
-                'created_by' => 1
-            ),
-            array(
-                'qualification' => 'Diploma',
-                'status' => 1,
-                'created_at' => '2018-07-31',
-                'updated_at' => '2018-07-31',
-                'created_by' => 1
-            ),
-            array(
-                'qualification' => 'High school',
-                'status' => 1,
-                'created_at' => '2018-07-31',
-                'updated_at' => '2018-07-31',
-                'created_by' => 1
-            ),
-            array(
-                'qualification' => 'Less than high school',
-                'status' => 1,
-                'created_at' => '2018-07-31',
-                'updated_at' => '2018-07-31',
-                'created_by' => 1
-            ),
-            array(
-                'qualification' => 'Trade school',
-                'status' => 1,
-                'created_at' => '2018-07-31',
-                'updated_at' => '2018-07-31',
-                'created_by' => 1
-            ))
-        );
+            )
+        ));
     }
 
     /**
@@ -101,7 +73,7 @@ class AddQualificationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('qualifications', function (Blueprint $table) {
+        Schema::table('relationship_statusses', function (Blueprint $table) {
             //
         });
     }

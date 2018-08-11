@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQualificationsTable extends Migration
+class AddLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,85 +13,120 @@ class AddQualificationsTable extends Migration
      */
     public function up()
     {
-        DB::table('qualifications')->insert(array(
+        DB::table('languages')->insert(array(
             array(
-                'qualification' => 'Doctorate',
+                'language' => 'Assamese',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1,            
+            ),
+            array(
+                'language' => 'Bengali',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'IIT / IIM',
+                'language' => 'English',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Masters',
+                'language' => 'Gujarati',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Honors degree',
+                'language' => 'Hindi',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Bachelors',
+                'language' => 'Kannada',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Undergraduate',
+                'language' => 'Konkani',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Associates degree',
+                'language' => 'Malayalam',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Diploma',
+                'language' => 'Marathi',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'High school',
+                'language' => 'Marwari',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Less than high school',
+                'language' => 'Odia',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
             ),
             array(
-                'qualification' => 'Trade school',
+                'language' => 'Punjabi',
                 'status' => 1,
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
-            ))
-        );
+            ),
+            array(
+                'language' => 'Sindhi',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1
+            ),
+            array(
+                'language' => 'Tamil',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1
+            ),
+            array(
+                'language' => 'Telugu',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1
+            ),
+            array(
+                'language' => 'Urdu',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1
+            )
+        ));
     }
 
     /**
@@ -101,7 +136,7 @@ class AddQualificationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('qualifications', function (Blueprint $table) {
+        Schema::table('languages', function (Blueprint $table) {
             //
         });
     }

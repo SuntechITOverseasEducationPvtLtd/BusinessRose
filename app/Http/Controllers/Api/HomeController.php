@@ -10,6 +10,8 @@ use App\Qualification;
 use App\Experience;
 use App\User;
 use App\Connection;
+use App\Shortlist;
+use App\Invitation;
 use Input;
 use DB;
 
@@ -60,6 +62,22 @@ class HomeController extends Controller
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 	
+	/**
+     * Saving Connections(Members & Investors) api
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function SaveConnections(Request $request){
+		$connectionObj = new Connection();
+		$connectionObj->connected_to = base64_decode($request->get('connected_to'));
+		$connectionObj->connected_by = base64_decode($request->get('connected_by'));
+		$connectionObj->ip_address = $request->get('ip_address');
+		$connectionObj->created_at = date('Y-m-d H:i:s');
+		$connectionObj->updated_at = date('Y-m-d H:i:s');
+		$connectionObj->save();
+		return response()->json(['success'=>true,'data'=>'Connection created successfully'], $this->successStatus);
+	}
+	
 	public function getMemberProfile($authUser, $userId){ 
 		$userId = base64_decode($userId);
 		$authUser = base64_decode($authUser);
@@ -87,11 +105,58 @@ class HomeController extends Controller
 			  $query->Where(['connected_by'=>$userId, 'connected_to'=>$authUser]);
 			});		   
 		});
+		$obj->leftjoin('shortlists as sl', function($join) use ($authUser, $userId){
+		   $join->where(['shortlist_by'=>$authUser, 'shortlist_to'=>$userId])
+			->orWhere(function($query) use ($authUser, $userId)
+			{
+			  $query->Where(['shortlist_by'=>$userId, 'shortlist_to'=>$authUser]);
+			});		   
+		});
+		$obj->leftjoin('invitations as invs', function($join) use ($authUser, $userId){
+		   $join->where(['invited_by'=>$authUser, 'invited_to'=>$userId])
+			->orWhere(function($query) use ($authUser, $userId)
+			{
+			  $query->Where(['invited_by'=>$userId, 'invited_to'=>$authUser]);
+			});		   
+		});
 		
 		$obj->select('cat.cat_name', 'users.sub_category', 'users.co_investment', 'exp.experience','inv_range.range', 'inv_type.investment_type', 'users.name', 'users.gender', 'rs.relation', 'city.city_name', 'state.state_name', 'rg.religion', 'mt.language as mother_tongue', 'qa.qualification', 'users.description_you_family as about_me', 'users.description_of_sales', 'users.description_of_profound_value', 'users.description_relocation_preferance', 'users.date_of_birth');
 		
-		$obj->addSelect(DB::raw('GROUP_CONCAT(lang.language) as language'), DB::raw('(CASE WHEN count(con.id) > 0 THEN 1 ELSE 0 END) as is_connected'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.email ELSE CONCAT(LEFT(users.email, 4), "xxxxxx@xxxx.com") END) as email'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.mobile ELSE CONCAT(LEFT(users.mobile, 4), "xxxxxx") END) as mobile'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.whatsup_number ELSE CONCAT(LEFT(users.whatsup_number, 4), "xxxxxx") END) as whatsup_number'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.linked_in_url ELSE "www.xxxxxx.com" END) as linked_in_url'));
+		$obj->addSelect(DB::raw('GROUP_CONCAT(lang.language) as language'), DB::raw('(CASE WHEN count(con.id) > 0 THEN 1 ELSE 0 END) as is_connected'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.email ELSE CONCAT(LEFT(users.email, 4), "xxxxxx@xxxx.com") END) as email'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.mobile ELSE CONCAT(LEFT(users.mobile, 4), "xxxxxx") END) as mobile'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.whatsup_number ELSE CONCAT(LEFT(users.whatsup_number, 4), "xxxxxx") END) as whatsup_number'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.linked_in_url ELSE "www.xxxxxx.com" END) as linked_in_url'), DB::raw('(CASE WHEN count(sl.id) > 0 THEN 1 ELSE 0 END) as is_shortlisted'), DB::raw('(CASE WHEN count(invs.id) > 0 THEN 1 ELSE 0 END) as is_invited'));
 		$data = $obj->first(); 		
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+	
+	/**
+     * Saving Shortlists(Members & Investors) api
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function SaveShortlists(Request $request){
+		$shortlistObj = new Shortlist();
+		$shortlistObj->shortlist_to = base64_decode($request->get('shortlist_to'));
+		$shortlistObj->shortlist_by = base64_decode($request->get('shortlist_by'));
+		$shortlistObj->ip_address = $request->get('ip_address');
+		$shortlistObj->created_at = date('Y-m-d H:i:s');
+		$shortlistObj->updated_at = date('Y-m-d H:i:s');
+		$shortlistObj->save();
+		return response()->json(['success'=>true,'data'=>'Successfully Shortlisted'], $this->successStatus);
+	}
+	
+	/**
+     * Saving Invitations(Members & Investors) api
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function SaveInvitation(Request $request){
+		$invitationObj = new Invitation();
+		$invitationObj->invited_to = base64_decode($request->get('invited_to'));
+		$invitationObj->invited_by = base64_decode($request->get('invited_by'));
+		$invitationObj->ip_address = $request->get('ip_address');
+		$invitationObj->created_at = date('Y-m-d H:i:s');
+		$invitationObj->updated_at = date('Y-m-d H:i:s');
+		$invitationObj->status = 1;
+		$invitationObj->save();
+		return response()->json(['success'=>true,'data'=>'Invitation Successfully Sent'], $this->successStatus);
 	}
 }

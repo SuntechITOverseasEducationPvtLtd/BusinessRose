@@ -1,0 +1,40 @@
+    .profile-main-sec1 h6{font-family:'Poppins', sans-serif; font-size:13px; color:#4267b2;}
+     .profile-main-sec1 span{font-family:'Poppins', sans-serif; font-size:13px; color:#4267b2;}
+     .profile-main-sec1 {margin-top: 55px; padding-top:2px;}
+     .profile-main-sec1 p { margin-bottom: 0px;     margin-bottom: 0px;
+    font-size: 12px;
+    font-weight: bold;}
+     .tetxcente {text-align:center; }
+     .form-fields  { margin-top: -41px;}
+     .amrgintop {    margin-top: 32px;}
+     
+     .width30 {
+    width: 30%;
+    float: left;
+    padding-top: 0px;
+}
+.carousel-control-next {width: 6%; }
+.textcenters {text-align: center; }
+.paddingtop42 {padding-top: 42px;}
+.textmange {    text-align: center !important; font-size: 12px !important;
+    font-weight: bold;
+    color: #4267b2;} 
+    .smaltt{font-size: 11px;
+    text-align: center !important;
+    padding-top: 4px;
+    color: #737375;}
+    .padding12 {padding: 12px;} #img229 {display:none !important; }
+    
+    .newsicon {color: #ffffff !important;
+    border: 1px solid #b0b0b7  !important;
+    height: 20px  !important;
+    width: 20px !important;
+    line-height: 16px  !important;
+    text-align: center  !important;
+    border-radius: 0px !important;
+    position: absolute  !important;
+    z-index: 999999 !important;
+    margin-top: 4px !important; 
+    margin-left: 2px  !important; }
+    
+    .newsiconc  {color: #4267b2 !important }

@@ -25,4 +25,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('allusers', 'Api\HomeController@getAllMembers');
 	Route::get('getUserProfile/{authUser}/{userId}', 'Api\HomeController@getMemberProfile');
 	Route::post('filters', 'Api\HomeController@filters');
+	Route::post('connectNow', 'Api\HomeController@SaveConnections');
+	Route::post('shortListNow', 'Api\HomeController@SaveShortlists');
+	Route::post('inviteNow', 'Api\HomeController@SaveInvitation');
 });

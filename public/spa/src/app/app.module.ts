@@ -8,9 +8,11 @@ import { HomeComponent } from './home';
 import { DashboardComponent } from './dashboard';
 import { RegistrationComponent } from './registration';
 import { routing }        from './app.routing';
-import { AuthenticationService, GlobalService, UserService } from './services';
+import { AuthenticationService, GlobalService, UserService, AlertService } from './services';
 import { AuthGuard } from './guards';
 import { DetailsComponent } from './details';
+import { ShortlistsComponent } from './shortlists';
+import { AlertComponent } from './directives/alert.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DetailsComponent } from './details';
     HomeComponent,
     DashboardComponent,
     RegistrationComponent,
-    DetailsComponent
+    DetailsComponent,
+    ShortlistsComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,8 @@ import { DetailsComponent } from './details';
   AuthenticationService,
   UserService,
   GlobalService,
-  AuthGuard
+  AuthGuard,
+  AlertService
   ],
   bootstrap: [AppComponent]
 })

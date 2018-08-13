@@ -15,8 +15,8 @@ class CreateInvitationsTable extends Migration
     {
         Schema::create('invitations', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('shortlist_by');
-			$table->integer('shortlist_to');
+			$table->integer('invited_by');
+			$table->integer('invited_to');
 			$table->string('ip_address');
 			$table->tinyInteger('status');
             $table->timestamps();

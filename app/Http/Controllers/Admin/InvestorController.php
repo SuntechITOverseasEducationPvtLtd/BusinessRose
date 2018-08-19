@@ -31,16 +31,28 @@ class InvestorController extends Controller
    
     public function investorActivations()
     {    	
-    	$arr_view_data['cats'] = "1";
-    	$arr_view_data['sub_cats'] = "2";
-    	return view($this->module_view_folder.'.activations',$arr_view_data);
+    	$data['users'] = DB::table("users")
+                            ->join("categories",'categories.id','users.category')
+                            ->join("sub_categories",'sub_categories.id','users.sub_category')
+                            ->join("experiences",'experiences.id','users.experience')
+                            ->join("countries",'countries.id','users.country')
+                            ->join("states",'states.id','users.state')
+                            ->join("cities",'cities.id','users.city')
+                            ->where(['active'=>1,'deleted_at'=>null])->get();
+        return view($this->module_view_folder.'.activations',$data);
     }
 
     public function investorProfiles()
     {       
-        $arr_view_data['cats'] = "1";
-        $arr_view_data['sub_cats'] = "2";
-        return view($this->module_view_folder.'.Profiles',$arr_view_data);
+        $data['users'] = DB::table("users")
+                            ->join("categories",'categories.id','users.category')
+                            ->join("sub_categories",'sub_categories.id','users.sub_category')
+                            ->join("experiences",'experiences.id','users.experience')
+                            ->join("countries",'countries.id','users.country')
+                            ->join("states",'states.id','users.state')
+                            ->join("cities",'cities.id','users.city')
+                            ->where(['active'=>1,'deleted_at'=>null])->get();
+        return view($this->module_view_folder.'.Profiles',$data);
     }
 
     public function investorPurchases()

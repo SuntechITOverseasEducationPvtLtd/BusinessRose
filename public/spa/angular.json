@@ -33,6 +33,7 @@
               "src/assets/css/owl.transitions.css", 
               "src/assets/css/style.css", 
               "src/assets/css/form.css", 
+              "src/assets/css/extra.css", 
               "src/assets/css/material-design-iconic-font.min.css",
 			  "node_modules/font-awesome/css/font-awesome.css"
             ],
@@ -44,6 +45,7 @@
 				"src/assets/js/scrollspy.min.js",
 				"src/assets/js/owl.carousel.min.js",
 				"src/assets/js/jquery.magnific-popup.min.js",
+				"src/assets/js/common.js",
 				"src/assets/js/custom.js"
 			]
           },

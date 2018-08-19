@@ -1,0 +1,15 @@
+input, textarea, select {
+    width: 10%;
+    color: #555;
+    font-size: 13px;
+    border: none;
+    border-radius: 0px;
+    padding: 8px 3px;
+    box-shadow: none;
+    transition: all .3s;
+    margin: 0px;
+}
+
+input[type=checkbox]{
+	opacity:1;
+}

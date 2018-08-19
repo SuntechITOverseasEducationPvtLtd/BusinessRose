@@ -1,0 +1,586 @@
+
+ <section class="profile-main-sec">
+    <div class="container">
+         <div class="row">
+            <div class="col-lg-3"><h3 style="font-family: 'Poppins', sans-serif;     font-size: 13px;     text-align: right;   color: #4267b2;">Your Search Reasult :</h3></div>
+             <div class="col-lg-9"><h3 style="font-family: 'Poppins', sans-serif;     font-size: 13px;   color: #4267b2;">All / Business Investor / Education / Karnataka / 1LK to 5LK / Exp 1.5 to 4 yrs
+             </h3></div>
+        </div>
+     </div>
+</section>       
+<alert></alert>       
+<section style="background:#f1f1f2;margin-top: 5px;">
+    <div class="container">
+    
+       <div class="row">
+            <div class="col-lg-3" style="margin-top:40px">
+               <img src="src/assets/images/avatar.png" style="border-radius: 3px;" class="img-fluid"> 
+                
+                
+                <div class="white-box">
+                   <div class="verification">                   
+                        <img src="src/assets/images/shield.png"> Verifications
+                   </div>   
+                    
+                    <h6 style="padding:15px 10px 0px 15px;">Mobile number verified</h6>
+                </div>
+                
+           </div>
+           
+
+
+           <div class="col-lg-9">
+             
+                <div class="main-box">                  
+<div class="row">
+                    <div class="col-lg-6">
+                   <h5>Experienced/Skilled</h5>
+                      <p><b>Business Category : </b> <span class="blue"> {{user?.cat_name}}</span> </p>
+                      <p><b>Sub Category :</b> <span class="blue"> {{user?.sub_category}}</span></p>
+                      
+                        <p><b>Co Investment :</b> 
+						<span *ngIf="user?.co_investment == global.CO_INVESTMENT_YES; else noCoInvestment" class="blue" >
+						  Yes
+						</span>
+						<ng-template #noCoInvestment>
+						  No
+						</ng-template>
+                    </div>
+
+                   <div class="col-lg-6 padding-top30">
+                   <p><b>Experience :</b> <span class="blue"> {{user?.experience}} </span></p>
+                      
+                      <p><b>Investment Needed :</b> <span class="blue"> Rs {{user?.range}} </span></p>
+
+                      <p><b>Financials :</b> <span class="blue"> {{user?.investment_type}}</span></p>
+
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <hr style="border-top: 1px groove #f1f1f245;">
+                
+                
+                   <div class="row">
+ 
+                      <div class="col-lg-9">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <p><a href="javascript:;">{{user?.name.charAt(0).toUpperCase()}}{{user?. name.slice(1).toLowerCase()}}</a></p>
+                              <p>Age : {{calculateAge(user?.date_of_birth)}}yrs, <span *ngIf="user?.gender == global.MALE; else genderFemale" >Male</span>, R: {{user?.relation}} </p>
+                             <p>City & State : {{user?.city_name}}, {{user?.state_name}}</p>
+                              <p>Religion : {{user?.religion}} </p> 
+                                 <p>Mother Tongue : {{user?.mother_tongue}}</p> 
+                            <p>Languages Known : {{user?.language}}</p>
+							
+							<ng-template #genderFemale>Female</ng-template>                         
+                            
+                          </div>
+
+                          <div class="col-lg-6">
+                            <p>Email : {{user?.email}}</p> 
+                            <p>Phone no : {{user?.mobile}} </p> 
+                           
+                            <p>Whatsapp : {{user?.whatsup_number}} </p> 
+
+                             <p>Facebook : www.xxxxxx.com  </p>
+
+                              <p>Linkedin : {{user?.linked_in_url}}  </p>
+
+                               <p>Education : {{user?.qualification}} </p>
+                          </div>
+						  
+                        </div>
+                      </div>
+                      <div class="col-lg-3 feature-wrap" >
+                         <p><b>Like This Profile?</b></p>
+                         
+                         
+                         <p class="paddint-top8 "><i class="fa fa-check"></i> <span *ngIf="user?.is_connected == 1 else notConnected">Connected</span></p>
+						 <ng-template #notConnected><a href="javascript:;" (click)="connectNow()">Connect Now</a></ng-template>
+							
+
+                         <p class="paddint-top8 "><i class="fa fa-heart" style=" background: #a458a2; color: #fff;  border: 1px solid #a458a2;"></i> <span *ngIf="user?.is_shortlisted == 1 else notShortlisted">Shortlisted</span></p>
+						 <ng-template #notShortlisted><a href="javascript:;" (click)="shortlistNow()">Shortlist Now</a></ng-template>                         
+
+                         <p><i class="fa fa-handshake-o"></i> <span *ngIf="user?.is_invited == 1 else noInvitationSent">Invitation Sent</span></p>
+						 <ng-template #noInvitationSent><a href="javascript:;" (click)="inviteNow()">Invite to Connect</a></ng-template>
+                      </div>
+
+                   <div class="clearfix"></div>
+                  </div>
+
+                  <hr style="border-top:1px dashed #f0f0f0 ">
+
+                  
+
+ 
+
+				<div class="row description">
+               
+                   <div class="col-lg-1"><i class="fa fa-quote-left" aria-hidden="true"></i></div>
+                   <div class="col-lg-11">
+                       <h5 class="size13">About Me, My skill, Experience, Achivement, Growthrate</h5>
+                      <p class="textjsut">{{user?.about_me}}</p>
+                   </div>
+                      
+                   <div class="clearfix"></div>
+                 </div>
+              
+
+               <div class="row description">
+               
+                   <div class="col-lg-1"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></div>
+                   <div class="col-lg-11">
+                       <h5 class="size13">No. Of clients/Customer/Average Sales/ I can achieve in a month</h5>
+                      <p class="textjsut">{{user?.description_of_sales}}</p>
+                   </div>
+                      
+                   <div class="clearfix"></div>
+                 </div>
+
+
+
+                   <div class="row description">
+               
+                   <div class="col-lg-1"><i class="fa fa-users" aria-hidden="true"></i></div>
+                   <div class="col-lg-11">
+                       <h5 class="size13">About Me  & My Family / Relationship status</h5>
+                       <p class="textjsut">{{user?.about_me}}</p>
+                   </div>
+                      
+                   <div class="clearfix"></div>
+                 </div>
+
+
+
+    <div class="row description">
+               
+                   <div class="col-lg-1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
+                   <div class="col-lg-11">
+                       <h5 class="size13">My personal value in terms of intiligence, honesty etc...</h5>
+                       <p class="textjsut">{{user?.description_of_profound_value}}</p>
+                   </div>
+                      
+                   <div class="clearfix"></div>
+                 </div>
+
+
+
+    <div class="row description">
+               
+                   <div class="col-lg-1"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                   <div class="col-lg-11">
+                       <h5 class="size13">Relocation Preference </h5>
+                       <p class="textjsut">{{user?.description_relocation_preferance}}</p>
+                   </div>
+                      
+                   <div class="clearfix"></div>
+                 </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+              <div class="main-box">
+
+            
+                  
+                  
+                  
+                  
+                  <div class="row description">
+                  
+                   <div class="col-lg-12">
+                       <h5 class="textcenters">Photos</h5>
+                       
+                       
+                         <div id="carouselExampleFade1" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner" style="width: 90%;  margin-left: 5%;">
+                            <div class="carousel-item active" >
+                                
+                                 
+                <div class="row mt-3">
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                            <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                            
+                          
+                               
+                               
+                        
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">   
+                            <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                          
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">   
+                         <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                          
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                        <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                       
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                         <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                     
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">   
+                         <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                     
+                        </div>
+                    </div>
+                    
+                </div>
+                                
+                                
+                            </div>
+                            
+                            
+                <div class="carousel-item" >
+
+
+                                    <div class="row mt-3">
+                <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                            <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                        
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">   
+                            <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                          
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">   
+                         <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                          
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img"> 
+                        <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                       
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">   
+                         <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                     
+                        </div>
+                    </div>   <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                         <img src="src/assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                     
+                        </div>
+                    </div>
+                    
+                </div> 
+                            </div>
+                          
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleFade1" role="button" data-slide="prev" style="opacity: 1;">
+                            <span class="pe-7s-angle-left" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleFade1" role="button" data-slide="next"  style="opacity: 1;">
+                            <span class="pe-7s-angle-right" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                       
+                    </div>
+                      
+                   <div class="clearfix"></div>
+                   
+                   
+                   <div class="col-lg-12">
+                       <h5 class="textcenters paddingtop42">Videos</h5>
+                       
+                       
+                         <div id="carouselExampleFade1" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner" style="width: 90%;  margin-left: 5%;">
+                            <div class="carousel-item active" >
+                                
+                                 
+                <div class="row mt-3">
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">    
+                            <img src="src/assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                     
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                            <img src="src/assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                          
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                         <img src="src/assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                          
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                        <img src="src/assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                       
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">  
+                         <img src="src/assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                     
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        <div class="logo_img">   
+                         <img src="src/assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
+                     
+                        </div>
+                    </div>
+                    
+                </div>
+                              
+                            </div>
+                         
+                            
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleFade1" role="button" data-slide="prev" style="opacity: 1;">
+                            <span class="pe-7s-angle-left" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleFade1" role="button" data-slide="next"  style="opacity: 1;">
+                            <span class="pe-7s-angle-right" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                       
+                    </div>
+                    
+                      <div class="clearfix"></div>
+                   
+                 </div>
+                  
+                  
+                 <div class="row description">
+                       <div class="col-lg-12"><h5 class="textcenters paddingtop42">Business Plan</h5></div>
+                       
+                       <div class="col-lg-4"> </div>
+                      <div class="col-lg-2">   <img src="src/assets/images/pp.png" alt="logo-img" class="mx-auto img-fluid d-block"></div> <div class="col-lg-2">   <img src="src/assets/images/pp.png" alt="logo-img" class="mx-auto img-fluid d-block"></div>
+                       
+                    </div>
+                    
+                    
+                 
+  
+              </div>
+               
+               
+
+           </div>
+
+
+
+        </div>
+    
+    </div>
+</section>
+<script>
+
+function slide(link) {
+  
+  var down = function (callback, time) {
+    var subMenu = link.nextElementSibling;
+    var height = subMenu.clientHeight; 
+    var part = height / 100;
+    
+    var paddingTop = parseInt(window.getComputedStyle(subMenu, null).getPropertyValue('padding-top'));
+    var paddingBottom = parseInt(window.getComputedStyle(subMenu, null).getPropertyValue('padding-bottom'));
+    var paddingTopPart = parseInt(paddingTop) / 50;
+    var paddingBottomPart = parseInt(paddingBottom) / 30;
+    
+    (function innerFunc(i, t, b) {
+
+      subMenu.style.height = i + 'px';
+      
+      i += part;
+      
+      if(t < paddingTop) {
+      
+        t += paddingTopPart;
+        subMenu.style.paddingTop = t + 'px';
+          
+      } else if(b < paddingBottom) {
+
+        b += paddingBottomPart;
+        subMenu.style.paddingBottom = b + 'px';
+      }
+      
+      if(i < height) { 
+      
+        setTimeout(function() {
+            
+            innerFunc(i, t, b);
+            
+        }, time / 100);
+          
+      } else { 
+          
+        subMenu.removeAttribute('style');
+        callback();
+      }
+        
+    })(0, 0, 0);
+  },
+  
+  up = function (callback, time) {
+      
+    var subMenu = link.nextElementSibling;
+    var height = subMenu.clientHeight; 
+    var part = subMenu.clientHeight / 100;
+    var paddingTop = parseInt(window.getComputedStyle(subMenu).paddingTop);
+    var paddingBottom = parseInt(window.getComputedStyle(subMenu).paddingBottom);
+    var paddingTopPart = parseInt(paddingTop) / 30;
+    var paddingBottomPart = parseInt(paddingBottom) / 50;
+
+    (function innerFunc(i, t, b) {
+
+      subMenu.style.height = i + 'px';
+      
+      i -= part;
+      i = i.toFixed(2);
+
+      if(b > 0) {
+          
+        b -= paddingBottomPart;
+        b = b.toFixed(1);                
+        subMenu.style.paddingBottom = b + 'px';
+          
+      } else if(t > 0) {
+          
+        t -= paddingTopPart;
+        t = t.toFixed(1); 
+        subMenu.style.paddingTop = t + 'px';
+      }
+      
+      if(i > 0) { 
+      
+        setTimeout(function() {
+            
+            innerFunc(i, t, b);
+            
+        }, time / 100);
+          
+      } else {
+          
+        subMenu.removeAttribute('style');
+        callback(); 
+      }
+        
+    })(height, paddingTop, paddingBottom);
+  }
+      
+  return {
+    down: down,
+    up: up
+  }
+} 
+    
+var accordion = (function() {
+
+    var menu = document.querySelectorAll('.accordion');
+    var activeClass = 'accordion__link_active';
+    var arr = [];
+    var timer = 100;
+    
+    for(let i = 0; i < menu.length; i++) {
+
+        for(let p = 0; p < menu[i].children.length; p++) {
+
+            var link = menu[i].children[p].firstElementChild;
+            
+            if(link.classList.contains(activeClass)) {
+                arr[i] = link;
+            }
+        }
+    }
+       
+    function accordionInner(i) {
+            
+      var clicked = false;
+      
+      menu[i].addEventListener('click', function(e) {
+
+        if(e.target.tagName === 'A' && !clicked) {
+
+          clicked = true;
+
+          if(e.target.classList.contains(activeClass)) {
+              
+            slide(e.target).up(function() {
+                
+              clicked = false;
+              
+              e.target.classList.remove(activeClass);
+              
+              console.log('slide up of accordion ' + i + ' is done');
+            
+            }, timer);
+              
+          } else {
+
+            if(arr.length > 0) {
+                
+              slide(arr[i-1]).up(function() {
+                  
+                arr[i-1].classList.remove(activeClass);
+                
+                arr[i-1] = e.target;
+                
+                console.log('slide up of accordion ' + i + ' is done');
+
+              }, timer);
+            }
+
+            e.target.classList.add(activeClass);
+            
+            slide(e.target).down(function() {
+              
+              clicked = false;
+              
+              arr[i-1] = e.target;
+              
+              console.log('slide down of accordion ' + i + ' is done');
+            
+            }, timer);
+          }
+        }
+      });
+      
+      i++;
+      
+      if(i < menu.length) { accordionInner(i); }
+        
+    } accordionInner(0);
+})();
+</script>

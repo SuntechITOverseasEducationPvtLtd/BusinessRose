@@ -31,7 +31,7 @@ $("#navbarCollapse").scrollspy({
 });
 
 var a = 0;
-$(window).on('scroll',function() {
+/*$(window).on('scroll',function() {
     var oTop = $('#counter').offset().top - window.innerHeight;
     if (a == 0 && $(window).scrollTop() > oTop) {
         $('.fun_value').each(function() {
@@ -57,7 +57,7 @@ $(window).on('scroll',function() {
         });
         a = 1;
     }
-});
+});*/
 
 
 $('.video_play').magnificPopup({

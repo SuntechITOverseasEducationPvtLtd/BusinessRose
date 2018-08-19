@@ -11,7 +11,7 @@
     <!-- END Main Content -->
 
 <!-- Footer -->        
-@include('admin.layout._footer')  
+<!-- @include('admin.layout._footer') -->  
 </div>  
                 
               

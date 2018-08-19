@@ -49,6 +49,7 @@ class CreateUsersTable extends Migration
 			$table->string('description_of_profound_value')->nullable();
 			$table->string('description_place_business')->nullable();
 			$table->string('description_relocation_preferance')->nullable();
+			$table->string('highlights_of_business')->nullable();
 			$table->tinyInteger('is_accept_terms');
 			$table->string('activation_token');
             $table->rememberToken();

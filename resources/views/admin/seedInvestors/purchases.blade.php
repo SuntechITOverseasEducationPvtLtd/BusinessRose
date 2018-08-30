@@ -112,11 +112,13 @@
 								<th>Gender</th>
 								<th>Email</th>
 								<th>PH No</th>
-								<th>Purchase Transactions</th>
-								<th>Exp Level</th>
 								<th>Category</th>
 								<th>Sub Category</th>
-								<th>A/C Status</th>
+								<th>No of Transactions</th>
+								<th>Total Purchased Amount</th>
+								<th>Total Credits</th>
+								<th>Credits Used</th>
+								<th>Balance Credits</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -127,7 +129,7 @@
 								<td >
 									<div style="width:320px;">
 									<div class="" style="width:60px; height:60px;float:left; overflow: hidden; margin-right: 10px;">
-										<img style="width:100%; border-radius: 50%;" src="../images/dummy.jpg">
+										<img style="width:100%; border-radius: 50%;" src="{{ url('/') }}/images/dummy.jpg">
 									</div>
 									<div style="font-size:13px;">
 									<p style="margin-bottom: 2px;"><strong>{{ $user->name }}</strong></p>
@@ -147,34 +149,16 @@
 								<td>{{ $user->gender==1?"Male":"Female" }}</td>
 								<td>{{ $user->email }}</td>
 								<td>{{ $user->mobile }}</td>
-								<td>{{ '0' }}</td>
-								<td>{{ $user->experience }}</td>
 								<td>{{ $user->cat_name }}</td>
 								<td>{{ $user->sub_cat_name }}</td>
-								<td>@if($user->active == Config::get('constants.PENDING'))
-										<span class="badge badge-primary">{{'PENDING'}}</span>
-									@elseif($user->active == Config::get('constants.ACTIVE'))
-										<span class="badge badge-primary">{{'ACTIVATED'}}</span>
-									@elseif($user->active == Config::get('constants.INACTIVE'))
-										<span class="badge badge-primary">{{'INACTIVE'}}</span>
-									@elseif($user->active == Config::get('constants.ACCOUNT_CLOSED'))
-										<span class="badge badge-primary">{{'ACCOUNT CLOSED'}}</span>
-									@elseif($user->active == Config::get('constants.BLOCKED'))
-										<span class="badge badge-primary">{{'BLOCKED'}}</span>
-									@elseif($user->active == Config::get('constants.PURCHASED'))
-										<span class="badge badge-primary">{{'PURCHASES'}}</span>
-									@elseif($user->active == Config::get('constants.ACCOUNT_DENIED'))
-										<span class="badge badge-primary">{{'DENIED'}}</span>
-									@elseif($user->active == Config::get('constants.NOT_CONNECTED'))
-										<span class="badge badge-primary">{{'NOT CONNECTED'}}</span>
-									@endif
-								</td>
+								<td>{{ $user->total_transactions }}</td>
+								<td>{{ $user->total_amount }}</td>
+								<td>{{ $user->credits }}</td>
+								<td>{{ $user->credits_used }}</td>				
+								<td>{{ ($user->credits)-($user->credits_used) }}</td>
 								<td>
 									<div class="list-icons">							
-										<a href="{{url('admin/investor_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
-										<a href="{{url('admin/edit_investor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
-										<a href="{{url('admin/delete_investor',$user->user_id)}}" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
-										<a href="{{url('admin/block_investor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
+										<a href="{{url('admin/seedInvestor_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
 									</div>									
 								</td>
 								

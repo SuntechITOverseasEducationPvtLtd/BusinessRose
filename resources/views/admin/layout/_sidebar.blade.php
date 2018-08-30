@@ -27,7 +27,7 @@
 			<div class="card-body">
 				<div class="media">
 					<div class="mr-3">
-						<a href="#"><img src="../images/logo.png" width="38" height="38" class="rounded-circle" alt=""></a>
+						<a href="#"><img src="{{ url('/') }}/images/logo.png" width="38" height="38" class="rounded-circle" alt=""></a>
 					</div>
 
 					<div class="media-body">
@@ -53,7 +53,7 @@
 				<!-- Main -->
 				<!-- <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li> -->
 				<li class="nav-item">
-					<a href="dashboard" class="nav-link active">
+					<a href="{{url('admin/dashboard')}}" class="nav-link active">
 						<i class="icon-home4"></i>
 						<span>
 							Dashboard
@@ -61,39 +61,79 @@
 					</a>
 				</li>
 				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Price List</span></a>
+					<a href="#" class="nav-link"><i class="icon-copy"></i> <span>Subscriptions</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Layouts">
-						<li class="nav-item"><a href="price_list" class="nav-link active">Manage</a></li>
+						<li class="nav-item"><a href="{{url('admin/subscriptions')}}" class="nav-link active">Manage</a></li>
 					</ul>
 				</li>
-				<li class="nav-item nav-item-submenu">
-					<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Members</span></a>
 
-					<ul class="nav nav-group-sub" data-submenu-title="Themes">
-						<li class="nav-item"><a href="member_activations" class="nav-link active">A/C Activations</a></li>
-						<li class="nav-item"><a href="member_profiles" class="nav-link">Profiles</a></li>
-						<li class="nav-item"><a href="member_purchases" class="nav-link">Purchases</a></li>
-					</ul>
-				</li>
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-stack"></i> <span>Investors</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Starter kit">
-						<li class="nav-item"><a href="investor_activations" class="nav-link">A/C Activations</a></li>
-						<li class="nav-item"><a href="investor_profiles" class="nav-link">Profiles</a></li>
-						<li class="nav-item"><a href="investor_purchases" class="nav-link">Purchases</a></li>
+						<li class="nav-item"><a href="{{url('admin/investor_activations')}}" class="nav-link">A/C Activations</a></li>
+						<li class="nav-item"><a href="{{url('admin/investor_profiles')}}" class="nav-link">Profiles</a></li>
+						<li class="nav-item"><a href="{{url('admin/investor_purchases')}}" class="nav-link">Purchases</a></li>
 					</ul>
 				</li>
+
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Skilled Persons</span></a>
+
+					<ul class="nav nav-group-sub" data-submenu-title="Themes">
+						<li class="nav-item"><a href="{{url('admin/member_activations')}}" class="nav-link active">A/C Activations</a></li>
+						<li class="nav-item"><a href="{{url('admin/member_profiles')}}" class="nav-link">Profiles</a></li>
+						<li class="nav-item"><a href="{{url('admin/member_purchases')}}" class="nav-link">Purchases</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Startup Skilled Person</span></a>
+
+					<ul class="nav nav-group-sub" data-submenu-title="Themes">
+						<li class="nav-item"><a href="{{url('admin/smallInvestor_activations')}}" class="nav-link active">A/C Activations</a></li>
+						<li class="nav-item"><a href="{{url('admin/smallInvestor_profiles')}}" class="nav-link">Profiles</a></li>
+						<li class="nav-item"><a href="{{url('admin/smallInvestor_purchases')}}" class="nav-link">Purchases</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Startup Investor</span></a>
+
+					<ul class="nav nav-group-sub" data-submenu-title="Themes">
+						<li class="nav-item"><a href="{{url('admin/seedInvestor_activations')}}" class="nav-link active">A/C Activations</a></li>
+						<li class="nav-item"><a href="{{url('admin/seedInvestor_profiles')}}" class="nav-link">Profiles</a></li>
+						<li class="nav-item"><a href="{{url('admin/seedInvestor_purchases')}}" class="nav-link">Purchases</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Freshers</span></a>
+
+					<ul class="nav nav-group-sub" data-submenu-title="Themes">
+						<li class="nav-item"><a href="{{url('admin/fresher_activations')}}" class="nav-link active">A/C Activations</a></li>
+						<li class="nav-item"><a href="{{url('admin/fresher_profiles')}}" class="nav-link">Profiles</a></li>
+						<li class="nav-item"><a href="{{url('admin/fresher_purchases')}}" class="nav-link">Purchases</a></li>
+					</ul>
+				</li>
+				
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-spell-check"></i> <span>CMS</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Themes1">
-						<li class="nav-item"><a href="#" class="nav-link active">Privacy & Policy</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">Terms & Conditions</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">About US</a></li>
+						<li class="nav-item"><a href="{{url('admin/slugs')}}" class="nav-link">Manage</a></li>
 					</ul>
 				</li>
+
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link"><i class="icon-spell-check"></i> <span>User Types</span></a>
+
+					<ul class="nav nav-group-sub" data-submenu-title="Themes1">
+						<li class="nav-item"><a href="{{url('admin/user_types')}}" class="nav-link">Manage</a></li>
+					</ul>
+				</li>
+
 				<li class="nav-item nav-item-submenu">
 					<a href="#" class="nav-link"><i class="icon-grid"></i> <span>Careers</span></a>
 
@@ -106,7 +146,7 @@
 					<a href="#" class="nav-link"><i class="icon-pencil3"></i> <span>Email Settings</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Themes2">
-						<li class="nav-item"><a href="#" class="nav-link active">Manage</a></li>
+						<li class="nav-item"><a href="{{url('admin/email_templates')}}" class="nav-link active">Manage</a></li>
 					</ul>
 				</li>
 				<!-- /main -->

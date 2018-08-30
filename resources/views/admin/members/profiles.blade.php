@@ -1,5 +1,4 @@
-@extends('admin.layout.main')                
-
+@extends('admin.layout.main')  
 @section('main_content')
 
 
@@ -92,7 +91,7 @@
 				<!-- Basic responsive configuration -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-						<h5 class="card-title">Manage Price Lists</h5>
+						<h5 class="card-title">Manage Member Profiles</h5>
 						<div class="header-elements">
 							<div class="list-icons">
 		                		<a class="list-icons-item" data-action="collapse"></a>
@@ -102,9 +101,7 @@
 	                	</div>
 					</div>
 
-					<div class="card-body">
-						The <code>Responsive</code> extension for DataTables can be applied to a DataTable in one of two ways; with a specific <code>class name</code> on the table, or using the DataTables initialisation options. This method shows the latter, with the <code>responsive</code> option being set to the boolean value <code>true</code>. The <code>responsive</code> option can be given as a boolean value, or as an object with configuration options.
-					</div>
+					
 
 					<table class="table datatable-responsive">
 						<thead>
@@ -115,13 +112,12 @@
 								<th>Gender</th>
 								<th>Email</th>
 								<th>PH No</th>
+								<th>Purchase Transactions</th>
 								<th>Exp Level</th>
 								<th>Category</th>
 								<th>Sub Category</th>
 								<th>A/C Status</th>
 								<th>Actions</th>
-								<th>Deny</th>
-								<th>View</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -131,7 +127,7 @@
 								<td >
 									<div style="width:320px;">
 									<div class="" style="width:60px; height:60px;float:left; overflow: hidden; margin-right: 10px;">
-										<img style="width:100%; border-radius: 50%;" src="../images/dummy.jpg">
+										<img style="width:100%; border-radius: 50%;" src="{{ url('/') }}/images/dummy.jpg">
 									</div>
 									<div style="font-size:13px;">
 									<p style="margin-bottom: 2px;"><strong>{{ $user->name }}</strong></p>
@@ -141,24 +137,47 @@
 									<div class="clearfix"></div>
 								</div>
 								</td>
-								<td>{{ $user->name }}</td>
+								<td>
+									<div style="font-size:13px;width: 150px;">
+									<p style="margin-bottom: 2px;"><i class="icon-graduation" style="font-size: 13px;">&nbsp;{{ $user->qualification }}</i></p>
+									<p style="margin-bottom: 2px;color:blue;"><i class="icon-user-check"  style="font-size: 13px;">&nbsp;{{ date('d M,Y, h:iA',strtotime($user->user_created_at)) }}</i></p>
+									<p style="margin-bottom: 2px;color:blue;"><i class=" icon-diff-added"  style="font-size: 13px;">&nbsp;{{ date('d M,Y, h:iA',strtotime($user->activated_at)) }}</i></p>
+									</div>
+								</td>
 								<td>{{ $user->gender==1?"Male":"Female" }}</td>
 								<td>{{ $user->email }}</td>
 								<td>{{ $user->mobile }}</td>
-								<td>{{ $user->mobile }}</td>
+								<td>{{ '0' }}</td>
+								<td>{{ $user->experience }}</td>
 								<td>{{ $user->cat_name }}</td>
 								<td>{{ $user->sub_cat_name }}</td>
-								<td>@if($user->active == 0)
-										<span class="badge badge-primary">{{'Pending'}}</span>
-									@elseif($user->active == 1)
-										<span class="badge badge-primary">{{'Activated'}}</span>
-									@else($user->active == 2)
-										<span class="badge badge-primary">{{'Denied'}}</span>
+								<td>@if($user->active == Config::get('constants.PENDING'))
+										<span class="badge badge-primary">{{'PENDING'}}</span>
+									@elseif($user->active == Config::get('constants.ACTIVE'))
+										<span class="badge badge-primary">{{'ACTIVATED'}}</span>
+									@elseif($user->active == Config::get('constants.INACTIVE'))
+										<span class="badge badge-primary">{{'INACTIVE'}}</span>
+									@elseif($user->active == Config::get('constants.ACCOUNT_CLOSED'))
+										<span class="badge badge-primary">{{'ACCOUNT CLOSED'}}</span>
+									@elseif($user->active == Config::get('constants.BLOCKED'))
+										<span class="badge badge-primary">{{'BLOCKED'}}</span>
+									@elseif($user->active == Config::get('constants.PURCHASED'))
+										<span class="badge badge-primary">{{'PURCHASES'}}</span>
+									@elseif($user->active == Config::get('constants.ACCOUNT_DENIED'))
+										<span class="badge badge-primary">{{'DENIED'}}</span>
+									@elseif($user->active == Config::get('constants.NOT_CONNECTED'))
+										<span class="badge badge-primary">{{'NOT CONNECTED'}}</span>
 									@endif
 								</td>
-								<td><span class="badge badge-success">{{'Active'}}</span></td>
-								<td><span class="badge badge-danger">{{'Deny'}}</span></td>
-								<td><a href="#" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon"><i class="icon-eye"></i></a></td>
+								<td>
+									<div class="list-icons">							
+										<a href="{{url('admin/member_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
+										<a href="{{url('admin/edit_member',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
+										<a href="{{url('admin/delete_member',$user->user_id)}}" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
+										<a href="{{url('admin/block_member',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
+									</div>									
+								</td>
+								
 							</tr>
 							<?php $i++; } ?>
 							

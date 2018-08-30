@@ -1,5 +1,4 @@
-@extends('admin.layout.main')                
-
+@extends('admin.layout.main')    
 @section('main_content')
 
 
@@ -145,20 +144,30 @@
 								<td>{{ $user->gender==1?"Male":"Female" }}</td>
 								<td>{{ $user->email }}</td>
 								<td>{{ $user->mobile }}</td>
-								<td>{{ $user->mobile }}</td>
+								<td>{{ $user->experience }}</td>
 								<td>{{ $user->cat_name }}</td>
 								<td>{{ $user->sub_cat_name }}</td>
-								<td>@if($user->active == 0)
-										<span class="badge badge-primary">{{'Pending'}}</span>
-									@elseif($user->active == 1)
-										<span class="badge badge-primary">{{'Activated'}}</span>
-									@else($user->active == 2)
-										<span class="badge badge-primary">{{'Denied'}}</span>
+								<td>@if($user->active == Config::get('constants.PENDING'))
+										<span class="badge badge-primary">{{'PENDING'}}</span>
+									@elseif($user->active == Config::get('constants.ACTIVE'))
+										<span class="badge badge-primary">{{'ACTIVATED'}}</span>
+									@elseif($user->active == Config::get('constants.INACTIVE'))
+										<span class="badge badge-primary">{{'INACTIVE'}}</span>
+									@elseif($user->active == Config::get('constants.ACCOUNT_CLOSED'))
+										<span class="badge badge-primary">{{'ACCOUNT CLOSED'}}</span>
+									@elseif($user->active == Config::get('constants.BLOCKED'))
+										<span class="badge badge-primary">{{'BLOCKED'}}</span>
+									@elseif($user->active == Config::get('constants.PURCHASED'))
+										<span class="badge badge-primary">{{'PURCHASES'}}</span>
+									@elseif($user->active == Config::get('constants.ACCOUNT_DENIED'))
+										<span class="badge badge-primary">{{'DENIED'}}</span>
+									@elseif($user->active == Config::get('constants.NOT_CONNECTED'))
+										<span class="badge badge-primary">{{'NOT CONNECTED'}}</span>
 									@endif
 								</td>
-								<td><span class="badge badge-success">{{'Active'}}</span></td>
-								<td><span class="badge badge-danger">{{'Deny'}}</span></td>
-								<td><a href="#" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon"><i class="icon-eye"></i></a></td>
+								<td><span class="badge badge-success"><a href="{{url('admin/activate_member',$user->user_id)}}" style="color:#fff;">{{'Active'}}</a></span></td>
+								<td><span class="badge badge-danger"><a href="{{url('admin/deactivate_member',$user->user_id)}}" style="color:#fff;">{{'Deny'}}</a></span></td>
+								<td><a href="{{url('admin/member_profile_view',$user->user_id)}}" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon"><i class="icon-eye"></i></a></td>
 							</tr>
 							<?php $i++; } ?>
 							

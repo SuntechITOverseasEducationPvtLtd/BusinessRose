@@ -91,7 +91,7 @@
 				<!-- Basic responsive configuration -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-						<h5 class="card-title">Manage Member Profiles</h5>
+						<h5 class="card-title">Manage Freshers Profiles</h5>
 						<div class="header-elements">
 							<div class="list-icons">
 		                		<a class="list-icons-item" data-action="collapse"></a>
@@ -127,7 +127,7 @@
 								<td >
 									<div style="width:320px;">
 									<div class="" style="width:60px; height:60px;float:left; overflow: hidden; margin-right: 10px;">
-										<img style="width:100%; border-radius: 50%;" src="../images/dummy.jpg">
+										<img style="width:100%; border-radius: 50%;" src="{{ url('/') }}/images/dummy.jpg">
 									</div>
 									<div style="font-size:13px;">
 									<p style="margin-bottom: 2px;"><strong>{{ $user->name }}</strong></p>
@@ -171,10 +171,10 @@
 								</td>
 								<td>
 									<div class="list-icons">							
-										<a href="{{url('admin/investor_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
-										<a href="{{url('admin/edit_investor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
-										<a href="{{url('admin/delete_investor',$user->user_id)}}" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
-										<a href="{{url('admin/block_investor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
+										<a href="{{url('admin/fresher_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
+										<a href="{{url('admin/edit_fresher',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
+										<a href="{{url('admin/delete_fresher',$user->user_id)}}" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
+										<a href="{{url('admin/block_fresher',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
 									</div>									
 								</td>
 								

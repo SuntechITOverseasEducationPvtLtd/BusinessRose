@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;  
+use Illuminate\Http\Request; 
 /*use App\Models\ContactEnquiryModel;*/
 use App\Http\Requests;
-use App\Http\Controllers\Controller; 
+use App\Http\Controllers\Controller;
 use App\Models\UserModel;
 use App\Models\MemberInterviewModel; 
 use App\Models\RealtimeExperienceModel;
-use App\Models\TransactionModel;
-use App\Models\TransactionHistoryModel;
+use App\Models\TransactionModel; 
+use App\Models\TransactionHistoryModel; 
 use App\Models\MultiReferenceBookModel;
 use App\Models\InterviewDetailModel;
 use App\Models\ReviewRatingModel;
@@ -23,15 +23,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use app\User;
 
-class InvestorController extends Controller
+class SmallInvestorController extends Controller
 {
 	public function __construct()
 	{
-		$this->module_view_folder 		= "admin.investors";
-		$this->admin_url_path     		= url(config('app.project.admin_panel_slug'));
+    	$this->module_view_folder 		= "admin.smallInvestors";
+    	$this->admin_url_path     		= url(config('app.project.admin_panel_slug'));
 	}
    
-    public function investorActivations()
+    public function smallInvestorActivations()
     {    	
     	$data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -42,13 +42,13 @@ class InvestorController extends Controller
                             ->join("cities",'cities.id','users.city')
                             //->where(['active'=>1,'deleted_at'=>null])
                             ->where(['deleted_at'=>null])
-                            ->where(['user_type'=>2])
+                            ->where(['user_type'=>4])
                             ->select('users.id as user_id','users.*','categories.cat_name','sub_categories.sub_cat_name','experiences.*','countries.*','states.*','cities.*')
                             ->get();
-        return view($this->module_view_folder.'.activations',$data);
+    	return view($this->module_view_folder.'.activations',$data);
     }
 
-    public function investorProfiles()
+    public function smallInvestorProfiles()
     {       
         $data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -60,13 +60,13 @@ class InvestorController extends Controller
                             ->join("cities",'cities.id','users.city')
                             //->where(['active'=>1,'deleted_at'=>null])
                             ->where(['deleted_at'=>null])
-                            ->where(['user_type'=>2])
+                            ->where(['user_type'=>4])
                             ->select('users.id as user_id','users.created_at as user_created_at','users.*','categories.cat_name','sub_categories.sub_cat_name','experiences.*','countries.*','states.*','cities.*','qualifications.*')
                             ->get();
         return view($this->module_view_folder.'.profiles',$data);
     }
 
-    public function investorPurchases()
+    public function smallInvestorPurchases()
     {       
         $data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -78,35 +78,35 @@ class InvestorController extends Controller
                             ->join("cities",'cities.id','users.city')
                             //->where(['active'=>1,'deleted_at'=>null])
                             ->where(['deleted_at'=>null])
-                            ->where(['user_type'=>2])
+                            ->where(['user_type'=>4])
                             ->select('users.id as user_id','users.created_at as user_created_at','users.*','categories.cat_name','sub_categories.sub_cat_name','experiences.*','countries.*','states.*','cities.*','qualifications.*')
                             ->get();
         
         return view($this->module_view_folder.'.purchases',$data);
     }
 
-    public function activate_investor($id)
+    public function activate_smallInvestor($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
-        return redirect('admin/investor_activations');
+        return redirect('admin/smallInvestor_activations');
     }
 
-    public function deactivate_investor($id)
+    public function deactivate_smallInvestor($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>6));
-        return redirect('admin/investor_activations');
+        return redirect('admin/smallInvestor_activations');
     }
 
-    public function delete_investor($id)
+    public function delete_smallInvestor($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('deleted_at'=>1));
-        return redirect('admin/investor_profiles');
+        return redirect('admin/smallInvestor_profiles');
     }
 
-    public function block_investor($id)
+    public function block_smallInvestor($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>4));
-        return redirect('admin/investor_profiles');
+        return redirect('admin/smallInvestor_profiles');
     }
 
     public function profile_view($id)         
@@ -133,7 +133,7 @@ class InvestorController extends Controller
         return view('admin.dashboard.profile_view',$data);
     }
 
-    public function edit_investor($id)
+    public function edit_smallInvestor($id)
     {    
         $data['users'] = DB::table("users")
                         ->join("user_types",'user_types.id','users.user_type')
@@ -226,7 +226,7 @@ class InvestorController extends Controller
             'profile_pic'=>"dummy.jpg"
         ));
 
-        return redirect('admin/investor_profiles');
+        return redirect('admin/smallInvestor_profiles');
     }
 
     

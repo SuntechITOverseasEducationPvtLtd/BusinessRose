@@ -171,10 +171,10 @@
 								</td>
 								<td>
 									<div class="list-icons">							
-										<a href="{{url('admin/investor_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
-										<a href="{{url('admin/edit_investor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
-										<a href="{{url('admin/delete_investor',$user->user_id)}}" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
-										<a href="{{url('admin/block_investor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
+										<a href="{{url('admin/smallInvestor_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
+										<a href="{{url('admin/edit_smallInvestor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
+										<a href="{{url('admin/delete_smallInvestor',$user->user_id)}}" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
+										<a href="{{url('admin/block_smallInvestor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
 									</div>									
 								</td>
 								

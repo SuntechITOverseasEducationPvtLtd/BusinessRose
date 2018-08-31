@@ -84,7 +84,7 @@
 				<div class="form-field ">
 					<div class="businessrole-input-group form-group">
 						<div class="select2-container">
-							<input class="form-control select2-focusser" type="text"  formControlName="c_password"  value="" placeholder="Confirm Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedinv && inv.c_password.errors }">
+							<input class="form-control select2-focusser" type="text"  formControlName="c_password"  value="" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submittedinv && inv.c_password.errors }">
 							<div *ngIf="submittedinv && inv.c_password.errors" class="invalid-feedback">
 								<div *ngIf="inv.c_password.errors.required">Confirm Password is required</div>
 							</div>
@@ -1061,7 +1061,7 @@
 				<div class="form-field ">
 					<div class="businessrole-input-group form-group">
 						<div class="select2-container">
-							<input class="form-control select2-focusser" type="text"  formControlName="c_password"  value="" placeholder="Confirm Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedSp && sp.c_password.errors }">
+							<input class="form-control select2-focusser" type="text"  formControlName="c_password"  value="" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submittedSp && sp.c_password.errors }">
 							<div *ngIf="submittedSp && sp.c_password.errors" class="invalid-feedback">
 								<div *ngIf="sp.c_password.errors.required">Confirm Password is required</div>
 							</div>

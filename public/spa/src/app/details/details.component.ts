@@ -4,13 +4,17 @@ import { User, Connection } from './../models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+import {TitleCasePipe} from './../app.titlecase.component';
+
+declare var $: any;
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-	@Input() user: User;
+	@Input() user: Array<User>=[];
 	connections: Connection[];
 	
 	private user_id = this.route.snapshot.paramMap.get('id');
@@ -24,21 +28,16 @@ export class DetailsComponent implements OnInit {
     }
 	
 	getUserDetails():void {
-		this.userService.getById(this.user_id).subscribe(user => this.user = user.data);		
+		$("#loadingModalCenter").modal({backdrop: 'static', keyboard: false, show:true});
+		this.userService.getById(this.user_id).subscribe(user => {
+                    this.user = user['data'];
+					$("#loadingModalCenter").modal("hide");
+                },
+                error => {
+                    this.alertService.error(error);
+                    $("#loadingModalCenter").modal("hide");
+                });		
 	}
-	
-	calculateAge(date_of_birth)
-	{
-		if(date_of_birth){
-			let time = new Date(date_of_birth);
-            var timeDiff = Math.abs(Date.now() - time.getTime());
-			
-            //Used Math.floor instead of Math.ceil
-            //so 26 years and 140 days would be considered as 26, not 27.
-            return Math.floor((timeDiff / (1000 * 3600 * 24))/365);
-        }
-		return '';
-    }
 	
 	connectNow(): void {
 		this.userService.connectNow(this.user_id).subscribe(data => {

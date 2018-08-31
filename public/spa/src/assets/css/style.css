@@ -369,7 +369,7 @@ padding: 7px 0px;
     font-weight: 550;
         font-family: 'Poppins', sans-serif;
 }
-
+.icon_green {    background: #10a131 !important;   color: #fff; border: 1px solid #10a131 !important; }
 .header_subtitle {
     line-height: 1.8;
     font-size: 15px;
@@ -817,8 +817,6 @@ padding: 7px 0px;
 
 /** Accodian **/
 
-
-
 .accordion,
 .sub-accordion {
     margin: 0;
@@ -931,7 +929,7 @@ ul.accordion {
 }
 .feature-wrap{border-left: 1px solid #f0f0f0; text-align: center;}
 
-
+.save-btn {background:#4267b2; color:#fff; padding: 4px 22px !important;}
 /***** Inner Modal *****/
 
 .modal-dialog1 { max-width: 800px;  margin: 1.75rem auto;}
@@ -993,7 +991,10 @@ input[type=checkbox]:disabled + label:before {
   transform: scale(1);
   border-color: #aaa;
 }
-
+.pdescritpin { font-size: 14px;
+    padding:4px  10px 0px;
+    text-align: justify; }
+    .noed {display:none;}
 input[type=checkbox]:checked:disabled + label:before {
   transform: scale(1);
   background-color: #bfb;
@@ -1006,7 +1007,8 @@ input[type=checkbox]:checked:disabled + label:before {
 /***** main Profile *****/
 
 .white-box {background: #fff; margin-top: 20px; padding:3px 3px 6px 3px; border-radius: 3px;}
-.verification {background: #f1f1f2; padding: 10px;}
+.verification {background: #fff; padding: 10px;}
+.verification p {     cursor: pointer; }
 .verification img {margin-top: -24px; margin-right: 10px;}
 .description h5{ color: #4267b2; }
 .description .fa {color:#b2b2b2; border:1.5px solid #b2b2b2; height:40px; width:40px; line-height:40px; text-align:center; border-radius:5px;}
@@ -1020,6 +1022,8 @@ input[type=checkbox]:checked:disabled + label:before {
 .dropdown-menu>li>a {
     color:#428bca;
 }
+.fornewc{      height: 61px !important;
+    padding: 10px 4px !important; }
 .dropdown ul.dropdown-menu {
     border-radius:4px;
     box-shadow:none;
@@ -1121,7 +1125,13 @@ ul.dropdown-menu.top-drop-down li a .fa {margin-right: 15px}
 .nstatitc {margin-top: 5px !important;
     background: #4267b2ba!important;
     box-shadow: 0px 0px 0px #fff !important ; }
-    .box-n {     margin: 10px 0px 40px !important; }
+    .box-n {     margin: 0px 0px 40px !important; }
+    .coonectp { text-align: center;
+    padding-top: 14px;
+    color: #4267b2;
+    font-weight: 600;
+    padding-bottom: 0px;
+    margin: 0px; }
 /*==========================
         15.RESPONSIVE
 ============================*/

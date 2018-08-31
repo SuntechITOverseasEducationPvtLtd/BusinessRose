@@ -13,6 +13,12 @@ import { AuthGuard } from './guards';
 import { DetailsComponent } from './details';
 import { ShortlistsComponent } from './shortlists';
 import { AlertComponent } from './directives/alert.component';
+import { TitleCasePipe } from './app.titlecase.component';
+import { CalculateAgePipe } from './app.agecalc.component';
+import { KeysPipe } from './app.keyspipe.component';
+import { InvitationsComponent } from './invitations';
+import { AccountSettingsComponent } from './account-settings';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,13 @@ import { AlertComponent } from './directives/alert.component';
     RegistrationComponent,
     DetailsComponent,
     ShortlistsComponent,
-    AlertComponent
+    AlertComponent,
+    TitleCasePipe,
+	CalculateAgePipe,
+	KeysPipe,
+	InvitationsComponent,
+	AccountSettingsComponent,
+	PurchaseHistoryComponent
   ],
   imports: [
     BrowserModule,

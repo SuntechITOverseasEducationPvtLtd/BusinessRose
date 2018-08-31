@@ -12,8 +12,14 @@ use App\User;
 use App\Connection;
 use App\Shortlist;
 use App\Invitation;
+use App\State;
+use App\InvestmentRange;
+use App\Religion;
+use App\Language;
+use App\RelationshipStatus;
 use Input;
 use DB;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -25,20 +31,22 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function filters(){ 
-        $data['categories '] = Category::pluck('cat_name','id');
-		$data['sub_categories '] = SubCategory::pluck('sub_cat_name','id');
-		$data['qualifications '] = Qualification::pluck('qualification','id');
-		$data['experience '] = Experience::pluck('experience','id');
-		
-		//$data['states '] = State::pluck('state','id');
-		//$data['cities '] = City::pluck('city','id');
+        $data['categories'] = Category::limit(10)->pluck('cat_name','id');
+		$data['sub_categories'] = SubCategory::pluck('sub_cat_name','id');
+		$data['states'] = State::where('country_id',101)->limit(10)->pluck('state_name','id');
+		$data['qualifications'] = Qualification::limit(10)->pluck('qualification','id');
+		$data['experiences'] = Experience::limit(10)->pluck('experience','id');
+		$data['religions'] = Religion::limit(10)->pluck('religion','id');
+		$data['investmentRange'] = InvestmentRange::pluck('range','id');
+		$data['motherTounges'] = Language::pluck('language','id');
+		$data['relationshipStatuses'] = RelationshipStatus::pluck('relation','id');
 		
 		/*$data['investment_types '] = InvestmentType::pluck('cat_name','id');
 		$data['investment_range '] = InvestmentRange::pluck('cat_name','id');
 		$data['occupations '] = Occupation::pluck('cat_name','id');
 		$data['subscriptions '] = Subscription::pluck('cat_name','id');*/
 		
-		return response()->json(['success'=>true,'filters'=>$data], $this->successStatus);
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
     }
 	
 	/**
@@ -47,18 +55,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 	public function getAllMembers(Request $request){
-		$data['categories '] = Category::pluck('cat_name','id');
-		$data['sub_categories '] = SubCategory::pluck('sub_cat_name','id');
-		$data['qualifications '] = Qualification::pluck('qualification','id');
-		$data['experience '] = Experience::pluck('experience','id');
-		
-		$userObj = User::where(['active'=>1,'deleted_at'=>null]);
-		if($request->has('cat_id'))
-		{
-			$userObj->whereIn('cat_id', $request['cat_id']);
-		}
-		$data['users '] = $userObj->get(); 		
-		//$data['users '] = User::where(['active'=>1,'deleted_at'=>null])->get(); 		
+		$data = User::getAllMembers($request); 		
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 	
@@ -82,48 +79,8 @@ class HomeController extends Controller
 		$userId = base64_decode($userId);
 		$authUser = base64_decode($authUser);
 		
-		$is_connected = Connection::checkConnection($authUser, $userId);		
-		$obj = User::where(['users.id'=>$userId, 'users.active'=>1, 'users.deleted_at'=>null])->groupBy(['users.id']);
-		$obj->leftjoin('categories as cat','cat.id','users.category');
-		$obj->leftjoin('qualifications as q','q.id','users.qualification');
-		$obj->leftjoin('experiences as exp','exp.id','users.experience');
-		$obj->leftjoin('investment_range as inv_range','inv_range.id','users.investment_range');
-		$obj->leftjoin('investment_types as inv_type','inv_type.id','users.investment_type');
-		$obj->leftjoin('relationship_statusses as rs','rs.id','users.relationship_status');
-		$obj->leftjoin('states as state','state.id','users.state');
-		$obj->leftjoin('cities as city','city.id','users.city');
-		$obj->leftjoin('religions as rg','rg.id','users.religion');
-		$obj->leftjoin('qualifications as qa','qa.id','users.qualification');
-		$obj->leftjoin('languages as mt','mt.id','users.mother_tongue');
-		$obj->leftjoin('languages as lang', function($join){
-		   $join->whereRaw(DB::raw("find_in_set(lang.id, users.known_languages) > 0",DB::raw(''),DB::raw('')));		   
-		});
-		$obj->leftjoin('connections as con', function($join) use ($authUser, $userId){
-		   $join->where(['connected_by'=>$authUser, 'connected_to'=>$userId])
-			->orWhere(function($query) use ($authUser, $userId)
-			{
-			  $query->Where(['connected_by'=>$userId, 'connected_to'=>$authUser]);
-			});		   
-		});
-		$obj->leftjoin('shortlists as sl', function($join) use ($authUser, $userId){
-		   $join->where(['shortlist_by'=>$authUser, 'shortlist_to'=>$userId])
-			->orWhere(function($query) use ($authUser, $userId)
-			{
-			  $query->Where(['shortlist_by'=>$userId, 'shortlist_to'=>$authUser]);
-			});		   
-		});
-		$obj->leftjoin('invitations as invs', function($join) use ($authUser, $userId){
-		   $join->where(['invited_by'=>$authUser, 'invited_to'=>$userId])
-			->orWhere(function($query) use ($authUser, $userId)
-			{
-			  $query->Where(['invited_by'=>$userId, 'invited_to'=>$authUser]);
-			});		   
-		});
-		
-		$obj->select('cat.cat_name', 'users.sub_category', 'users.co_investment', 'exp.experience','inv_range.range', 'inv_type.investment_type', 'users.name', 'users.gender', 'rs.relation', 'city.city_name', 'state.state_name', 'rg.religion', 'mt.language as mother_tongue', 'qa.qualification', 'users.description_you_family as about_me', 'users.description_of_sales', 'users.description_of_profound_value', 'users.description_relocation_preferance', 'users.date_of_birth');
-		
-		$obj->addSelect(DB::raw('GROUP_CONCAT(lang.language) as language'), DB::raw('(CASE WHEN count(con.id) > 0 THEN 1 ELSE 0 END) as is_connected'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.email ELSE CONCAT(LEFT(users.email, 4), "xxxxxx@xxxx.com") END) as email'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.mobile ELSE CONCAT(LEFT(users.mobile, 4), "xxxxxx") END) as mobile'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.whatsup_number ELSE CONCAT(LEFT(users.whatsup_number, 4), "xxxxxx") END) as whatsup_number'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.linked_in_url ELSE "www.xxxxxx.com" END) as linked_in_url'), DB::raw('(CASE WHEN count(sl.id) > 0 THEN 1 ELSE 0 END) as is_shortlisted'), DB::raw('(CASE WHEN count(invs.id) > 0 THEN 1 ELSE 0 END) as is_invited'));
-		$data = $obj->first(); 		
+		//$is_connected = Connection::checkConnection($authUser, $userId);		
+		$data = User::getMemberProfile($authUser, $userId); 		
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 	
@@ -158,5 +115,37 @@ class HomeController extends Controller
 		$invitationObj->status = 1;
 		$invitationObj->save();
 		return response()->json(['success'=>true,'data'=>'Invitation Successfully Sent'], $this->successStatus);
+	}
+	
+	/**
+     * My Shortlists(Members & Investors) api
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function myShortlists(){
+		$data['shortlists'] = User::myShortlists(); 
+		$data['inv_received'] = Invitation::where('invited_to',Auth::user()->id)->count();		
+		$data['inv_sent'] = Invitation::where('invited_by',Auth::user()->id)->count();		
+		$data['shortlists_count'] = Shortlist::where('shortlist_by',Auth::user()->id)->count();		
+		$data['views'] = Auth::user()->views;		
+		$data['avail_credits'] = Auth::user()->credits - Auth::user()->credits_used;		
+		$data['used_credits'] = Auth::user()->credits_used;		
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+	
+	/**
+     * My Invitations(Members & Investors) api
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function myInvitations($type){
+		$data['invitations'] = User::myInvitations($type); 
+		$data['inv_received'] = Invitation::where('invited_to',Auth::user()->id)->count();		
+		$data['inv_sent'] = Invitation::where('invited_by',Auth::user()->id)->count();		
+		$data['shortlists_count'] = Shortlist::where('shortlist_by',Auth::user()->id)->count();		
+		$data['views'] = Auth::user()->views;		
+		$data['avail_credits'] = Auth::user()->credits - Auth::user()->credits_used;		
+		$data['used_credits'] = Auth::user()->credits_used;		
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 }

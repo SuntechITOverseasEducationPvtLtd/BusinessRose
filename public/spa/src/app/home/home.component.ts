@@ -3,12 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from './../services';
 
 @Component({templateUrl: 'home.component.html'})
 export class HomeComponent implements OnInit {
 	
 	constructor(
-        private http: HttpClient,
+        private http: HttpClient, private userService: UserService
 		) {}
 		
 	ngOnInit() {

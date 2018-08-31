@@ -22,10 +22,12 @@ Route::post('register', 'Api\UserController@register');
 Route::get('signup/activate/{token}', 'Api\UserController@signupActivate');
 
 Route::group(['middleware' => 'auth:api'], function(){
-	Route::post('allusers', 'Api\HomeController@getAllMembers');
+	Route::any('allusers', 'Api\HomeController@getAllMembers');
 	Route::get('getUserProfile/{authUser}/{userId}', 'Api\HomeController@getMemberProfile');
-	Route::post('filters', 'Api\HomeController@filters');
+	Route::get('filters', 'Api\HomeController@filters');
 	Route::post('connectNow', 'Api\HomeController@SaveConnections');
 	Route::post('shortListNow', 'Api\HomeController@SaveShortlists');
 	Route::post('inviteNow', 'Api\HomeController@SaveInvitation');
+	Route::get('myshortlists', 'Api\HomeController@myShortlists');
+	Route::get('myinvitations/{type}', 'Api\HomeController@myInvitations');
 });

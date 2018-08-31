@@ -1,0 +1,155 @@
+<section style="background:#f1f1f2;margin-top: 5px;">
+    <div class="container">
+    
+       <div class="row">
+            <div class="col-lg-3" style="margin-top:40px">
+                <div class="white-box" style="margin-top:0px">
+                   <div class="verification">                   
+                       <b>Account Settings</b>
+                        <hr>
+                        <p class="emailscroll">Email</p>
+                        <hr>
+                        <p class="alertscroll">Alert</p>
+                         <hr>
+                        <p class="hidescroll">Hide Profile</p>
+                         <hr>
+                        <p class="delscroll">Delete Profile</p>
+                         <hr>
+                        <p class="passscroll">Change Password</p>
+                         <hr>
+                   </div>   
+                </div>
+                
+           </div> 
+           <div class="col-lg-9 emailhere">
+             
+                <div class="main-box">                  
+                
+					<div id="one">					  
+						   <div class="row alerthere">
+							 <div class="col-md-2"><label for="email"><b><h5>Email: </h5> </b></label></div> 
+							 <div class="col-md-10"> khanda.neel@yes.com</div>
+						   </div>							
+					</div>
+
+
+					<div class="row" style="margin-top:40px">
+						<div class="col-md-6">
+							<h5>Views</h5>
+							<p><b>Recent visitors who viewed your profile</b> </p>
+						</div> 
+						<div class="col-md-6">
+							<h5>Email  Alert</h5>
+							<div class="control-group">
+								<label class="control control--radio">Instant
+								<input type="radio" name="radio" checked="checked"/>
+								<div class="control__indicator"></div>
+								</label>
+								<label class="control control--radio">Unsubscribe
+								<input type="radio" name="radio"/>
+								<div class="control__indicator"></div>
+								</label>
+							</div>
+						</div> 
+
+					</div> 
+                   <div class="row" style="margin-top:40px">
+                         <div class="col-md-6">
+                             <h5>Shortlists</h5>
+                             <p><b>Visitors who shortlisted your profile</b> </p>
+                         </div> 
+                         
+                         <div class="col-md-6">
+                             <h5>Email  Alert</h5>
+                             
+                             <div class="control-group">
+                                <label class="control control--radio">Instant
+                                <input type="radio" name="radio2" checked="checked"/>
+                                <div class="control__indicator"></div>
+                                </label>
+                                
+                                <label class="control control--radio">Unsubscribe
+                                <input type="radio" name="radio2"/>
+                                <div class="control__indicator"></div>
+                                </label>
+                             </div>
+                         </div> 
+                        
+                    </div>
+					<div class="row hidehere" style="margin-top:40px">
+						 <div class="col-md-6">
+							 <h5>Invitations to connect (Received)</h5>
+							 <p><b>Visitors who are interested in your profile requesting you to connect</b> </p>
+													  </div> 
+						 
+						 <div class="col-md-6">
+							 <h5>Email  Alert</h5>
+							 
+							 <div class="control-group">
+								<label class="control control--radio">Instant
+								<input type="radio" name="radio3" checked="checked"/>
+								<div class="control__indicator"></div>
+								</label>
+								
+								<label class="control control--radio">Unsubscribe
+								<input type="radio" name="radio3"/>
+								<div class="control__indicator"></div>
+								</label>
+							 </div>
+						 </div> 
+						
+					</div>
+                    <div class="row deletehere" style="margin-top:40px">
+                         <div class="col-md-12">
+                             <h5>Hide Profile</h5>
+                         </div> 
+                         
+                         <div class="col-md-12">
+                             <p><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px">Hide</button>
+                             </b></p>
+                             </div> 
+                        
+                    </div>
+					<div class="row changepasswordhere" style="margin-top:40px">
+                         <div class="col-md-12">
+                             <h5>Delete Profile </h5>
+                         </div> 
+                         
+                         <div class="col-md-12">
+                             <p><b>Delete your profile from businessrose.com <button type="submit" class="btn btn-default save-btn" style="margin-left:30px">Delete</button>  
+                         </b></p>
+					 </div> 
+                        
+                    </div>
+                    <div class="row " style="margin-top:40px">
+						<div class="col-md-12">
+						 <h5>Change Password </h5>
+						</div>                          
+						<div class="col-md-12">
+							<form class=""  [formGroup]="changePasswordForm" action="/action_page.php">
+								<div class="row">
+								<div class="col-md-2"><label for="email"><b>Old Password :</b></label></div> 
+								<div class="col-md-10"> <input type="text" class="form-control" id="password1"></div> 
+								<br><br>
+								<div class="col-md-2"><label for="email"><b>New Password :</b></label></div> 
+								<div class="col-md-10"> <input type="text" class="form-control" id="password2"></div> 
+
+								<div class="col-md-2"></div> 
+								<div class="col-md-10" style="margin-top:20px;"><button type="submit" class="btn btn-default save-btn">Save</button> or  <button type="submit" class="btn btn-default save-btn">Cancel</button></div> 
+								</div>
+							</form>
+						</div> 
+                        
+                    </div>
+                    
+
+
+
+                </div>
+
+           </div>
+
+        </div>
+    
+    </div>
+</section>

@@ -12,11 +12,11 @@ import {KeysPipe} from './../app.keyspipe.component';
 declare var $: any;
 
 @Component({
-  selector: 'app-shortlists',
-  templateUrl: './shortlists.component.html',
-  styleUrls: ['./shortlists.component.css']
+  selector: 'app-invitations',
+  templateUrl: './invitations.component.html',
+  styleUrls: ['./invitations.component.css']
 })
-export class ShortlistsComponent implements OnInit {
+export class InvitationsComponent implements OnInit {
 
 	@Input() users: Array<User>=[];
 	connections: Connection[];
@@ -26,6 +26,7 @@ export class ShortlistsComponent implements OnInit {
 	private views = 0;
 	private avail_credits = 0;
 	private used_credits = 0;
+	private invitation_type = 'sent';
 	
 		
 	constructor(
@@ -33,13 +34,17 @@ export class ShortlistsComponent implements OnInit {
 		private alertService: AlertService, private router: Router
 		) {}
 	ngOnInit():void {
-		this.getShortLists();		
+		if(this.router.url == '/invitations-received')
+		{
+			this.invitation_type = 'received';
+		}
+		this.getInvitations();		
     }
 	
-	getShortLists():void {
+	getInvitations():void {
 		$("#loadingModalCenter").modal({backdrop: 'static', keyboard: false, show:true});
-		this.userService.shortlists().subscribe(user => {
-                    this.users = user['data']['shortlists'];
+		this.userService.invitations(this.invitation_type).subscribe(user => {
+                    this.users = user['data']['invitations'];
                     this.inv_received = user['data']['inv_received'];
                     this.inv_sent = user['data']['inv_sent'];
                     this.shortlists_count = user['data']['shortlists_count'];
@@ -52,39 +57,6 @@ export class ShortlistsComponent implements OnInit {
                     this.alertService.error(error);
                     $("#loadingModalCenter").modal("hide");
                 });		
-	}
-	
-	connectNow(user_id): void {
-		this.userService.connectNow(user_id).subscribe(data => {
-                    this.alertService.success(this.global.CONNECTED_NOW, true);
-					$("#alertModalCenter").modal("show");
-					this.getShortLists();
-                },
-                error => {
-                    this.alertService.error(error);
-                });
-	}
-	
-	shortlistNow(user_id) : void {
-		this.userService.shortlistNow(user_id).subscribe(data => {
-                    this.alertService.success(this.global.SHORTLIST_NOW, true);
-					$("#alertModalCenter").modal("show");
-					this.getShortLists();
-                },
-                error => {
-                    this.alertService.error(error);
-                });
-	}
-	
-	inviteNow(user_id) : void {
-		this.userService.inviteNow(user_id).subscribe(data => {
-                    this.alertService.success(this.global.INVITATION_SENT, true);
-					$("#alertModalCenter").modal("show");
-					this.getShortLists();
-                },
-                error => {
-                    this.alertService.error(error);
-                });
 	}
 
 }

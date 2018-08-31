@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard';
 import { RegistrationComponent } from './registration';
 import { DetailsComponent } from './details';
 import { ShortlistsComponent } from './shortlists';
+import { InvitationsComponent } from './invitations';
+import { AccountSettingsComponent } from './account-settings';
 import { AuthGuard } from './guards';
 
 const appRoutes: Routes = [
@@ -14,6 +16,9 @@ const appRoutes: Routes = [
     { path: 'details/:id', component: DetailsComponent, canActivate: [AuthGuard] },
     { path: 'shortlists', component: ShortlistsComponent, canActivate: [AuthGuard] },
     { path: 'register', component: RegistrationComponent },
+    { path: 'invitations-received', component: InvitationsComponent, canActivate: [AuthGuard] },
+    { path: 'invitations-sent', component: InvitationsComponent, canActivate: [AuthGuard] },
+    { path: 'account-settings', component: AccountSettingsComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

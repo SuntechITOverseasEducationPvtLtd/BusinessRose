@@ -8,7 +8,7 @@
         </div>
      </div>
 </section>       
-<alert></alert>       
+<alert></alert>    
 <section style="background:#f1f1f2;margin-top: 5px;">
     <div class="container">
     
@@ -39,20 +39,20 @@
                       <p><b>Sub Category :</b> <span class="blue"> {{user?.sub_category}}</span></p>
                       
                         <p><b>Co Investment :</b> 
-						<span *ngIf="user?.co_investment == global.CO_INVESTMENT_YES; else noCoInvestment" class="blue" >
+						<span *ngIf="user?.co_investment == this.global.CO_INVESTMENT_YES; else noCoInvestment" class="blue" >
 						  Yes
-						</span>
+						</span></p>
 						<ng-template #noCoInvestment>
 						  No
 						</ng-template>
                     </div>
 
                    <div class="col-lg-6 padding-top30">
-                   <p><b>Experience :</b> <span class="blue"> {{user?.experience}} </span></p>
+					<p><b>Experience :</b> <span class="blue"> {{user?.experience}} </span></p>
                       
-                      <p><b>Investment Needed :</b> <span class="blue"> Rs {{user?.range}} </span></p>
+					<p><b>Investment Needed :</b> <span class="blue"> Rs {{user?.range}} </span></p>
 
-                      <p><b>Financials :</b> <span class="blue"> {{user?.investment_type}}</span></p>
+					<p><b>Financials :</b> <span class="blue"> {{user?.investment_type}}</span></p>
 
                   </div>
                 </div>
@@ -65,8 +65,8 @@
                       <div class="col-lg-9">
                         <div class="row">
                           <div class="col-lg-6">
-                            <p><a href="javascript:;">{{user?.name.charAt(0).toUpperCase()}}{{user?. name.slice(1).toLowerCase()}}</a></p>
-                              <p>Age : {{calculateAge(user?.date_of_birth)}}yrs, <span *ngIf="user?.gender == global.MALE; else genderFemale" >Male</span>, R: {{user?.relation}} </p>
+                            <p><a href="javascript:;">{{user?.name | titleCase }}</a></p>
+                              <p>Age : {{user?.date_of_birth | calculateAge}}yrs, <span *ngIf="user?.gender == this.global.MALE; else genderFemale" >Male</span>, R: {{user?.relation}} </p>
                              <p>City & State : {{user?.city_name}}, {{user?.state_name}}</p>
                               <p>Religion : {{user?.religion}} </p> 
                                  <p>Mother Tongue : {{user?.mother_tongue}}</p> 
@@ -99,10 +99,10 @@
 						 <ng-template #notConnected><a href="javascript:;" (click)="connectNow()">Connect Now</a></ng-template>
 							
 
-                         <p class="paddint-top8 "><i class="fa fa-heart" style=" background: #a458a2; color: #fff;  border: 1px solid #a458a2;"></i> <span *ngIf="user?.is_shortlisted == 1 else notShortlisted">Shortlisted</span></p>
+                         <p class="paddint-top8 " *ngIf="user?.is_connected == 0"><i class="fa fa-heart" style=" background: #a458a2; color: #fff;  border: 1px solid #a458a2;"></i> <span *ngIf="user?.is_shortlisted == 1 else notShortlisted">Shortlisted</span></p>
 						 <ng-template #notShortlisted><a href="javascript:;" (click)="shortlistNow()">Shortlist Now</a></ng-template>                         
 
-                         <p><i class="fa fa-handshake-o"></i> <span *ngIf="user?.is_invited == 1 else noInvitationSent">Invitation Sent</span></p>
+                         <p *ngIf="user?.is_connected == 0"><i class="fa fa-handshake-o"></i> <span *ngIf="user?.is_invited == 1 else noInvitationSent">Invitation Sent</span></p>
 						 <ng-template #noInvitationSent><a href="javascript:;" (click)="inviteNow()">Invite to Connect</a></ng-template>
                       </div>
 

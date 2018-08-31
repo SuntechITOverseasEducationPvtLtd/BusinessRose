@@ -9,6 +9,7 @@ use App\SubCategory;
 use App\Qualification;
 use App\Experience;
 use App\User;
+use App\Transaction;
 use App\Connection;
 use App\Shortlist;
 use App\Invitation;
@@ -148,4 +149,22 @@ class HomeController extends Controller
 		$data['used_credits'] = Auth::user()->credits_used;		
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
+
+	/**
+     * All Transactions(Members & Investors) api
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function allTransactions(){
+		$data['transactions'] = Transaction::allTransactions(); 
+		$data['inv_received'] = Invitation::where('invited_to',Auth::user()->id)->count();		
+		$data['inv_sent'] = Invitation::where('invited_by',Auth::user()->id)->count();		
+		$data['shortlists_count'] = Shortlist::where('shortlist_by',Auth::user()->id)->count();		
+		$data['views'] = Auth::user()->views;		
+		$data['avail_credits'] = Auth::user()->credits - Auth::user()->credits_used;		
+		$data['used_credits'] = Auth::user()->credits_used;		
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+	
 }

@@ -18,7 +18,7 @@ import { CalculateAgePipe } from './app.agecalc.component';
 import { KeysPipe } from './app.keyspipe.component';
 import { InvitationsComponent } from './invitations';
 import { AccountSettingsComponent } from './account-settings';
-import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
+import { PurchaseHistoryComponent } from './purchase-history';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,8 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService, GlobalService, AlertService  } from './../services';
 import { first } from 'rxjs/operators';
-import { UserService } from './../services';
+
 declare var $: any;
 
 @Component({
@@ -11,7 +12,8 @@ declare var $: any;
 })
 export class AccountSettingsComponent implements OnInit {
 	changePasswordForm: FormGroup;
-	constructor(private formBuilder: FormBuilder, private userService: UserService,) { }
+	constructor(private formBuilder: FormBuilder, private userService: UserService, private global: GlobalService, 
+		private alertService: AlertService) { }
 
 	ngOnInit() {
 		this.changePasswordForm = this.formBuilder.group({

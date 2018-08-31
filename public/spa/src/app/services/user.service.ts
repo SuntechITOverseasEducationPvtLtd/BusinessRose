@@ -25,6 +25,7 @@ export class UserService {
 	private myInvitationsUrl = this.global.myInvitationsUrl;
 	private invitationUrl = this.global.invitationUrl;
 	private getAllFiltersUrl = this.global.getAllFiltersUrl;
+	private purchaseHistoryUrl = this.global.purchaseHistoryUrl;
 	private currentEncUserId = btoa(localStorage.getItem('currentUserId')); 	
 	publicIP : string;	
 	
@@ -113,6 +114,13 @@ export class UserService {
 	
 	invitations(type : String): Observable<User> {
 		return this.http.get<User>(this.myInvitationsUrl + type, httpOptions).pipe(
+			  tap(_ => console.log(null),
+			  catchError(this.handleError<User>(null))
+			));
+    }
+	
+	purchaseHistory(): Observable<User> {
+		return this.http.get<User>(this.purchaseHistoryUrl, httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));

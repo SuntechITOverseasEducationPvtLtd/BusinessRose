@@ -2,19 +2,8 @@
 @section('main_content')
 
 
-	<!-- Core JS files -->
-	<script src="js/admin/jquery.min.js"></script>
-	<script src="js/admin/bootstrap.bundle.min.js"></script>
-	<script src="js/admin/blockui.min.js"></script>
-	<!-- /core JS files -->
-
-	<!-- Theme JS files -->
-	<script src="js/admin/datatables.min.js"></script>
-	<script src="js/admin/responsive.min.js"></script>
-	<script src="js/admin/select2.min.js"></script>
-
-	<script src="js/admin/app.js"></script>
-	<script src="js/admin/datatables_responsive.js"></script>
+	<script src="{{ url('/') }}/theme_assets/js/plugins/tables/footable/footable.min.js"></script>
+	<script src="{{ url('/') }}/theme_assets/js/demo_pages/table_responsive.js"></script>
 
 
 <!-- Main content -->

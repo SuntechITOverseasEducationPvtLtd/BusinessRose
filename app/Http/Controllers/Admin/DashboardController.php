@@ -194,7 +194,17 @@ class DashboardController extends Controller
                                                 ->where('active', '=', 7)
                                                 ->get();
 
-        
+        $data['total_sales']['total_price'] = DB::table('transactions')
+                                                ->whereYear('validity', '=', date('Y'))
+                                                ->select(DB::raw("SUM(price) as total_price"))
+                                                ->get();
+
+        $data['total_sales']['total_price'] = DB::table('transactions')
+                                                ->whereYear('validity', '=', date('Y'))
+                                                ->select(DB::raw("SUM(price) as total_price"))
+                                                ->get();                                                
+
+
     	return view($this->module_view_folder.'.home',$data);
     }
 

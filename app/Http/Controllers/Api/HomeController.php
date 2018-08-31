@@ -10,6 +10,7 @@ use App\Qualification;
 use App\Experience;
 use App\User;
 use App\Transaction;
+use App\Subscription;
 use App\Connection;
 use App\Shortlist;
 use App\Invitation;
@@ -166,5 +167,36 @@ class HomeController extends Controller
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 
-	
+	public function accountSettings(){
+			
+		$data['views_alert'] = Auth::user()->views_alert;			
+		$data['shortlist_alert'] = Auth::user()->shortlist_alert;		
+		$data['invitations_alert'] = Auth::user()->invitations_alert;		
+		$data['profile_status'] = Auth::user()->profile_status;		
+		$data['inv_received'] = Invitation::where('invited_to',Auth::user()->id)->count();
+		$data['inv_sent'] = Invitation::where('invited_by',Auth::user()->id)->count();	
+		$data['shortlists_count'] = Shortlist::where('shortlist_by',Auth::user()->id)->count();		
+		$data['views'] = Auth::user()->views;		
+		$data['avail_credits'] = Auth::user()->credits - Auth::user()->credits_used;
+		$data['used_credits'] = Auth::user()->credits_used;	
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+	public function allSubscriptions(){			
+		$data['subscriptions'] = Subscription::get(); 
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+	public function deleteProfile(){	
+		$date = date('Y-m-d H:i:s');		
+		$data = User::where('id','=',Auth::user()->id)->update(['deleted_at' => $date]); 
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+	public function hideProfile(){			
+		$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+
 }

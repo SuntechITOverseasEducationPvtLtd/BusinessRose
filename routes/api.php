@@ -32,4 +32,8 @@ Route::group(['middleware' => 'auth:api', 'namespace'=>"Api"], function(){
 	Route::get('myinvitations/{type}', 'HomeController@myInvitations');
 
 	Route::any('all-transactions', 'HomeController@allTransactions');
+	Route::any('account-settings', 'HomeController@accountSettings');
+	Route::any('all-subscriptions', 'HomeController@allSubscriptions');
+	Route::any('delete-profile', 'HomeController@deleteProfile');
+	Route::any('hide-profile', 'HomeController@hideProfile');
 });

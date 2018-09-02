@@ -15,6 +15,7 @@ const appRoutes: Routes = [
     //{ path: 'dashboard', component: DashboardComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'details/:id', component: DetailsComponent, canActivate: [AuthGuard] },
+    { path: 'myprofile/:id', component: DetailsComponent, canActivate: [AuthGuard] },
     { path: 'shortlists', component: ShortlistsComponent, canActivate: [AuthGuard] },
     { path: 'register', component: RegistrationComponent },
     { path: 'invitations-received', component: InvitationsComponent, canActivate: [AuthGuard] },

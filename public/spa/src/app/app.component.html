@@ -65,7 +65,7 @@
 					margin-top: 4px;    border-radius: 100%;"></a>
 
 					<ul class="dropdown-menu top-drop-down">
-					<li><a href="profileview-edit.php"><i class="fa fa-user" aria-hidden="true"></i> My Profile </a></li>
+					<li><a [routerLink]="['/myprofile/'+currentUserId]" ><i class="fa fa-user" aria-hidden="true"></i> My Profile </a></li>
 					<li class="divider"></li>
 					<li><a [routerLink]="['/shortlists']" ><i class="fa fa-lock" aria-hidden="true"></i> Shortlists </a></li>
 					<li class="divider"></li>  

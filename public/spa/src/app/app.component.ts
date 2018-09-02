@@ -52,6 +52,9 @@ export class AppComponent implements OnInit {
 	get authUser(): any {
 		return localStorage.getItem('userToken');
 	}
+	get currentUserId(): any {
+		return btoa(localStorage.getItem('currentUserId'));
+	}
 
    onLogin() {
 	   this.submitted = true;

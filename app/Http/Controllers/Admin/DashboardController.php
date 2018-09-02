@@ -200,9 +200,204 @@ class DashboardController extends Controller
                                                 ->get();
 
         $data['total_sales']['total_price'] = DB::table('transactions')
-                                                ->whereYear('validity', '=', date('Y'))
+                                                ->whereYear('created_at', '=', date('Y'))
                                                 ->select(DB::raw("SUM(price) as total_price"))
-                                                ->get();                                                
+                                                ->first();  
+
+        $data['total_sales']['silver'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('subscription_id', '=', 1)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['total_sales']['gold'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('subscription_id', '=', 2)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['total_sales']['platinum'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('subscription_id', '=', 3)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['total_sales']['diamond'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('subscription_id', '=', 4)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['investor_sales']['total_price'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 2)
+                                                ->select(DB::raw("SUM(price) as total_price"))
+                                                ->first();  
+
+        $data['investor_sales']['silver'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 2)
+                                                ->where('subscription_id', '=', 1)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['investor_sales']['gold'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 2)
+                                                ->where('subscription_id', '=', 2)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['investor_sales']['platinum'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 2)
+                                                ->where('subscription_id', '=', 3)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['investor_sales']['diamond'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 2)
+                                                ->where('subscription_id', '=', 4)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_person_sales']['total_price'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 3)
+                                                ->select(DB::raw("SUM(price) as total_price"))
+                                                ->first();  
+
+        $data['skilled_person_sales']['silver'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 3)
+                                                ->where('subscription_id', '=', 1)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_person_sales']['gold'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 3)
+                                                ->where('subscription_id', '=', 2)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_person_sales']['platinum'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 3)
+                                                ->where('subscription_id', '=', 3)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_person_sales']['diamond'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 3)
+                                                ->where('subscription_id', '=', 4)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_startup_sales']['total_price'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 4)
+                                                ->select(DB::raw("SUM(price) as total_price"))
+                                                ->first();  
+
+        $data['skilled_startup_sales']['silver'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 4)
+                                                ->where('subscription_id', '=', 1)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_startup_sales']['gold'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 4)
+                                                ->where('subscription_id', '=', 2)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_startup_sales']['platinum'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 4)
+                                                ->where('subscription_id', '=', 3)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['skilled_startup_sales']['diamond'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 4)
+                                                ->where('subscription_id', '=', 4)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['startup_investor_sales']['total_price'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 5)
+                                                ->select(DB::raw("SUM(price) as total_price"))
+                                                ->first();  
+
+        $data['startup_investor_sales']['silver'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 5)
+                                                ->where('subscription_id', '=', 1)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['startup_investor_sales']['gold'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 5)
+                                                ->where('subscription_id', '=', 2)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['startup_investor_sales']['platinum'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 5)
+                                                ->where('subscription_id', '=', 3)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['startup_investor_sales']['diamond'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 5)
+                                                ->where('subscription_id', '=', 4)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['fresher_sales']['total_price'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 6)
+                                                ->select(DB::raw("SUM(price) as total_price"))
+                                                ->first();  
+
+        $data['fresher_sales']['silver'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 6)
+                                                ->where('subscription_id', '=', 1)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['fresher_sales']['gold'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 6)
+                                                ->where('subscription_id', '=', 2)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['fresher_sales']['platinum'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 6)
+                                                ->where('subscription_id', '=', 3)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
+        $data['fresher_sales']['diamond'] = DB::table('transactions')
+                                                ->whereYear('created_at', '=', date('Y'))
+                                                ->where('user_type', '=', 6)
+                                                ->where('subscription_id', '=', 4)
+                                                ->select(DB::raw("SUM(price) as total_price"),DB::raw("count(*) as subscriptions"))
+                                                ->first();
+
 
 
     	return view($this->module_view_folder.'.home',$data);

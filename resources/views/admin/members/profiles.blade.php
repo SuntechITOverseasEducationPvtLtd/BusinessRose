@@ -24,10 +24,10 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Datatables</span> - Responsive</h4>
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Skilled Persons</span></h4>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
-
+<!-- 
 					<div class="header-elements d-none">
 						<div class="d-flex justify-content-center">
 							<a href="#" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
@@ -43,21 +43,21 @@
 								<span>Schedule</span>
 							</a>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
 							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="datatable_responsive.html" class="breadcrumb-item">Datatables</a>
-							<span class="breadcrumb-item active">Responsive</span>
+							<a href="datatable_responsive.html" class="breadcrumb-item">Skilled Persons</a>
+							<!-- <span class="breadcrumb-item active">Responsive</span> -->
 						</div>
 
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="breadcrumb justify-content-center">
 							<a href="#" class="breadcrumb-elements-item">
 								<i class="icon-comment-discussion mr-2"></i>
@@ -79,7 +79,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- /page header -->
@@ -91,18 +91,18 @@
 				<!-- Basic responsive configuration -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-						<h5 class="card-title">Manage Member Profiles</h5>
-						<div class="header-elements">
+						<h5 class="card-title">Manage Skilled Persons Profiles</h5>
+						<!-- <div class="header-elements">
 							<div class="list-icons">
 		                		<a class="list-icons-item" data-action="collapse"></a>
 		                		<a class="list-icons-item" data-action="reload"></a>
 		                		<a class="list-icons-item" data-action="remove"></a>
 		                	</div>
-	                	</div>
+	                	</div> -->
 					</div>
 
 					
-
+					<div style="overflow-x: auto;">
 					<table class="table datatable-responsive">
 						<thead>
 							<tr>
@@ -121,13 +121,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i=1; foreach($users as $user) { ?>
+							<?php $i=1; foreach($users as $user) { 
+								$image = $user->profile_pic;
+								if($image != "") {
+									$fullpath = url('images/users/'.$user->user_id.'/'.$image); 
+									} else {
+										$fullpath = url('images/dummy.jpg'); 	
+									}
+							?>
 							<tr>
 								<td>{{ $i }}</td>
 								<td >
 									<div style="width:320px;">
 									<div class="" style="width:60px; height:60px;float:left; overflow: hidden; margin-right: 10px;">
-										<img style="width:100%; border-radius: 50%;" src="{{ url('/') }}/images/dummy.jpg">
+										<img style="width:100%; border-radius: 50%;" src="{{$fullpath}}">
 									</div>
 									<div style="font-size:13px;">
 									<p style="margin-bottom: 2px;"><strong>{{ $user->name }}</strong></p>
@@ -173,8 +180,8 @@
 									<div class="list-icons">							
 										<a href="{{url('admin/member_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
 										<a href="{{url('admin/edit_member',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
-										<a href="{{url('admin/delete_member',$user->user_id)}}" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
-										<a href="{{url('admin/block_member',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
+										<a href="{{url('admin/delete_member',$user->user_id)}}" onclick="return confirm('Are you sure you want to delete ?')" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
+										<a href="{{url('admin/block_member',$user->user_id)}}" onclick="return confirm('Are you sure you want to block ?')" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
 									</div>									
 								</td>
 								
@@ -183,6 +190,7 @@
 							
 						</tbody>
 					</table>
+				</div>
 				</div>
 				<!-- /basic responsive configuration -->
 

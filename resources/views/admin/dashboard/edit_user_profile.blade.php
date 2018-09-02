@@ -26,28 +26,28 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Skilled Person</span> - Edit Profile</h4>
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Edit Profile</span></h4>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="d-flex justify-content-center">
 							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
 							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
 							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
-							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="form_layout_horizontal.html" class="breadcrumb-item">Form layouts</a>
-							<span class="breadcrumb-item active">Horizontal</span>
+							<a href="#" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<a href="#" class="breadcrumb-item">Edit Profile</a>
+							<!-- <span class="breadcrumb-item active">Horizontal</span> -->
 						</div>
 
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
 					
@@ -68,27 +68,27 @@
 				<div class="card">
 					<div class="card-header header-elements-inline">
 						<h4 class="card-title">Profile Details</h4>
-						<div class="header-elements">
+						<!-- <div class="header-elements">
 							<div class="list-icons">
 		                		<a class="list-icons-item" data-action="collapse"></a>
 		                		<a class="list-icons-item" data-action="reload"></a>
 		                		<a class="list-icons-item" data-action="remove"></a>
 		                	</div>
-	                	</div>
+	                	</div> -->
 					</div>
 
 					<div class="card-body"> 
 
 			<?php if($users->userType == 3) { ?>
-			<form action="{{url('admin/update_member_profile')}}" name="update_profile">
+				{!! Form::open( [ 'url' => url( 'admin/update_member_profile' ), 'method' => 'post', 'files' => true ] ) !!}
 			<?php } else if($users->userType == 2) { ?>
-			<form action="{{url('admin/update_investor_profile')}}" name="update_profile">
+				{!! Form::open( [ 'url' => url( 'admin/update_investor_profile' ), 'method' => 'post', 'files' => true ] ) !!}
 			<?php } else if($users->userType == 4) { ?>
-			<form action="{{url('admin/update_smallInvestor_profile')}}" name="update_profile">
+				{!! Form::open( [ 'url' => url( 'admin/update_startupSkilledPerson_profile' ), 'method' => 'post', 'files' => true ] ) !!}
 			<?php } else if($users->userType == 5) { ?>
-			<form action="{{url('admin/update_seedInvestor_profile')}}" name="update_profile">
+				{!! Form::open( [ 'url' => url( 'admin/update_startupInvestor_profile' ), 'method' => 'post', 'files' => true ] ) !!}
 			<?php } else if($users->userType == 6) { ?>
-			<form action="{{url('admin/update_fresher_profile')}}" name="update_profile">
+				{!! Form::open( [ 'url' => url( 'admin/update_fresher_profile' ), 'method' => 'post', 'files' => true ] ) !!}
 			<?php } ?>
 
 
@@ -208,7 +208,7 @@
 												<input type="text" name="linkedin" value="{{$users->linked_in_url}}" class="form-control">
 											</div>
 										</div>
-										<?php if($users->userType == 3 || $users->userType == 6) { ?>
+										<?php if($users->userType == 2 || $users->userType == 5) { ?>
 										<!-- for members -->
 										<div class="form-group row">
 											<label class="col-lg-4 col-form-label">Skill and experience i am looking for...:</label>
@@ -364,7 +364,7 @@
 												<input type="text" name="facebook_url" value="{{$users->facebook_url}}" class="form-control">
 											</div>
 										</div>
-										<?php if($users->userType == 3 || $users->userType == 6) { ?>
+										<?php if($users->userType == 2 || $users->userType == 5) { ?>
 										<div class="form-group row">
 											<label class="col-lg-4 col-form-label">Place of business , I want to invest in Odisha, Hyderabad:</label>
 											<div class="col-lg-8">
@@ -395,7 +395,7 @@
 							<div class="text-right">
 								<input type="submit" value="Submit form" class="btn btn-primary">
 							</div>
-						</form>
+						{!! Form::close() !!}
 					</div>
 				</div>
 				<!-- /2 columns form -->

@@ -24,11 +24,11 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Datatables</span> - Responsive</h4>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Investors</span></h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="d-flex justify-content-center">
 							<a href="#" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
 								<i class="icon-bars-alt text-pink-300"></i>
@@ -43,21 +43,21 @@
 								<span>Schedule</span>
 							</a>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
 							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="datatable_responsive.html" class="breadcrumb-item">Datatables</a>
-							<span class="breadcrumb-item active">Responsive</span>
+							<a href="datatable_responsive.html" class="breadcrumb-item">Investors</a>
+							<!-- <span class="breadcrumb-item active">Responsive</span> -->
 						</div>
 
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="breadcrumb justify-content-center">
 							<a href="#" class="breadcrumb-elements-item">
 								<i class="icon-comment-discussion mr-2"></i>
@@ -79,7 +79,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- /page header -->
@@ -91,18 +91,18 @@
 				<!-- Basic responsive configuration -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-						<h5 class="card-title">Manage Member Profiles</h5>
-						<div class="header-elements">
+						<h5 class="card-title">Manage Investor Purchases</h5>
+						<!-- <div class="header-elements">
 							<div class="list-icons">
 		                		<a class="list-icons-item" data-action="collapse"></a>
 		                		<a class="list-icons-item" data-action="reload"></a>
 		                		<a class="list-icons-item" data-action="remove"></a>
 		                	</div>
-	                	</div>
+	                	</div> -->
 					</div>
 
 					
-
+					<div style="overflow-x: auto;">
 					<table class="table datatable-responsive">
 						<thead>
 							<tr>
@@ -123,13 +123,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i=1; foreach($users as $user) { ?>
+							<?php $i=1; foreach($users as $user) { 
+								$image = $user->profile_pic;
+								if($image != "") {
+									$fullpath = url('images/users/'.$user->user_id.'/'.$image); 
+									} else {
+										$fullpath = url('images/dummy.jpg'); 	
+									}
+							?>
 							<tr>
 								<td>{{ $i }}</td>
 								<td >
 									<div style="width:320px;">
 									<div class="" style="width:60px; height:60px;float:left; overflow: hidden; margin-right: 10px;">
-										<img style="width:100%; border-radius: 50%;" src="{{ url('/') }}/images/dummy.jpg">
+										<img style="width:100%; border-radius: 50%;" src="{{$fullpath}}">
 									</div>
 									<div style="font-size:13px;">
 									<p style="margin-bottom: 2px;"><strong>{{ $user->name }}</strong></p>
@@ -158,7 +165,7 @@
 								<td>{{ ($user->credits)-($user->credits_used) }}</td>
 								<td>
 									<div class="list-icons">							
-										<a href="{{url('admin/investor_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
+										<a href="{{url('admin/investor_transactions',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
 									</div>									
 								</td>
 								
@@ -167,6 +174,7 @@
 							
 						</tbody>
 					</table>
+				</div>
 				</div>
 				<!-- /basic responsive configuration -->
 

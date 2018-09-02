@@ -92,9 +92,9 @@
 					<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Startup Skilled Person</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Themes">
-						<li class="nav-item"><a href="{{url('admin/smallInvestor_activations')}}" class="nav-link active">A/C Activations</a></li>
-						<li class="nav-item"><a href="{{url('admin/smallInvestor_profiles')}}" class="nav-link">Profiles</a></li>
-						<li class="nav-item"><a href="{{url('admin/smallInvestor_purchases')}}" class="nav-link">Purchases</a></li>
+						<li class="nav-item"><a href="{{url('admin/startupSkilledPerson_activations')}}" class="nav-link active">A/C Activations</a></li>
+						<li class="nav-item"><a href="{{url('admin/startupSkilledPerson_profiles')}}" class="nav-link">Profiles</a></li>
+						<li class="nav-item"><a href="{{url('admin/startupSkilledPerson_purchases')}}" class="nav-link">Purchases</a></li>
 					</ul>
 				</li>
 
@@ -102,9 +102,9 @@
 					<a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Startup Investor</span></a>
 
 					<ul class="nav nav-group-sub" data-submenu-title="Themes">
-						<li class="nav-item"><a href="{{url('admin/seedInvestor_activations')}}" class="nav-link active">A/C Activations</a></li>
-						<li class="nav-item"><a href="{{url('admin/seedInvestor_profiles')}}" class="nav-link">Profiles</a></li>
-						<li class="nav-item"><a href="{{url('admin/seedInvestor_purchases')}}" class="nav-link">Purchases</a></li>
+						<li class="nav-item"><a href="{{url('admin/startupInvestor_activations')}}" class="nav-link active">A/C Activations</a></li>
+						<li class="nav-item"><a href="{{url('admin/startupInvestor_profiles')}}" class="nav-link">Profiles</a></li>
+						<li class="nav-item"><a href="{{url('admin/startupInvestor_purchases')}}" class="nav-link">Purchases</a></li>
 					</ul>
 				</li>
 

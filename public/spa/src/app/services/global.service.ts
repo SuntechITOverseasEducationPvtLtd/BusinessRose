@@ -17,6 +17,7 @@ export class GlobalService {
 	public getAllFiltersUrl = this.baseUrl+'/api/filters';
 	public myShortlistsUrl = this.baseUrl+'/api/myshortlists';
 	public myInvitationsUrl = this.baseUrl+'/api/myinvitations/';
+	public purchaseHistoryUrl = this.baseUrl+'/api/all-transactions';
 	
 	//Alert Messages
 	public CONNECTED_NOW = "Your Successfully Connected";

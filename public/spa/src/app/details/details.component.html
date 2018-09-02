@@ -33,6 +33,8 @@
              
                 <div class="main-box">                  
 <div class="row">
+				<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter2">
+                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
                     <div class="col-lg-6">
                    <h5>Experienced/Skilled</h5>
                       <p><b>Business Category : </b> <span class="blue"> {{user?.cat_name}}</span> </p>
@@ -61,7 +63,8 @@
                 
                 
                    <div class="row">
- 
+					  <a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter3">
+                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>	
                       <div class="col-lg-9">
                         <div class="row">
                           <div class="col-lg-6">
@@ -91,7 +94,7 @@
 						  
                         </div>
                       </div>
-                      <div class="col-lg-3 feature-wrap" >
+                      <div class="col-lg-3 feature-wrap" *ngIf="!authUserProfile" >
                          <p><b>Like This Profile?</b></p>
                          
                          
@@ -116,7 +119,8 @@
  
 
 				<div class="row description">
-               
+					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter5">
+                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
                    <div class="col-lg-1"><i class="fa fa-quote-left" aria-hidden="true"></i></div>
                    <div class="col-lg-11">
                        <h5 class="size13">About Me, My skill, Experience, Achivement, Growthrate</h5>
@@ -128,7 +132,8 @@
               
 
                <div class="row description">
-               
+					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter6">
+                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
                    <div class="col-lg-1"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></div>
                    <div class="col-lg-11">
                        <h5 class="size13">No. Of clients/Customer/Average Sales/ I can achieve in a month</h5>
@@ -141,7 +146,8 @@
 
 
                    <div class="row description">
-               
+					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter7">
+                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
                    <div class="col-lg-1"><i class="fa fa-users" aria-hidden="true"></i></div>
                    <div class="col-lg-11">
                        <h5 class="size13">About Me  & My Family / Relationship status</h5>
@@ -154,7 +160,8 @@
 
 
     <div class="row description">
-               
+					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter7">
+                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
                    <div class="col-lg-1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
                    <div class="col-lg-11">
                        <h5 class="size13">My personal value in terms of intiligence, honesty etc...</h5>
@@ -167,7 +174,8 @@
 
 
     <div class="row description">
-               
+					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter8">
+                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
                    <div class="col-lg-1"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
                    <div class="col-lg-11">
                        <h5 class="size13">Relocation Preference </h5>
@@ -405,6 +413,1079 @@
     
     </div>
 </section>
+
+<div *ngIf="authUserProfile">
+<div class="modal fade show" id="editModalCenter1" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                    <div class="col-lg-4"><label>Business Catagory:</label></div>
+                    <div class="col-lg-8">
+                        
+                      <select class="select2-focusser"    name="" >
+      
+						<option>Agriculture/Diary</option>
+
+						<option>PR / MR / Event Management</option>
+
+						<option>Real estate / construction / Metals</option>
+
+						<option>Transportation / Courier / Freight / Warehousing</option>
+
+						<option>Consumer Electronics / Appliances</option>
+
+						<option>Chemicals / Petrochemical / Plastic / Rubber</option>
+
+						<option>Manufacturing</option>
+
+						<option>Retail / Wholesale / Distributors</option>
+
+						<option>Banking / Finance / Broking</option>
+
+						<option>BPO / ITES / Call Center</option>
+
+						<option>Medical / Healthcare</option>
+
+						<option>Pharma / Biotech</option>
+
+						<option>Food</option>
+
+						<option>Entertainment</option>
+
+						<option>Apparel / Clothing</option>
+
+						<option>Internet / Ecommerce</option>
+
+						<option>Mining</option>
+
+						<option>Education / Teaching / Training</option>
+
+						<option>Business Services</option>
+
+						<option>Gems/Jewelry</option>
+
+						<option>Import/Export</option>
+
+						<option>Travel/Leisure</option>
+
+						<option>IT/Technology</option>
+
+						<option>Strategy/Management/Consulting</option>
+
+						<option>Oil and Gas /Energy/Power/Infrastructure</option>
+
+						<option>Film/Media/Publishing/Advertising</option>
+
+						<option>Industrial goods/Heavy Machinery</option>
+
+						<option>Recruitment/Staffing</option>
+
+						<option>Others</option>
+
+					</select> 
+                    
+                    
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                    
+                    <div class="col-lg-4"><label>Sub Catagory:</label></div>
+                    <div class="col-lg-8"><input type="text" class="form-control" id="sub-catagory" name="sub-catagory"></div>
+                    <div class="clearfix"></div>
+                    
+                    
+                    <div class="col-lg-4"><label>Co Investment:</label></div>
+                    <div class="col-lg-8">
+                        
+                          <select class="select2-focusser"    name="" >
+      
+ 
+      
+<option>Yes</option>
+
+<option>No</option>
+
+ 
+    </select> 
+                        
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                    
+                     <div class="col-lg-4"><label>Experience :</label></div>
+                    <div class="col-lg-8">
+                    
+                    
+                     <select class="select2-focusser"    name="" >
+      
+ 
+      
+<option>2yrs-5yrs</option>
+<option>5yrs-10yrs</option>
+<option>10yrs-15yrs</option>
+<option>16yrs-20yrs</option>
+
+<option>None</option>
+
+ 
+    </select> 
+                        
+                        
+                        
+                    
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                    
+                    <div class="col-lg-4"><label>Investment Need :</label></div>
+                    <div class="col-lg-8">
+                        
+                         
+                     <select class="select2-focusser"    name="" >
+      
+ 
+      
+<option>1,00,000 to 5,00,000</option>
+<option>10,00,000 to 20,00,000</option>
+<option>20,00,000 to 30,00,000</option>
+<option>30,00,000 to 50,00,000</option>
+
+<option>50,00,000*</option>
+
+ 
+    </select> 
+                        
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                    
+                    <div class="col-lg-4"><label>Finalcial :</label></div>
+                    <div class="col-lg-8">
+                            
+                     <select class="select2-focusser"    name="" >
+      
+ 
+      
+<option>Lets connect and discuss</option>
+<option>Sales Commission</option>
+<option>Salary Only</option>
+<option>Low salary & Profit</option>
+
+<option>Very Good Salary</option>
+
+ 
+    </select> 
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade show" id="editModalCenter2" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered amrgintop" role="document"  >
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+     
+     
+     
+     <div class="form-fields-wrapper">
+<ul class="form-fields">
+
+ 
+
+<li class="columns-2 " >
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container "  >
+ 
+
+
+ <div class="radio width30"  >
+<label>DOB </label>
+</div>
+ 
+
+                             
+ <div class="radio" style="width: 68%;   float: left;">
+                                                <input class="select2-focusser" type="date"   name="" value="" placeholder="DOM">
+
+                                              </div>
+
+</div>
+ 
+ 
+</div>
+</div>
+ 
+</div>
+
+
+
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container"  >
+ 
+
+
+ <div class="radio width33 padding-l-5" >
+<label>Gender</label> 
+</div>
+ <div class="radio width33"  >
+                                                  <label class="ubuntuRegText">
+                                                    <input type="radio" name="gender"   value="Male" checked="checked" class="allsiteadd">
+                                                    <span class="inner"></span>
+                                          Male
+                                                  </label>
+                                              </div>
+
+                             
+ <div class="radio width33"  >
+                                                  <label class="ubuntuRegText">
+                                                    <input type="radio" name="gender"  value="Female"   class="allsiteadd">
+                                                    <span class="inner"></span>
+                                               Female
+                                                  </label>
+                                              </div>
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+
+
+
+
+</li>
+
+
+
+<li class="columns-2 " >
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container"  >
+ 
+
+
+ <div class="radio   width30"  >
+<label>Phone</label>
+</div>
+ <div class="radio" style="width: 18%;   float: left;">
+                                                <input class="select2-focusser" type="text"   name="" value="+91" >
+
+                                              </div>
+
+                             
+ <div class="radio" style="width: 50%;   float: left;">
+                                                 <input class="select2-focusser" type="text"   name="" value="" placeholder="9878987898" >
+
+                                              </div>
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container"  >
+ 
+
+
+ <div class="radio padding-l-5 width30"  >
+<label>Whatsapp</label>
+</div>
+ <div class="radio" style="width: 18%;   float: left;">
+                                                <input class="select2-focusser" type="text"   name="" value="+91" >
+
+                                              </div>
+
+                             
+ <div class="radio" style="width: 50%;   float: left;">
+                                                 <input class="select2-focusser" type="text"   name="" value="" placeholder="9878987898" >
+
+                                              </div>
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">Qualification </label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+<option>Doctorate</option>
+      
+<option>IIT / IIM</option>
+      
+<option>Honors Degree</option>
+
+      
+<option>Honors Degree</option>
+      
+<option>Diploma</option>
+
+<option>High School</option>
+<option>Less than High School</option>
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+ 
+
+
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">Religion </label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+<option>Hinduism</option>
+      
+<option>Islam</option>
+      
+<option>Christianity</option>
+
+      
+<option>Buddhism</option>
+      
+<option>Sikhism</option>
+
+<option>Jainism</option>
+<option>Others</option>
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">Mother Tongue </label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+<option>Assamese</option>
+<option>Bengali</option>
+<option>English</option>
+<option>Gujarati</option>
+<option>Hindi</option>
+<option>Kannada</option>
+<option>Konkani</option>
+<option>Malayalam</option>
+<option>Marathi</option>
+<option>Marwari</option>
+<option>Odia</option>
+<option>Punjabi</option>
+<option>Sindhi</option>
+<option>Tamil</option>
+<option>Telugu</option>
+<option>Urdu</option>
+      
+ 
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+
+
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">Language Know </label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+<option>Assamese</option>
+<option>Bengali</option>
+<option>English</option>
+<option>Gujarati</option>
+<option>Hindi</option>
+<option>Kannada</option>
+<option>Konkani</option>
+<option>Malayalam</option>
+<option>Marathi</option>
+<option>Marwari</option>
+<option>Odia</option>
+<option>Punjabi</option>
+<option>Sindhi</option>
+<option>Tamil</option>
+<option>Telugu</option>
+<option>Urdu</option>
+      
+ 
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">Country Living In </label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+<option>India</option>
+<option>Usa</option>
+ 
+      
+ 
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">State Living In</label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+ 
+<option>Andhra Pradesh</option>
+<option>Andaman & Nicobar</option>
+<option>Arunachal Pradesh</option>
+<option>Assam</option>
+<option>Bihar</option>
+<option>Chattisgarh</option>
+<option>Chandigarh </option>
+<option>Delhi-NCR</option>
+<option>Goa</option>
+<option>Gujarat</option>
+<option>Haryana</option>
+<option>Himachal Pradesh  </option>
+<option>Jammu Kashmir</option>
+<option>Jharkhand</option>
+<option>Karnataka</option>
+<option>Kerala</option>
+<option>Lakshadweep</option>
+<option>Madhya Pradesh</option>
+<option>Maharashtra</option>
+<option>Manipur</option>
+<option>Meghalaya</option>
+<option>Mizoram</option>
+<option>Nagaland</option>
+<option>Orrissa</option>
+<option>Pondicherry</option>
+<option>Punjab</option>
+<option>Rajasthan</option>
+<option>Sikkim</option>
+<option>Tamilnadu</option>
+<option>Telangana</option>
+<option>Tripura</option>
+<option>Uttar Pradesh</option> 
+<option>Uttaranchal</option>
+<option>West Bengal</option>
+ 
+ 
+      
+ 
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+
+
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">City Living In</label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+ 
+<option>Hyderabad</option>
+ 
+      
+ 
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+
+
+<li class="columns-2 "  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">Relationship Status</label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <select class="select2-focusser"    name="" >
+      
+ 
+<option>Single</option>
+<option>In a relationship</option>
+<option>Engaged</option>
+<option>Married</option>
+<option>Seperated</option>
+<option>Divorced</option>
+<option>Widowed</option>
+<option>Dont want to specify</option>
+
+ 
+      
+ 
+
+    </select> 
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+ 
+ 
+
+
+
+
+
+<li class="columns-2" style="padding-top: 28px"  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">Linkedin URL</label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <input class="select2-focusser" type="text"   name="" value="">
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+<li class="columns-2" style="padding-top: 28px"  >
+<div class="field-label-wrapper">
+<div class="field-label">
+<div class="bold-label">
+<label id="field_label_id_type" for="id_type">FaceBook URL</label>
+</div>
+ 
+</div>
+</div>
+<div class="form-field-wrapper">
+<div class="form-field ">
+<div class="businessrole-input-group ">
+<div class="select2-container" >
+ 
+
+
+    <input class="select2-focusser" type="text"   name="" value="">
+
+</div> 
+ 
+</div>
+</div>
+ 
+</div>
+</li>
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+</ul>
+ 
+
+ 
+</div>
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div class="col-lg-12 text-center"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade show" id="editModalCenter3" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                   <div class="col-lg-12"><label>About Me, My skill, Experience, Achivement, Growthrate</label></div>
+                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                    </div>
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade show" id="editModalCenter4" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                   <div class="col-lg-12"><label>No. Of clients/Customer/Average Sales/ I can achieve in a month</label></div>
+                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                    </div>
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade show" id="editModalCenter5" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                   <div class="col-lg-12"><label>About Me & My Family / Relationship status</label></div>
+                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                    </div>
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade show" id="editModalCenter6" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                   <div class="col-lg-12"><label>My personal value in terms of intiligence, honesty etc...</label></div>
+                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                    </div>
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="modal fade show" id="editModalCenter7" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                   <div class="col-lg-12"><label>Relocation Prefrance</label></div>
+                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                    </div>
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade show" id="editModalCenterpedit" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                   <div class="col-lg-12"><label>Uplaod Photos</label></div>
+                   <div class="col-lg-12"><input type="file"  class="form-control" id="about" name="about"> 
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                    </div>
+                </div>
+            </form>          
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade show" id="adddYoutube" style="padding-right: 17px; ">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content modal-content1">
+        <div class="modal-header text-center">
+           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
+                                                                                                      top:-20px; background:#fff !important;">
+              <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body modal-body1">
+             
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+                <div class="row">
+                
+                  
+                   <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
+                    <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
+                     <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
+                      <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
+                       <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                    
+                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+                   
+                    </div>
+                
+            </form>
+		</div>	
+            
+        </div>
+      </div>
+</div>
+</div>
 <script>
 
 function slide(link) {

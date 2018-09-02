@@ -22,6 +22,70 @@ $(".smallinvestor").click(function(){
 
 
 
+$('.registertype').on('change', function() {
+ $('.pdescritpin').css('display','none');
+  $idthis=this.value;
+    
+    if($idthis==1 || $idthis==2) {  $('.Investorform').css('display','block');
+
+        $('.Skillpersonform').css('display','none'); }
+        
+         else if($idthis==3 || $idthis==4 || $idthis==5) {  $('.Investorform').css('display','none');
+
+        $('.Skillpersonform').css('display','block'); }
+        
+          
+        
+    
+    
+    
+    $('.dis'+$idthis).css('display','block');
+   
+});
+
+
+
+
+
+$(".emailscroll").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".emailhere").offset().top
+    }, 2000);
+});
+
+
+$(".alertscroll").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".alerthere").offset().top
+    }, 2000);
+});
+
+
+$(".hidescroll").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".hidehere").offset().top
+    }, 2000);
+});
+
+
+
+$(".delscroll").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".deletehere").offset().top
+    }, 2000);
+});
+
+
+$(".passscroll").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".changepasswordhere").offset().top
+    }, 2000);
+});
+
+
+
+
+
 });
 
 

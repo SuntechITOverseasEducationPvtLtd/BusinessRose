@@ -1,3 +1,68 @@
-<p>
-  purchase-history works!
-</p>
+
+<section class="profile-main-sec1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-lg-offset-1 tetxcente">
+                <h6 ><b>Your Profile</b></h6>
+                <div class="row">
+                    <div class="col-lg-6"><p>Views : <span>{{this.views}}</span></p></div>
+                    <div class="col-lg-6"><p>Shortlists : <a [routerLink]="['/shortlists']" ><span>{{this.shortlists_count}}</span></a></p></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            
+            <div class="col-lg-1" style="background:url(src/assets/images/border.png)"></div>
+            
+            <div class="col-lg-3 tetxcente" >
+                <h6><b>Credits</b></h6>
+                <div class="row">
+                    <div class="col-lg-6"><p>Available : <span>{{this.avail_credits}}</span></p></div>
+                    <div class="col-lg-6"><p>Used : <span>{{this.used_credits}}</span></p></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            
+            <div class="col-lg-1" style="background:url(src/assets/images/border.png)"></div>
+            
+            <div class="col-lg-3 tetxcente">
+                <h6 ><b>Invitation to Connect</b></h6>
+                <div class="row">
+                    <div class="col-lg-6"><p>Received : <a [routerLink]="['/invitations-received']" ><span>{{this.inv_received}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Sent : <a [routerLink]="['/invitations-sent']" ><span>{{this.inv_sent}}</span></a></p></div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>   
+<alert></alert>    
+<section style="background:#f1f1f2;margin-top: 5px;">    
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12"><section class="profile-main-sec nstatitc"  ><h3 class="profileviewds"><span class="prvH">Purchased History</span> </h3></section></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="element-box-tp">
+					<div class="table-responsive searchresultshow">
+						<table class="table table-padded">
+							<thead><tr> <th>S.No</th> <th>Date</th><th>Plan</th><th title="Date of Joining">Validity</th><th>Amount</th> <th class="text-right">Actions</th></tr></thead>
+							<tbody *ngFor="let user of users; let i = index">
+								<tr>
+									<td><div class="user-with-avatar">{{i+1}}</div></td>
+									<td><div class="user-with-avatar">{{user?.date}}</div></td>
+									<td><div class="user-with-avatar">{{user?.plan}} Credits</div></td>
+									<td><div class="user-with-avatar">{{user?.validity}} Days</div></td>
+									<td><div class="user-with-avatar">{{user?.amount}}</div></td>
+									<td><div class="text-right feature-wrap"><i class="fa fa-eye"></i> View</div></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section> 

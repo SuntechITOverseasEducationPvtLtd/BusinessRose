@@ -3,6 +3,7 @@ import { UserService, GlobalService, AlertService  } from './../services';
 import { User, Connection } from './../models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {TitleCasePipe} from './../app.titlecase.component';
 
@@ -18,12 +19,21 @@ export class DetailsComponent implements OnInit {
 	connections: Connection[];
 	
 	private user_id = this.route.snapshot.paramMap.get('id');
+	private is_auth_user = false;
+	
+	userForm: FormGroup;
+	get authUserProfile() { return this.is_auth_user; }
 		
 	constructor(
         private userService: UserService, private route: ActivatedRoute, private global: GlobalService, 
-		private alertService: AlertService, private router: Router
+		private alertService: AlertService, private router: Router, private formBuilder: FormBuilder
 		) {}
 	ngOnInit():void {
+		
+		if(this.user_id == btoa(localStorage.getItem('currentUserId'))
+		{
+			this.is_auth_user = true;
+		}
 		this.getUserDetails();		
     }
 	
@@ -31,6 +41,7 @@ export class DetailsComponent implements OnInit {
 		$("#loadingModalCenter").modal({backdrop: 'static', keyboard: false, show:true});
 		this.userService.getById(this.user_id).subscribe(user => {
                     this.user = user['data'];
+					//$("#loadingModalCenter").modal({show:'false'});
 					$("#loadingModalCenter").modal("hide");
                 },
                 error => {

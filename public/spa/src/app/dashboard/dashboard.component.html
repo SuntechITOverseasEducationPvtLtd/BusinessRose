@@ -27,7 +27,7 @@
 					<li class="accordion__item">
 					  <a href="#" class="accordion__link accordion__link_active">Co Investment</a>
 					  <ul class="sub-accordion">
-						<li class="sub-accordion__item">
+						<li class="sub-accordion__item" *ngIf="this.sidebarFilters.controls.coinvestment">
 							<div *ngFor="let coinv of this.sidebarFilters.controls.coinvestment.controls; let i = index" formArrayName="coinvestment">
 								<input type="checkbox" [formControlName]="i" (change)="applyFilter()" [checked]="i === 0"  [value]="i" >
 								<span class="inner">{{coinvestment[i].name}}</span>
@@ -40,9 +40,9 @@
 					<li class="accordion__item">
 						<a href="#" class="accordion__link accordion__link_active">Category</a>
 						<ul class="sub-accordion">
-							<li class="sub-accordion__item">
+							<li class="sub-accordion__item" *ngIf="filters['categories']?.length > 0">
 								<input type="radio" formControlName="category" value="" [checked]="defaultChecked" (change)="applyFilter()"> Any (456)<br>
-								<span  *ngFor="let category of filters.categories | keys" style="float:left;width: 100%;">
+								<span  *ngFor="let category of filters['categories'] | keys" style="float:left;width: 100%;">
 								<input type="radio" formControlName="category" value="{{category.key}}" (change)="applyFilter()"> {{category.value}}
 								</span>
 								<a href="#" class="nav-link"  data-toggle="modal" style="padding: 0px;      font-size: 12px;" data-target="#exampleModalCenter1">View More</a>
@@ -52,10 +52,10 @@
 					<li class="accordion__item">
 					  <a href="#" class="accordion__link accordion__link_active">State City</a>
 					  <ul class="sub-accordion">
-						<li class="sub-accordion__item">
+						<li class="sub-accordion__item" *ngIf="filters['states']?.length > 0">
 					 
 						   <input type="radio" formControlName="state" value=""  [checked]="defaultChecked" (change)="applyFilter()"> Any <br>
-						   <span  *ngFor="let state of filters.states | keys">
+						   <span  *ngFor="let state of filters['states'] | keys">
 								<input type="radio" formControlName="state" value="{{state.key}}" (change)="applyFilter()"> {{state.value}}<br>
 							</span>							
 							<a href="#" class="nav-link"  data-toggle="modal" style="padding: 0px;      font-size: 12px;" data-target="#exampleModalCenter11">View More</a>
@@ -66,9 +66,9 @@
 					<li class="accordion__item">
 						<a href="#" class="accordion__link accordion__link_active">Investment Size</a>
 						<ul class="sub-accordion">
-							<li class="sub-accordion__item">			  
+							<li class="sub-accordion__item" *ngIf="filters['investmentRange']?.length > 0">			  
 							   <input type="checkbox" formControlName="investmentRange" value=""  [checked]="defaultChecked" (change)="applyFilter()"> Any <br>
-								<span  *ngFor="let range of filters.investmentRange | keys">
+								<span  *ngFor="let range of filters['investmentRange'] | keys">
 								<input type="checkbox" formControlName="investmentRange" value="{{range.key}}" (change)="applyFilter()"> {{range.value}}<br>
 								</span>	
 							</li>
@@ -77,9 +77,9 @@
 					<li class="accordion__item">
 						<a href="#" class="accordion__link accordion__link_active">Education Qualification</a>
 						<ul class="sub-accordion">
-							<li class="sub-accordion__item">
+							<li class="sub-accordion__item" *ngIf="filters['qualifications']?.length > 0">
 								<input type="checkbox" formControlName="qualification" value=""  [checked]="defaultChecked" (change)="applyFilter()"> Any <br>
-								<span  *ngFor="let qualification of filters.qualifications | keys">
+								<span  *ngFor="let qualification of filters['qualifications'] | keys">
 								<input type="checkbox" formControlName="qualification" value="{{qualification.key}}" (change)="applyFilter()"> {{qualification.value}}<br>
 								</span>	
 								<a href="#" class="nav-link"  data-toggle="modal" style="padding: 0px;      font-size: 12px;" data-target="#exampleModalCenter11">View More</a>
@@ -89,10 +89,10 @@
 					<li class="accordion__item">
 					  <a href="#" class="accordion__link accordion__link_active">Experience</a>
 					  <ul class="sub-accordion">
-						<li class="sub-accordion__item">
+						<li class="sub-accordion__item" *ngIf="filters['experiences']?.length > 0">
 						 
 							<input type="checkbox" formControlName="experience" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()"> Any <br>
-							<span  *ngFor="let experience of filters.experiences | keys">
+							<span  *ngFor="let experience of filters['experiences'] | keys">
 								<input type="checkbox" formControlName="experience" value="{{experience.key}}" (change)="applyFilter()"> {{experience.value}}<br>
 							</span>	 
 						</li>
@@ -101,9 +101,9 @@
 					<li class="accordion__item">
 					  <a href="#" class="accordion__link accordion__link_active">Religion</a>
 					  <ul class="sub-accordion">
-						<li class="sub-accordion__item">         
+						<li class="sub-accordion__item" *ngIf="filters['religions']?.length > 0">         
 							<input type="checkbox" formControlName="religion" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()"> Any <br>
-							<span  *ngFor="let religion of filters.religions | keys">
+							<span  *ngFor="let religion of filters['religions'] | keys">
 								<input type="checkbox" formControlName="religion" value="{{religion.key}}" (change)="applyFilter()"> {{religion.value}}<br>
 							</span>	
 						</li>
@@ -112,9 +112,9 @@
 					<li class="accordion__item">
 					  <a href="#" class="accordion__link accordion__link_active">Mother Tongue</a>
 					  <ul class="sub-accordion">
-						<li class="sub-accordion__item">
+						<li class="sub-accordion__item" *ngIf="filters['motherTounges']?.length > 0">
 							<input type="checkbox" formControlName="motherTounge" value="any"  [checked]="defaultChecked" (change)="applyFilter()"> Any <br>
-							<span  *ngFor="let motherTounge of filters.motherTounges | keys">
+							<span  *ngFor="let motherTounge of filters['motherTounges'] | keys">
 								<input type="checkbox" formControlName="motherTounge" value="{{motherTounge.key}}" (change)="applyFilter()"> {{motherTounge.value}}<br>
 							</span>
 						</li>
@@ -138,9 +138,9 @@
 					<li class="accordion__item">
 						<a href="#" class="accordion__link accordion__link_active">Relationship Status</a>
 						<ul class="sub-accordion">
-							<li class="sub-accordion__item">
+							<li class="sub-accordion__item" *ngIf="filters['relationshipStatuses']?.length > 0">
 								<input type="checkbox" formControlName="relationshipStatus" value="Boat"  [checked]="defaultChecked"  (change)="applyFilter()"> Any<br>
-								<span  *ngFor="let relationshipStatus of filters.relationshipStatuses | keys">
+								<span  *ngFor="let relationshipStatus of filters['relationshipStatuses'] | keys">
 								<input type="checkbox" formControlName="relationshipStatus" value="{{relationshipStatus.key}}" (change)="applyFilter()"> {{relationshipStatus.value}}<br>
 								</span>
 							</li>
@@ -151,7 +151,7 @@
 				</form>
 			</div>
 			<alert></alert> 
-			<div class="col-lg-9">             
+			<div class="col-lg-9" *ngIf="users?.length > 0">             
 				<div class="main-box" *ngFor="let user of users">
 					<div class="row">
 						<div class="col-lg-6">
@@ -187,7 +187,7 @@
 
 					<div class="row">
 						<div class="col-lg-2">
-						<a href="profileview.php"><img src="src/assets/images/avatar.png"  class="img-fluid bord"></a>
+						<a href="profileview.php"><img src="assets/images/avatar.png"  class="img-fluid bord"></a>
 						</div>
 						<div class="col-lg-7">
 							<div class="row">

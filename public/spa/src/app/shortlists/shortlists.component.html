@@ -6,7 +6,7 @@
                 <h6 ><b>Your Profile</b></h6>
                 <div class="row">
                     <div class="col-lg-6"><p>Views : <span>{{this.views}}</span></p></div>
-                    <div class="col-lg-6"><p>Shortlists : <a [routerLink]="['/shortlists']" ><span>{{this.shortlists_count}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Shortlists : <a routerLink="/shortlists" ><span>{{this.shortlists_count}}</span></a></p></div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -27,8 +27,8 @@
             <div class="col-lg-3 tetxcente">
                 <h6 ><b>Invitation to Connect</b></h6>
                 <div class="row">
-                    <div class="col-lg-6"><p>Received : <a [routerLink]="['/invitations-received']" ><span>{{this.inv_received}}</span></a></p></div>
-                    <div class="col-lg-6"><p>Sent : <a [routerLink]="['/invitations-sent']" ><span>{{this.inv_sent}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Received : <a routerLink="/invitations-received" ><span>{{this.inv_received}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Sent : <a routerLink="/invitations-sent" ><span>{{this.inv_sent}}</span></a></p></div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
 
 					<div class="row">
 						<div class="col-lg-2">
-						<a href="profileview.php"><img src="src/assets/images/avatar.png"  class="img-fluid bord"></a>
+						<a href="profileview.php"><img src="assets/images/avatar.png"  class="img-fluid bord"></a>
 						</div>
 						<div class="col-lg-7">
 							<div class="row">
@@ -135,12 +135,12 @@
 						<div class="row">
 							<div class="col-lg-12 border_line "><p  class="border_linep" ><b>About Me, My skill, Experience, Achivement, Growthrate</b></p></div>
 
-							<div class="col-lg-12"><p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" >more</a></p></div>
+							<div class="col-lg-12"><p>{{user?.about_me}} <a routerLink="['/details', user?.user_id]" >more</a></p></div>
 						</div> 
 						<div class="row">
 							<div class="col-lg-12 border_line "><p  class="border_linep" ><b>No. Of clients/Customer/Average Sales/ I can achieve in a month</b></p></div>
 
-							<div class="col-lg-12"><p>{{user?.description_of_sales}} <a [routerLink]="['/details', user?.user_id]" >more</a></p></div>
+							<div class="col-lg-12"><p>{{user?.description_of_sales}} <a routerLink="['/details', user?.user_id]" >more</a></p></div>
 						</div>
 					</div>
 					<ng-template #userTypeInvestorAbout>
@@ -148,7 +148,7 @@
 							<div class="col-lg-12 border_line ">
 								<p  class="border_linep" ><b>Skill & Experience I am looking for</b></p>
 							</div>
-							<div class="col-lg-12"><p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" >more</a></p>
+							<div class="col-lg-12"><p>{{user?.about_me}} <a routerLink="['/details', user?.user_id]" >more</a></p>
 							</div>
 						</div>
 						<div class="row">
@@ -156,7 +156,7 @@
 								<p  class="border_linep" ><b>I want to invest in location</b></p>
 							</div>
 							<div class="col-lg-12">
-							<p>{{user?.description_place_business}} <a [routerLink]="['/details', user?.user_id]" >more</a></p>
+							<p>{{user?.description_place_business}} <a routerLink="['/details', user?.user_id]" >more</a></p>
 							</div>
 						</div>
 					</ng-template>

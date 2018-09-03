@@ -21,11 +21,11 @@ export class DashboardComponent implements OnInit {
 	@Input() users: Array<User>=[];	
 	filters = [];
 	coinvestmentIds = [];
-	private sidebarFilters: FormGroup;
+	public sidebarFilters: FormGroup;
 	coinvestment = [{ id: '', name: 'Any' },{ id: 1, name: 'Yes' },{ id: 2, name: 'No' }];
-	private defaultChecked = true;
-	private checkConinvestment = true;
-	private user_id;
+	public defaultChecked = true;
+	public checkConinvestment = true;
+	public user_id;
 	
 	constructor(private userService:UserService, private alertService:AlertService, private global: GlobalService,private formBuilder: FormBuilder) {
 	const controlsCoinvest = this.coinvestment.map(c => new FormControl(false));

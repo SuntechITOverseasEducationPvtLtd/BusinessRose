@@ -30,7 +30,7 @@ export class DetailsComponent implements OnInit {
 		) {}
 	ngOnInit():void {
 		
-		if(this.user_id == btoa(localStorage.getItem('currentUserId'))
+		if(this.user_id == btoa(localStorage.getItem('currentUserId')))
 		{
 			this.is_auth_user = true;
 		}

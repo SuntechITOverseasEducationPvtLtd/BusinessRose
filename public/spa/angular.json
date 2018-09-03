@@ -25,6 +25,8 @@
             "styles": [
               "src/styles.css",
 			  "src/assets/css/bootstrap.min.css",
+			  "src/assets/fonts/fonts.googleapis.css",
+			  "src/assets/fonts/fonts.googleapis2.css",
               "src/assets/css/magnific-popup.css",
               "src/assets/css/pe-icon-7.css",
               "src/assets/css/main.css",

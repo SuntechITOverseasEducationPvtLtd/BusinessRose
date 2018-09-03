@@ -19,12 +19,12 @@ declare var $: any;
 export class PurchaseHistoryComponent implements OnInit {
 
 	@Input() users: Array<User>=[];
-	private inv_received = 0;
-	private inv_sent = 0;
-	private shortlists_count = 0;
-	private views = 0;
-	private avail_credits = 0;
-	private used_credits = 0;
+	public inv_received = 0;
+	public inv_sent = 0;
+	public shortlists_count = 0;
+	public views = 0;
+	public avail_credits = 0;
+	public used_credits = 0;
 	
 		
 	constructor(

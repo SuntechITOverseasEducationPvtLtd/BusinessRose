@@ -9,6 +9,12 @@ return [
     'PURCHASED' => '5',
     'ACCOUNT_DENIED' => '6',
     'NOT_CONNECTED' => '7',
+
+    'INVESTOR' => '2',
+    'SKILLED_PERSON' => '3',
+    'STARTUP_SKILLED_PERSON' => '4',
+    'STARTUP_INVESTOR' => '5',
+    'FRESHER' => '6',
 ];
 
 ?>

@@ -15,31 +15,31 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">User Pages</span> - Tabbed Profile</h4>
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">User Profile</span></h4>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="d-flex justify-content-center">
 							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
 							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
 							<a href="#" class="btn btn-link btn-float text-default"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
-							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="user_pages_profile_tabbed.html" class="breadcrumb-item">User pages</a>
-							<span class="breadcrumb-item active">Tabbed profile</span>
+							<a href="#" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+							<a href="#" class="breadcrumb-item">User Profile</a>
+							<!-- <span class="breadcrumb-item active">Tabbed profile</span> -->
 						</div>
 
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="breadcrumb justify-content-center">
 							<a href="#" class="breadcrumb-elements-item">
 								<i class="icon-comment-discussion mr-2"></i>
@@ -61,7 +61,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- /page header -->
@@ -83,7 +83,16 @@
 							<div class="card">
 								<div class="card-body bg-indigo-400 text-center card-img-top">
 									<div class="card-img-actions d-inline-block mb-3">
-										<img class="img-fluid rounded-circle" src="../../images/dummy.jpg" width="170" height="170" alt="">
+	<?php 
+	$image = $users->profile_pic;
+	if($image != "") {
+		$fullapath = url('images/users/'.$users->user_id.'/'.$image); 
+	} else {
+		$fullapath = url('images/dummy.jpg'); 	
+	}
+
+	?>
+										<img class="img-fluid rounded-circle" src="{{$fullapath}}" width="170" height="170" alt="">
 										<div class="card-img-actions-overlay rounded-circle">
 											<a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
 												<i class="icon-plus3"></i>
@@ -315,6 +324,7 @@
 												</div>
 											</div>
 										</div>
+										<?php if($users->userType == 2 || $users->userType == 5) { ?>
 										<div class="form-group">
 											<div class="row">
 												<div class="col-md-6">
@@ -336,6 +346,41 @@
 												
 											</div>
 										</div>
+										<?php } else { ?>
+											<div class="form-group">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="font-size-sm mt-2">Description of Skills & Experiences</div>
+													<div class="media-chat-item">{{ $users->description_of_skills_experience }}</div>
+												</div>
+												<div class="col-md-6">
+													<div class="font-size-sm mt-2">No. of cients/customer and average sales in one month, year</div>
+													<div class="media-chat-item">{{ $users->monthly_yearly_sales }}</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="font-size-sm mt-2">Personal Description</div>
+													<div class="media-chat-item">{{ $users->description_you_family }}</div>
+												</div>
+												<div class="col-md-6">
+													<div class="font-size-sm mt-2">Relocation preferance Are you will to relocate</div>
+													<div class="media-chat-item">{{ $users->description_relocation_preferance }}</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="font-size-sm mt-2">Describe your profound value etc</div>
+													<div class="media-chat-item">{{ $users->description_of_profound_value }}</div>
+												</div>
+											</div>
+										</div>
+										<?php } ?>
+
 										
 										
 

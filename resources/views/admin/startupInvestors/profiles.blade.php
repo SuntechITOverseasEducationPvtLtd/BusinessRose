@@ -1,4 +1,4 @@
-@extends('admin.layout.main')    
+@extends('admin.layout.main')  
 @section('main_content')
 
 
@@ -24,11 +24,11 @@
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
-						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Datatables</span> - Responsive</h4>
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Startup Investors</span></h4>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="d-flex justify-content-center">
 							<a href="#" class="btn btn-link btn-float font-size-sm font-weight-semibold text-default">
 								<i class="icon-bars-alt text-pink-300"></i>
@@ -43,21 +43,21 @@
 								<span>Schedule</span>
 							</a>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
 					<div class="d-flex">
 						<div class="breadcrumb">
 							<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<a href="datatable_responsive.html" class="breadcrumb-item">Datatables</a>
-							<span class="breadcrumb-item active">Responsive</span>
+							<a href="datatable_responsive.html" class="breadcrumb-item">Startup Investors</a>
+							<!-- <span class="breadcrumb-item active">Responsive</span> -->
 						</div>
 
-						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+						<!-- <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a> -->
 					</div>
 
-					<div class="header-elements d-none">
+					<!-- <div class="header-elements d-none">
 						<div class="breadcrumb justify-content-center">
 							<a href="#" class="breadcrumb-elements-item">
 								<i class="icon-comment-discussion mr-2"></i>
@@ -79,7 +79,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- /page header -->
@@ -91,20 +91,18 @@
 				<!-- Basic responsive configuration -->
 				<div class="card">
 					<div class="card-header header-elements-inline">
-						<h5 class="card-title">Manage Price Lists</h5>
-						<div class="header-elements">
+						<h5 class="card-title">Manage Startup Investors Profiles</h5>
+						<!-- <div class="header-elements">
 							<div class="list-icons">
 		                		<a class="list-icons-item" data-action="collapse"></a>
 		                		<a class="list-icons-item" data-action="reload"></a>
 		                		<a class="list-icons-item" data-action="remove"></a>
 		                	</div>
-	                	</div>
+	                	</div> -->
 					</div>
 
-					<div class="card-body">
-						The <code>Responsive</code> extension for DataTables can be applied to a DataTable in one of two ways; with a specific <code>class name</code> on the table, or using the DataTables initialisation options. This method shows the latter, with the <code>responsive</code> option being set to the boolean value <code>true</code>. The <code>responsive</code> option can be given as a boolean value, or as an object with configuration options.
-					</div>
-
+					
+					<div style="overflow-x: auto;">
 					<table class="table datatable-responsive">
 						<thead>
 							<tr>
@@ -114,36 +112,49 @@
 								<th>Gender</th>
 								<th>Email</th>
 								<th>PH No</th>
+								<th>Purchase Transactions</th>
 								<th>Exp Level</th>
 								<th>Category</th>
 								<th>Sub Category</th>
 								<th>A/C Status</th>
 								<th>Actions</th>
-								<th>Deny</th>
-								<th>View</th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php $i=1; foreach($users as $user) { ?>
+							<?php $i=1; foreach($users as $user) { 
+								$image = $user->profile_pic;
+								if($image != "") {
+									$fullpath = url('images/users/'.$user->user_id.'/'.$image); 
+									} else {
+										$fullpath = url('images/dummy.jpg'); 	
+									}
+							?>
 							<tr>
 								<td>{{ $i }}</td>
 								<td >
 									<div style="width:320px;">
 									<div class="" style="width:60px; height:60px;float:left; overflow: hidden; margin-right: 10px;">
-										<img style="width:100%; border-radius: 50%;" src="../images/dummy.jpg">
+										<img style="width:100%; border-radius: 50%;" src="{{$fullpath}}">
 									</div>
 									<div style="font-size:13px;">
 									<p style="margin-bottom: 2px;"><strong>{{ $user->name }}</strong></p>
 									<p style="margin-bottom: 2px;color:blue;"><i class="icon-calendar2"  style="font-size: 13px;">&nbsp;{{ date('d M Y',strtotime($user->date_of_birth)) }}</i></p>
-									<p style="margin-bottom: 2px;"><i class="icon-location4" style="font-size: 13px;">&nbsp;{{ date('d M, Y H:iA',strtotime($user->created_at)) }}</i></p>
+									<p style="margin-bottom: 2px;"><i class="icon-location4" style="font-size: 13px;">&nbsp;{{ $user->city_name.', '.$user->state_name .', '. $user->country_name }}</i></p>
 									</div>
 									<div class="clearfix"></div>
 								</div>
 								</td>
-								<td>{{ $user->name }}</td>
+								<td>
+									<div style="font-size:13px;width: 150px;">
+									<p style="margin-bottom: 2px;"><i class="icon-graduation" style="font-size: 13px;">&nbsp;{{ $user->qualification }}</i></p>
+									<p style="margin-bottom: 2px;color:blue;"><i class="icon-user-check"  style="font-size: 13px;">&nbsp;{{ date('d M,Y, h:iA',strtotime($user->user_created_at)) }}</i></p>
+									<p style="margin-bottom: 2px;color:blue;"><i class=" icon-diff-added"  style="font-size: 13px;">&nbsp;{{ date('d M,Y, h:iA',strtotime($user->activated_at)) }}</i></p>
+									</div>
+								</td>
 								<td>{{ $user->gender==1?"Male":"Female" }}</td>
 								<td>{{ $user->email }}</td>
 								<td>{{ $user->mobile }}</td>
+								<td>{{ '0' }}</td>
 								<td>{{ $user->experience }}</td>
 								<td>{{ $user->cat_name }}</td>
 								<td>{{ $user->sub_cat_name }}</td>
@@ -165,14 +176,21 @@
 										<span class="badge badge-primary">{{'NOT CONNECTED'}}</span>
 									@endif
 								</td>
-								<td><span class="badge badge-success"><a href="{{url('admin/activate_smallInvestor',$user->user_id)}}" style="color:#fff;">{{'Active'}}</a></span></td>
-								<td><span class="badge badge-danger"><a href="{{url('admin/deactivate_smallInvestor',$user->user_id)}}" style="color:#fff;">{{'Deny'}}</a></span></td>
-								<td><a href="{{url('admin/smallInvestor_profile_view',$user->user_id)}}" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon"><i class="icon-eye"></i></a></td>
+								<td>
+									<div class="list-icons">							
+										<a href="{{url('admin/startupInvestor_profile_view',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-eye text-success-600"></i>View</a>
+										<a href="{{url('admin/edit_startupInvestor',$user->user_id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>
+										<a href="{{url('admin/delete_startupInvestor',$user->user_id)}}" onclick="return confirm('Are you sure you want to delete ?')" class="list-icons-item">&nbsp;&nbsp;<i class="icon-trash text-primary-600"></i>Delete</a>
+										<a href="{{url('admin/block_startupInvestor',$user->user_id)}}" onclick="return confirm('Are you sure you want to block ?')" class="list-icons-item">&nbsp;<i class="icon-blocked text-danger-600"></i>Block</a>
+									</div>									
+								</td>
+								
 							</tr>
 							<?php $i++; } ?>
 							
 						</tbody>
 					</table>
+				</div>
 				</div>
 				<!-- /basic responsive configuration -->
 

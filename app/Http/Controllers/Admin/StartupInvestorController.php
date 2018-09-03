@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 /*use App\Models\ContactEnquiryModel;*/
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\UserModel;
+use App\Models\UserModel; 
 use App\Models\MemberInterviewModel; 
 use App\Models\RealtimeExperienceModel; 
 use App\Models\TransactionModel; 
@@ -23,15 +23,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use app\User;
 
-class SeedInvestorController extends Controller
+class StartupInvestorController extends Controller
 {
 	public function __construct()
 	{
-    	$this->module_view_folder 		= "admin.seedInvestors";
+    	$this->module_view_folder 		= "admin.startupInvestors";
     	$this->admin_url_path     		= url(config('app.project.admin_panel_slug'));
 	}
    
-    public function seedInvestorActivations()
+    public function startupInvestorActivations()
     {    	
     	$data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -48,7 +48,7 @@ class SeedInvestorController extends Controller
     	return view($this->module_view_folder.'.activations',$data);
     }
 
-    public function seedInvestorProfiles()
+    public function startupInvestorProfiles()
     {       
         $data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -66,7 +66,7 @@ class SeedInvestorController extends Controller
         return view($this->module_view_folder.'.profiles',$data);
     }
 
-    public function seedInvestorPurchases()
+    public function startupInvestorPurchases()
     {       
         $data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -85,28 +85,40 @@ class SeedInvestorController extends Controller
         return view($this->module_view_folder.'.purchases',$data);
     }
 
-    public function activate_seedInvestor($id)
+    public function user_transactions($id)
+    {       
+        $data['users'] = DB::table('transactions')
+                            ->join('users','users.id','transactions.user_id')
+                            ->join('subscriptions','subscriptions.id','transactions.subscription_id')
+                            ->where('transactions.user_id','=',$id)
+                            ->select('transactions.price as tprice','transactions.credits as tcredits','transactions.discount as tdiscount','transactions.validity as tvalidity','transactions.status as tstatus','transactions.*','subscriptions.*')
+                            ->get();
+        
+        return view($this->module_view_folder.'.transactions',$data);
+    }
+
+    public function activate_startupInvestor($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
-        return redirect('admin/seedInvestor_activations');
+        return redirect('admin/startupInvestor_activations');
     }
 
-    public function deactivate_seedInvestor($id)
+    public function deactivate_startupInvestor($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>6));
-        return redirect('admin/seedInvestor_activations');
+        return redirect('admin/startupInvestor_activations');
     }
 
-    public function delete_seedInvestor($id)
+    public function delete_startupInvestor($id)
     {    
-        DB::table('users')->where('id', '=', $id)->update(array('deleted_at'=>1));
-        return redirect('admin/seedInvestor_profiles');
+        DB::table('users')->where('id', '=', $id)->update(array('deleted_at'=>date('Y-m-d H:i:s')));
+        return redirect('admin/startupInvestor_profiles');
     }
 
-    public function block_seedInvestor($id)
+    public function block_startupInvestor($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>4));
-        return redirect('admin/seedInvestor_profiles');
+        return redirect('admin/startupInvestor_profiles');
     }
 
     public function profile_view($id)         
@@ -133,7 +145,7 @@ class SeedInvestorController extends Controller
         return view('admin.dashboard.profile_view',$data);
     }
 
-    public function edit_seedInvestor($id)
+    public function edit_startupInvestor($id)
     {    
         $data['users'] = DB::table("users")
                         ->join("user_types",'user_types.id','users.user_type')
@@ -175,7 +187,7 @@ class SeedInvestorController extends Controller
     {  
         $res = $request->all();
 
-    if($res['userType'] == 3 || $res['userType'] == 6){
+    if($res['userType'] == 2 || $res['userType'] == 5){
     $description_of_skills_experience =(isset($res['skills_experience']))?$res['skills_experience']:"";
     $description_you_family = (isset($res['description_you_family']))?$res['description_you_family']:"";
     $description_place_business = (isset($res['desc_place_business']))?$res['desc_place_business']:"";    
@@ -189,7 +201,14 @@ class SeedInvestorController extends Controller
     $description_relocation_preferance = (isset($res['relocation_preferance']))?$res['relocation_preferance']:"";
     $monthly_yearly_sales = (isset($res['monthly_yearly_sales']))?$res['monthly_yearly_sales']:"";
     $description_of_profound_value = (isset($res['profound']))?$res['profound']:"";
-    }           
+    }    
+
+    if ($res['profile_pic']!="") {  
+        $image = $res['profile_pic'];
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/users/'.$res['userId'].'/');
+        $image->move($destinationPath, $filename);
+    }        
         
         DB::table('users')
         ->where('id','=',$res['userId'])
@@ -223,10 +242,10 @@ class SeedInvestorController extends Controller
             'description_relocation_preferance' =>$description_relocation_preferance,
             'monthly_yearly_sales' =>$monthly_yearly_sales,
             'description_of_profound_value'=>$description_of_profound_value,
-            'profile_pic'=>"dummy.jpg"
+            'profile_pic'=>$filename
         ));
 
-        return redirect('admin/seedInvestor_profiles');
+        return redirect('admin/startupInvestor_profiles');
     }
 
     

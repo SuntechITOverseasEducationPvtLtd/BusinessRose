@@ -23,15 +23,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use app\User;
 
-class SmallInvestorController extends Controller
+class StartupSkilledPersonController extends Controller
 {
 	public function __construct()
 	{
-    	$this->module_view_folder 		= "admin.smallInvestors";
+    	$this->module_view_folder 		= "admin.startupSkilledPersons";
     	$this->admin_url_path     		= url(config('app.project.admin_panel_slug'));
 	}
    
-    public function smallInvestorActivations()
+    public function startupSkilledPersonActivations()
     {    	
     	$data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -48,7 +48,7 @@ class SmallInvestorController extends Controller
     	return view($this->module_view_folder.'.activations',$data);
     }
 
-    public function smallInvestorProfiles()
+    public function startupSkilledPersonProfiles()
     {       
         $data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -66,7 +66,7 @@ class SmallInvestorController extends Controller
         return view($this->module_view_folder.'.profiles',$data);
     }
 
-    public function smallInvestorPurchases()
+    public function startupSkilledPersonPurchases()
     {       
         $data['users'] = DB::table("users")
                             ->join("categories",'categories.id','users.category')
@@ -85,28 +85,40 @@ class SmallInvestorController extends Controller
         return view($this->module_view_folder.'.purchases',$data);
     }
 
-    public function activate_smallInvestor($id)
+    public function user_transactions($id)
+    {       
+        $data['users'] = DB::table('transactions')
+                            ->join('users','users.id','transactions.user_id')
+                            ->join('subscriptions','subscriptions.id','transactions.subscription_id')
+                            ->where('transactions.user_id','=',$id)
+                            ->select('transactions.price as tprice','transactions.credits as tcredits','transactions.discount as tdiscount','transactions.validity as tvalidity','transactions.status as tstatus','transactions.*','subscriptions.*')
+                            ->get();
+        
+        return view($this->module_view_folder.'.transactions',$data);
+    }
+
+    public function activate_startupSkilledPerson($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
-        return redirect('admin/smallInvestor_activations');
+        return redirect('admin/startupSkilledPerson_activations');
     }
 
-    public function deactivate_smallInvestor($id)
+    public function deactivate_startupSkilledPerson($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>6));
-        return redirect('admin/smallInvestor_activations');
+        return redirect('admin/startupSkilledPerson_activations');
     }
 
-    public function delete_smallInvestor($id)
+    public function delete_startupSkilledPerson($id)
     {    
-        DB::table('users')->where('id', '=', $id)->update(array('deleted_at'=>1));
-        return redirect('admin/smallInvestor_profiles');
+        DB::table('users')->where('id', '=', $id)->update(array('deleted_at'=>date('Y-m-d H:i:s')));
+        return redirect('admin/startupSkilledPerson_profiles');
     }
 
-    public function block_smallInvestor($id)
+    public function block_startupSkilledPerson($id)
     {    
         DB::table('users')->where('id', '=', $id)->update(array('active'=>4));
-        return redirect('admin/smallInvestor_profiles');
+        return redirect('admin/startupSkilledPerson_profiles');
     }
 
     public function profile_view($id)         
@@ -133,7 +145,7 @@ class SmallInvestorController extends Controller
         return view('admin.dashboard.profile_view',$data);
     }
 
-    public function edit_smallInvestor($id)
+    public function edit_startupSkilledPerson($id)
     {    
         $data['users'] = DB::table("users")
                         ->join("user_types",'user_types.id','users.user_type')
@@ -175,7 +187,7 @@ class SmallInvestorController extends Controller
     {  
         $res = $request->all();
 
-    if($res['userType'] == 3 || $res['userType'] == 6){
+    if($res['userType'] == 2 || $res['userType'] == 5){
     $description_of_skills_experience =(isset($res['skills_experience']))?$res['skills_experience']:"";
     $description_you_family = (isset($res['description_you_family']))?$res['description_you_family']:"";
     $description_place_business = (isset($res['desc_place_business']))?$res['desc_place_business']:"";    
@@ -189,7 +201,14 @@ class SmallInvestorController extends Controller
     $description_relocation_preferance = (isset($res['relocation_preferance']))?$res['relocation_preferance']:"";
     $monthly_yearly_sales = (isset($res['monthly_yearly_sales']))?$res['monthly_yearly_sales']:"";
     $description_of_profound_value = (isset($res['profound']))?$res['profound']:"";
-    }           
+    }    
+
+    if ($res['profile_pic']!="") {  
+        $image = $res['profile_pic'];
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/users/'.$res['userId'].'/');
+        $image->move($destinationPath, $filename);
+    }        
         
         DB::table('users')
         ->where('id','=',$res['userId'])
@@ -223,10 +242,10 @@ class SmallInvestorController extends Controller
             'description_relocation_preferance' =>$description_relocation_preferance,
             'monthly_yearly_sales' =>$monthly_yearly_sales,
             'description_of_profound_value'=>$description_of_profound_value,
-            'profile_pic'=>"dummy.jpg"
+            'profile_pic'=>$filename
         ));
 
-        return redirect('admin/smallInvestor_profiles');
+        return redirect('admin/startupSkilledPerson_profiles');
     }
 
     

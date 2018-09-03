@@ -1,5 +1,5 @@
 <?php  
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +22,7 @@ Route::group(['prefix' => $admin_path,'middleware'=>['admin'],'namespace'=>'Admi
 	Route::get('/', 'AuthController@login');
 	Route::get('login', 'AuthController@login');
 	Route::post('process_login', 'AuthController@process_login');
-	Route::get('logout', 'AuthController@logout');
+	Route::get('logout', 'AuthController@logout'); 
 	Route::get('dashboard', 'DashboardController@dashboard');
 	Route::get('subscriptions', 'DashboardController@subscriptions');
 	Route::get('edit_subscription/{id}', 'DashboardController@edit_subscription');
@@ -71,29 +71,29 @@ Route::group(['prefix' => $admin_path,'middleware'=>['admin'],'namespace'=>'Admi
 	Route::get('update_investor_profile', 'InvestorController@update_profile');
 	Route::post('update_investor_profile', 'InvestorController@update_profile');
 
-	Route::get('smallInvestor_activations', 'SmallInvestorController@smallInvestorActivations');
-	Route::get('smallInvestor_profiles', 'SmallInvestorController@smallInvestorProfiles');	
-	Route::get('smallInvestor_purchases', 'SmallInvestorController@smallInvestorPurchases');
-	Route::get('activate_smallInvestor/{id}', 'SmallInvestorController@activate_smallInvestor');
-	Route::get('deactivate_smallInvestor/{id}', 'SmallInvestorController@deactivate_smallInvestor');	
-	Route::get('delete_smallInvestor/{id}', 'SmallInvestorController@delete_smallInvestor');
-	Route::get('block_smallInvestor/{id}', 'SmallInvestorController@block_smallInvestor');
-	Route::get('edit_smallInvestor/{id}', 'SmallInvestorController@edit_smallInvestor');
-	Route::get('smallInvestor_profile_view/{id}', 'SmallInvestorController@profile_view');
-	Route::get('update_smallInvestor_profile', 'SmallInvestorController@update_profile');
-	Route::post('update_smallInvestor_profile', 'SmallInvestorController@update_profile');	
+	Route::get('startupSkilledPerson_activations', 'StartupSkilledPersonController@startupSkilledPersonActivations');
+	Route::get('startupSkilledPerson_profiles', 'StartupSkilledPersonController@startupSkilledPersonProfiles');	
+	Route::get('startupSkilledPerson_purchases', 'StartupSkilledPersonController@startupSkilledPersonPurchases');
+	Route::get('activate_startupSkilledPerson/{id}', 'StartupSkilledPersonController@activate_startupSkilledPerson');
+	Route::get('deactivate_startupSkilledPerson/{id}', 'StartupSkilledPersonController@deactivate_startupSkilledPerson');	
+	Route::get('delete_startupSkilledPerson/{id}', 'StartupSkilledPersonController@delete_startupSkilledPerson');
+	Route::get('block_startupSkilledPerson/{id}', 'StartupSkilledPersonController@block_startupSkilledPerson');
+	Route::get('edit_startupSkilledPerson/{id}', 'StartupSkilledPersonController@edit_startupSkilledPerson');
+	Route::get('startupSkilledPerson_profile_view/{id}', 'StartupSkilledPersonController@profile_view');
+	Route::get('update_startupSkilledPerson_profile', 'StartupSkilledPersonController@update_profile');
+	Route::post('update_startupSkilledPerson_profile', 'StartupSkilledPersonController@update_profile');	
 
-	Route::get('seedInvestor_activations', 'SeedInvestorController@seedInvestorActivations');
-	Route::get('seedInvestor_profiles', 'SeedInvestorController@seedInvestorProfiles');	
-	Route::get('seedInvestor_purchases', 'SeedInvestorController@seedInvestorPurchases');
-	Route::get('activate_seedInvestor/{id}', 'SeedInvestorController@activate_seedInvestor');
-	Route::get('deactivate_seedInvestor/{id}', 'SeedInvestorController@deactivate_seedInvestor');	
-	Route::get('delete_seedInvestor/{id}', 'SeedInvestorController@delete_seedInvestor');
-	Route::get('block_seedInvestor/{id}', 'SeedInvestorController@block_seedInvestor');
-	Route::get('edit_seedInvestor/{id}', 'SeedInvestorController@edit_seedInvestor');
-	Route::get('seedInvestor_profile_view/{id}', 'SeedInvestorController@profile_view');
-	Route::get('update_seedInvestor_profile', 'SeedInvestorController@update_profile');
-	Route::post('update_seedInvestor_profile', 'SeedInvestorController@update_profile');	
+	Route::get('startupInvestor_activations', 'StartupInvestorController@startupInvestorActivations');
+	Route::get('startupInvestor_profiles', 'StartupInvestorController@startupInvestorProfiles');	
+	Route::get('startupInvestor_purchases', 'StartupInvestorController@startupInvestorPurchases');
+	Route::get('activate_startupInvestor/{id}', 'StartupInvestorController@activate_startupInvestor');
+	Route::get('deactivate_startupInvestor/{id}', 'StartupInvestorController@deactivate_startupInvestor');	
+	Route::get('delete_startupInvestor/{id}', 'StartupInvestorController@delete_startupInvestor');
+	Route::get('block_startupInvestor/{id}', 'StartupInvestorController@block_startupInvestor');
+	Route::get('edit_startupInvestor/{id}', 'StartupInvestorController@edit_startupInvestor');
+	Route::get('startupInvestor_profile_view/{id}', 'StartupInvestorController@profile_view');
+	Route::get('update_startupInvestor_profile', 'StartupInvestorController@update_profile');
+	Route::post('update_startupInvestor_profile', 'StartupInvestorController@update_profile');	
 	
 	Route::get('fresher_activations', 'FresherController@fresherActivations');
 	Route::get('fresher_profiles', 'FresherController@fresherProfiles');
@@ -109,5 +109,13 @@ Route::group(['prefix' => $admin_path,'middleware'=>['admin'],'namespace'=>'Admi
 	
 
 	
+
+	Route::get('investor_transactions/{id}', 'InvestorController@user_transactions');
+	Route::get('member_transactions/{id}', 'MemberController@user_transactions');
+	Route::get('small_investor_transactions/{id}', 'StartupSkilledPersonController@user_transactions');
+	Route::get('seed_investor_transactions/{id}', 'StartupInvestorController@user_transactions');
+	Route::get('fresher_transactions/{id}', 'FresherController@user_transactions');
+
+
 });
 	

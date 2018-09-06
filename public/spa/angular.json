@@ -48,7 +48,8 @@
 				"src/assets/js/owl.carousel.min.js",
 				"src/assets/js/jquery.magnific-popup.min.js",
 				"src/assets/js/common.js",
-				"src/assets/js/custom.js"
+				"src/assets/js/custom.js",
+				"src/assets/js/business_rose.js"
 			]
           },
           "configurations": {

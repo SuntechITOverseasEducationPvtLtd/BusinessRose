@@ -23,6 +23,7 @@ export class RegistrationComponent implements OnInit {
 	ngOnInit() {
 		$("#exampleModalCenter").modal("hide");
         this.investorForm = this.formBuilder.group({
+			user_type: ['', Validators.required],
 			name: ['', Validators.required],
 			email: ['', Validators.required],
 			password: ['', Validators.required],
@@ -52,6 +53,7 @@ export class RegistrationComponent implements OnInit {
 			profile_created_by: ['', Validators.required],
 		});
 		this.skillPersonForm = this.formBuilder.group({
+			user_type: ['', Validators.required],
 			name: ['', Validators.required],
 			email: ['', Validators.required],
 			password: ['', Validators.required],
@@ -89,12 +91,12 @@ export class RegistrationComponent implements OnInit {
 	
 	investorSubmit() {
 		this.submittedinv = true;
-	   //console.log(this.investorForm.invalid);
+	   console.log(this.investorForm.value.user_type);
         // stop here if form is invalid
         if (this.investorForm.invalid) {
             return;
         }
-		this.investorForm.value.user_type = 3;
+		//this.investorForm.value.user_type = 3;
 		this.investorForm.value.is_accept_terms = this.investorForm.value.accept_terms;
 		
 		this.userService.register(this.investorForm.value)
@@ -117,7 +119,7 @@ export class RegistrationComponent implements OnInit {
         if (this.skillPersonForm.invalid) {
             return;
         }
-		this.skillPersonForm.value.user_type = 3;
+		//this.skillPersonForm.value.user_type = 3;
 		this.skillPersonForm.value.is_accept_terms = this.skillPersonForm.value.accept_terms;
 		
 		this.userService.register(this.skillPersonForm.value)

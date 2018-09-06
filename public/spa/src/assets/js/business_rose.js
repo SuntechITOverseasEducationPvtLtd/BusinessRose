@@ -22,22 +22,17 @@ $(".smallinvestor").click(function(){
 
 
 
-$('.registertype').on('change', function() {
+$(document).on('change', '.registertype', function() { alert('here');
  $('.pdescritpin').css('display','none');
   $idthis=this.value;
+  $('.form_user_type').val(this.value);
     
-    if($idthis==1 || $idthis==2) {  $('.Investorform').css('display','block');
-
-        $('.Skillpersonform').css('display','none'); }
-        
-         else if($idthis==3 || $idthis==4 || $idthis==5) {  $('.Investorform').css('display','none');
-
+    if($idthis==1 || $idthis==2) {  
+        $('.Investorform').css('display','block');
+        $('.Skillpersonform').css('display','none'); }        
+    else if($idthis==3 || $idthis==4 || $idthis==5) {  
+        $('.Investorform').css('display','none');
         $('.Skillpersonform').css('display','block'); }
-        
-          
-        
-    
-    
     
     $('.dis'+$idthis).css('display','block');
    

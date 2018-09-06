@@ -21,22 +21,15 @@
  
  
 <div class="form-section">
-<div class="form-section-title sctionsc" >
-	<div class="radio smallinvestor invertcl" >
-		<label class="ubuntuRegText investcls" >
-		<input type="radio" name="user_type" id="user_type_investor" value="2"  checked="checked" class="allsiteadd">
-		<span class="inner"></span>
-		Small Business Investor
-		</label>
+	<div class="form-section-title sctionsc fornewc" >
+		<select class="select2-focusser registertype"      >
+			<option value="1" >I want to invest in a small (local) business</option>
+			<option value="2" >I want to be a seed investor in a startup business</option>
+			<option value="3" >I have experience in managing entire small (local) business operations</option>
+			<option value="4" >I have experience in managing a startup business operations</option>
+			<option value="5" >Fresher with a business idea/prototype stage</option>
+		</select> 
 	</div>
-	<div class="radio skillperson invsetclss" >
-		<label class="ubuntuRegText investcls" >
-		<input type="radio" name="user_type"  id="user_type_skill_person" value="3"  class="allsiteadd">
-		<span class="inner"></span>
-		Experience/Skill Person
-		</label>
-	</div>
-</div>
 
 <form action=""  [formGroup]="investorForm"  (ngSubmit)="investorSubmit()" method="Post" class="Investorform">
 <div class="form-fields-wrapper">
@@ -50,6 +43,7 @@
 							<div *ngIf="submittedSp && inv.name.errors" class="invalid-feedback">
 								<div *ngIf="inv.name.errors.required">First Name is required</div>
 							</div>
+							<input class="form-control form_user_type" formControlName="user_type" type="hidden" value="1">
 						</div> 			 
 					</div>
 				</div>	 
@@ -1027,6 +1021,7 @@
 							<div *ngIf="submittedSp && sp.name.errors" class="invalid-feedback">
 								<div *ngIf="sp.name.errors.required">First Name is required</div>
 							</div>
+							<input class="form_user_type" formControlName="user_type" type="hidden" value="1">
 						</div> 			 
 					</div>
 				</div>	 

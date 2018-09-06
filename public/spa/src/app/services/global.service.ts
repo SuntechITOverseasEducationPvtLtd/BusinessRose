@@ -5,7 +5,7 @@ export class GlobalService {
 
 	constructor() { }
 	
-	public baseUrl = "http://localhost:8080/businessrose/public";
+	public baseUrl = "http://businessrose.com/live/public";
 	public loginUrl = this.baseUrl+'/api/login';
 	public homeUrl = this.baseUrl+'/api/login';
 	public registerUrl = this.baseUrl+'/api/register';

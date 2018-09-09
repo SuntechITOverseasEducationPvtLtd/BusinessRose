@@ -6,15 +6,17 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { User, Connection, Filters } from '../models';
 import { GlobalService } from './global.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
-};
+
 declare var $: any;
 
 @Injectable()
 export class UserService {
-	
-    constructor(private http: HttpClient, private global:GlobalService) { }
+	httpOptions = '';
+    constructor(private http: HttpClient, private global:GlobalService) {
+		this.httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+	}
 	
 	private registerUrl = this.global.registerUrl;
 	private getAllUsersUrl = this.global.getAllUsersUrl;
@@ -31,22 +33,22 @@ export class UserService {
 	
 
     getAll() {
-        return this.http.get<User[]>(this.getAllUsersUrl, httpOptions);
+        return this.http.get<User[]>(this.getAllUsersUrl, this.httpOptions);
     }
 	
 	getAllFilters() {
-        return this.http.get<Filters[]>(this.getAllFiltersUrl, httpOptions);
+        return this.http.get<Filters[]>(this.getAllFiltersUrl, this.httpOptions);
     }
 	
 	getAllUsersByFilters(filters) {
 		let body = new HttpParams({
 			  fromObject : filters
 			});
-        return this.http.post<User[]>(this.getAllUsersUrl, body, httpOptions);
+        return this.http.post<User[]>(this.getAllUsersUrl, body, this.httpOptions);
     }
 
     getById(id: String): Observable<User> {
-		return this.http.get<User>(this.detailsUrl + this.currentEncUserId + '/' + id, httpOptions).pipe(
+		return this.http.get<User>(this.detailsUrl + this.currentEncUserId + '/' + id, this.httpOptions).pipe(
 			  tap(_ => console.log(`fetched user id=${id}`)),
 			  catchError(this.handleError<User>(`getById id=${id}`))
 			);
@@ -80,7 +82,7 @@ export class UserService {
 				'ip_address' : localStorage.getItem('ipAddress')
 			  }
 			});
-		return this.http.post(this.connectionUrl, body, httpOptions);
+		return this.http.post(this.connectionUrl, body, this.httpOptions);
     }
 	
 	shortlistNow(shortlist_to) {
@@ -91,7 +93,7 @@ export class UserService {
 				'ip_address' : localStorage.getItem('ipAddress')
 			  }
 			});
-		return this.http.post(this.shortlistUrl, body, httpOptions);
+		return this.http.post(this.shortlistUrl, body, this.httpOptions);
     }
 	
 	inviteNow(invited_to) {
@@ -102,25 +104,25 @@ export class UserService {
 				'ip_address' : localStorage.getItem('ipAddress')
 			  }
 			});
-		return this.http.post(this.invitationUrl, body, httpOptions);
+		return this.http.post(this.invitationUrl, body, this.httpOptions);
     }
 	
 	shortlists(): Observable<User> {
-		return this.http.get<User>(this.myShortlistsUrl, httpOptions).pipe(
+		return this.http.get<User>(this.myShortlistsUrl, this.httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));
     }
 	
 	invitations(type : String): Observable<User> {
-		return this.http.get<User>(this.myInvitationsUrl + type, httpOptions).pipe(
+		return this.http.get<User>(this.myInvitationsUrl + type, this.httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));
     }
 	
 	purchaseHistory(): Observable<User> {
-		return this.http.get<User>(this.purchaseHistoryUrl, httpOptions).pipe(
+		return this.http.get<User>(this.purchaseHistoryUrl, this.httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));

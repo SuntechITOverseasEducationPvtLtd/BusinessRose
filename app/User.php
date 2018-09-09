@@ -71,7 +71,7 @@ class User extends Authenticatable
 			});					   
 		});		
 		
-		if($request->has('category') && $request->has('category') != 'null' && $request->has('category') != 0)
+		if($request->has('category') && $request->get('category') != 'null' && $request->get('category') != 0)
 		{
 			//print_r($request->get('category')); die;
 			$obj->where('users.category', $request->get('category'));
@@ -82,7 +82,7 @@ class User extends Authenticatable
 			$obj->whereIn('users.co_investment',$co_investment);
 		}
 		
-		if($request->has('state') && $request->has('state') != 'null' && $request->has('state') != 0)
+		if($request->has('state') && $request->get('state') != 'null' && $request->get('state') != 0)
 		{
 			//print_r($request->get('category')); die;
 			$obj->where('users.state', $request->get('state'));

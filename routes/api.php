@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-/*
+/* 
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -36,4 +36,8 @@ Route::group(['middleware' => 'auth:api', 'namespace'=>"Api"], function(){
 	Route::any('all-subscriptions', 'HomeController@allSubscriptions');
 	Route::any('delete-profile', 'HomeController@deleteProfile');
 	Route::any('hide-profile', 'HomeController@hideProfile');
+
+	Route::any('change-password', 'UserController@changePassword');
+	Route::any('forgot-password', 'UserController@forgotPassword');
+	Route::any('update-password', 'UserController@updatePassword');
 });

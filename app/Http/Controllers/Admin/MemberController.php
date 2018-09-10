@@ -208,7 +208,7 @@ class MemberController extends Controller
         $filename = time().'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/images/users/'.$res['userId'].'/');
         $image->move($destinationPath, $filename);
-    }        
+    }         
         
         DB::table('users')
         ->where('id','=',$res['userId'])

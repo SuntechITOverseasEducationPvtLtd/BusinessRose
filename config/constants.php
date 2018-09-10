@@ -15,6 +15,15 @@ return [
     'STARTUP_SKILLED_PERSON' => '4',
     'STARTUP_INVESTOR' => '5',
     'FRESHER' => '6',
+
+    'ACCOUNT_APPROVED' => '1',
+    'CHANGE_PASSWORD' => '2',
+    'CONNECT_NOW' => '3',
+    'FORGOT_PASSWORD' => '4',
+    'EMAIL_VERIFICATION' => '5',
+    'WELCOME_EMAIL' => '6',
+
+    'API_URL' => 'http://www.businessrose.com/live/spa/'
 ];
 
 ?>

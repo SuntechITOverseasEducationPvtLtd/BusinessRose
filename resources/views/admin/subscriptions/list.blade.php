@@ -85,19 +85,15 @@
 	                	</div> -->
 					</div>
 
-					<div class="card-body">
-						The <code>Responsive</code> extension for DataTables can be applied to a DataTable in one of two ways; with a specific <code>class name</code> on the table, or using the DataTables initialisation options. 
-					</div>
-
 					<table class="table datatable-responsive">
 						<thead>
 							<tr>
 								<th>S.No</th>
-								<th>Title</th>
-								<th>Price</th>
 								<th>Credits</th>
+								<th>Validity</th>
+								<th>Regular Price</th>
 								<th>Discount</th>
-								<th>Discount Validity</th>
+								<th>Discount Price</th>
 								<th>Status</th>
 								<th class="text-center">Actions</th>
 							</tr>
@@ -106,11 +102,11 @@
 							<?php $i=1; foreach($subscriptions as $row) { ?>
 							<tr>
 								<td>{{$i}}</td>
-								<td>{{$row->title}}</td>
-								<td>{{$row->price}}</td>
 								<td>{{$row->credits}}</td>
-								<td>{{$row->discount}}</td>
-								<td>{{date('M d, Y',strtotime($row->discount_expiry))}}</td>
+								<td>{{$row->validity.'Days'}}</td>
+								<td>{{$row->price.'.00'}}</td>
+								<td>{{$row->discount.'%'}}</td>
+								<td>{{($row->price)-($row->price*$row->discount/100).'.00'}}</td>
 								<td><span class="badge badge-success">{{($row->status==1)?"Active":"Deactive"}}</span></td>
 								<td class="text-center">
 									<a href="{{url('admin/edit_subscription',$row->id)}}" class="list-icons-item">&nbsp;<i class="icon-pencil7  text-violet-600"></i>Edit</a>

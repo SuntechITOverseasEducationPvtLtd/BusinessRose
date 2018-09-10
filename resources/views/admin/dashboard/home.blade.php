@@ -21,7 +21,7 @@
 					<div class="card bg-teal-400" style="min-height: 235px;">
 						<div class="card-body">
 							<div class="d-flex">
-								<h3 class="font-weight-semibold mb-0">{{$total_sales['total_price']->total_price}}/-</h3>
+								<h3 class="font-weight-semibold mb-0">{{$total_sales['total_price']->total_price or '0.00'}}/-</h3>
 								
 							</div>
 							
@@ -45,7 +45,7 @@
 					<div class="card bg-pink-400" style="min-height: 235px;">
 						<div class="card-body">
 							<div class="d-flex">
-								<h3 class="font-weight-semibold mb-0">{{$investor_sales['total_price']->total_price}}/-</h3>
+								<h3 class="font-weight-semibold mb-0">{{$investor_sales['total_price']->total_price or '0.00'}}/-</h3>
 									
 							</div>
 							
@@ -70,7 +70,7 @@
 					<div class="card bg-blue-400">
 						<div class="card-body">
 							<div class="d-flex">
-								<h3 class="font-weight-semibold mb-0">{{$skilled_person_sales['total_price']->total_price}}/-</h3>
+								<h3 class="font-weight-semibold mb-0">{{$skilled_person_sales['total_price']->total_price or '0.00'}}/-</h3>
 							</div>
 							<div>
 								Skilled Persons Sales of {{date('F Y')}}
@@ -94,7 +94,7 @@
 					<div class="card bg-slate-400">
 						<div class="card-body">
 							<div class="d-flex">
-								<h3 class="font-weight-semibold mb-0">{{$skilled_startup_sales['total_price']->total_price}}/-</h3>
+								<h3 class="font-weight-semibold mb-0">{{$skilled_startup_sales['total_price']->total_price or '0.00'}}/-</h3>
 							</div>
 							<div>
 								 Startup Skilled Persons Sales of {{date('F Y')}}
@@ -118,7 +118,7 @@
 					<div class="card bg-brown-400" style="min-height: 275px;">
 						<div class="card-body">
 							<div class="d-flex">
-								<h3 class="font-weight-semibold mb-0">{{$startup_investor_sales['total_price']->total_price}}/-</h3>
+								<h3 class="font-weight-semibold mb-0">{{$startup_investor_sales['total_price']->total_price or '0.00'}}/-</h3>
 							</div>
 							<div>
 								Startup Investors Sales of {{date('F Y')}}
@@ -142,7 +142,7 @@
 					<div class="card bg-success-400" style="min-height: 275px;">
 						<div class="card-body">
 							<div class="d-flex">
-								<h3 class="font-weight-semibold mb-0">{{$fresher_sales['total_price']->total_price}}/-</h3>
+								<h3 class="font-weight-semibold mb-0">{{$fresher_sales['total_price']->total_price or '0.00'}}/-</h3>
 							</div>
 							<div>
 								Freshers Sales of {{date('F Y')}}

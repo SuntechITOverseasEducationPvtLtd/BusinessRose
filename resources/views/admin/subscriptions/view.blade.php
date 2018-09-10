@@ -118,10 +118,17 @@
 					</div>
 				</div>
 
-				<div class="form-group row">
+				<!-- <div class="form-group row">
 					<label class="col-lg-4 col-form-label">Discount Validity:</label>
 					<div class="col-lg-8">
 						<input class="form-control" type="date" name="discount_validity" value="{{$subscriptions->discount_expiry}}">
+					</div>
+				</div> -->
+
+				<div class="form-group row">
+					<label class="col-lg-4 col-form-label">Discount Validity:</label>
+					<div class="col-lg-8">
+						<input class="form-control" type="text" name="validity" value="{{$subscriptions->validity}}">
 					</div>
 				</div>
 

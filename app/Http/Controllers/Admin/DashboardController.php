@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\UserModel;
 use App\Models\MemberInterviewModel;
 use App\Models\RealtimeExperienceModel;
-use App\Models\TransactionModel;
+use App\Models\TransactionModel; 
 use App\Models\TransactionHistoryModel;
 use App\Models\MultiReferenceBookModel;
 use App\Models\InterviewDetailModel;
@@ -426,7 +426,8 @@ class DashboardController extends Controller
             'credits'=>$res['credits'],
             'discount'=>$res['discount'],
             'description'=>$res['description'],
-            'discount_validity'=>$res['discount_validity'],
+            //'discount_validity'=>$res['discount_validity'],
+            'validity'=>$res['validity'],
             'price'=>$res['price'],
             'status'=>$res['status'],
             'updated_at'=>$date,

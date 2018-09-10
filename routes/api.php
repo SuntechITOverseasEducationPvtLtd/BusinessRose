@@ -20,11 +20,11 @@ use Illuminate\Http\Request;
 Route::post('login', 'Api\UserController@login');
 Route::post('register', 'Api\UserController@register');
 Route::get('signup/activate/{token}', 'Api\UserController@signupActivate');
-
+Route::get('filters', 'Api\HomeController@filters');
+	
 Route::group(['middleware' => 'auth:api', 'namespace'=>"Api"], function(){
 	Route::any('allusers', 'HomeController@getAllMembers');
 	Route::get('getUserProfile/{authUser}/{userId}', 'HomeController@getMemberProfile');
-	Route::get('filters', 'HomeController@filters');
 	Route::post('connectNow', 'HomeController@SaveConnections');
 	Route::post('shortListNow', 'HomeController@SaveShortlists');
 	Route::post('inviteNow', 'HomeController@SaveInvitation');

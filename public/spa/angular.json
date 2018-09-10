@@ -23,8 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-			  "src/assets/css/bootstrap.min.css",
+              "src/assets/css/bootstrap.min.css",
+			  "src/styles.css",			  
 			  "src/assets/fonts/fonts.googleapis.css",
 			  "src/assets/fonts/fonts.googleapis2.css",
               "src/assets/css/magnific-popup.css",

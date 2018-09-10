@@ -22,11 +22,11 @@ $(".smallinvestor").click(function(){
 
 
 
-$(document).on('change', '.registertype', function() { alert('here');
+$(document).on('change', '.registertype', function() { 
  $('.pdescritpin').css('display','none');
   $idthis=this.value;
   $('.form_user_type').val(this.value);
-    
+    this.registerUserType = this.value;
     if($idthis==1 || $idthis==2) {  
         $('.Investorform').css('display','block');
         $('.Skillpersonform').css('display','none'); }        

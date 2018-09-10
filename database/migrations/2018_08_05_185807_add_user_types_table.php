@@ -34,7 +34,30 @@ class AddUserTypesTable extends Migration
                 'created_at' => '2018-07-31',
                 'updated_at' => '2018-07-31',
                 'created_by' => 1
-            ))
+			)
+            ,
+			array(
+                'user_type' => 'Small Investor',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1
+            ),            
+            array(
+                'user_type' => 'Seed Investor',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1
+            ),
+            array(
+                'user_type' => 'Fresher',
+                'status' => 1,
+                'created_at' => '2018-07-31',
+                'updated_at' => '2018-07-31',
+                'created_by' => 1
+            )
+			)
         );
     }
 

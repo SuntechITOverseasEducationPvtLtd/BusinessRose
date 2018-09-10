@@ -34,7 +34,15 @@ export class DetailsComponent implements OnInit {
 		{
 			this.is_auth_user = true;
 		}
-		this.getUserDetails();		
+		this.getUserDetails();	
+		this.userForm = this.formBuilder.group({
+			category: ['', Validators.required],
+            sub_category: ['', Validators.required],
+			experience: ['', Validators.required],
+            investment_range: ['', Validators.required],
+            investment_type: ['', Validators.required],
+            co_investment: ['', Validators.required]          
+		});
     }
 	
 	getUserDetails():void {

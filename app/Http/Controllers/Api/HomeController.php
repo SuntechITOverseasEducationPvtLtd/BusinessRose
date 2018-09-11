@@ -74,7 +74,7 @@ class HomeController extends Controller
 	public function SaveConnections(Request $request){
 		$connectionObj = new Connection();
 		$connectionObj->connected_to = base64_decode($request->get('connected_to'));
-		$connectionObj->connected_by = base64_decode($request->get('connected_by'));
+		$connectionObj->connected_by = Auth::user()->id;
 		$connectionObj->ip_address = $request->get('ip_address');
 		$connectionObj->created_at = date('Y-m-d H:i:s');
 		$connectionObj->updated_at = date('Y-m-d H:i:s');
@@ -99,7 +99,7 @@ class HomeController extends Controller
 	public function SaveShortlists(Request $request){
 		$shortlistObj = new Shortlist();
 		$shortlistObj->shortlist_to = base64_decode($request->get('shortlist_to'));
-		$shortlistObj->shortlist_by = base64_decode($request->get('shortlist_by'));
+		$shortlistObj->shortlist_by = Auth::user()->id;
 		$shortlistObj->ip_address = $request->get('ip_address');
 		$shortlistObj->created_at = date('Y-m-d H:i:s');
 		$shortlistObj->updated_at = date('Y-m-d H:i:s');
@@ -115,7 +115,7 @@ class HomeController extends Controller
 	public function SaveInvitation(Request $request){
 		$invitationObj = new Invitation();
 		$invitationObj->invited_to = base64_decode($request->get('invited_to'));
-		$invitationObj->invited_by = base64_decode($request->get('invited_by'));
+		$invitationObj->invited_by = Auth::user()->id;
 		$invitationObj->ip_address = $request->get('ip_address');
 		$invitationObj->created_at = date('Y-m-d H:i:s');
 		$invitationObj->updated_at = date('Y-m-d H:i:s');

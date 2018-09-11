@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Collection;
 use app\User;
 use App\EmailTemplate;
 use Config;
+use Auth;
 
 use App\Notifications\ActivationRemainder;
 
@@ -38,14 +39,14 @@ class MemberController extends Controller
     public function memberActivations()
     {    	
     	$data['users'] = DB::table("users")
-                            ->join("categories",'categories.id','users.category')
-                            ->join("sub_categories",'sub_categories.id','users.sub_category')
-                            ->join("experiences",'experiences.id','users.experience')
-                            ->join("countries",'countries.id','users.country')
-                            ->join("states",'states.id','users.state')
-                            ->join("cities",'cities.id','users.city')
+                            ->leftjoin("categories",'categories.id','users.category')
+                            ->leftjoin("sub_categories",'sub_categories.id','users.sub_category')
+                            ->leftjoin("experiences",'experiences.id','users.experience')
+                            ->leftjoin("countries",'countries.id','users.country')
+                            ->leftjoin("states",'states.id','users.state')
+                            ->leftjoin("cities",'cities.id','users.city')
                             //->where(['active'=>1,'deleted_at'=>null])
-                            ->where(['deleted_at'=>null])
+                            ->where(['deleted_at'null])
                             ->where(['user_type'=>3])
                             ->select('users.id as user_id','users.*','categories.cat_name','sub_categories.sub_cat_name','experiences.*','countries.*','states.*','cities.*')
                             ->get();
@@ -55,13 +56,13 @@ class MemberController extends Controller
     public function memberProfiles()
     {       
         $data['users'] = DB::table("users")
-                            ->join("categories",'categories.id','users.category')
-                            ->join("sub_categories",'sub_categories.id','users.sub_category')
-                            ->join("experiences",'experiences.id','users.experience')
-                            ->join("qualifications",'qualifications.id','users.qualification')
-                            ->join("countries",'countries.id','users.country')
-                            ->join("states",'states.id','users.state')
-                            ->join("cities",'cities.id','users.city')
+                            ->leftjoin("categories",'categories.id','users.category')
+                            ->leftjoin("sub_categories",'sub_categories.id','users.sub_category')
+                            ->leftjoin("experiences",'experiences.id','users.experience')
+                            ->leftjoin("qualifications",'qualifications.id','users.qualification')
+                            ->leftjoin("countries",'countries.id','users.country')
+                            ->leftjoin("states",'states.id','users.state')
+                            ->leftjoin("cities",'cities.id','users.city')
                             //->where(['active'=>1,'deleted_at'=>null])
                             ->where(['deleted_at'=>null])
                             ->where(['user_type'=>3])
@@ -73,13 +74,13 @@ class MemberController extends Controller
     public function memberPurchases()
     {       
         $data['users'] = DB::table("users")
-                            ->join("categories",'categories.id','users.category')
-                            ->join("sub_categories",'sub_categories.id','users.sub_category')
-                            ->join("experiences",'experiences.id','users.experience')
-                            ->join("qualifications",'qualifications.id','users.qualification')
-                            ->join("countries",'countries.id','users.country')
-                            ->join("states",'states.id','users.state')
-                            ->join("cities",'cities.id','users.city')
+                            ->leftjoin("categories",'categories.id','users.category')
+                            ->leftjoin("sub_categories",'sub_categories.id','users.sub_category')
+                            ->leftjoin("experiences",'experiences.id','users.experience')
+                            ->leftjoin("qualifications",'qualifications.id','users.qualification')
+                            ->leftjoin("countries",'countries.id','users.country')
+                            ->leftjoin("states",'states.id','users.state')
+                            ->leftjoin("cities",'cities.id','users.city')
                             //->where(['active'=>1,'deleted_at'=>null])
                             ->where(['deleted_at'=>null])
                             ->where(['user_type'=>3])
@@ -92,8 +93,8 @@ class MemberController extends Controller
     public function user_transactions($id)
     {       
         $data['users'] = DB::table('transactions')
-                            ->join('users','users.id','transactions.user_id')
-                            ->join('subscriptions','subscriptions.id','transactions.subscription_id')
+                            ->leftjoin('users','users.id','transactions.user_id')
+                            ->leftjoin('subscriptions','subscriptions.id','transactions.subscription_id')
                             ->where('transactions.user_id','=',$id)
                             ->select('transactions.price as tprice','transactions.credits as tcredits','transactions.discount as tdiscount','transactions.validity as tvalidity','transactions.status as tstatus','transactions.*','subscriptions.*')
                             ->get();
@@ -103,13 +104,13 @@ class MemberController extends Controller
 
     public function activate_member($id)
     {    
-        //$user = DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
-        $user = User::where('activation_token', $token)->first();
-        $user->active = 1;
-        $user->save();
-
-        $email_template = EmailTemplate::where('id',Config::get('constants.ACTIVATION_RAMAINDER'))->first();
-        $user->notify(new ActivaionRemainder($email_template));
+        $user = DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
+        //$user = Auth::user();
+        //$user->active = 1; 
+        //$user->save();
+//dd($user);
+        //$email_template = EmailTemplate::where('id',Config::get('constants.ACTIVATION_RAMAINDER'))->first();
+        //$user->notify(new ActivaionRemainder($email_template));
         return redirect('admin/member_activations');
     }
 
@@ -134,20 +135,20 @@ class MemberController extends Controller
     public function profile_view($id)         
     {    
         $data['users'] = DB::table("users")
-                        ->join("user_types",'user_types.id','users.user_type')
-                        ->join("categories",'categories.id','users.category')
-                        ->join("sub_categories",'sub_categories.id','users.sub_category')
-                        ->join("experiences",'experiences.id','users.experience')
-                        ->join("qualifications",'qualifications.id','users.qualification')
-                        ->join("occupations",'occupations.id','users.occupation')
-                        ->join("religions",'religions.id','users.religion')
-                        ->join("countries",'countries.id','users.country')
-                        ->join("languages",'languages.id','users.mother_tongue')
-                        ->join("investment_range",'investment_range.id','users.investment_range')
-                        ->join("investment_types",'investment_types.id','users.investment_type')
-                        ->join("relationship_statusses",'relationship_statusses.id','users.relationship_status')
-                        ->join("states",'states.id','users.state')
-                        ->join("cities",'cities.id','users.city')
+                        ->leftjoin("user_types",'user_types.id','users.user_type')
+                        ->leftjoin("categories",'categories.id','users.category')
+                        ->leftjoin("sub_categories",'sub_categories.id','users.sub_category')
+                        ->leftjoin("experiences",'experiences.id','users.experience')
+                        ->leftjoin("qualifications",'qualifications.id','users.qualification')
+                        ->leftjoin("occupations",'occupations.id','users.occupation')
+                        ->leftjoin("religions",'religions.id','users.religion')
+                        ->leftjoin("countries",'countries.id','users.country')
+                        ->leftjoin("languages",'languages.id','users.mother_tongue')
+                        ->leftjoin("investment_range",'investment_range.id','users.investment_range')
+                        ->leftjoin("investment_types",'investment_types.id','users.investment_type')
+                        ->leftjoin("relationship_statusses",'relationship_statusses.id','users.relationship_status')
+                        ->leftjoin("states",'states.id','users.state')
+                        ->leftjoin("cities",'cities.id','users.city')
                         ->where(['users.id'=>$id])
                         ->select('users.id as user_id','users.user_type as userType','users.*','categories.cat_name','sub_categories.sub_cat_name','experiences.*','countries.*','states.*','cities.*','qualifications.*','occupations.*','religions.*','languages.*','investment_range.*','investment_types.*','relationship_statusses.*','user_types.*')
                         ->first();
@@ -158,20 +159,20 @@ class MemberController extends Controller
     public function edit_member($id)
     {    
         $data['users'] = DB::table("users")
-                        ->join("user_types",'user_types.id','users.user_type')
-                        ->join("categories",'categories.id','users.category')
-                        ->join("sub_categories",'sub_categories.id','users.sub_category')
-                        ->join("experiences",'experiences.id','users.experience')
-                        ->join("qualifications",'qualifications.id','users.qualification')
-                        ->join("occupations",'occupations.id','users.occupation')
-                        ->join("religions",'religions.id','users.religion')
-                        ->join("countries",'countries.id','users.country')
-                        ->join("languages",'languages.id','users.mother_tongue')
-                        ->join("investment_range",'investment_range.id','users.investment_range')
-                        ->join("investment_types",'investment_types.id','users.investment_type')
-                        ->join("relationship_statusses",'relationship_statusses.id','users.relationship_status')
-                        ->join("states",'states.id','users.state')
-                        ->join("cities",'cities.id','users.city')
+                        ->leftjoin("user_types",'user_types.id','users.user_type')
+                        ->leftjoin("categories",'categories.id','users.category')
+                        ->leftjoin("sub_categories",'sub_categories.id','users.sub_category')
+                        ->leftjoin("experiences",'experiences.id','users.experience')
+                        ->leftjoin("qualifications",'qualifications.id','users.qualification')
+                        ->leftjoin("occupations",'occupations.id','users.occupation')
+                        ->leftjoin("religions",'religions.id','users.religion')
+                        ->leftjoin("countries",'countries.id','users.country')
+                        ->leftjoin("languages",'languages.id','users.mother_tongue')
+                        ->leftjoin("investment_range",'investment_range.id','users.investment_range')
+                        ->leftjoin("investment_types",'investment_types.id','users.investment_type')
+                        ->leftjoin("relationship_statusses",'relationship_statusses.id','users.relationship_status')
+                        ->leftjoin("states",'states.id','users.state')
+                        ->leftjoin("cities",'cities.id','users.city')
                         ->where(['users.id'=>$id])
                         ->select('users.id as user_id','users.user_type as userType','users.*','categories.cat_name','sub_categories.sub_cat_name','experiences.*','countries.*','states.*','cities.*','qualifications.*','occupations.*','religions.*','languages.*','investment_range.*','investment_types.*','relationship_statusses.*','user_types.*')
                         ->first();

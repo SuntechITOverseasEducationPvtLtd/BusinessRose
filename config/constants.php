@@ -22,6 +22,9 @@ return [
     'FORGOT_PASSWORD' => '4',
     'EMAIL_VERIFICATION' => '5',
     'WELCOME_EMAIL' => '6',
+    'VIEW_SETTINGS' => '7',
+    'SHORTLIST_SETTINGS' => '8',
+    'INVITAION_SETTINGS' => '9',
 
     'API_URL' => 'http://www.businessrose.com/live/spa/'
 ];

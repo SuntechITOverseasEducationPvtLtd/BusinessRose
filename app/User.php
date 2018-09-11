@@ -89,6 +89,7 @@ class User extends Authenticatable
 		}
 		
 		$obj->where('users.id', '!=', Auth::user()->id);
+		$obj->where('users.profile_status', '==', 1); // added by sandeep 
 		$obj->groupBy('users.id');
 		
 		$obj->select('cat.cat_name','ut.user_type', 'users.sub_category', 'users.co_investment', 'exp.experience','inv_range.range', 'inv_type.investment_type', 'users.name', 'users.gender', 'rs.relation', 'city.city_name', 'state.state_name', 'rg.religion', 'mt.language as mother_tongue', 'qa.qualification', 'users.description_you_family as about_me', 'users.description_of_sales', 'users.description_of_profound_value', 'users.description_relocation_preferance', 'users.date_of_birth', 'users.user_type as user_type_id', 'description_place_business', DB::raw('TO_BASE64(users.id) as user_id'));

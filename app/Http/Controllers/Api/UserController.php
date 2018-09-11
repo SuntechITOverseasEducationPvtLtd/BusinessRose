@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Api;
 
-
+ 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\EmailTemplate;
@@ -61,9 +61,12 @@ class UserController extends Controller
                 'message' => 'This activation token is invalid.'
             ], 404);
         }
-        $user->active = true;
+        $user->active = 0;
+        $user->email_verified = 1;
         $user->activation_token = '';
         $user->save();
+
+        //welcome email template and send
         return $user;
     }
 

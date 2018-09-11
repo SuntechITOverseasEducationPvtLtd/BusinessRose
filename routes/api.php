@@ -36,6 +36,11 @@ Route::group(['middleware' => 'auth:api', 'namespace'=>"Api"], function(){
 	Route::any('all-subscriptions', 'HomeController@allSubscriptions');
 	Route::any('delete-profile', 'HomeController@deleteProfile');
 	Route::any('hide-profile', 'HomeController@hideProfile');
+	Route::any('user-views-settings', 'HomeController@user_views_settings');
+	Route::any('shortlist-settings', 'HomeController@shortlist_settings');
+	Route::any('invitation-to-connect-settings', 'HomeController@invitation_to_connect_settings');
+	Route::any('get-state-list', 'HomeController@getStateList');
+	Route::any('get-city-list', 'HomeController@getCityList');
 
 	Route::any('change-password', 'UserController@changePassword');
 	Route::any('forgot-password', 'UserController@forgotPassword');

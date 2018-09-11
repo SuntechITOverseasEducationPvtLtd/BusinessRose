@@ -11,7 +11,7 @@ use App\Experience;
 use App\User;
 use App\Transaction;
 use App\Subscription;
-use App\Connection;
+use App\Connection; 
 use App\Shortlist;
 use App\Invitation;
 use App\State;
@@ -22,6 +22,11 @@ use App\RelationshipStatus;
 use Input;
 use DB;
 use Auth;
+use App\Notifications\ViewsSettings;
+use App\Notifications\ShortlistSettings;
+use App\Notifications\InvitationSettings;
+use App\EmailTemplate;
+use Config;
 
 class HomeController extends Controller
 {
@@ -188,15 +193,81 @@ class HomeController extends Controller
 	}
 
 	public function deleteProfile(){	
-		$date = date('Y-m-d H:i:s');		
-		$data = User::where('id','=',Auth::user()->id)->update(['deleted_at' => $date]); 
+		$date = date('Y-m-d H:i:s');
+		$user = Auth::user();
+		$user->deleted_at =  $date;	
+		$data = $user->save();	
+		//profile deleted email and send
+		//$data = User::where('id','=',Auth::user()->id)->update(['deleted_at' => $date]); 
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 
-	public function hideProfile(){			
-		$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
+	public function hideProfile(){	
+		$user = Auth::user();
+		$user->profile_status = 1;	
+		$data = $user->save();
+		//profile hidden email template and send			
+		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
+
+	public function user_views_settings(Request $request){	 
+		$user = Auth::user();
+		$user->views_alert = $request->status_flag;	
+		$data = $user->save();
+		$email_template = EmailTemplate::where('id',Config::get('constants.VIEW_SETTINGS'))->first();
+		$email_template->flag = $request->status_flag;
+		$user->notify(new ViewsSettings($email_template));
+		//user view settings email template and send			
+		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+	public function shortlist_settings(Request $request){	 
+		$user = Auth::user();
+		$user->shortlist_alert = $request->status_flag;	
+		$data = $user->save();
+		$email_template = EmailTemplate::where('id',Config::get('constants.SHORTLIST_SETTINGS'))->first();
+		$email_template->flag = $request->status_flag;
+		$user->notify(new ShortlistSettings($email_template));
+		//user shortlist settings email template and send			
+		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+	public function invitation_to_connect_settings(Request $request){	 
+		$user = Auth::user();
+		$user->invitations_alert = $request->status_flag;	
+		$data = $user->save();
+		$email_template = EmailTemplate::where('id',Config::get('constants.INVITAION_SETTINGS'))->first();
+		$email_template->flag = $request->status_flag;
+		$user->notify(new InvitationSettings($email_template));
+		//user shortlist settings email template and send			
+		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+
+	public function getStateList(Request $request)
+    { 
+        $states = DB::table("states")
+                    ->where("country_id",$request->country_id)
+                    ->pluck("state_name","id");
+        return response()->json(['success'=>true,'data'=>$states], $this->successStatus);
+    }
+
+    public function getCityList(Request $request)
+    { 
+        $cities = DB::table("cities")
+                    ->where("state_id",$request->state_id)
+                    ->pluck("city_name","id");
+        return response()->json(['success'=>true,'data'=>$cities], $this->successStatus);
+    }
+
+
+	
+
+
+
 
 
 }

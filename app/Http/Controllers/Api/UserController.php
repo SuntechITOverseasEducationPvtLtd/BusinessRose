@@ -98,17 +98,18 @@ class UserController extends Controller
         $input['views'] = 0;
         $input['linked_in_url'] = '';        
         $input['is_accept_terms'] = 1;
+        $filename = '';
         
         $user = User::create($input);
 
-        if ($input['profile_pic']!="") {  
+        if (isset($input['profile_pic'])) {  
             $image = $input['profile_pic'];
             $filename = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/images/users/'.$user->id.'/');
             $image->move($destinationPath, $filename);
         }
 
-        $input['profile_pic'] = ($input['profile_pic']!="")?$filename:'';
+        $input['profile_pic'] = $filename;
 
         $user->update(['profile_pic' => $filename]);
         //print_r($user); die;

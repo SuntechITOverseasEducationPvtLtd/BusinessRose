@@ -46,7 +46,7 @@ class MemberController extends Controller
                             ->leftjoin("states",'states.id','users.state')
                             ->leftjoin("cities",'cities.id','users.city')
                             //->where(['active'=>1,'deleted_at'=>null])
-                            ->where(['deleted_at'null])
+                            ->where(['deleted_at'=>null])
                             ->where(['user_type'=>3])
                             ->select('users.id as user_id','users.*','categories.cat_name','sub_categories.sub_cat_name','experiences.*','countries.*','states.*','cities.*')
                             ->get();

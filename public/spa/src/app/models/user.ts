@@ -17,7 +17,7 @@ export class User {
     experience: number;
     relationship_status: number;
     category: number;
-    sub_category: number;
+    sub_category: string;
     religion: number;
     mother_tongue: number;
     known_languages: string;
@@ -35,4 +35,5 @@ export class User {
     description_place_business: string;
     description_relocation_preferance: string;
     views: string;
+	cat_name: string;
 }

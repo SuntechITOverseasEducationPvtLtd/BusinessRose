@@ -1,45 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Aug 11, 2018 at 05:49 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.1.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `businessrose`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `countries`
---
-
-CREATE TABLE `countries` (
-  `id` int(11) NOT NULL,
-  `country_code` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phonecode` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country_name` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `countries`
---
 
 INSERT INTO `countries` (`id`, `country_code`, `phonecode`, `country_name`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
 (1, 'AF', '93', 'Afghanistan', 1, 0, NULL, NULL),

@@ -19,7 +19,7 @@ declare var $: any;
 export class DashboardComponent implements OnInit {
 
 	@Input() users: Array<User>=[];	
-	filters = [];
+	filters = {};
 	coinvestmentIds = [];
 	public sidebarFilters: FormGroup;
 	coinvestment = [{ id: '', name: 'Any' },{ id: 1, name: 'Yes' },{ id: 2, name: 'No' }];
@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
 	getAllFilters():void {
 		$("#loadingModalCenter").modal({backdrop: 'static', keyboard: false, show:true});
 		this.userService.getAllFilters().subscribe(filters => {
-			console.log(filters['data']);
+			//console.log(filters['data']);
 			this.filters = filters['data'];
 		},
 		error => {

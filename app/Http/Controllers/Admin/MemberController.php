@@ -103,11 +103,10 @@ class MemberController extends Controller
 
     public function activate_member($id)
     {    
-        $user = DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
-
-        //$user = User::where('activation_token', $token)->first();
-        //$user->active = 1;
-
+        //$user = DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
+        $user = User::where('activation_token', $token)->first();
+        $user->active = 1;
+        $user->save();
 
         $email_template = EmailTemplate::where('id',Config::get('constants.ACTIVATION_RAMAINDER'))->first();
         $user->notify(new ActivaionRemainder($email_template));

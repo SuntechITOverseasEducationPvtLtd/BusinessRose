@@ -11,7 +11,6 @@ use Validator;
 use App\Notifications\SignupActivate;
 use App\Notifications\ForgotPasswordLink;
 use App\Notifications\WelcomeEmail;
-use App\EmailTemplate;
 use Config;
 //use Carbon\Carbon; 
 

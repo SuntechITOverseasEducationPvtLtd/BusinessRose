@@ -11,11 +11,8 @@ declare var $: any;
 
 @Injectable()
 export class UserService {
-	httpOptions = '';
     constructor(private http: HttpClient, private global:GlobalService) {
-		this.httpOptions = {
-		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
-		};
+
 	}
 	
 	private registerUrl = this.global.registerUrl;
@@ -29,26 +26,38 @@ export class UserService {
 	private getAllFiltersUrl = this.global.getAllFiltersUrl;
 	private purchaseHistoryUrl = this.global.purchaseHistoryUrl;
 	private currentEncUserId = btoa(localStorage.getItem('currentUserId')); 	
-	publicIP : string;	
+	publicIP : string;
 	
 
     getAll() {
-        return this.http.get<User[]>(this.getAllUsersUrl, this.httpOptions);
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+        return this.http.get<User[]>(this.getAllUsersUrl, httpOptions);
     }
 	
 	getAllFilters() {
-        return this.http.get<Filters[]>(this.getAllFiltersUrl, this.httpOptions);
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+        return this.http.get<Filters[]>(this.getAllFiltersUrl, httpOptions);
     }
 	
 	getAllUsersByFilters(filters) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
 		let body = new HttpParams({
 			  fromObject : filters
 			});
-        return this.http.post<User[]>(this.getAllUsersUrl, body, this.httpOptions);
+        return this.http.post<User[]>(this.getAllUsersUrl, body, httpOptions);
     }
 
     getById(id: String): Observable<User> {
-		return this.http.get<User>(this.detailsUrl + this.currentEncUserId + '/' + id, this.httpOptions).pipe(
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		return this.http.get<User>(this.detailsUrl + this.currentEncUserId + '/' + id, httpOptions).pipe(
 			  tap(_ => console.log(`fetched user id=${id}`)),
 			  catchError(this.handleError<User>(`getById id=${id}`))
 			);
@@ -75,6 +84,9 @@ export class UserService {
     }
 	
 	connectNow(connected_to) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
 		let body = new HttpParams({
 			  fromObject : {
 				'connected_to' : connected_to,
@@ -82,10 +94,13 @@ export class UserService {
 				'ip_address' : localStorage.getItem('ipAddress')
 			  }
 			});
-		return this.http.post(this.connectionUrl, body, this.httpOptions);
+		return this.http.post(this.connectionUrl, body, httpOptions);
     }
 	
 	shortlistNow(shortlist_to) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
 		let body = new HttpParams({
 			  fromObject : {
 				'shortlist_to' : shortlist_to,
@@ -93,10 +108,13 @@ export class UserService {
 				'ip_address' : localStorage.getItem('ipAddress')
 			  }
 			});
-		return this.http.post(this.shortlistUrl, body, this.httpOptions);
+		return this.http.post(this.shortlistUrl, body, httpOptions);
     }
 	
 	inviteNow(invited_to) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
 		let body = new HttpParams({
 			  fromObject : {
 				'invited_to' : invited_to,
@@ -104,25 +122,34 @@ export class UserService {
 				'ip_address' : localStorage.getItem('ipAddress')
 			  }
 			});
-		return this.http.post(this.invitationUrl, body, this.httpOptions);
+		return this.http.post(this.invitationUrl, body, httpOptions);
     }
 	
 	shortlists(): Observable<User> {
-		return this.http.get<User>(this.myShortlistsUrl, this.httpOptions).pipe(
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		return this.http.get<User>(this.myShortlistsUrl, httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));
     }
 	
 	invitations(type : String): Observable<User> {
-		return this.http.get<User>(this.myInvitationsUrl + type, this.httpOptions).pipe(
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		return this.http.get<User>(this.myInvitationsUrl + type, httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));
     }
 	
 	purchaseHistory(): Observable<User> {
-		return this.http.get<User>(this.purchaseHistoryUrl, this.httpOptions).pipe(
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		return this.http.get<User>(this.purchaseHistoryUrl, httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));

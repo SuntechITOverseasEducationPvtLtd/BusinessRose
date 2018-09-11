@@ -169,7 +169,7 @@ export class RegistrationComponent implements OnInit {
           }
         }
 	
-	private changeUserType(user_type) {
+	changeUserType(user_type) {
 		this.registerUserType = user_type.target.value;
     }
 	getAllFilters():void {

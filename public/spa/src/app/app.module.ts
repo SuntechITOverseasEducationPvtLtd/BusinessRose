@@ -20,6 +20,8 @@ import { InvitationsComponent } from './invitations';
 import { AccountSettingsComponent } from './account-settings';
 import { PurchaseHistoryComponent } from './purchase-history';
 
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { PurchaseHistoryComponent } from './purchase-history';
   UserService,
   GlobalService,
   AuthGuard,
-  AlertService
+  AlertService,
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

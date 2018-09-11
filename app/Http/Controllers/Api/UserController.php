@@ -11,7 +11,7 @@ use Validator;
 use App\Notifications\SignupActivate;
 use App\Notifications\ForgotPasswordLink;
 use Config;
-//use Carbon\Carbon;
+//use Carbon\Carbon; 
 
 
 class UserController extends Controller
@@ -65,7 +65,7 @@ class UserController extends Controller
         $user->email_verified = 1;
         $user->activation_token = '';
         $user->save();
-
+        $user->notify(new WelcomeEmail($user));
         //welcome email template and send
         return $user;
     }

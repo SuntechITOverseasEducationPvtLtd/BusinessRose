@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ViewsSettings extends Notification
+class WelcomeEmail extends Notification
 {
     use Queueable;
 
@@ -41,10 +41,9 @@ class ViewsSettings extends Notification
     public function toMail($notifiable)
     {   //create and send forgot password token here
 		//$url = url('/live/spa/forgot-password/'.$notifiable->token);
-         $status = ($notifiable->flag==1)?'Activated':'Unsubscribed';
-		return (new MailMessage)
+        return (new MailMessage)
 			->subject($notifiable->subject)
-			->line('View Alerts hasbeen '.$status)
+			->line('Welcome to Business Rose. Your account will be activated within 48 hours.')
 			->line('Thank you for using BusinessRose!');
     }
 

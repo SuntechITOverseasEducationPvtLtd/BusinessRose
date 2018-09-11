@@ -8,7 +8,7 @@ use App\Category;
 use App\SubCategory;
 use App\Qualification;
 use App\Experience;
-use App\User;
+use App\User; 
 use App\Transaction;
 use App\Subscription;
 use App\Connection; 

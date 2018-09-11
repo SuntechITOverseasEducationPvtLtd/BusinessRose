@@ -99,7 +99,8 @@ class MemberController extends Controller
 
     public function activate_member($id)
     {    
-        DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
+        $user = DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
+        $user->notify(new ActivaionRemainder($user));
         return redirect('admin/member_activations');
     }
 

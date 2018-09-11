@@ -62,7 +62,7 @@ class UserController extends Controller
             ], 404);
         }
         $user->active = 0;
-        $user->email_verified = 1;
+        $user->is_email_verified = 1;
         $user->activation_token = '';
         $user->save();
         $user->notify(new WelcomeEmail($user));

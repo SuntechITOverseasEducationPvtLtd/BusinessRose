@@ -25,6 +25,8 @@ return [
     'VIEW_SETTINGS' => '7',
     'SHORTLIST_SETTINGS' => '8',
     'INVITAION_SETTINGS' => '9',
+    'WELCOME_EMAIL' => '10',
+    'ACTIVATION_RAMAINDER' => '11',
 
     'API_URL' => 'http://www.businessrose.com/live/spa/'
 ];

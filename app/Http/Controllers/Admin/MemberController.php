@@ -22,6 +22,10 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use app\User;
+use App\EmailTemplate;
+use Config;
+
+use App\Notifications\ActivationRemainder;
 
 class MemberController extends Controller
 {
@@ -100,7 +104,13 @@ class MemberController extends Controller
     public function activate_member($id)
     {    
         $user = DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
-        $user->notify(new ActivaionRemainder($user));
+
+        //$user = User::where('activation_token', $token)->first();
+        //$user->active = 1;
+
+
+        $email_template = EmailTemplate::where('id',Config::get('constants.ACTIVATION_RAMAINDER'))->first();
+        $user->notify(new ActivaionRemainder($email_template));
         return redirect('admin/member_activations');
     }
 

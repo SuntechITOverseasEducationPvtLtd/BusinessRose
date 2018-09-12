@@ -89,6 +89,7 @@ class User extends Authenticatable
 		}
 		
 		$obj->where('users.id', '!=', Auth::user()->id);
+		$obj->where('users.user_type', '!=', 1);
 		$obj->where('users.profile_status', '==', 1); // added by sandeep 
 		$obj->groupBy('users.id');
 		

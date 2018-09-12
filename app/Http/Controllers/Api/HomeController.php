@@ -38,12 +38,12 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function filters(){ 
-        $data['categories'] = Category::limit(10)->pluck('cat_name','id');
+        $data['categories'] = Category::pluck('cat_name','id');
 		$data['sub_categories'] = SubCategory::pluck('sub_cat_name','id');
-		$data['states'] = State::where('country_id',101)->limit(10)->pluck('state_name','id');
-		$data['qualifications'] = Qualification::limit(10)->pluck('qualification','id');
-		$data['experiences'] = Experience::limit(10)->pluck('experience','id');
-		$data['religions'] = Religion::limit(10)->pluck('religion','id');
+		$data['states'] = State::where('country_id',101)->pluck('state_name','id');
+		$data['qualifications'] = Qualification::pluck('qualification','id');
+		$data['experiences'] = Experience::pluck('experience','id');
+		$data['religions'] = Religion::pluck('religion','id');
 		$data['investmentRange'] = InvestmentRange::pluck('range','id');
 		$data['motherTounges'] = Language::pluck('language','id');
 		$data['relationshipStatuses'] = RelationshipStatus::pluck('relation','id');

@@ -20,6 +20,8 @@ export class DetailsComponent implements OnInit {
 	
 	private user_id = this.route.snapshot.paramMap.get('id');
 	private is_auth_user = false;
+	filters = {};
+	submittedinv= false;
 	
 	userForm: FormGroup;
 	get authUserProfile() { return this.is_auth_user; }
@@ -34,19 +36,56 @@ export class DetailsComponent implements OnInit {
 		{
 			this.is_auth_user = true;
 		}
+		this.getAllFilters();
 		this.getUserDetails();	
 		this.userForm = this.formBuilder.group({
-			category: ['', Validators.required],
+			gender: ['', Validators.required],
+            date_of_birth: ['', Validators.required],
+            mobile: ['', Validators.required],
+            whatsup_number: ['', Validators.required],
+            country: ['', Validators.required],
+            state: ['', Validators.required],
+            city: ['', Validators.required],
+			co_investment: ['', Validators.required],
+            qualification: ['', Validators.required],
+            occupation: ['', Validators.required],
+            experience: ['', Validators.required],
+            category: ['', Validators.required],
             sub_category: ['', Validators.required],
-			experience: ['', Validators.required],
             investment_range: ['', Validators.required],
             investment_type: ['', Validators.required],
-            co_investment: ['', Validators.required]          
+			is_accept_terms: ['', Validators.required],
+			relationship_status: ['', Validators.required],
+            religion: ['', Validators.required],
+            mother_tongue: ['', Validators.required],
+            known_languages: ['', Validators.required],
+			description_of_skills_experience: ['', Validators.required],
+			description_place_business: ['', Validators.required],
+			description_you_family: ['', Validators.required],          
 		});
     }
+	get inv() { return this.userForm.controls; }
+	
+	userFormSubmit() {
+		this.submittedinv = true;
+	    if (this.userForm.invalid) {
+            return;
+        }
+		
+	}
+	
+	getAllFilters():void {
+		$("#loadingModalCenter").modal({backdrop: 'static', keyboard: false, show:true});		
+		this.userService.getAllFilters().subscribe(filters => {
+			//console.log(filters['data']);
+			this.filters = filters['data'];
+		},
+		error => {
+			$("#loadingModalCenter").modal("hide");
+		});		
+	}
 	
 	getUserDetails():void {
-		$("#loadingModalCenter").modal({backdrop: 'static', keyboard: false, show:true});
 		this.userService.getById(this.user_id).subscribe(user => {
                     this.user = user['data'];
 					//$("#loadingModalCenter").modal({show:'false'});

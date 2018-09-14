@@ -28,7 +28,7 @@
 
            <div class="col-lg-9">
              
-                <div class="main-box" *ngIf="user?.length > 0">                  
+                <div class="main-box">                  
 <div class="row">
 				<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter2">
                     <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
@@ -582,646 +582,446 @@
         </div>
         <div class="modal-body modal-body1">
              
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-     
-     
-     
-     <div class="form-fields-wrapper">
-<ul class="form-fields">
-
- 
-
-<li class="columns-2 " >
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container "  >
- 
-
-
- <div class="radio width30"  >
-<label>DOB </label>
-</div>
- 
-
-                             
- <div class="radio" style="width: 68%;   float: left;">
-                                                <input class="select2-focusser" type="date"   name="" value="" placeholder="DOM">
-
-                                              </div>
-
-</div>
- 
- 
-</div>
-</div>
- 
-</div>
-
-
-
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container"  >
- 
-
-
- <div class="radio width33 padding-l-5" >
-<label>Gender</label> 
-</div>
- <div class="radio width33"  >
-                                                  <label class="ubuntuRegText">
-                                                    <input type="radio" name="gender"   value="Male" checked="checked" class="allsiteadd">
-                                                    <span class="inner"></span>
-                                          Male
-                                                  </label>
-                                              </div>
-
-                             
- <div class="radio width33"  >
-                                                  <label class="ubuntuRegText">
-                                                    <input type="radio" name="gender"  value="Female"   class="allsiteadd">
-                                                    <span class="inner"></span>
-                                               Female
-                                                  </label>
-                                              </div>
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-
-
-
-
-</li>
-
-
-
-<li class="columns-2 " >
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container"  >
- 
-
-
- <div class="radio   width30"  >
-<label>Phone</label>
-</div>
- <div class="radio" style="width: 18%;   float: left;">
-                                                <input class="select2-focusser" type="text"   name="" value="+91" >
-
-                                              </div>
-
-                             
- <div class="radio" style="width: 50%;   float: left;">
-                                                 <input class="select2-focusser" type="text"   name="" value="" placeholder="9878987898" >
-
-                                              </div>
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container"  >
- 
-
-
- <div class="radio padding-l-5 width30"  >
-<label>Whatsapp</label>
-</div>
- <div class="radio" style="width: 18%;   float: left;">
-                                                <input class="select2-focusser" type="text"   name="" value="+91" >
-
-                                              </div>
-
-                             
- <div class="radio" style="width: 50%;   float: left;">
-                                                 <input class="select2-focusser" type="text"   name="" value="" placeholder="9878987898" >
-
-                                              </div>
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-
-
-
- 
-
-
-
- 
-
- 
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">Qualification </label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
-<option>Doctorate</option>
-      
-<option>IIT / IIM</option>
-      
-<option>Honors Degree</option>
-
-      
-<option>Honors Degree</option>
-      
-<option>Diploma</option>
-
-<option>High School</option>
-<option>Less than High School</option>
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
- 
-
-
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">Religion </label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
-<option>Hinduism</option>
-      
-<option>Islam</option>
-      
-<option>Christianity</option>
-
-      
-<option>Buddhism</option>
-      
-<option>Sikhism</option>
-
-<option>Jainism</option>
-<option>Others</option>
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">Mother Tongue </label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
-<option>Assamese</option>
-<option>Bengali</option>
-<option>English</option>
-<option>Gujarati</option>
-<option>Hindi</option>
-<option>Kannada</option>
-<option>Konkani</option>
-<option>Malayalam</option>
-<option>Marathi</option>
-<option>Marwari</option>
-<option>Odia</option>
-<option>Punjabi</option>
-<option>Sindhi</option>
-<option>Tamil</option>
-<option>Telugu</option>
-<option>Urdu</option>
-      
- 
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-
-
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">Language Know </label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
-<option>Assamese</option>
-<option>Bengali</option>
-<option>English</option>
-<option>Gujarati</option>
-<option>Hindi</option>
-<option>Kannada</option>
-<option>Konkani</option>
-<option>Malayalam</option>
-<option>Marathi</option>
-<option>Marwari</option>
-<option>Odia</option>
-<option>Punjabi</option>
-<option>Sindhi</option>
-<option>Tamil</option>
-<option>Telugu</option>
-<option>Urdu</option>
-      
- 
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">Country Living In </label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
-<option>India</option>
-<option>Usa</option>
- 
-      
- 
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">State Living In</label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
- 
-<option>Andhra Pradesh</option>
-<option>Andaman & Nicobar</option>
-<option>Arunachal Pradesh</option>
-<option>Assam</option>
-<option>Bihar</option>
-<option>Chattisgarh</option>
-<option>Chandigarh </option>
-<option>Delhi-NCR</option>
-<option>Goa</option>
-<option>Gujarat</option>
-<option>Haryana</option>
-<option>Himachal Pradesh  </option>
-<option>Jammu Kashmir</option>
-<option>Jharkhand</option>
-<option>Karnataka</option>
-<option>Kerala</option>
-<option>Lakshadweep</option>
-<option>Madhya Pradesh</option>
-<option>Maharashtra</option>
-<option>Manipur</option>
-<option>Meghalaya</option>
-<option>Mizoram</option>
-<option>Nagaland</option>
-<option>Orrissa</option>
-<option>Pondicherry</option>
-<option>Punjab</option>
-<option>Rajasthan</option>
-<option>Sikkim</option>
-<option>Tamilnadu</option>
-<option>Telangana</option>
-<option>Tripura</option>
-<option>Uttar Pradesh</option> 
-<option>Uttaranchal</option>
-<option>West Bengal</option>
- 
- 
-      
- 
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-
-
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">City Living In</label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
- 
-<option>Hyderabad</option>
- 
-      
- 
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-
-
-<li class="columns-2 "  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">Relationship Status</label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <select class="select2-focusser"    name="" >
-      
- 
-<option>Single</option>
-<option>In a relationship</option>
-<option>Engaged</option>
-<option>Married</option>
-<option>Seperated</option>
-<option>Divorced</option>
-<option>Widowed</option>
-<option>Dont want to specify</option>
-
- 
-      
- 
-
-    </select> 
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
- 
- 
-
-
-
-
-
-<li class="columns-2" style="padding-top: 28px"  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">Linkedin URL</label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <input class="select2-focusser" type="text"   name="" value="">
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-<li class="columns-2" style="padding-top: 28px"  >
-<div class="field-label-wrapper">
-<div class="field-label">
-<div class="bold-label">
-<label id="field_label_id_type" for="id_type">FaceBook URL</label>
-</div>
- 
-</div>
-</div>
-<div class="form-field-wrapper">
-<div class="form-field ">
-<div class="businessrole-input-group ">
-<div class="select2-container" >
- 
-
-
-    <input class="select2-focusser" type="text"   name="" value="">
-
-</div> 
- 
-</div>
-</div>
- 
-</div>
-</li>
-
-
-
- 
-
-
-
- 
-
-
-
-
-
- 
-</ul>
- 
-
- 
-</div>
-
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div class="col-lg-12 text-center"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                   
-                
-                </div>
-            </form>          
+            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form"  (ngSubmit)="userFormSubmit()">
+                <div class="row">            
+     			<div class="form-fields-wrapper">
+				<ul class="form-fields">
+
+					<li class="columns-2 " >
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+							<div class="select2-container"  >
+								<div class="radio width33 padding-l-5">
+									<label>Gender</label> 
+								</div>
+								<div class="radio width33">
+									<label class="ubuntuRegText">
+									<input type="radio" formControlName="gender" id="sp_gender_male" value="1" [checked]="(user?.gender == 1) ? true : false" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
+									<span class="inner"></span>
+									Male
+									</label>
+								</div>                             
+								<div class="radio width33">
+									<label class="ubuntuRegText">
+									<input type="radio" formControlName="gender" id="sp_gender_female" [checked]="(user?.gender == 2) ? true : false"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
+									<span class="inner"></span>
+									Female
+									<div *ngIf="submittedinv && inv.gender.errors" class="invalid-feedback">
+										<div *ngIf="inv.gender.errors.required">Gender is required</div>
+									</div>
+									</label>									
+								</div>							
+							</div>						 
+						</div>
+						</div> 
+						</div>
+					</li>
+
+					<li class="columns-2 " >
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container">
+							<div class="radio width30">
+								<label>Phone No. </label>
+							</div>
+							<div class="radio" style="width: 18%;   float: left;">
+								<input class="select2-focusser" type="text"   name="" value="+91" readonly>
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<input class="form-control select2-focusser" type="text" formControlName="mobile" value="{{user?.mobile}}" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedinv && inv.mobile.errors }" [pattern]="mobnumPattern">
+								<div *ngIf="submittedinv && inv.mobile.errors" class="invalid-feedback">
+									<div *ngIf="inv.mobile.errors.required">Phone Number is required</div>
+								</div>
+							</div>
+						</div>  
+						</div>
+						</div> 
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container">
+							<div class="radio padding-l-5 width30">
+								<label>Whatsapp No. </label>
+							</div>
+							<div class="radio" style="width: 18%;   float: left;">
+								<input class="select2-focusser" type="text"   name="" value="+91" readonly>
+							</div>                             
+							<div class="radio" style="width: 50%;   float: left;">
+								<input class="form-control select2-focusser" type="text" formControlName="whatsup_number" value="{{user?.whatsup_number}}" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedinv && inv.whatsup_number.errors }" [pattern]="mobnumPattern">
+								<div *ngIf="submittedinv && inv.whatsup_number.errors" class="invalid-feedback">
+									<div *ngIf="inv.whatsup_number.errors.required">Whatsapp Number is required</div>
+								</div>
+							</div>
+						</div>  
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+							<div class="field-label">
+								<div class="bold-label">
+									<label id="field_label_id_type" for="id_type">Qualification </label>
+								</div> 
+							</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group form-group">
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="1"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Doctorate</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="2"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">IIT / IIM</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container "  >
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="3"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Masters</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="4"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Honors Degree</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="5"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Bachelors</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="6"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Under Graduate</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="7"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Associate Degree</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="8"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Diploma</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="9"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Trade School</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="10"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">High School</font>
+									<span class="inner"></span>
+									</label>
+								</div> 
+							</div>
+						</div>
+						<div class="select2-container">	
+							<div style="width: 50%; float: left; height: 30px;">
+								<div class="checkbox ubuntuRegText">
+									<label>
+									<input type="checkbox" formControlName="qualification" value="11" [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 7px;">Less than High School</font>
+									<span class="inner"></span>
+									<div *ngIf="submittedinv && inv.qualification.errors" class="invalid-feedback">
+										<div *ngIf="inv.qualification.errors.required">Qualification is required</div>
+									</div>
+									</label>
+								</div> 
+							</div>
+						</div>
+					</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Religion </label>
+						</div>
+						 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container">
+							<select class="select2-focusser form-control" formControlName="religion" [ngClass]="{ 'is-invalid': submittedinv && inv.religion.errors }"> 
+							<option value="">Select Religion</option>	
+							<option value="{{religion.key}}"  *ngFor="let religion of filters['religions'] | keys">{{religion.value}}</option>      
+							</select> 
+							<div *ngIf="submittedinv && inv.religion.errors" class="invalid-feedback">
+								<div *ngIf="inv.religion.errors.required">Religion is required</div>
+							</div>
+						</div>  
+						</div>
+						</div>
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Mother Tongue </label>
+						</div>
+						 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container">
+							<select class="select2-focusser form-control" formControlName="mother_tongue" [ngClass]="{ 'is-invalid': submittedinv && inv.mother_tongue.errors }"> 
+							<option value="">Select</option>	
+							<option value="{{mother_tongue.key}}"  *ngFor="let mother_tongue of filters['motherTounges'] | keys">{{mother_tongue.value}}</option>      
+							</select> 
+							<div *ngIf="submittedinv && inv.mother_tongue.errors" class="invalid-feedback">
+								<div *ngIf="inv.mother_tongue.errors.required">Mother Tongue is required</div>
+							</div>
+						</div> 
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Language Know </label>
+						</div>
+						 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container">
+							<select class="select2-focusser form-control" formControlName="known_languages" [ngClass]="{ 'is-invalid': submittedinv && inv.mother_tongue.errors }"> 
+							<option value="">Select</option>	
+							<option value="{{known_languages.key}}"  *ngFor="let known_languages of filters['motherTounges'] | keys">{{known_languages.value}}</option>      
+							</select> 
+							<div *ngIf="submittedinv && inv.known_languages.errors" class="invalid-feedback">
+								<div *ngIf="inv.known_languages.errors.required">Known Languages is required</div>
+							</div>
+						</div>  
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Country Living In </label>
+						</div>
+						 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="country" [ngClass]="{ 'is-invalid': submittedinv && inv.country.errors }">
+								<option value="1">India</option>
+							</select> 
+							<div *ngIf="submittedinv && inv.country.errors" class="invalid-feedback">
+								<div *ngIf="inv.country.errors.required">Country is required</div>
+							</div>
+						</div>  
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+							<label id="field_label_id_type" for="id_type">State Living In</label>
+						</div> 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container">
+							<select class="select2-focusser form-control" formControlName="state" [ngClass]="{ 'is-invalid': submittedinv && inv.state.errors }"> 
+							<option value="">Select</option>	
+							<option value="{{state.key}}"  *ngFor="let state of filters['states'] | keys">{{state.value}}</option>      
+							</select> 
+							<div *ngIf="submittedinv && inv.state.errors" class="invalid-feedback">
+								<div *ngIf="inv.state.errors.required">State is required</div>
+							</div>
+						</div>  
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">City Living In</label>
+						</div> 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container" >
+							<select class="select2-focusser form-control" formControlName="city" [ngClass]="{ 'is-invalid': submittedinv && inv.city.errors }">
+								<option value="1">Hyderabad</option>
+							</select> 
+							<div *ngIf="submittedinv && inv.city.errors" class="invalid-feedback">
+								<div *ngIf="inv.city.errors.required">City is required</div>
+							</div>
+						</div> 
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2 "  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Relationship Status</label>
+						</div> 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container">
+							<select class="select2-focusser form-control" formControlName="relationship_status" [ngClass]="{ 'is-invalid': submittedinv && inv.relationship_status.errors }"> 
+							<option value="">Select</option>	
+							<option value="{{relationship_status.key}}"  *ngFor="let relationship_status of filters['relationshipStatuses'] | keys">{{relationship_status.value}}</option>      
+							</select> 
+							<div *ngIf="submittedinv && inv.relationship_status.errors" class="invalid-feedback">
+								<div *ngIf="inv.relationship_status.errors.required">Relationship is required</div>
+							</div>
+						</div>  
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2" style="padding-top: 28px"  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">Linkedin URL</label>
+						</div>
+						 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container" >
+							<input class="form-control select2-focusser form-control" name="linked_in_url"  type="text" value="">
+						</div> 
+						</div>
+						</div> 
+						</div>
+					</li>
+					<li class="columns-2" style="padding-top: 28px"  >
+						<div class="field-label-wrapper">
+						<div class="field-label">
+						<div class="bold-label">
+						<label id="field_label_id_type" for="id_type">FaceBook URL</label>
+						</div>
+						 
+						</div>
+						</div>
+						<div class="form-field-wrapper">
+						<div class="form-field ">
+						<div class="businessrole-input-group ">
+						<div class="select2-container" >
+							<script>
+								function readURL1(input) {
+
+								if (input.files && input.files[0]) {
+									var reader = new FileReader();
+
+									reader.onload = function (e) {
+										$('#upload-file-info1').html(input.files[0].name);
+										$('#img2291').attr('src', e.target.result);
+										$('#img2291').css('display','inline-block');
+									}
+
+									reader.readAsDataURL(input.files[0]);
+								}
+								}
+							</script>     
+						  
+							<div style="position:relative; padding-left: 8px;">
+								<img id="img229" class="preview-image" src="#" alt="Your image">
+								<a class="btn btn-primary" href="javascript:;">
+								Choose a Pic
+								<input id="imgInp" type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="profile_pic" size="40" onchange="readURL(this);">
+								</a>
+								&nbsp;
+								<span id="upload-file-info"></span>
+							</div>
+						</div>  
+						</div>
+						</div> 
+						</div>
+					</li>
+				</ul> 
+			</div>     
+            <div class="col-lg-12 text-center"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
+             
+            </div>
+            </form>    
             
         </div>
       </div>
     </div>
 </div>
-
-
-
-
 <div class="modal fade show" id="editModalCenter3" style="padding-right: 17px; ">
     <div class="modal-dialog modal-dialog-centered " role="document">
       <div class="modal-content modal-content1">

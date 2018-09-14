@@ -42,8 +42,10 @@
 						<ul class="sub-accordion">
 							<li class="sub-accordion__item">
 								<input type="radio" formControlName="category" value="" [checked]="defaultChecked" (change)="applyFilter()"> Any (456)<br>
-								<span  *ngFor="let category of filters['categories'] | keys" style="float:left;width: 100%;">
+								<span *ngFor="let category of filters['categories'] | keys;  let i=index" >
+								<span *ngIf="i<10" style="float:left;width: 100%;">
 								<input type="radio" formControlName="category" value="{{category.key}}" (change)="applyFilter()"> {{category.value}}
+								</span>
 								</span>
 								<a href="#" class="nav-link"  data-toggle="modal" style="padding: 0px;      font-size: 12px;" data-target="#exampleModalCenter1">View More</a>
 							</li>
@@ -55,8 +57,10 @@
 						<li class="sub-accordion__item">
 					 
 						   <input type="radio" formControlName="state" value=""  [checked]="defaultChecked" (change)="applyFilter()"> Any <br>
-						   <span  *ngFor="let state of filters['states'] | keys">
+						   <span  *ngFor="let state of filters['states'] | keys; let i=index;">
+								<span *ngIf="i<10" style="float:left;width: 100%;">
 								<input type="radio" formControlName="state" value="{{state.key}}" (change)="applyFilter()"> {{state.value}}<br>
+								</span>
 							</span>							
 							<a href="#" class="nav-link"  data-toggle="modal" style="padding: 0px;      font-size: 12px;" data-target="#exampleModalCenter11">View More</a>
 						</li>
@@ -82,7 +86,7 @@
 								<span  *ngFor="let qualification of filters['qualifications'] | keys">
 								<input type="checkbox" formControlName="qualification" value="{{qualification.key}}" (change)="applyFilter()"> {{qualification.value}}<br>
 								</span>	
-								<a href="#" class="nav-link"  data-toggle="modal" style="padding: 0px;      font-size: 12px;" data-target="#exampleModalCenter11">View More</a>
+								<!--<a href="#" class="nav-link"  data-toggle="modal" style="padding: 0px;      font-size: 12px;" data-target="#exampleModalCenter11">View More</a>-->
 							</li>
 						</ul>
 					</li>
@@ -282,40 +286,13 @@
         </div>
         <div class="modal-body modal-body1">
              
-             <div class="col-lg-6">
-               
-                <input type="checkbox" id="city1" name="city-1" value="bangalore" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-
-                <input type="checkbox" id="city2" name="city-2" value="delhi" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city3" name="city-2" value="mumbai" class="modal-checkbox" >
-               <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city4" name="city-4" value="hyderbad" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-
-             </div>     
-             <div class="col-lg-6">
-               
-                <input type="checkbox" id="city5" name="city-5" value="bangalore" class="modal-checkbox" >
-              <label for="city1">Demo Data</label>
-
-
-                <input type="checkbox" id="city6" name="city-6" value="delhi" class="modal-checkbox" >
-               <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city7" name="city-7" value="mumbai" class="modal-checkbox" >
-              <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city8" name="city-8" value="hyderbad" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-
-             </div>                   
+             <div class="row">
+				<div class="col-md-4" *ngFor="let category of filters['categories'] | keys;  let i=index">
+                <input type="checkbox" id="city1" name="city-1" value="{{category.key}}" class="modal-checkbox" >
+                <label for="city1">{{category.value}}</label>
+				</div>
+             </div>  
+                               
     
         </div>
       </div>
@@ -332,40 +309,12 @@
         </div>
         <div class="modal-body modal-body1">
              
-             <div class="col-lg-6">
-               
-                <input type="checkbox" id="city1" name="city-1" value="bangalore" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-
-                <input type="checkbox" id="city2" name="city-2" value="delhi" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city3" name="city-2" value="mumbai" class="modal-checkbox" >
-               <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city4" name="city-4" value="hyderbad" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-
-             </div>     
-             <div class="col-lg-6">
-               
-                <input type="checkbox" id="city5" name="city-5" value="bangalore" class="modal-checkbox" >
-              <label for="city1">Demo Data</label>
-
-
-                <input type="checkbox" id="city6" name="city-6" value="delhi" class="modal-checkbox" >
-               <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city7" name="city-7" value="mumbai" class="modal-checkbox" >
-              <label for="city1">Demo Data</label>
-
-                <input type="checkbox" id="city8" name="city-8" value="hyderbad" class="modal-checkbox" >
-                <label for="city1">Demo Data</label>
-
-
-             </div>                   
+             <div class="row">
+				<div class="col-md-4" *ngFor="let state of filters['states'] | keys;  let i=index">
+                <input type="checkbox" id="city1" name="city-1" value="{{state.key}}" class="modal-checkbox" >
+                <label for="city1">{{state.value}}</label>
+				</div>
+             </div>                     
     
         </div>
       </div>

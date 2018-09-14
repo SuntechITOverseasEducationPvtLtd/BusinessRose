@@ -68,7 +68,7 @@ class UserController extends Controller
         $user->save();
         $user->notify(new WelcomeEmail($user));
         //welcome email template and send
-        return $user;
+        return view('custom.welcome');
     }
 
 
@@ -103,7 +103,7 @@ class UserController extends Controller
         
         $user = User::create($input);
 
-        if (isset($input['profile_pic'])) {  
+        if (isset($input['profile_pic']) && $input['profile_pic']!="") {  
             $image = $input['profile_pic'];
             $filename = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/images/users/'.$user->id.'/');

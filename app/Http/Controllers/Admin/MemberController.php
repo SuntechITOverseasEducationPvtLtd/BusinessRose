@@ -26,7 +26,7 @@ use App\EmailTemplate;
 use Config;
 use Auth;
 
-use App\Notifications\ActivationRemainder;
+use App\Notifications\ActivationRemainder;  
 
 class MemberController extends Controller
 {
@@ -104,13 +104,12 @@ class MemberController extends Controller
 
     public function activate_member($id)
     {    
-        $user = DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
-        //$user = Auth::user();
-        //$user->active = 1; 
-        //$user->save();
-//dd($user);
-        //$email_template = EmailTemplate::where('id',Config::get('constants.ACTIVATION_RAMAINDER'))->first();
-        //$user->notify(new ActivaionRemainder($email_template));
+        $user = User::where('id', '=', $id)->first();
+        $user->active = 1;
+        $user->save();
+        
+        $email_template = EmailTemplate::where('id',Config::get('constants.ACTIVATION_RAMAINDER'))->first();
+        $user->notify(new ActivationRemainder($email_template));
         return redirect('admin/member_activations');
     }
 

@@ -573,8 +573,8 @@
 				<div class="form-field ">
 					<div class="businessrole-input-group form-group">
 						<div class="select2-container" >
-							<select class="select2-focusser form-control" formControlName="country" [ngClass]="{ 'is-invalid': submittedinv && inv.country.errors }">
-								<option value="1">India</option>
+							<select class="select2-focusser form-control select-country" formControlName="country" [ngClass]="{ 'is-invalid': submittedinv && inv.country.errors }">
+								<option value="101">India</option>
 							</select> 
 							<div *ngIf="submittedinv && inv.country.errors" class="invalid-feedback">
 								<div *ngIf="inv.country.errors.required">Country is required</div>
@@ -1448,7 +1448,7 @@
 					<div class="businessrole-input-group form-group">
 						<div class="select2-container" >
 							<select class="select2-focusser form-control" formControlName="country" [ngClass]="{ 'is-invalid': submittedSp && sp.country.errors }">
-								<option value="1">India</option>
+								<option value="101">India</option>
 							</select> 
 							<div *ngIf="submittedSp && sp.country.errors" class="invalid-feedback">
 								<div *ngIf="sp.country.errors.required">Country is required</div>
@@ -1894,5 +1894,10 @@ It is a long established fact that a reader will be distracted by the readable c
 </div>
 </section>
 <!-- End Registion -->
-
+<script>
+	// Material Select Initialization
+	$(document).ready(function() {
+		$('.select-country').material_select();
+	});
+</script>
 

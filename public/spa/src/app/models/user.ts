@@ -12,6 +12,11 @@ export class User {
     country: number;
     state: number;
     city: number;
+    city_name: string;
+    state_name: string;
+    about_me: string;
+    language: string;
+    relation: string;
     qualification: number;
     occupation: number;
     experience: number;
@@ -23,6 +28,7 @@ export class User {
     known_languages: string;
     co_investment: number;
     investment_range: number;
+    range: number;
     investment_type: number;
     is_accept_terms: number;
     linked_in_url: string;

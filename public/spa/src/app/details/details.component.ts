@@ -15,7 +15,7 @@ declare var $: any;
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-	@Input() user: Array<User>=[];
+	user: User;
 	connections: Connection[];
 	
 	private user_id = this.route.snapshot.paramMap.get('id');
@@ -27,7 +27,7 @@ export class DetailsComponent implements OnInit {
 	get authUserProfile() { return this.is_auth_user; }
 		
 	constructor(
-        private userService: UserService, private route: ActivatedRoute, private global: GlobalService, 
+        private userService: UserService, private route: ActivatedRoute,public global: GlobalService, 
 		private alertService: AlertService, private router: Router, private formBuilder: FormBuilder
 		) {}
 	ngOnInit():void {
@@ -88,6 +88,7 @@ export class DetailsComponent implements OnInit {
 	getUserDetails():void {
 		this.userService.getById(this.user_id).subscribe(user => {
                     this.user = user['data'];
+					console.log(user);
 					//$("#loadingModalCenter").modal({show:'false'});
 					$("#loadingModalCenter").modal("hide");
                 },

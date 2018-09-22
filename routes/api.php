@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+ 
 /* 
 |--------------------------------------------------------------------------
 | API Routes
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
-|
+| 
 */
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -45,4 +45,8 @@ Route::group(['middleware' => 'auth:api', 'namespace'=>"Api"], function(){
 	Route::any('change-password', 'UserController@changePassword');
 	Route::any('forgot-password', 'UserController@forgotPassword');
 	Route::any('update-password', 'UserController@updatePassword');
+
+	Route::any('connect-now', 'HomeController@connectNow');
+	Route::any('shortlist-now', 'HomeController@shortlistNow');
+	Route::any('invite-now', 'HomeController@inviteNow');
 });

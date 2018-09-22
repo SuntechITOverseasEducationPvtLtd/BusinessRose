@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
-use App\SubCategory;
+use App\SubCategory; 
 use App\Qualification;
 use App\Experience;
 use App\User; 
@@ -16,7 +16,7 @@ use App\Shortlist;
 use App\Invitation;
 use App\State;
 use App\InvestmentRange;
-use App\Religion;
+use App\Religion; 
 use App\Language;
 use App\RelationshipStatus;
 use Input;
@@ -25,6 +25,7 @@ use Auth;
 use App\Notifications\ViewsSettings;
 use App\Notifications\ShortlistSettings;
 use App\Notifications\InvitationSettings;
+use App\Notifications\ConnectNow;
 use App\EmailTemplate;
 use Config;
 
@@ -263,10 +264,98 @@ class HomeController extends Controller
         return response()->json(['success'=>true,'data'=>$cities], $this->successStatus);
     }
 
+    public function connectNow(Request $request){	 
 
+    	$user = Auth::user();
+    	$connectionObj = new Connection();
+		//$connectionObj->connected_to = base64_decode($request->get('connected_to'));
+		$connectionObj->connected_to = $request->get('connected_to');
+		$connectionObj->connected_by = Auth::user()->id;
+		$connectionObj->ip_address = $request->get('ip_address');
+		$connectionObj->created_at = date('Y-m-d H:i:s');
+		$connectionObj->updated_at = date('Y-m-d H:i:s');
+		$connectionObj->save();
+		
+
+		
+		/*$connections = Connection::where(['connections.id' => $connectionObj->id]);
+		$connections->leftjoin('users as usr','usr.id','connections.connected_by');
+		$connections->leftjoin('users as user','user.id','connections.connected_to');
+		$connections->leftjoin('user_types as ut','ut.id','user.user_type');		
+		$connections->leftjoin('categories as cat','cat.id','user.category');
+		$connections->leftjoin('qualifications as q','q.id','user.qualification');
+		$connections->leftjoin('experiences as exp','exp.id','user.experience');
+		$connections->leftjoin('occupations as ocp','ocp.id','user.occupation');
+		$connections->select('connections.*','usr.name as connect_by','user.name as connect_to','ut.user_type as usr_type','cat.cat_name as usr_category','q.qualification as usr_qualification','exp.experience as usr_experience','ocp.occupation as usr_occupation');
+		$connections->get();*/
+
+	$email_template = EmailTemplate::where('id',Config::get('constants.CONNECT_NOW'))->first();
+
+	$connections = DB::table("connections")
+						->leftjoin('users as usr','usr.id','connections.connected_by')
+		 				->leftjoin('users as user','user.id','connections.connected_to')
+		                ->leftjoin('user_types as ut','ut.id','user.user_type')
+						->leftjoin('categories as cat','cat.id','user.category')
+						->leftjoin('qualifications as q','q.id','user.qualification')
+						->leftjoin('experiences as exp','exp.id','user.experience')
+						->leftjoin('occupations as ocp','ocp.id','user.occupation')
+						->select('connections.*','usr.name as connect_by','user.name as connect_to','ut.user_type as usr_type','cat.cat_name as usr_category','q.qualification as usr_qualification','exp.experience as usr_experience','ocp.occupation as usr_occupation')
+						->where(['connections.id' => $connectionObj->id])
+						->first();
+
+		$email_template->connect_by = $connections->connect_by;
+		$email_template->connect_to = $connections->connect_to;
+		$email_template->usr_type = $connections->usr_type;
+		$email_template->usr_category = $connections->usr_category;
+		$email_template->usr_qualification = $connections->usr_qualification;
+		$email_template->usr_experience = $connections->usr_experience;
+		$email_template->usr_occupation = $connections->usr_occupation;
+
+		
+		$body = $email_template->mail_body;
+		$image_url = public_path('/images/users/'.$user->id.'/'.$user->profile_pic);
+		$email_template->image = '<img src="'.$image_url.'" alt="user_image" width="160" height="160">';
+		
+		$body = str_replace("{!! image !!}", $email_template->image, $body);
+        $body = str_replace("{!! connect_by !!}", $email_template->connect_by, $body);
+        $body = str_replace("{!! connect_to !!}", $email_template->connect_to, $body);
+        $body = str_replace("{!! usr_type !!}", $email_template->usr_type, $body);
+        $body = str_replace("{!! usr_category !!}", $email_template->usr_category, $body);
+        $body = str_replace("{!! usr_qualification !!}", $email_template->usr_qualification, $body);
+        $body = str_replace("{!! usr_experience !!}", $email_template->usr_experience, $body);
+        $body = str_replace("{!! usr_occupation !!}", $email_template->usr_occupation, $body);
+		
+		$email_template->body = $body;
+
+		$user->notify(new ConnectNow($email_template));
+		return response()->json(['success'=>true,'data'=>'Connection Created Successfully'], $this->successStatus);
+	}
 	
+	public function shortlistNow(Request $request){	 
 
+    	$shortlistObj = new Shortlist();
+		//$connectionObj->connected_to = base64_decode($request->get('connected_to'));
+		$shortlistObj->shortlist_to = $request->get('shortlist_to');
+		$shortlistObj->shortlist_by = Auth::user()->id;
+		$shortlistObj->ip_address = $request->get('ip_address');
+		$shortlistObj->created_at = date('Y-m-d H:i:s');
+		$shortlistObj->updated_at = date('Y-m-d H:i:s');
+		$shortlistObj->save();
+		return response()->json(['success'=>true,'data'=>'User Shortlisted Successfully'], $this->successStatus);
+	}
 
+	public function inviteNow(Request $request){	 
+
+    	$invitationObj = new Invitation();
+		//$connectionObj->connected_to = base64_decode($request->get('connected_to'));
+		$invitationObj->invitation_to = $request->get('invitation_to');
+		$invitationObj->invitation_by = Auth::user()->id;
+		$invitationObj->ip_address = $request->get('ip_address');
+		$invitationObj->created_at = date('Y-m-d H:i:s');
+		$invitationObj->updated_at = date('Y-m-d H:i:s');
+		$invitationObj->save();
+		return response()->json(['success'=>true,'data'=>'User Invitated Successfully'], $this->successStatus);
+	}
 
 
 

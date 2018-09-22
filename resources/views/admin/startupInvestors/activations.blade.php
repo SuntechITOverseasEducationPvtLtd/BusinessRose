@@ -170,7 +170,7 @@
 										<span class="badge badge-primary">{{'NOT CONNECTED'}}</span>
 									@endif
 								</td>
-								<td><span class="badge badge-success"><a href="{{url('admin/activate_startupInvestor',$user->user_id)}}" style="color:#fff;">{{'Active'}}</a></span></td>
+								<td><span class="badge badge-success"><a href="{{url('admin/activate_startupInvestor',$user->user_id)}}" style="color:#fff;">{{'Approve'}}</a></span></td>
 								<td><span class="badge badge-danger"><a href="{{url('admin/deactivate_startupInvestor',$user->user_id)}}" style="color:#fff;">{{'Deny'}}</a></span></td>
 								<td><a href="{{url('admin/startupInvestor_profile_view',$user->user_id)}}" class="btn bg-transparent border-indigo-400 text-indigo-400 rounded-round border-2 btn-icon"><i class="icon-eye"></i></a></td>
 							</tr>

@@ -102,7 +102,7 @@ class MemberController extends Controller
         return view($this->module_view_folder.'.transactions',$data);
     }
 
-    public function activate_member($id)
+    public function activate_member($id) 
     {    
         $user = User::where('id', '=', $id)->first();
         $user->active = 1;

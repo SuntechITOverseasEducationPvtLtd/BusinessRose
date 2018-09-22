@@ -99,7 +99,12 @@ class StartupInvestorController extends Controller
 
     public function activate_startupInvestor($id)
     {    
-        DB::table('users')->where('id', '=', $id)->update(array('active'=>1));
+        $user = User::where('id', '=', $id)->first();
+        $user->active = 1;
+        $user->save();
+
+        $email_template = EmailTemplate::where('id',Config::get('constants.ACTIVATION_RAMAINDER'))->first();
+        $user->notify(new ActivationRemainder($email_template));
         return redirect('admin/startupInvestor_activations');
     }
 

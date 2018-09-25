@@ -25,6 +25,11 @@ export class UserService {
 	private invitationUrl = this.global.invitationUrl;
 	private getAllFiltersUrl = this.global.getAllFiltersUrl;
 	private purchaseHistoryUrl = this.global.purchaseHistoryUrl;
+	private viewAlertUrl = this.global.viewAlertUrl;
+	private shortlistAlertUrl = this.global.shortlistAlertUrl;
+	private invitationAlertUrl = this.global.invitationAlertUrl;
+	private hideProfileUrl = this.global.hideProfileUrl;
+	private deleteProfileUrl = this.global.deleteProfileUrl;
 	private currentEncUserId = btoa(localStorage.getItem('currentUserId')); 	
 	publicIP : string;
 	
@@ -153,6 +158,64 @@ export class UserService {
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));
+    }
+	
+	setViewAlert(value) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		let body = new HttpParams({
+			  fromObject : {
+				'views_alert' : value
+			  }
+			});
+		return this.http.post(this.viewAlertUrl, body, httpOptions);
+    }
+	setShortlistAlert(value) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		let body = new HttpParams({
+			  fromObject : {
+				'shortlist_alert' : value
+			  }
+			});
+		return this.http.post(this.shortlistAlertUrl, body, httpOptions);
+    }
+	setInvitationAlert(value) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		let body = new HttpParams({
+			  fromObject : {
+				'invitations_alert' : value
+			  }
+			});
+		return this.http.post(this.invitationAlertUrl, body, httpOptions);
+    }
+	
+	hideProfile(value) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		let body = new HttpParams({
+			  fromObject : {
+				'is_email_verified' : value
+			  }
+			});
+		return this.http.post(this.hideProfileUrl, body, httpOptions);
+    }
+	
+	deleteProfile(value) {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		let body = new HttpParams({
+			  fromObject : {
+				'deleted_at' : value
+			  }
+			});
+		return this.http.post(this.deleteProfileUrl, body, httpOptions);
     }
 	
 	/**

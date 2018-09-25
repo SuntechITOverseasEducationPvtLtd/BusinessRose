@@ -19,11 +19,18 @@ export class GlobalService {
 	public myShortlistsUrl = this.baseUrl+'/api/myshortlists';
 	public myInvitationsUrl = this.baseUrl+'/api/myinvitations/';
 	public purchaseHistoryUrl = this.baseUrl+'/api/all-transactions';
+	public viewAlertUrl = this.baseUrl+'/api/user-views-settings';
+	public shortlistAlertUrl = this.baseUrl+'/api/shortlist-settings';
+	public invitationAlertUrl = this.baseUrl+'/api/invitation-to-connect-settings';
+	public hideProfileUrl = this.baseUrl+'/api/hide-profile';
+	public deleteProfileUrl = this.baseUrl+'/api/delete-profile';
 	
 	//Alert Messages
 	public CONNECTED_NOW = "Your Successfully Connected";
 	public SHORTLIST_NOW = "Your Successfully Shortlisted";
 	public INVITATION_SENT = "Your Invitation Successfully Sent";
+	public EMAIL_ALERT = "Email Alert Set Successfully";
+	public UNSUBSCRIBE_ALERT = "Email Alert Successfully Unsubscribed";
 	
 	public CO_INVESTMENT_YES: number = 1;
 	public CO_INVESTMENT_NO: number = 2;

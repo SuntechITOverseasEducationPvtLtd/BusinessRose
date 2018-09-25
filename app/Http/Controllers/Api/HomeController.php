@@ -203,9 +203,9 @@ class HomeController extends Controller
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 
-	public function hideProfile(){	
+	public function hideProfile(Request $request){	
 		$user = Auth::user();
-		$user->profile_status = 1;	
+		$user->profile_status = $request->is_email_verified;	
 		$data = $user->save();
 		//profile hidden email template and send			
 		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
@@ -214,10 +214,10 @@ class HomeController extends Controller
 
 	public function user_views_settings(Request $request){	 
 		$user = Auth::user();
-		$user->views_alert = $request->status_flag;	
+		$user->views_alert = $request->views_alert;	
 		$data = $user->save();
 		$email_template = EmailTemplate::where('id',Config::get('constants.VIEW_SETTINGS'))->first();
-		$email_template->flag = $request->status_flag;
+		//$email_template->flag = $request->views_alert;
 		$user->notify(new ViewsSettings($email_template));
 		//user view settings email template and send			
 		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
@@ -226,10 +226,10 @@ class HomeController extends Controller
 
 	public function shortlist_settings(Request $request){	 
 		$user = Auth::user();
-		$user->shortlist_alert = $request->status_flag;	
+		$user->shortlist_alert = $request->shortlist_alert;	
 		$data = $user->save();
 		$email_template = EmailTemplate::where('id',Config::get('constants.SHORTLIST_SETTINGS'))->first();
-		$email_template->flag = $request->status_flag;
+		//$email_template->flag = $request->shortlist_alert;
 		$user->notify(new ShortlistSettings($email_template));
 		//user shortlist settings email template and send			
 		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 
@@ -238,10 +238,10 @@ class HomeController extends Controller
 
 	public function invitation_to_connect_settings(Request $request){	 
 		$user = Auth::user();
-		$user->invitations_alert = $request->status_flag;	
+		$user->invitations_alert = $request->invitations_alert;	
 		$data = $user->save();
 		$email_template = EmailTemplate::where('id',Config::get('constants.INVITAION_SETTINGS'))->first();
-		$email_template->flag = $request->status_flag;
+		//$email_template->flag = $request->invitations_alert;
 		$user->notify(new InvitationSettings($email_template));
 		//user shortlist settings email template and send			
 		//$data = User::where('id','=',Auth::user()->id)->update(['profile_status' => 1]); 

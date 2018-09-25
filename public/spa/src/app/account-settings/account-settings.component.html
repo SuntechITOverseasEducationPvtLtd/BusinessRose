@@ -29,7 +29,7 @@
 					<div id="one">					  
 						   <div class="row alerthere">
 							 <div class="col-md-2"><label for="email"><b><h5>Email: </h5> </b></label></div> 
-							 <div class="col-md-10"> khanda.neel@yes.com</div>
+							 <div class="col-md-10">{{ userEmail }}</div>
 						   </div>							
 					</div>
 
@@ -42,12 +42,12 @@
 						<div class="col-md-6">
 							<h5>Email  Alert</h5>
 							<div class="control-group">
-								<label class="control control--radio">Instant
-								<input type="radio" name="radio" checked="checked"/>
+								<label class="control control--radio" (click)="setViewAlert(1)">Instant
+								<input type="radio" name="radio" [checked]="(viewAlert == 1) ? true : false"/>
 								<div class="control__indicator"></div>
 								</label>
-								<label class="control control--radio">Unsubscribe
-								<input type="radio" name="radio"/>
+								<label class="control control--radio" (click)="setViewAlert(0)">Unsubscribe
+								<input type="radio" name="radio" [checked]="(viewAlert == 0) ? true : false"/>
 								<div class="control__indicator"></div>
 								</label>
 							</div>
@@ -64,13 +64,13 @@
                              <h5>Email  Alert</h5>
                              
                              <div class="control-group">
-                                <label class="control control--radio">Instant
-                                <input type="radio" name="radio2" checked="checked"/>
+                                <label class="control control--radio" (click)="setShortlistAlert(1)">Instant
+                                <input type="radio" name="radio2" [checked]="(shortlistAlert == 1) ? true : false" />
                                 <div class="control__indicator"></div>
                                 </label>
                                 
-                                <label class="control control--radio">Unsubscribe
-                                <input type="radio" name="radio2"/>
+                                <label class="control control--radio" (click)="setShortlistAlert(0)">Unsubscribe
+                                <input type="radio" name="radio2" [checked]="(shortlistAlert == 0) ? true : false" />
                                 <div class="control__indicator"></div>
                                 </label>
                              </div>
@@ -87,13 +87,13 @@
 							 <h5>Email  Alert</h5>
 							 
 							 <div class="control-group">
-								<label class="control control--radio">Instant
-								<input type="radio" name="radio3" checked="checked"/>
+								<label class="control control--radio" (click)="setInvitationAlert(1)">Instant
+								<input type="radio" name="radio3" [checked]="(invitationAlert == 1) ? true : false" />
 								<div class="control__indicator"></div>
 								</label>
 								
-								<label class="control control--radio">Unsubscribe
-								<input type="radio" name="radio3"/>
+								<label class="control control--radio" (click)="setInvitationAlert(0)">Unsubscribe
+								<input type="radio" name="radio3" [checked]="(invitationAlert == 0) ? true : false" />
 								<div class="control__indicator"></div>
 								</label>
 							 </div>
@@ -106,8 +106,10 @@
                          </div> 
                          
                          <div class="col-md-12">
-                             <p><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px">Hide</button>
+                             <p *ngIf="hideProfileAlert == 0 else showProfile"><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px" (click)="hideProfile(1)">Hide</button>
                              </b></p>
+							 <ng-template #showProfile><p><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px" (click)="hideProfile(0)">Show</button>
+                             </b></p></ng-template>
                              </div> 
                         
                     </div>
@@ -127,7 +129,7 @@
 						 <h5>Change Password </h5>
 						</div>                          
 						<div class="col-md-12">
-							<form class=""  formGroup="changePasswordForm" action="/action_page.php">
+							<form class=""  [formGroup]="changePasswordForm" action="/action_page.php">
 								<div class="row">
 								<div class="col-md-2"><label for="email"><b>Old Password :</b></label></div> 
 								<div class="col-md-10"> <input type="text" class="form-control" id="password1"></div> 

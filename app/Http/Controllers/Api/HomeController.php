@@ -189,7 +189,7 @@ class HomeController extends Controller
 	}
 
 	public function allSubscriptions(){			
-		$data['subscriptions'] = Subscription::get(); 
+		$data['subscriptions'] = Subscription::where('status',1)->get(); 
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 
@@ -355,6 +355,30 @@ class HomeController extends Controller
 		$invitationObj->updated_at = date('Y-m-d H:i:s');
 		$invitationObj->save();
 		return response()->json(['success'=>true,'data'=>'User Invitated Successfully'], $this->successStatus);
+	}
+
+	/**
+     * Making a Transaction - Subscription
+     *
+     * @return \Illuminate\Http\Response
+     */
+	public function subscribeNow(Request $request){ 
+		$subscription_id = $request->subscription_id;
+		$sub_data = Subscription::where('id',$subscription_id)->first();
+
+		$transObj = new Transaction();
+		$transObj->transaction_id = strtoupper(substr(uniqid(),0,8)).date('his');
+		$transObj->subscription_id = $sub_data->id;
+		$transObj->user_id = Auth::user()->id;
+		$transObj->user_type = Auth::user()->user_type;
+		$transObj->price = $sub_data->price;
+		$transObj->credits = $sub_data->credits;
+		$transObj->discount = $sub_data->discount;
+		$transObj->validity = $sub_data->validity;
+		$transObj->status = 0;
+		$transObj->created_at = date('Y-m-d H:i:s');
+		$transObj->save();
+		return response()->json(['success'=>true,'data'=>"Successfully Subscribed"], $this->successStatus);
 	}
 
 

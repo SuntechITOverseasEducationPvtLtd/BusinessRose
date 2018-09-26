@@ -41,8 +41,14 @@ class UserController extends Controller
             return response()->json(['message' => 'Unauthorized'], 401);
         
         $user = $request->user();
-        $tokenResult = $user->createToken('Personal Access Token');
+		$tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
+		$token->email = $user->email;
+		$token->views_alert = $user->views_alert;
+		$token->shortlist_alert = $user->shortlist_alert;
+		$token->invitations_alert = $user->invitations_alert;
+		$token->profile_status = $user->profile_status;
+		$token->deleted_at = $user->deleted_at;
         if ($request->remember_me)
             //$token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();

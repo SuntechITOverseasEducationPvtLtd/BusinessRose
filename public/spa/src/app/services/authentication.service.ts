@@ -24,6 +24,12 @@ export class AuthenticationService {
                     //localStorage.setItem('currentUser', JSON.stringify(user));
 					localStorage.setItem('userToken',user.access_token);
 					localStorage.setItem('currentUserId',user.success.user_id);
+					localStorage.setItem('userEmail',user.success.email);
+					localStorage.setItem('viewAlert',user.success.views_alert);
+					localStorage.setItem('shortlistAlert',user.success.shortlist_alert);
+					localStorage.setItem('invitationAlert',user.success.invitations_alert);
+					localStorage.setItem('hideProfile',user.success.profile_status);
+					localStorage.setItem('deleteProfile',user.success.deleted_at);
 					//this.router.navigate(['/home']);
                 }
 

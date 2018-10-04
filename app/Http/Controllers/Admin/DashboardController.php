@@ -537,6 +537,30 @@ class DashboardController extends Controller
         ));
 
         return redirect('admin/email_templates');
-    }    
+    }  
+
+    public function admin_settings()
+    {       
+        $data['admin_settings'] = DB::table("admin_settings")->first();
+        return view('admin.admin_settings.view',$data);
+    }  
+
+    public function update_admin_settings(Request $request)
+    {  
+        $res = $request->all();
+        $date = date('Y-m-d h:i:s');
+        DB::table('admin_settings')
+        ->where('id','=',$res['id'])
+        ->update(array(
+            'enable_pricing'=>$res['enable_pricing'],
+            'enable_gst'=>$res['enable_gst'],
+            'cgst'=>$res['cgst'],
+            'sgst'=>$res['sgst'],
+            'igst'=>$res['igst'],
+            'status'=>$res['status']
+        ));
+
+        return redirect('admin/admin_settings');
+    }
 
 }

@@ -33,6 +33,7 @@ class User extends Authenticatable
     ];
 	
 	public static function getAllMembers($request){
+		$enablePrice = DB::table('admin_settings')->where('id',1)->pluck('enable_pricing');
 		//print_r(Auth::user()->id);
 		$obj = User::where(['active'=>1,'deleted_at'=>null]);		
 		$obj->join('user_types as ut','ut.id','users.user_type');
@@ -95,7 +96,7 @@ class User extends Authenticatable
 		
 		$obj->select('cat.cat_name','ut.user_type', 'users.sub_category', 'users.co_investment', 'exp.experience','inv_range.range', 'inv_type.investment_type', 'users.name', 'users.gender', 'rs.relation', 'city.city_name', 'state.state_name', 'rg.religion', 'mt.language as mother_tongue', 'qa.qualification', 'users.description_you_family as about_me', 'users.description_of_sales', 'users.description_of_profound_value', 'users.description_relocation_preferance', 'users.date_of_birth', 'users.user_type as user_type_id', 'description_place_business', DB::raw('TO_BASE64(users.id) as user_id'));
 		
-		$obj->addSelect(DB::raw('GROUP_CONCAT(lang.language) as language'), DB::raw('(CASE WHEN count(con.id) > 0 THEN 1 ELSE 0 END) as is_connected'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.email ELSE CONCAT(LEFT(users.email, 4), "xxxxxx@xxxx.com") END) as email'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.mobile ELSE CONCAT(LEFT(users.mobile, 4), "xxxxxx") END) as mobile'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.whatsup_number ELSE CONCAT(LEFT(users.whatsup_number, 4), "xxxxxx") END) as whatsup_number'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.linked_in_url ELSE "www.xxxxxx.com" END) as linked_in_url'), DB::raw('(CASE WHEN count(sl.id) > 0 THEN 1 ELSE 0 END) as is_shortlisted'), DB::raw('(CASE WHEN count(invs.id) > 0 THEN 1 ELSE 0 END) as is_invited'));
+		$obj->addSelect(DB::raw('GROUP_CONCAT(lang.language) as language'), DB::raw('(CASE WHEN count(con.id) > 0 THEN 1 ELSE 0 END) as is_connected'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.email ELSE CONCAT(LEFT(users.email, 4), "xxxxxx@xxxx.com") END) as email'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.mobile ELSE CONCAT(LEFT(users.mobile, 4), "xxxxxx") END) as mobile'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.whatsup_number ELSE CONCAT(LEFT(users.whatsup_number, 4), "xxxxxx") END) as whatsup_number'), DB::raw('(CASE WHEN count(con.id) > 0 THEN users.linked_in_url ELSE "www.xxxxxx.com" END) as linked_in_url'), DB::raw('(CASE WHEN count(sl.id) > 0 THEN 1 ELSE 0 END) as is_shortlisted'), DB::raw('(CASE WHEN count(invs.id) > 0 THEN 1 ELSE 0 END) as is_invited', DB::raw($enablePrice.' as enablePricing')));
 
 		$data = $obj->get();
 		return $data;		

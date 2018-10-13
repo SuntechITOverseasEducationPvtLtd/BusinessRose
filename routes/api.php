@@ -50,5 +50,7 @@ Route::group(['middleware' => 'auth:api', 'namespace'=>"Api"], function(){
 	Route::any('shortlist-now', 'HomeController@shortlistNow');
 	Route::any('invite-now', 'HomeController@inviteNow');
 
+	Route::any('update', 'UserController@update');
 	Route::any('subscribe-now', 'HomeController@subscribeNow');
+
 });

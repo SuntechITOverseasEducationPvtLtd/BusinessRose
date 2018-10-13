@@ -117,5 +117,10 @@ Route::group(['prefix' => $admin_path,'middleware'=>['admin'],'namespace'=>'Admi
 	Route::get('fresher_transactions/{id}', 'FresherController@user_transactions');
 
 
+	Route::get('admin_settings', 'DashboardController@admin_settings');
+	Route::get('update_admin_settings', 'DashboardController@update_admin_settings');
+	Route::post('update_admin_settings', 'DashboardController@update_admin_settings');
+
+
 });
 	

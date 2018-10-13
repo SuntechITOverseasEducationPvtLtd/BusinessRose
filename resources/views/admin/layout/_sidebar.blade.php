@@ -149,6 +149,13 @@
 						<li class="nav-item"><a href="{{url('admin/email_templates')}}" class="nav-link active">Manage</a></li>
 					</ul>
 				</li>
+				<li class="nav-item nav-item-submenu">
+					<a href="#" class="nav-link"><i class="icon-pencil3"></i> <span>Admin Settings</span></a>
+
+					<ul class="nav nav-group-sub" data-submenu-title="Themes2">
+						<li class="nav-item"><a href="{{url('admin/admin_settings')}}" class="nav-link active">Manage</a></li>
+					</ul>
+				</li>
 				<!-- /main -->
 
 				<!-- Forms -->

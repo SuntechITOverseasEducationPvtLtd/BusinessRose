@@ -1728,7 +1728,7 @@ ul li:hover .careerfy-employer-grid-btn {
 .careerfy-employer-profile-form.careerfy-row                                  { margin: 0px -10px; }
 .careerfy-employer-profile-form [class*="careerfy-column-"] {
     padding: 0px 10px;
-    float: none;
+    float: left;
     display: inline-block;
     margin-right: -4px;
     vertical-align: bottom;

@@ -48,6 +48,8 @@
 						<div *ngIf="inv.email.errors.required">Email is required</div>
 					</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 				<label>Password *</label>
 				<input class="form-control select2-focusser" type="password"  formControlName="password"  value="" placeholder="Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedinv && inv.password.errors }">
@@ -62,7 +64,8 @@
 					<div *ngIf="inv.c_password.errors.required">Confirm Password is required</div>
 				</div>
 		</li>
-
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">
 		<li class="careerfy-column-6">
 				<label>DOB *</label>
 				<input class="form-control select2-focusser" type="date" formControlName="date_of_birth" value="" placeholder="DOM" [ngClass]="{ 'is-invalid': submittedinv && inv.date_of_birth.errors }">
@@ -90,6 +93,8 @@
 						<div *ngIf="inv.gender.errors.required">Gender is required</div>
 				</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 				<label>Phone No *</label>
 				<div class="input-group">
@@ -110,7 +115,9 @@
 					<div *ngIf="inv.whatsup_number.errors.required">Whatsapp Number is required</div>
 				</div>
 		</li>
-		<li class="careerfy-column-6">
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
+		<li class="careerfy-column-12">
 
 			<label for="input-type">Profile Created By *:</label>
 				<div id="input-type" class="row">
@@ -362,6 +369,8 @@
 				</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 			<label>Business Category *</label>
 			<div class="careerfy-profile-select">
@@ -381,7 +390,8 @@
 					<div *ngIf="inv.sub_category.errors.required">Sub Category is required</div>
 				</div>
 		</li>
-
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">
 		<li class="careerfy-column-6">
 			<label>Religion *</label>
 			<div class="careerfy-profile-select">
@@ -406,6 +416,8 @@
 				</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 			<label>Language Know *</label>
 			<div class="careerfy-profile-select">
@@ -429,6 +441,8 @@
 				</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 			<label>State Living In *</label>
 			<div class="careerfy-profile-select">
@@ -452,6 +466,8 @@
 				</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-12">
 			<label>Relationship Status *</label>
 			<div class="careerfy-profile-select">
@@ -686,10 +702,11 @@
 							<div class="checkbox ubuntuRegText form-group">
 								<label class="checkbox-inline">
 								<input type="checkbox" formControlName="is_accept_terms" value=""  [ngClass]="{ 'is-invalid': submittedinv && inv.is_accept_terms.errors }" class="form-control" > 
+								
+								<font style="font-size: 14px;">I love by clarity that above like information is true and accurate, I will provied key info when required, I accept terms & condition.</font>
 								<div *ngIf="submittedinv && inv.is_accept_terms.errors" class="invalid-feedback">
 									<div *ngIf="inv.is_accept_terms.errors.required">Terms&Conditions is required</div>
 								</div>
-								<font style="font-size: 14px;">I love by clarity that above like information is true and accurate, I will provied key info when required, I accept terms & condition.</font>
 								<span class="inner"></span>
 								</label>
 							</div>
@@ -732,6 +749,8 @@
 					<div *ngIf="sp.email.errors.required">Email is required</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 				<label>Password *</label>
 				<input class="form-control select2-focusser" type="password"  formControlName="password"  value="" placeholder="Password" style="margin: 0px;" [ngClass]="{ 'is-invalid': submittedSp && sp.password.errors }">
@@ -746,6 +765,8 @@
 					<div *ngIf="sp.c_password.errors.required">Confirm Password is required</div>
 				</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 				<label>DOB *</label>
 				<input class="form-control select2-focusser" type="date" formControlName="date_of_birth" value="" placeholder="DOM" [ngClass]="{ 'is-invalid': submittedSp && sp.date_of_birth.errors }">
@@ -773,6 +794,8 @@
 						<div *ngIf="sp.gender.errors.required">Gender is required</div>
 				</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 				<label>Phone No *</label>
 				<div class="input-group">
@@ -793,7 +816,9 @@
 					<div *ngIf="sp.whatsup_number.errors.required">Whatsapp Number is required</div>
 				</div>
 		</li>
-		<li class="careerfy-column-6">
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
+		<li class="careerfy-column-12">
 			<label for="input-type">Profile Created By *:</label>
 				<div id="input-type" class="row">
 					<div class="col-sm-6">
@@ -1045,6 +1070,8 @@
 				</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 			<label>Business Category *</label>
 			<div class="careerfy-profile-select">
@@ -1064,6 +1091,8 @@
 					<div *ngIf="sp.sub_category.errors.required">Sub Category is required</div>
 				</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 			<label>Religion *</label>
 			<div class="careerfy-profile-select">
@@ -1087,7 +1116,9 @@
 					<div *ngIf="sp.mother_tongue.errors.required">Mother Tongue is required</div>
 				</div>
 			</div>
-		</li>		
+		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 			<label>Language Know *</label>
 			<div class="careerfy-profile-select">
@@ -1111,6 +1142,8 @@
 				</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-6">
 			<label>State Living In *</label>
 			<div class="careerfy-profile-select">
@@ -1134,6 +1167,8 @@
 				</div>
 			</div>
 		</li>
+	</ul>	
+	<ul class="careerfy-row careerfy-employer-profile-form">	
 		<li class="careerfy-column-12">
 			<label>Relationship Status *</label>
 			<div class="careerfy-profile-select">
@@ -1474,11 +1509,11 @@
 						<div style="width: 100%;">
 							<div class="checkbox ubuntuRegText form-group">
 								<label class="checkbox-inline">
-								<input type="checkbox" formControlName="is_accept_terms" value=""  [ngClass]="{ 'is-invalid': submittedSp && sp.is_accept_terms.errors }" class="form-control" > 
+								<input type="checkbox" formControlName="is_accept_terms" value=""  [ngClass]="{ 'is-invalid': submittedSp && sp.is_accept_terms.errors }" class="form-control" >								
+								<font style="padding-left: 24px;">I accept terms and condition.</font>
 								<div *ngIf="submittedSp && sp.is_accept_terms.errors" class="invalid-feedback">
 									<div *ngIf="sp.is_accept_terms.errors.required">Terms&Conditions is required</div>
 								</div>
-								<font style="padding-left: 24px;">I accept terms and condition.</font>
 								<span class="inner"></span>
 								</label>
 							</div>

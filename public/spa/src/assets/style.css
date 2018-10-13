@@ -2077,3 +2077,6 @@ li:hover .careerfy-read-more { background-color: transparent; }
 	background: #337ab7;
 	color:#fff;
 }
+.invalid-feedback {
+    color: red;
+}

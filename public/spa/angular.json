@@ -23,33 +23,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/bootstrap.min.css",
 			  "src/styles.css",			  
-			  "src/assets/fonts/fonts.googleapis.css",
-			  "src/assets/fonts/fonts.googleapis2.css",
-              "src/assets/css/magnific-popup.css",
-              "src/assets/css/pe-icon-7.css",
-              "src/assets/css/main.css",
-              "src/assets/css/owl.carousel.css",
-              "src/assets/css/owl.theme.css",
-              "src/assets/css/owl.transitions.css", 
-              "src/assets/css/style.css", 
-              "src/assets/css/form.css", 
-              "src/assets/css/extra.css", 
-              "src/assets/css/material-design-iconic-font.min.css",
 			  "node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": [
-				"src/assets/js/jquery.min.js",
-				"src/assets/js/bootstrap.min.js",
-				"src/assets/js/popper.min.js",
-				"src/assets/js/jquery.easing.min.js",
-				"src/assets/js/scrollspy.min.js",
-				"src/assets/js/owl.carousel.min.js",
-				"src/assets/js/jquery.magnific-popup.min.js",
-				"src/assets/js/common.js",
-				"src/assets/js/custom.js",
-				"src/assets/js/business-rose.js"	
+				
 			]
           },
           "configurations": {

@@ -24,6 +24,7 @@ export class GlobalService {
 	public invitationAlertUrl = this.baseUrl+'/api/invitation-to-connect-settings';
 	public hideProfileUrl = this.baseUrl+'/api/hide-profile';
 	public deleteProfileUrl = this.baseUrl+'/api/delete-profile';
+	public updateProfileUrl = this.baseUrl+'/api/update';
 	
 	//Alert Messages
 	public CONNECTED_NOW = "Your Successfully Connected";

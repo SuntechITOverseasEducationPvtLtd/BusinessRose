@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from './models';
 import { first } from 'rxjs/operators';
-import { AuthenticationService, GlobalService } from './services';
+import { AuthenticationService, GlobalService, AlertService } from './services';
 
 declare var $: any;
 
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 	loading = false;
     submitted = false;
     returnUrl: string;
+	message = '';
 	
 	
 	constructor(
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
 		private authenticationService: AuthenticationService,
-		private global: GlobalService
+		private global: GlobalService,
+		private alertService:AlertService
 		) {}
 
     ngOnInit() {
@@ -61,19 +63,44 @@ export class AppComponent implements OnInit {
 		//console.log(this.loginForm);
         // stop here if form is invalid
         if (this.loginForm.invalid) {
+			$('.invalid-feedback').show();
             return;
         }
-
+		$("#loadingModalCenter").modal("show");
+		$("#exampleModalCenter").css({'opacity':'0.4'});
         this.loading = true;
 		this.authenticationService.login(this.f.email.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
-					$("#exampleModalCenter").modal("hide");		
+					$("#loadingModalCenter").modal("hide");
+					$("#exampleModalCenter").modal("hide");
+					$("#exampleModalCenter").css({'opacity':'1'});					
+					$(".alert-warning").hide();					
 					this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    //this.alertService.error(error);
+					//console.log(error.error.errors.email[0]);
+					//this.alertService.error(error.errors);
+					$("#loadingModalCenter").modal("hide");	
+					$(".alert-warning").show();
+					$("#exampleModalCenter").css({'opacity':'1'});	
+					var message;
+					/*if(error.error.length > 0)
+					{
+						if(typeof error.error.errors.email != 'undefined' )
+						$(".alert-warning").html(error.error.errors.email[0]);
+						
+						if(typeof error.error.errors.password != 'undefined' )
+						$(".alert-warning").html(error.error.errors.password[0]);
+					}*/
+					
+					if(error.error.message.length > 0)
+					{
+						if(typeof error.error.message != 'undefined' )
+						$(".alert-warning").html(error.error.message);
+					}
+					
                     this.loading = false;
                 });
    }

@@ -16,6 +16,7 @@ export class UserService {
 	}
 	
 	private registerUrl = this.global.registerUrl;
+	private updateProfileUrl = this.global.updateProfileUrl;
 	private getAllUsersUrl = this.global.getAllUsersUrl;
 	private detailsUrl = this.global.detailsUrl;
 	private connectionUrl = this.global.connectionUrl;
@@ -73,7 +74,10 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(`/users/` + user.id, user);
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+        return this.http.put(this.updateProfileUrl, user, httpOptions);
     }
 
     delete(id: number) {

@@ -4,6 +4,7 @@ import { User, Connection } from './../models';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 import {TitleCasePipe} from './../app.titlecase.component';
 
@@ -22,8 +23,13 @@ export class DetailsComponent implements OnInit {
 	private is_auth_user = false;
 	filters = {};
 	submittedinv= false;
+	loading= false;
 	
 	userForm: FormGroup;
+	catForm: FormGroup;
+	aboutForm: FormGroup;
+	salesForm: FormGroup;
+	relationshipForm: FormGroup;
 	get authUserProfile() { return this.is_auth_user; }
 		
 	constructor(
@@ -38,39 +44,66 @@ export class DetailsComponent implements OnInit {
 		}
 		this.getAllFilters();
 		this.getUserDetails();	
-		this.userForm = this.formBuilder.group({
-			gender: ['', Validators.required],
-            date_of_birth: ['', Validators.required],
-            mobile: ['', Validators.required],
-            whatsup_number: ['', Validators.required],
-            country: ['', Validators.required],
-            state: ['', Validators.required],
-            city: ['', Validators.required],
-			co_investment: ['', Validators.required],
-            qualification: ['', Validators.required],
-            occupation: ['', Validators.required],
+		this.catForm = this.formBuilder.group({
+			//occupation: ['', Validators.required],
             experience: ['', Validators.required],
             category: ['', Validators.required],
             sub_category: ['', Validators.required],
             investment_range: ['', Validators.required],
             investment_type: ['', Validators.required],
-			is_accept_terms: ['', Validators.required],
+			co_investment: ['', Validators.required],
+		});
+		this.aboutForm = this.formBuilder.group({
+			
+		});
+		this.salesForm = this.formBuilder.group({
+			
+		});
+		this.relationshipForm = this.formBuilder.group({
+			
+		});
+		this.userForm = this.formBuilder.group({
+			gender: ['', Validators.required],
+            //date_of_birth: ['', Validators.required],
+            mobile: ['', Validators.required],
+            whatsup_number: ['', Validators.required],
+            country: ['', Validators.required],
+            state: ['', Validators.required],
+            city: ['', Validators.required],			
+            qualification: ['', Validators.required],
+            
+			//is_accept_terms: ['', Validators.required],
 			relationship_status: ['', Validators.required],
             religion: ['', Validators.required],
             mother_tongue: ['', Validators.required],
             known_languages: ['', Validators.required],
-			description_of_skills_experience: ['', Validators.required],
-			description_place_business: ['', Validators.required],
-			description_you_family: ['', Validators.required],          
+			//description_of_skills_experience: ['', Validators.required],
+			//description_place_business: ['', Validators.required],
+			//description_you_family: ['', Validators.required],          
 		});
     }
 	get inv() { return this.userForm.controls; }
 	
 	userFormSubmit() {
 		this.submittedinv = true;
+		console.log(this.userForm.invalid);
 	    if (this.userForm.invalid) {
             return;
         }
+		$("#loadingModalCenter").modal("show");
+		this.userService.update(this.userForm.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.alertService.success('Profile updated successful', true);
+					$("#alertModalCenter").modal("show");
+                    $("#loadingModalCenter").modal("hide");
+                    $("#editModalCenter2").modal("hide");
+                },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                });
 		
 	}
 	

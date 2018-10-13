@@ -38,7 +38,7 @@ class UserController extends Controller
         $credentials['active'] = 1;
         $credentials['deleted_at'] = null;
         if(!Auth::attempt($credentials))
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Invalid Credentials'], 401);
         
         $user = $request->user();
 		$tokenResult = $user->createToken('Personal Access Token');
@@ -196,5 +196,38 @@ class UserController extends Controller
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);
+    }
+	
+	/**
+     * Update Profile api
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {  
+        $input = $request->all();
+        $input['is_accept_terms'] = 1;
+        $filename = '';
+        
+        $user = Auth::user();
+        $user->update($input);
+
+        if (isset($input['profile_pic']) && $input['profile_pic']!="") {  
+            $image = $input['profile_pic'];
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/users/'.$user->id.'/');
+            $image->move($destinationPath, $filename);
+        }
+
+        $input['profile_pic'] = $filename;
+
+        $user->update(['profile_pic' => $filename]);
+        //print_r($user); die;
+        $success['token'] =  $user->createToken('MyApp')->accessToken;
+        $success['name'] =  $user->name;
+        
+        $user->notify(new SignupActivate($user));
+
+        return response()->json(['success'=>$success], $this->successStatus);
     }
 }

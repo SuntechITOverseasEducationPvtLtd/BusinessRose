@@ -424,7 +424,7 @@
         </div>
         <div class="modal-body modal-body1">
              
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+            <form action="" [formGroup]="catForm" method="Post" class="profileview-edit-form">
                 <div class="row">
                 
                     <div class="col-lg-4"><label>Business Catagory:</label></div>
@@ -597,14 +597,14 @@
 								</div>
 								<div class="radio width33">
 									<label class="ubuntuRegText">
-									<input type="radio" formControlName="gender" id="sp_gender_male" value="1" [checked]="(user?.gender == 1) ? true : false" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
+									<input type="radio" formControlName="gender" id="sp_gender_male" [value]="1" [checked]="(user?.gender == 1) ? true : false" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
 									<span class="inner"></span>
 									Male
 									</label>
 								</div>                             
 								<div class="radio width33">
 									<label class="ubuntuRegText">
-									<input type="radio" formControlName="gender" id="sp_gender_female" [checked]="(user?.gender == 2) ? true : false"  value="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
+									<input type="radio" formControlName="gender" id="sp_gender_female" [checked]="(user?.gender == 2) ? true : false"  [value]="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
 									<span class="inner"></span>
 									Female
 									<div *ngIf="submittedinv && inv.gender.errors" class="invalid-feedback">
@@ -1034,7 +1034,7 @@
         </div>
         <div class="modal-body modal-body1">
              
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+            <form action="" [formGroup]="aboutForm" method="Post" class="profileview-edit-form">
                 <div class="row">
                 
                    <div class="col-lg-12"><label>About Me, My skill, Experience, Achivement, Growthrate</label></div>
@@ -1066,7 +1066,7 @@
         </div>
         <div class="modal-body modal-body1">
              
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+            <form action="" [formGroup]="salesForm" method="Post" class="profileview-edit-form">
                 <div class="row">
                 
                    <div class="col-lg-12"><label>No. Of clients/Customer/Average Sales/ I can achieve in a month</label></div>
@@ -1097,7 +1097,7 @@
         </div>
         <div class="modal-body modal-body1">
              
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
+            <form action="" [formGroup]="relationshipForm" method="Post" class="profileview-edit-form">
                 <div class="row">
                 
                    <div class="col-lg-12"><label>About Me & My Family / Relationship status</label></div>

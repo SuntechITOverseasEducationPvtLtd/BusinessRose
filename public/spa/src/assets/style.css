@@ -2036,7 +2036,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     font-size: 12px !important;line-height: 1 !important;margin-left: 6px !important;color:#13b5ea !important;
 }
 .radio-width {
-    width:15% !important;
+    width:20px !important;
 }
 
 /*Custom Styles */
@@ -2053,4 +2053,19 @@ li:hover .careerfy-read-more { background-color: transparent; }
 	font-size:27px;
 	color: #13b5ea;
 }
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    position: absolute;
+    margin-top: -11px;
+    margin-left: -23px;
+}
 
+.form-control{
+	box-shadow: none !important;
+}
+
+.checkbox-inline .form-control{
+	width:18px;
+}
+.field_label_id {
+    margin-bottom: 0px !important;
+}

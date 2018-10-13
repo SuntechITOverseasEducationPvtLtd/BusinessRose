@@ -1667,7 +1667,7 @@ ul li:hover .careerfy-employer-grid-btn {
 .careerfy-employer-profile-form label {
     font-size: 14px;
     margin-bottom: 13px;
-    font-weight: 500;
+    /*font-weight: 500;*/
     color: #333333;
     float: left;
     width: 100%;

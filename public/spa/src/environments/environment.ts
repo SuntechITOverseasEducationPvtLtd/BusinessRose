@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://localhost:8080/businessrose/public"
+  //baseUrl: "http://localhost:8080/businessrose/public"
+  baseUrl: "http://localhost:8000"
 };
 
 /*

@@ -1,1246 +1,198 @@
-
- <section class="profile-main-sec">
-    <div class="container">
-         <div class="row">
-
-        </div>
-     </div>
-</section>         
-<section style="background:#f1f1f2;margin-top: 5px;">
-    <div class="container">
-    
-       <div class="row">
-            <div class="col-lg-3" style="margin-top:40px">
-               <img src="assets/images/avatar.png" style="border-radius: 3px;" class="img-fluid"> 
-                
-                
-                <div class="white-box">
-                   <div class="verification">                   
-                        <img src="assets/images/shield.png"> Verifications
-                   </div>   
-                    
-                    <h6 style="padding:15px 10px 0px 15px;">Mobile number verified</h6>
-                </div>
-                
-           </div>
-           
-
-
-           <div class="col-lg-9">
-             
-                <div class="main-box">                  
-<div class="row">
-				<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter2">
-                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
-                    <div class="col-lg-6">
-                   <h5>Experienced/Skilled</h5>
-                      <p><b>Business Category : </b> <span class="blue"> {{user?.cat_name}}</span> </p>
-                      <p><b>Sub Category :</b> <span class="blue"> {{user?.sub_category}}</span></p>
-                      
-                        <p><b>Co Investment :</b> 
-						<span *ngIf="user?.co_investment == this.global.CO_INVESTMENT_YES; else noCoInvestment" class="blue" >
-						  Yes
-						</span></p>
-						<ng-template #noCoInvestment>
-						  No
-						</ng-template>
-                    </div>
-
-                   <div class="col-lg-6 padding-top30">
-					<p><b>Experience :</b> <span class="blue"> {{user?.experience}} </span></p>
-                      
-					<p><b>Investment Needed :</b> <span class="blue"> Rs {{user?.range}} </span></p>
-
-					<p><b>Financials :</b> <span class="blue"> {{user?.investment_type}}</span></p>
-
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-                <hr style="border-top: 1px groove #f1f1f245;">
-                
-                
-                   <div class="row">
-					  <a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter3">
-                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>	
-                      <div class="col-lg-9">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <p><a href="javascript:;">{{user?.name | titleCase }}</a></p>
-                              <p>Age : {{user?.date_of_birth | calculateAge}}yrs, <span *ngIf="user?.gender == this.global.MALE; else genderFemale" >Male</span>, R: {{user?.relation}} </p>
-                             <p>City & State : {{user?.city_name}}, {{user?.state_name}}</p>
-                              <p>Religion : {{user?.religion}} </p> 
-                                 <p>Mother Tongue : {{user?.mother_tongue}}</p> 
-                            <p>Languages Known : {{user?.language}}</p>
-							
-							<ng-template #genderFemale>Female</ng-template>                         
-                            
-                          </div>
-
-                          <div class="col-lg-6">
-                            <p>Email : {{user?.email}}</p> 
-                            <p>Phone no : {{user?.mobile}} </p> 
-                           
-                            <p>Whatsapp : {{user?.whatsup_number}} </p> 
-
-                             <p>Facebook : www.xxxxxx.com  </p>
-
-                              <p>Linkedin : {{user?.linked_in_url}}  </p>
-
-                               <p>Education : {{user?.qualification}} </p>
-                          </div>
-						  
-                        </div>
-                      </div>
-                      <div class="col-lg-3 feature-wrap" *ngIf="!authUserProfile" >
-                         <p><b>Like This Profile?</b></p>
-                         
-                         
-                         <p class="paddint-top8 "><i class="fa fa-check"></i> <span *ngIf="user?.is_connected == 1 else notConnected">Connected</span></p>
-						 <ng-template #notConnected><a href="javascript:;" (click)="connectNow()">Connect Now</a></ng-template>
-							
-
-                         <p class="paddint-top8 " *ngIf="user?.is_connected == 0"><i class="fa fa-heart" style=" background: #a458a2; color: #fff;  border: 1px solid #a458a2;"></i> <span *ngIf="user?.is_shortlisted == 1 else notShortlisted">Shortlisted</span></p>
-						 <ng-template #notShortlisted><a href="javascript:;" (click)="shortlistNow()">Shortlist Now</a></ng-template>                         
-
-                         <p *ngIf="user?.is_connected == 0"><i class="fa fa-handshake-o"></i> <span *ngIf="user?.is_invited == 1 else noInvitationSent">Invitation Sent</span></p>
-						 <ng-template #noInvitationSent><a href="javascript:;" (click)="inviteNow()">Invite to Connect</a></ng-template>
-                      </div>
-
-                   <div class="clearfix"></div>
-                  </div>
-
-                  <hr style="border-top:1px dashed #f0f0f0 ">
-
-                  
-
- 
-
-				<div class="row description">
-					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter5">
-                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
-                   <div class="col-lg-1"><i class="fa fa-quote-left" aria-hidden="true"></i></div>
-                   <div class="col-lg-11">
-                       <h5 class="size13">About Me, My skill, Experience, Achivement, Growthrate</h5>
-                      <p class="textjsut">{{user?.about_me}}</p>
-                   </div>
-                      
-                   <div class="clearfix"></div>
-                 </div>
-              
-
-               <div class="row description">
-					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter6">
-                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
-                   <div class="col-lg-1"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></div>
-                   <div class="col-lg-11">
-                       <h5 class="size13">No. Of clients/Customer/Average Sales/ I can achieve in a month</h5>
-                      <p class="textjsut">{{user?.description_of_sales}}</p>
-                   </div>
-                      
-                   <div class="clearfix"></div>
-                 </div>
-
-
-
-                   <div class="row description">
-					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter7">
-                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
-                   <div class="col-lg-1"><i class="fa fa-users" aria-hidden="true"></i></div>
-                   <div class="col-lg-11">
-                       <h5 class="size13">About Me  & My Family / Relationship status</h5>
-                       <p class="textjsut">{{user?.about_me}}</p>
-                   </div>
-                      
-                   <div class="clearfix"></div>
-                 </div>
-
-
-
-    <div class="row description">
-					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter7">
-                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
-                   <div class="col-lg-1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-                   <div class="col-lg-11">
-                       <h5 class="size13">My personal value in terms of intiligence, honesty etc...</h5>
-                       <p class="textjsut">{{user?.description_of_profound_value}}</p>
-                   </div>
-                      
-                   <div class="clearfix"></div>
-                 </div>
-
-
-
-    <div class="row description">
-					<a href="#"  *ngIf="authUserProfile"  data-toggle="modal" data-target="#editModalCenter8">
-                    <div class="edit"><i class="fa fa-pencil" aria-hidden="true"></i></div></a>
-                   <div class="col-lg-1"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                   <div class="col-lg-11">
-                       <h5 class="size13">Relocation Preference </h5>
-                       <p class="textjsut">{{user?.description_relocation_preferance}}</p>
-                   </div>
-                      
-                   <div class="clearfix"></div>
-                 </div>
-
-
-
-
-
-                </div>
-
-
-
-
-
-              <div class="main-box">
-
+	<!-- Main Content -->
+	<div class="careerfy-main-content">
             
-                  
-                  
-                  
-                  
-                  <div class="row description">
-                  
-                   <div class="col-lg-12">
-                       <h5 class="textcenters">Photos</h5>
-                       
-                       
-                         <div id="carouselExampleFade1" class="carousel slide carousel-fade" data-ride="carousel">
-                        <div class="carousel-inner" style="width: 90%;  margin-left: 5%;">
-                            <div class="carousel-item active" >
+            <!-- Main Section -->
+            <div class="careerfy-main-section careerfy-dashboard-fulltwo">
+                <div class="container">
+                    <div class="row">
+
+                        <aside class="careerfy-column-4">
+                            <div class="careerfy-typo-wrap">
+                                <div class="jobsearch_candidate_info">
+                                    <figure><img src="assets/images/avatar.png" alt=""></figure>
+                                    <h2>{{user?.name | titleCase }}</h2>
+                                    <!-- <p>Financial Supervisor at Yup Studio></p>
+                                    <span>Netherlands, Rotterdam</span>
+                                    <small>Member Since, Aug 5, 2015</small> -->
+                                    <ul>
+                                        <li><a data-original-title="facebook" class="fa fa-check profile-icons-left"></a></li>
+                                        <li><a data-original-title="twitter" class="fa fa-heart profile-icons-left"></a></li>
+                                        <li><a data-original-title="linkedin" class="fa fa-handshake-o profile-icons-left"></a></li>
+                                        <!-- <li><a href="#" data-original-title="google-plus" class="careerfy-icon careerfy-google-plus-logo-button"></a></li>
+                                        <li><a href="#" data-original-title="dribbble" class="careerfy-icon careerfy-dribbble-logo"></a></li> -->
+                                    </ul>
+                                    <a  class="careerfy-candidate-download-btn"><i class="material-icons">&#xe8e8;</i> Mobile number verified</a>
+                                </div>
                                 
-                                 
-                <div class="row mt-3">
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                            <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                            
-                          
+                            </div>
+                        </aside>
+                        <div class="careerfy-column-8">
+                            <div class="careerfy-typo-wrap">
+                                <div class="careerfy-candidate-editor">
+                                    <div class="careerfy-content-title"><h2>About {{user?.name | titleCase }}</h2></div>
+                                    <div class="careerfy-jobdetail-services">
+                                        <ul class="careerfy-row">
+											<li class="careerfy-column-4">
+                                                <i class="careerfy-icon careerfy-user"></i>
+                                                <div class="careerfy-services-text">Age <small>{{user?.date_of_birth | calculateAge}}yrs, Male, R: {{user?.relation}}</small></div>
+											</li>
+											<li class="careerfy-column-4">
+												<i class="material-icons">&#xe7f1;</i>
+												<div class="careerfy-services-text">City & State <small> {{user?.city_name}}, {{user?.state_name}} </small></div>
+											</li>
+											<li class="careerfy-column-4">
+												<i class="fa fa fa-registered"></i>
+												<div class="careerfy-services-text">Religion <small> {{user?.religion}} </small></div>
+											</li>
+											<li class="careerfy-column-4">
+													<i class="material-icons">&#xe894;</i>
+												<div class="careerfy-services-text">Mother Tongue <small> {{user?.mother_tongue}} </small></div>
+											</li>
+											<li class="careerfy-column-4">
+												<i class="fa fa-language"></i>
+												<div class="careerfy-services-text">Languages Known <small> {{user?.language}} </small></div>
+											</li>
+											<li class="careerfy-column-4">
+												<i class="material-icons">&#xe0be;</i>
+												<div class="careerfy-services-text">Email <small> {{user?.email}} </small></div>
+											</li>
+											<li class="careerfy-column-4">
+													<i class="fa fa-mobile-phone"></i>
+													<div class="careerfy-services-text">Phone no <small> {{user?.mobile}} </small></div>
+												</li>
+											<li class="careerfy-column-4">
+												<i class="fa fa-mobile-phone"></i>
+												<div class="careerfy-services-text">Whatsapp <small> {{user?.whatsup_number}} </small></div>
+											</li>
+											<li class="careerfy-column-4">
+												<i class="fa fa-facebook-square"></i>
+												<div class="careerfy-services-text">Facebook <small> www.xxxxxx.com </small></div>
+											</li>
+											<li class="careerfy-column-4">
+												<i class="fa fa-linkedin-square"></i>
+												<div class="careerfy-services-text">Linkedin <small> {{user?.linked_in_url}} </small></div>
+											</li>
+											<li class="careerfy-column-4">
+												<i class="careerfy-icon careerfy-mortarboard"></i>
+												<div class="careerfy-services-text">Education <small> {{user?.qualification}} </small></div>
+											</li>
+
+										</ul>
+										<ng-template #genderFemale>Female</ng-template>
+                                    </div>
+                                </div>
                                
-                               
-                        
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">   
-                            <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                          
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">   
-                         <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                          
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                        <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                       
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                         <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                     
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">   
-                         <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                     
-                        </div>
-                    </div>
-                    
-                </div>
-                                
-                                
-                            </div>
-                            
-                            
-                <div class="carousel-item" >
-
-
-                                    <div class="row mt-3">
-                <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                            <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                        
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">   
-                            <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                          
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">   
-                         <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                          
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img"> 
-                        <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                       
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">   
-                         <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                     
-                        </div>
-                    </div>   <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                         <img src="assets/images/p.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                     
-                        </div>
-                    </div>
-                    
-                </div> 
-                            </div>
-                          
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleFade1" role="button" data-slide="prev" style="opacity: 1;">
-                            <span class="pe-7s-angle-left" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleFade1" role="button" data-slide="next"  style="opacity: 1;">
-                            <span class="pe-7s-angle-right" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                       
-                    </div>
-                      
-                   <div class="clearfix"></div>
-                   
-                   
-                   <div class="col-lg-12">
-                       <h5 class="textcenters paddingtop42">Videos</h5>
-                       
-                       
-                         <div id="carouselExampleFade1" class="carousel slide carousel-fade" data-ride="carousel">
-                        <div class="carousel-inner" style="width: 90%;  margin-left: 5%;">
-                            <div class="carousel-item active" >
-                                
-                                 
-                <div class="row mt-3">
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">    
-                            <img src="assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                     
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                            <img src="assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                          
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                         <img src="assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                          
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                        <img src="assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                       
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">  
-                         <img src="assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                     
-                        </div>
-                    </div>
-                    <div class="col-lg-2 mt-3">
-                        <div class="logo_img">   
-                         <img src="assets/images/v.png" alt="logo-img" class="mx-auto img-fluid d-block">
-                     
-                        </div>
-                    </div>
-                    
-                </div>
-                              
-                            </div>
-                         
-                            
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleFade1" role="button" data-slide="prev" style="opacity: 1;">
-                            <span class="pe-7s-angle-left" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleFade1" role="button" data-slide="next"  style="opacity: 1;">
-                            <span class="pe-7s-angle-right" aria-hidden="true" style="color:#000; margin-top: 25px;"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                       
-                    </div>
-                    
-                      <div class="clearfix"></div>
-                   
-                 </div>
-                  
-                  
-                 <div class="row description">
-                       <div class="col-lg-12"><h5 class="textcenters paddingtop42">Business Plan</h5></div>
-                       
-                       <div class="col-lg-4"> </div>
-                      <div class="col-lg-2">   <img src="assets/images/pp.png" alt="logo-img" class="mx-auto img-fluid d-block"></div> <div class="col-lg-2">   <img src="assets/images/pp.png" alt="logo-img" class="mx-auto img-fluid d-block"></div>
-                       
-                    </div>
-                    
-                    
-                 
-  
-              </div>
-               
-               
-
-           </div>
-
-
-
-        </div>
-    
-    </div>
-</section>
-
-<div *ngIf="authUserProfile">
-<div class="modal fade show" id="editModalCenter1" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="catForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                    <div class="col-lg-4"><label>Business Catagory:</label></div>
-                    <div class="col-lg-8">
-                        
-                      <select class="select2-focusser"    formControlName="category" >
-      
-						<option>Agriculture/Diary</option>
-
-						<option>PR / MR / Event Management</option>
-
-						<option>Real estate / construction / Metals</option>
-
-						<option>Transportation / Courier / Freight / Warehousing</option>
-
-						<option>Consumer Electronics / Appliances</option>
-
-						<option>Chemicals / Petrochemical / Plastic / Rubber</option>
-
-						<option>Manufacturing</option>
-
-						<option>Retail / Wholesale / Distributors</option>
-
-						<option>Banking / Finance / Broking</option>
-
-						<option>BPO / ITES / Call Center</option>
-
-						<option>Medical / Healthcare</option>
-
-						<option>Pharma / Biotech</option>
-
-						<option>Food</option>
-
-						<option>Entertainment</option>
-
-						<option>Apparel / Clothing</option>
-
-						<option>Internet / Ecommerce</option>
-
-						<option>Mining</option>
-
-						<option>Education / Teaching / Training</option>
-
-						<option>Business Services</option>
-
-						<option>Gems/Jewelry</option>
-
-						<option>Import/Export</option>
-
-						<option>Travel/Leisure</option>
-
-						<option>IT/Technology</option>
-
-						<option>Strategy/Management/Consulting</option>
-
-						<option>Oil and Gas /Energy/Power/Infrastructure</option>
-
-						<option>Film/Media/Publishing/Advertising</option>
-
-						<option>Industrial goods/Heavy Machinery</option>
-
-						<option>Recruitment/Staffing</option>
-
-						<option>Others</option>
-
-					</select> 
-                    
-                    
-                    </div>
-                    <div class="clearfix"></div>
-                    
-                    
-                    <div class="col-lg-4"><label>Sub Catagory:</label></div>
-                    <div class="col-lg-8"><input type="text" class="form-control" id="sub-catagory" formControlName="sub_category"></div>
-                    <div class="clearfix"></div>
-                    
-                    
-                    <div class="col-lg-4"><label>Co Investment:</label></div>
-					<div class="col-lg-8">
-						<select class="select2-focusser"    formControlName="co_investment" >
-							<option>Yes</option>
-							<option>No</option>
-						</select> 
-					</div>
-                    <div class="clearfix"></div>
-                    
-                    
-                     <div class="col-lg-4"><label>Experience :</label></div>
-					<div class="col-lg-8">
-						<select class="select2-focusser"    formControlName="experience" >
-							<option>2yrs-5yrs</option>
-							<option>5yrs-10yrs</option>
-							<option>10yrs-15yrs</option>
-							<option>16yrs-20yrs</option>
-							<option>None</option>
-						</select> 
-					</div>
-                    <div class="clearfix"></div>
-                    
-                    
-                    <div class="col-lg-4"><label>Investment Need :</label></div>
-					<div class="col-lg-8">
-						<select class="select2-focusser"    formControlName="investment_range" >
-							<option>1,00,000 to 5,00,000</option>
-							<option>10,00,000 to 20,00,000</option>
-							<option>20,00,000 to 30,00,000</option>
-							<option>30,00,000 to 50,00,000</option>
-							<option>50,00,000*</option>
-						</select> 
-					</div>
-                    <div class="clearfix"></div>
-                    
-                    
-                    <div class="col-lg-4"><label>Finalcial :</label></div>
-					<div class="col-lg-8">
-						<select class="select2-focusser"    formControlName="investment_type" >
-							<option>Lets connect and discuss</option>
-							<option>Sales Commission</option>
-							<option>Salary Only</option>
-							<option>Low salary & Profit</option>
-							<option>Very Good Salary</option>
-						</select> 
-					</div>
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                
-                </div>
-            </form>          
-            
-        </div>
-      </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="modal fade show" id="editModalCenter2" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered amrgintop" role="document"  >
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form"  (ngSubmit)="userFormSubmit()">
-                <div class="row">            
-     			<div class="form-fields-wrapper">
-				<ul class="form-fields">
-
-					<li class="columns-2 " >
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-							<div class="select2-container"  >
-								<div class="radio width33 padding-l-5">
-									<label>Gender</label> 
+                                <div class="careerfy-candidate-title"> <h2><i class="careerfy-icon careerfy-social-media"></i> Experince/Skilled</h2> </div>
+                                <div class="careerfy-candidate-timeline">
+                                    <ul class="careerfy-row">
+                                        <li class="careerfy-column-6">
+                                            <div class="careerfy-candidate-timeline-text">
+                                                <h4 class="experFont">Business Category</h4>
+                                                <p>{{user?.cat_name}}</p>
+                                            </div>
+                                        </li>
+                                        <li class="careerfy-column-6">
+                                            <div class="careerfy-candidate-timeline-text">
+                                                <h4 class="experFont">Sub Category</h4>
+                                                <p>{{user?.sub_category}}</p>
+                                            </div>
+                                        </li>
+                                        <li class="careerfy-column-6">
+                                            <div class="careerfy-candidate-timeline-text">
+                                                <h4 class="experFont">Co Investment</h4>
+                                                <p><span *ngIf="user?.co_investment == this.global.CO_INVESTMENT_YES; else noCoInvestment" class="blue" >Yes</span></p>
+												<ng-template #noCoInvestment>No</ng-template>
+                                            </div>
+                                        </li>
+                                        <li class="careerfy-column-6">
+                                            <div class="careerfy-candidate-timeline-text">
+                                                <h4 class="experFont">Experience</h4>
+                                                <p>{{user?.experience}}</p>
+                                            </div>
+                                        </li>
+                                        <li class="careerfy-column-6">
+                                            <div class="careerfy-candidate-timeline-text">
+                                                <h4 class="experFont">Investment Needed</h4>
+                                                <p>Rs {{user?.range}}</p>
+                                            </div>
+                                        </li>
+                                        <li class="careerfy-column-6">
+                                            <div class="careerfy-candidate-timeline-text">
+                                                <h4 class="experFont">Financials</h4>
+                                                <p>{{user?.investment_type}}</p>
+                                            </div>
+                                        </li>
+                                    </ul>
 								</div>
-								<div class="radio width33">
-									<label class="ubuntuRegText">
-									<input type="radio" formControlName="gender" id="sp_gender_male" [value]="1" [checked]="(user?.gender == 1) ? true : false" class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
-									<span class="inner"></span>
-									Male
-									</label>
-								</div>                             
-								<div class="radio width33">
-									<label class="ubuntuRegText">
-									<input type="radio" formControlName="gender" id="sp_gender_female" [checked]="(user?.gender == 2) ? true : false"  [value]="2"   class="form-control allsiteadd" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">
-									<span class="inner"></span>
-									Female
-									<div *ngIf="submittedinv && inv.gender.errors" class="invalid-feedback">
-										<div *ngIf="inv.gender.errors.required">Gender is required</div>
+								<div class="careerfy-candidate careerfy-candidate-default">
+										<div class="careerfy-candidate-title"> <h2><i class="careerfy-icon careerfy-trophy"></i> Honors & awards</h2> </div>
+										<ul class="careerfy-row">
+											<li class="careerfy-column-12">
+												<div class="careerfy-candidate-default-wrap">
+													<div class="careerfy-candidate-default-text">
+														<div class="careerfy-candidate-default-left">
+															<h2>About Me, My skill, Experience, Achivement, Growthrate </h2>
+															<p>{{user?.about_me}}</p>
+														</div>
+														
+													</div>
+												</div>
+											</li>
+											<li class="careerfy-column-12">
+												<div class="careerfy-candidate-default-wrap">
+													<div class="careerfy-candidate-default-text">
+														<div class="careerfy-candidate-default-left">
+															<h2>No. Of clients/Customer/Average Sales/ I can achieve in a month</h2>
+															<p> {{user?.description_of_sales}} </p>
+														</div>
+														
+													</div>
+												</div>
+											</li>
+											<li class="careerfy-column-12">
+												<div class="careerfy-candidate-default-wrap">
+													<div class="careerfy-candidate-default-text">
+														<div class="careerfy-candidate-default-left">
+															<h2>About Me  & My Family / Relationship status </h2>
+															<p> {{user?.about_me}} </p>
+														</div>
+														
+													</div>
+												</div>
+											</li>
+											<li class="careerfy-column-12">
+												<div class="careerfy-candidate-default-wrap">
+													<div class="careerfy-candidate-default-text">
+														<div class="careerfy-candidate-default-left">
+															<h2>My personal value in terms of intiligence, honesty etc... </h2>
+															<p> {{user?.description_of_profound_value}} </p>
+														</div>
+														
+													</div>
+												</div>
+											</li>
+											<li class="careerfy-column-12">
+												<div class="careerfy-candidate-default-wrap">
+													<div class="careerfy-candidate-default-text">
+														<div class="careerfy-candidate-default-left">
+															<h2>Relocation Preference </h2>
+															<p> {{user?.description_relocation_preferance}} </p>
+														</div>
+														
+													</div>
+												</div>
+											</li>
+											
+										</ul>
 									</div>
-									</label>									
-								</div>							
-							</div>						 
-						</div>
-						</div> 
-						</div>
-					</li>
+								
+                            </div>
+                        </div>
 
-					<li class="columns-2 " >
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container">
-							<div class="radio width30">
-								<label>Phone No. </label>
-							</div>
-							<div class="radio" style="width: 18%;   float: left;">
-								<input class="select2-focusser" type="text"   name="" value="+91" readonly>
-							</div>                             
-							<div class="radio" style="width: 50%;   float: left;">
-								<input class="form-control select2-focusser" type="text" formControlName="mobile" value="{{user?.mobile}}" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedinv && inv.mobile.errors }" [pattern]="mobnumPattern">
-								<div *ngIf="submittedinv && inv.mobile.errors" class="invalid-feedback">
-									<div *ngIf="inv.mobile.errors.required">Phone Number is required</div>
-								</div>
-							</div>
-						</div>  
-						</div>
-						</div> 
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container">
-							<div class="radio padding-l-5 width30">
-								<label>Whatsapp No. </label>
-							</div>
-							<div class="radio" style="width: 18%;   float: left;">
-								<input class="select2-focusser" type="text"   name="" value="+91" readonly>
-							</div>                             
-							<div class="radio" style="width: 50%;   float: left;">
-								<input class="form-control select2-focusser" type="text" formControlName="whatsup_number" value="{{user?.whatsup_number}}" placeholder="9878987898" [ngClass]="{ 'is-invalid': submittedinv && inv.whatsup_number.errors }" [pattern]="mobnumPattern">
-								<div *ngIf="submittedinv && inv.whatsup_number.errors" class="invalid-feedback">
-									<div *ngIf="inv.whatsup_number.errors.required">Whatsapp Number is required</div>
-								</div>
-							</div>
-						</div>  
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-							<div class="field-label">
-								<div class="bold-label">
-									<label id="field_label_id_type" for="id_type">Qualification </label>
-								</div> 
-							</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group form-group">
-						<div class="select2-container "  >
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="1"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Doctorate</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="2"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">IIT / IIM</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-						</div>
-						<div class="select2-container "  >
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="3"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Masters</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="4"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Honors Degree</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-						</div>
-						<div class="select2-container">
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="5"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Bachelors</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="6"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Under Graduate</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-						</div>
-						<div class="select2-container">
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="7"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Associate Degree</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="8"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Diploma</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-						</div>
-						<div class="select2-container">
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="9"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Trade School</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="10"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">High School</font>
-									<span class="inner"></span>
-									</label>
-								</div> 
-							</div>
-						</div>
-						<div class="select2-container">	
-							<div style="width: 50%; float: left; height: 30px;">
-								<div class="checkbox ubuntuRegText">
-									<label>
-									<input type="checkbox" formControlName="qualification" value="11" [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 7px;">Less than High School</font>
-									<span class="inner"></span>
-									<div *ngIf="submittedinv && inv.qualification.errors" class="invalid-feedback">
-										<div *ngIf="inv.qualification.errors.required">Qualification is required</div>
-									</div>
-									</label>
-								</div> 
-							</div>
-						</div>
-					</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">Religion </label>
-						</div>
-						 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container">
-							<select class="select2-focusser form-control" formControlName="religion" [ngClass]="{ 'is-invalid': submittedinv && inv.religion.errors }"> 
-							<option value="">Select Religion</option>	
-							<option value="{{religion.key}}"  *ngFor="let religion of filters['religions'] | keys">{{religion.value}}</option>      
-							</select> 
-							<div *ngIf="submittedinv && inv.religion.errors" class="invalid-feedback">
-								<div *ngIf="inv.religion.errors.required">Religion is required</div>
-							</div>
-						</div>  
-						</div>
-						</div>
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">Mother Tongue </label>
-						</div>
-						 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container">
-							<select class="select2-focusser form-control" formControlName="mother_tongue" [ngClass]="{ 'is-invalid': submittedinv && inv.mother_tongue.errors }"> 
-							<option value="">Select</option>	
-							<option value="{{mother_tongue.key}}"  *ngFor="let mother_tongue of filters['motherTounges'] | keys">{{mother_tongue.value}}</option>      
-							</select> 
-							<div *ngIf="submittedinv && inv.mother_tongue.errors" class="invalid-feedback">
-								<div *ngIf="inv.mother_tongue.errors.required">Mother Tongue is required</div>
-							</div>
-						</div> 
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">Language Know </label>
-						</div>
-						 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container">
-							<select class="select2-focusser form-control" formControlName="known_languages" [ngClass]="{ 'is-invalid': submittedinv && inv.mother_tongue.errors }"> 
-							<option value="">Select</option>	
-							<option value="{{known_languages.key}}"  *ngFor="let known_languages of filters['motherTounges'] | keys">{{known_languages.value}}</option>      
-							</select> 
-							<div *ngIf="submittedinv && inv.known_languages.errors" class="invalid-feedback">
-								<div *ngIf="inv.known_languages.errors.required">Known Languages is required</div>
-							</div>
-						</div>  
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">Country Living In </label>
-						</div>
-						 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container" >
-							<select class="select2-focusser form-control" formControlName="country" [ngClass]="{ 'is-invalid': submittedinv && inv.country.errors }">
-								<option value="1">India</option>
-							</select> 
-							<div *ngIf="submittedinv && inv.country.errors" class="invalid-feedback">
-								<div *ngIf="inv.country.errors.required">Country is required</div>
-							</div>
-						</div>  
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-							<label id="field_label_id_type" for="id_type">State Living In</label>
-						</div> 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container">
-							<select class="select2-focusser form-control" formControlName="state" [ngClass]="{ 'is-invalid': submittedinv && inv.state.errors }"> 
-							<option value="">Select</option>	
-							<option value="{{state.key}}"  *ngFor="let state of filters['states'] | keys">{{state.value}}</option>      
-							</select> 
-							<div *ngIf="submittedinv && inv.state.errors" class="invalid-feedback">
-								<div *ngIf="inv.state.errors.required">State is required</div>
-							</div>
-						</div>  
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">City Living In</label>
-						</div> 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container" >
-							<select class="select2-focusser form-control" formControlName="city" [ngClass]="{ 'is-invalid': submittedinv && inv.city.errors }">
-								<option value="1">Hyderabad</option>
-							</select> 
-							<div *ngIf="submittedinv && inv.city.errors" class="invalid-feedback">
-								<div *ngIf="inv.city.errors.required">City is required</div>
-							</div>
-						</div> 
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2 "  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">Relationship Status</label>
-						</div> 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container">
-							<select class="select2-focusser form-control" formControlName="relationship_status" [ngClass]="{ 'is-invalid': submittedinv && inv.relationship_status.errors }"> 
-							<option value="">Select</option>	
-							<option value="{{relationship_status.key}}"  *ngFor="let relationship_status of filters['relationshipStatuses'] | keys">{{relationship_status.value}}</option>      
-							</select> 
-							<div *ngIf="submittedinv && inv.relationship_status.errors" class="invalid-feedback">
-								<div *ngIf="inv.relationship_status.errors.required">Relationship is required</div>
-							</div>
-						</div>  
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2" style="padding-top: 28px"  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">Linkedin URL</label>
-						</div>
-						 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container" >
-							<input class="form-control select2-focusser form-control" name="linked_in_url"  type="text" value="">
-						</div> 
-						</div>
-						</div> 
-						</div>
-					</li>
-					<li class="columns-2" style="padding-top: 28px"  >
-						<div class="field-label-wrapper">
-						<div class="field-label">
-						<div class="bold-label">
-						<label id="field_label_id_type" for="id_type">FaceBook URL</label>
-						</div>
-						 
-						</div>
-						</div>
-						<div class="form-field-wrapper">
-						<div class="form-field ">
-						<div class="businessrole-input-group ">
-						<div class="select2-container" >
-							<script>
-								function readURL1(input) {
-
-								if (input.files && input.files[0]) {
-									var reader = new FileReader();
-
-									reader.onload = function (e) {
-										$('#upload-file-info1').html(input.files[0].name);
-										$('#img2291').attr('src', e.target.result);
-										$('#img2291').css('display','inline-block');
-									}
-
-									reader.readAsDataURL(input.files[0]);
-								}
-								}
-							</script>     
-						  
-							<div style="position:relative; padding-left: 8px;">
-								<img id="img229" class="preview-image" src="#" alt="Your image">
-								<a class="btn btn-primary" href="javascript:;">
-								Choose a Pic
-								<input id="imgInp" type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="profile_pic" size="40" onchange="readURL(this);">
-								</a>
-								&nbsp;
-								<span id="upload-file-info"></span>
-							</div>
-						</div>  
-						</div>
-						</div> 
-						</div>
-					</li>
-				</ul> 
-			</div>     
-            <div class="col-lg-12 text-center"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-             
+                    </div>
+                </div>
             </div>
-            </form>    
-            
-        </div>
-      </div>
-    </div>
-</div>
-<div class="modal fade show" id="editModalCenter3" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="aboutForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                   <div class="col-lg-12"><label>About Me, My skill, Experience, Achivement, Growthrate</label></div>
-                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                    </div>
-                </div>
-            </form>          
-            
-        </div>
-      </div>
-    </div>
-</div>
+            <!-- Main Section -->
 
-
-
-<div class="modal fade show" id="editModalCenter4" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
         </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="salesForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                   <div class="col-lg-12"><label>No. Of clients/Customer/Average Sales/ I can achieve in a month</label></div>
-                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                    </div>
-                </div>
-            </form>          
-            
-        </div>
-      </div>
-    </div>
-</div>
-
-
-<div class="modal fade show" id="editModalCenter5" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="relationshipForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                   <div class="col-lg-12"><label>About Me & My Family / Relationship status</label></div>
-                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                    </div>
-                </div>
-            </form>          
-            
-        </div>
-      </div>
-    </div>
-</div>
-
-
-
-<div class="modal fade show" id="editModalCenter6" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                   <div class="col-lg-12"><label>My personal value in terms of intiligence, honesty etc...</label></div>
-                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                    </div>
-                </div>
-            </form>          
-            
-        </div>
-      </div>
-    </div>
-</div>
-
-
-<div class="modal fade show" id="editModalCenter7" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                   <div class="col-lg-12"><label>Relocation Prefrance</label></div>
-                   <div class="col-lg-12"><textarea  class="form-control" id="about" name="about"></textarea>
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                    </div>
-                </div>
-            </form>          
-            
-        </div>
-      </div>
-    </div>
-</div>
-
-<div class="modal fade show" id="editModalCenterpedit" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                   <div class="col-lg-12"><label>Uplaod Photos</label></div>
-                   <div class="col-lg-12"><input type="file"  class="form-control" id="about" name="about"> 
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                    </div>
-                </div>
-            </form>          
-            
-        </div>
-      </div>
-    </div>
-</div>
-
-
-
-<div class="modal fade show" id="adddYoutube" style="padding-right: 17px; ">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-      <div class="modal-content modal-content1">
-        <div class="modal-header text-center">
-           <h5 class="modal-title mb-0 font-weight-bold" id="exampleModalLongTitle"></h5>
-            <button type="button" class="close close1" data-dismiss="modal" aria-label="Close" style="position:absolute; right:-20px;
-                                                                                                      top:-20px; background:#fff !important;">
-              <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body modal-body1">
-             
-            <form action="" [formGroup]="userForm" method="Post" class="profileview-edit-form">
-                <div class="row">
-                
-                  
-                   <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
-                    <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
-                     <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
-                      <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
-                       <div class="col-lg-12 padding12"><input type="text"  class="form-control" placeholder="Add youtube URL"  ></div>   <div class="clearfix"></div>
-                    <div class="clearfix"></div>
-                    
-                    <div class="col-lg-12 text-center" style="margin-top:30px"> <input type="submit" name="submit" value="Submit" class="submitbutton"></div>
-                   
-                    </div>
-                
-            </form>
-		</div>	
-            
-        </div>
-      </div>
-</div>
-</div>
+        <!-- Main Content -->

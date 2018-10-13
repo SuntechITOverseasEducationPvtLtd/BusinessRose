@@ -544,7 +544,7 @@ address                         { font-style: italic; }
 }
 .careerfy-static-btn {
     display: inline-block;
-    background-color: #13b5ea;
+    background-color: #337ab7;
     padding: 17px 30px;
     line-height: 1;
     color: #ffffff;
@@ -904,7 +904,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
             transition: all 0.4s ease-in-out;
 }
 .careerfy-classic-services ul li:hover i {
-    background-color: #13b5ea;
+    background-color: #337ab7;
     color: #ffffff;
 }
 .careerfy-classic-services span {
@@ -1032,7 +1032,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     margin-left: 0px;
 }
 .careerfy-service-slider .slick-arrow:hover {
-    background-color: #13b5ea;
+    background-color: #337ab7;
     color: #ffffff;
 }
 /* Services Classic */
@@ -1083,7 +1083,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     background-color: #ffffff;
     border-radius: 100%;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.10);
-    color: #13b5ea;
+    color: #337ab7;
     padding-top: 36px;
     -webkit-transition: all 0.4s ease-in-out;
        -moz-transition: all 0.4s ease-in-out;
@@ -1092,7 +1092,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
             transition: all 0.4s ease-in-out;
 }
 .careerfy-services-classic li:hover span i {
-    background-color: #13b5ea;
+    background-color: #337ab7;
     color: #ffffff;
 }
 .careerfy-services-classic h2 {
@@ -1229,11 +1229,11 @@ li:hover .careerfy-read-more { background-color: transparent; }
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0px;
-    color: #13b5ea;
+    color: #337ab7;
 }
 .careerfy-accordion .panel-heading a i {
     float: left;
-    color: #13b5ea;
+    color: #337ab7;
     font-size: 20px;
     margin: 2px 12px 0px 0px;
     -webkit-transform: rotate(-90deg);
@@ -1333,7 +1333,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     text-align: center;
     margin-top: 10px;
 }
-.careerfy-classic-priceplane.active { background-color: #13b5ea; }
+.careerfy-classic-priceplane.active { background-color: #337ab7; }
 .careerfy-classic-priceplane.active h2,
 .careerfy-classic-priceplane.active span,
 .careerfy-classic-priceplane.active small,
@@ -1343,7 +1343,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     color: #ffffff;
 }
 .careerfy-classic-priceplane.active .careerfy-priceplane-section { border-color: rgba(0,0,0,0.10); }
-.careerfy-classic-priceplane.active .careerfy-classic-priceplane-btn { background-color: #fff; color: #13b5ea; }
+.careerfy-classic-priceplane.active .careerfy-classic-priceplane-btn { background-color: #fff; color: #337ab7; }
 /* Simple Price Plane */
 .col-md-3.careerfy-simple-priceplane { padding: 0px; }
 .careerfy-simple-priceplane-basic,
@@ -1568,7 +1568,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
             transition: all 0.4s ease-in-out;
 }
 .careerfy-partner-slider a:hover {
-    box-shadow: 0px 0px 0px 3px #13b5ea inset;
+    box-shadow: 0px 0px 0px 3px #337ab7 inset;
 }
 .careerfy-partner-slider .slick-list { margin: 0px -15px; }
 .careerfy-partner-slider-layer { padding: 0px 15px; }
@@ -2033,7 +2033,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     text-align: left;
 }
 .sinupmodel {
-    font-size: 12px !important;line-height: 1 !important;margin-left: 6px !important;color:#13b5ea !important;
+    font-size: 12px !important;line-height: 1 !important;margin-left: 6px !important;color:#337ab7 !important;
 }
 .radio-width {
     width:20px !important;
@@ -2043,15 +2043,18 @@ li:hover .careerfy-read-more { background-color: transparent; }
 .dropdown-menu {
     left: -25px;
 }
+.btn:hover, .btn:focus, .btn.focus{
+	background:#fff;
+}
 
 .careerfy-banner-btn a{
 	float:none;
-	background: #13b5ea;
+	background: #337ab7;
 	margin-bottom: 15px;
 }
 .bs_logo{
 	font-size:27px;
-	color: #13b5ea;
+	color: #337ab7;
 }
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
     position: absolute;
@@ -2068,4 +2071,8 @@ li:hover .careerfy-read-more { background-color: transparent; }
 }
 .field_label_id {
     margin-bottom: 0px !important;
+}
+.btn-custom{
+	background: #337ab7;
+	color:#fff;
 }

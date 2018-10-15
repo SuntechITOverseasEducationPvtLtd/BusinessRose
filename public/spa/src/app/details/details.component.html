@@ -14,10 +14,14 @@
                                     <!-- <p>Financial Supervisor at Yup Studio></p>
                                     <span>Netherlands, Rotterdam</span>
                                     <small>Member Since, Aug 5, 2015</small> -->
-                                    <ul>
-                                        <li><a data-original-title="facebook" class="fa fa-check profile-icons-left"></a></li>
-                                        <li><a data-original-title="twitter" class="fa fa-heart profile-icons-left"></a></li>
-                                        <li><a data-original-title="linkedin" class="fa fa-handshake-o profile-icons-left"></a></li>
+                                    <ul *ngIf="!authUserProfile">
+										<li class="icon-social-size"><a href="javascript:;" data-original-title="facebook" class="fa fa-check profile-icons-left"></a><span *ngIf="user?.is_connected == 1 else notConnected">Connected</span>
+											<ng-template #notConnected><a class="connection-text" href="javascript:;" (click)="connectNow()">Connect Now</a></ng-template>
+										</li>
+										<li class="icon-social-size"><a href="javascript:;" data-original-title="twitter" class="fa fa-heart profile-icons-left"></a><span *ngIf="user?.is_shortlisted == 1 else notShortlisted">Shortlisted</span></li>
+										<ng-template #notShortlisted><a class="connection-text" href="javascript:;" (click)="shortlistNow()">Shortlist Now</a></ng-template>
+										<li class="icon-social-size"><a href="javascript:;" data-original-title="linkedin" class="fa fa-handshake-o profile-icons-left"></a><span *ngIf="user?.is_invited == 1 else noInvitationSent">Invitation Sent</span></li>
+										<ng-template #noInvitationSent><a class="connection-text" href="javascript:;" (click)="inviteNow()">Invite to Connect</a></ng-template>
                                         <!-- <li><a href="#" data-original-title="google-plus" class="careerfy-icon careerfy-google-plus-logo-button"></a></li>
                                         <li><a href="#" data-original-title="dribbble" class="careerfy-icon careerfy-dribbble-logo"></a></li> -->
                                     </ul>

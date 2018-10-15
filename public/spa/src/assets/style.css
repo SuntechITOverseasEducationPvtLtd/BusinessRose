@@ -2107,4 +2107,11 @@ li:hover .careerfy-read-more { background-color: transparent; }
 }
 .careerfy-employer-dashboard-nav ul li:hover a, .careerfy-employer-dashboard-nav ul li.active a {
     background: #eceeef !important;
+    margin: 0px 25px 10px 6px !important;
+}
+.icon-social-size {
+    width: 30% !important;
+}
+.connection-text{
+    font-size:16px !important;
 }

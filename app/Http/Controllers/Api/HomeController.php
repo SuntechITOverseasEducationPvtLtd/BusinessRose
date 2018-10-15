@@ -63,7 +63,13 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 	public function getAllMembers(Request $request){
-		$data = User::getAllMembers($request); 		
+		$data['userInfo'] = User::getAllMembers($request);
+		$data['inv_received'] = Invitation::where('invited_to',Auth::user()->id)->count();		
+		$data['inv_sent'] = Invitation::where('invited_by',Auth::user()->id)->count();		
+		$data['shortlists_count'] = Shortlist::where('shortlist_by',Auth::user()->id)->count();		
+		$data['views'] = Auth::user()->views;		
+		$data['avail_credits'] = Auth::user()->credits - Auth::user()->credits_used;		
+		$data['used_credits'] = Auth::user()->credits_used;	
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
 	

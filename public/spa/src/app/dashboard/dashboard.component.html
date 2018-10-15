@@ -1,275 +1,384 @@
+<!-- SubHeader -->
+<div class="careerfy-subheader careerfy-subheader-without-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Your Profile</h1>
+					<div class="col-lg-6"><p>Views : <span style="color:#fff">{{this.views}}</span></p></div>
+                    <div class="col-lg-6"><p>Shortlists : <a [routerLink]="['/shortlists']" ><span style="color:#fff">{{this.shortlists_count}}</span></a></p></div>
+                    <div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Credits</h1>
+					<div class="col-lg-6"><p>Available : <span>{{this.avail_credits}}</span></p></div>
+                    <div class="col-lg-6"><p>Used : <span>{{this.used_credits}}</span></p></div>
+                    <div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Invitation to Connect</h1>
+					<div class="col-lg-6"><p>Received : <a [routerLink]="['/invitations-received']" ><span style="color:#fff">{{this.inv_received}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Sent : <a [routerLink]="['/invitations-sent']" ><span style="color:#fff">{{this.inv_sent}}</span></a></p></div>
+                    <div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- SubHeader -->
 <!-- Main Content -->
 <div class="careerfy-main-content">
 		
-		<!-- Main Section -->
-		<div class="careerfy-main-section careerfy-top-full">
-				<div class="container">
-						<div class="row">
+<!-- Main Section -->
+<div class="careerfy-main-section careerfy-top-full">
+	<div class="container">
+		<div class="row">
 
-								<aside class="careerfy-column-3">
-										<div class="careerfy-typo-wrap">
-												<form method="Get" class="careerfy-search-filter" [formGroup]="sidebarFilters" action="#" id="form_filters">
-														
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Type</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="user_type" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r5"><span></span>Any</label>
-																				</li>
-																				<li>
-																						<input type="checkbox" formControlName="user_type" value="3" (change)="applyFilter()" />
-																						<label for="r6"><span></span>Skilled / Experienced</label>
-																				</li>
-																				<li>
-																						<input type="checkbox" formControlName="user_type" value="2" (change)="applyFilter()" />
-																						<label for="r7"><span></span>Investor</label>
-																				</li>
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Co Investment</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li *ngIf="this.sidebarFilters.controls.coinvestment">
-																						<div *ngFor="let coinv of this.sidebarFilters.controls.coinvestment.controls; let i = index" formArrayName="coinvestment">
-																							<input type="checkbox" [formControlName]="i" (change)="applyFilter()" [checked]="i === 0"  [value]="i" />
-																							<label for="r5"><span></span>{{coinvestment[i].name}}</label>
-																						</div>
-																				</li>
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Categories</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="category" value="" [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r17"><span></span>Any</label>
-																						<small>456</small>
-																				</li>
-																				<li *ngFor="let category of filters['categories'] | keys;  let i=index">
-																						<span *ngIf="i<10">
-																							<input type="checkbox" formControlName="category" value="{{category.key}}" (change)="applyFilter()" />
-																							<label for="r18"><span></span>{{category.value}}</label>
-																							<small>2</small>
-																						</span>
-																				</li>
-																		</ul>
-																		<a href="javascript:void(0);" class="careerfy-seemore" data-toggle="modal" data-target="#exampleModalCenter1">+see more</a>				
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">State City</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="state" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r11"><span></span>Any</label>
-																						<small></small>
-																				</li>
-																				<li *ngFor="let state of filters['states'] | keys; let i=index;">
-																						<span *ngIf="i<10">
-																							<input type="checkbox" formControlName="state" value="{{state.key}}" (change)="applyFilter()" />
-																							<label for="r12"><span></span>{{state.value}}</label>
-																							<small>4</small>
-																						</span>
-																				</li>																				
-																		</ul>
-																		<a href="javascript:void(0);" class="careerfy-seemore" data-toggle="modal" data-target="#exampleModalCenter11">+see more</a>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Investment Size</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="investmentRange" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r11"><span></span>Any</label>
-																						<small></small>
-																				</li>
-																				<li *ngFor="let range of filters['investmentRange'] | keys">
-																							<input type="checkbox" formControlName="investmentRange" value="{{range.key}}" (change)="applyFilter()" />
-																							<label for="r12"><span></span>{{range.value}}</label>
-																							<small></small>
-																				</li>																				
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Education Qualification</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="qualification" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r11"><span></span>Any</label>
-																						<small></small>
-																				</li>
-																				<li *ngFor="let qualification of filters['qualifications'] | keys">
-																							<input type="checkbox" formControlName="qualification" value="{{qualification.key}}" (change)="applyFilter()" />
-																							<label for="r12"><span></span>{{qualification.value}}</label>
-																							<small></small>
-																				</li>																				
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Experience</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="experience" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r11"><span></span>Any</label>
-																						<small></small>
-																				</li>
-																				<li *ngFor="let experience of filters['experiences'] | keys">
-																							<input type="checkbox" formControlName="experience" value="{{experience.key}}" (change)="applyFilter()" />
-																							<label for="r12"><span></span>{{experience.value}}</label>
-																							<small></small>
-																				</li>																				
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Religion</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="religion" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r11"><span></span>Any</label>
-																						<small></small>
-																				</li>
-																				<li *ngFor="let religion of filters['religions'] | keys">
-																							<input type="checkbox" formControlName="religion" value="{{religion.key}}" (change)="applyFilter()" />
-																							<label for="r12"><span></span>{{religion.value}}</label>
-																							<small></small>
-																				</li>																				
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Mother Tongue</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="motherTounge" value="any"  [checked]="defaultChecked" (change)="applyFilter()" />
-																						<label for="r11"><span></span>Any</label>
-																						<small></small>
-																				</li>
-																				<li *ngFor="let motherTounge of filters['motherTounges'] | keys">
-																							<input type="checkbox" formControlName="motherTounge" value="{{motherTounge.key}}" (change)="applyFilter()" />
-																							<label for="r12"><span></span>{{motherTounge.value}}</label>
-																							<small></small>
-																				</li>																				
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Age</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						
-																				</li>
-																				
-																		</ul>
-																</div>
-														</div>
-														<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
-																<h2><a href="#" class="careerfy-click-btn">Relationship Status</a></h2>
-																<div class="careerfy-checkbox-toggle">
-																		<ul class="careerfy-checkbox">
-																				<li>
-																						<input type="checkbox" formControlName="relationshipStatus" value="Boat"  [checked]="defaultChecked"  (change)="applyFilter()" />
-																						<label for="r11"><span></span>Any</label>
-																						<small></small>
-																				</li>
-																				<li *ngFor="let relationshipStatus of filters['relationshipStatuses'] | keys">
-																							<input type="checkbox" formControlName="relationshipStatus" value="{{relationshipStatus.key}}" (change)="applyFilter()" />
-																							<label for="r12"><span></span>{{relationshipStatus.value}}</label>
-																							<small></small>
-																				</li>																				
-																		</ul>
-																</div>
-														</div>
+			<aside class="careerfy-column-3">
+					<div class="careerfy-typo-wrap">
+							<form method="Get" class="careerfy-search-filter" [formGroup]="sidebarFilters" action="#" id="form_filters">
+									
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Type</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="user_type" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r5"><span></span>Any</label>
+															</li>
+															<li>
+																	<input type="checkbox" formControlName="user_type" value="3" (change)="applyFilter()" />
+																	<label for="r6"><span></span>Skilled / Experienced</label>
+															</li>
+															<li>
+																	<input type="checkbox" formControlName="user_type" value="2" (change)="applyFilter()" />
+																	<label for="r7"><span></span>Investor</label>
+															</li>
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Co Investment</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li *ngIf="this.sidebarFilters.controls.coinvestment">
+																	<div *ngFor="let coinv of this.sidebarFilters.controls.coinvestment.controls; let i = index" formArrayName="coinvestment">
+																		<input type="checkbox" [formControlName]="i" (change)="applyFilter()" [checked]="i === 0"  [value]="i" />
+																		<label for="r5"><span></span>{{coinvestment[i].name}}</label>
+																	</div>
+															</li>
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Categories</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="category" value="" [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r17"><span></span>Any</label>
+																	<small>456</small>
+															</li>
+															<li *ngFor="let category of filters['categories'] | keys;  let i=index">
+																	<span *ngIf="i<10">
+																		<input type="checkbox" formControlName="category" value="{{category.key}}" (change)="applyFilter()" />
+																		<label for="r18"><span></span>{{category.value}}</label>
+																		<small>2</small>
+																	</span>
+															</li>
+													</ul>
+													<!--<a href="javascript:void(0);" class="careerfy-seemore" data-toggle="modal" data-target="#exampleModalCenter1">+see more</a>-->				
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">State City</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="state" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r11"><span></span>Any</label>
+																	<small></small>
+															</li>
+															<li *ngFor="let state of filters['states'] | keys; let i=index;">
+																	<span *ngIf="i<10">
+																		<input type="checkbox" formControlName="state" value="{{state.key}}" (change)="applyFilter()" />
+																		<label for="r12"><span></span>{{state.value}}</label>
+																		<small>4</small>
+																	</span>
+															</li>																				
+													</ul>
+													<!--<a href="javascript:void(0);" class="careerfy-seemore" data-toggle="modal" data-target="#exampleModalCenter11">+see more</a>-->
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Investment Size</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="investmentRange" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r11"><span></span>Any</label>
+																	<small></small>
+															</li>
+															<li *ngFor="let range of filters['investmentRange'] | keys">
+																		<input type="checkbox" formControlName="investmentRange" value="{{range.key}}" (change)="applyFilter()" />
+																		<label for="r12"><span></span>{{range.value}}</label>
+																		<small></small>
+															</li>																				
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Education Qualification</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="qualification" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r11"><span></span>Any</label>
+																	<small></small>
+															</li>
+															<li *ngFor="let qualification of filters['qualifications'] | keys">
+																		<input type="checkbox" formControlName="qualification" value="{{qualification.key}}" (change)="applyFilter()" />
+																		<label for="r12"><span></span>{{qualification.value}}</label>
+																		<small></small>
+															</li>																				
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Experience</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="experience" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r11"><span></span>Any</label>
+																	<small></small>
+															</li>
+															<li *ngFor="let experience of filters['experiences'] | keys">
+																		<input type="checkbox" formControlName="experience" value="{{experience.key}}" (change)="applyFilter()" />
+																		<label for="r12"><span></span>{{experience.value}}</label>
+																		<small></small>
+															</li>																				
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Religion</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="religion" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r11"><span></span>Any</label>
+																	<small></small>
+															</li>
+															<li *ngFor="let religion of filters['religions'] | keys">
+																		<input type="checkbox" formControlName="religion" value="{{religion.key}}" (change)="applyFilter()" />
+																		<label for="r12"><span></span>{{religion.value}}</label>
+																		<small></small>
+															</li>																				
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Mother Tongue</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="motherTounge" value="any"  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="r11"><span></span>Any</label>
+																	<small></small>
+															</li>
+															<li *ngFor="let motherTounge of filters['motherTounges'] | keys">
+																		<input type="checkbox" formControlName="motherTounge" value="{{motherTounge.key}}" (change)="applyFilter()" />
+																		<label for="r12"><span></span>{{motherTounge.value}}</label>
+																		<small></small>
+															</li>																				
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Age</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	
+															</li>
+															
+													</ul>
+											</div>
+									</div>
+									<div class="careerfy-search-filter-wrap careerfy-search-filter-toggle">
+											<h2><a href="#" class="careerfy-click-btn">Relationship Status</a></h2>
+											<div class="careerfy-checkbox-toggle">
+													<ul class="careerfy-checkbox">
+															<li>
+																	<input type="checkbox" formControlName="relationshipStatus" value="Boat"  [checked]="defaultChecked"  (change)="applyFilter()" />
+																	<label for="r11"><span></span>Any</label>
+																	<small></small>
+															</li>
+															<li *ngFor="let relationshipStatus of filters['relationshipStatuses'] | keys">
+																		<input type="checkbox" formControlName="relationshipStatus" value="{{relationshipStatus.key}}" (change)="applyFilter()" />
+																		<label for="r12"><span></span>{{relationshipStatus.value}}</label>
+																		<small></small>
+															</li>																				
+													</ul>
+											</div>
+									</div>
 
-												</form>
+							</form>
+					</div>
+			</aside>
+			<alert></alert> 
+			<div class="careerfy-column-9">
+				<div class="careerfy-typo-wrap">
+					<!-- FilterAble -->
+					<!--<div class="careerfy-filterable">
+						<h2>Showing 0-12 of 37 results</h2>
+						<ul>
+								<li>
+										<i class="careerfy-icon careerfy-sort"></i>
+										<div class="careerfy-filterable-select">
+												<select>
+														<option>Sort</option>
+														<option>Sort</option>
+														<option>Sort</option>
+												</select>
 										</div>
-								</aside>
-								<alert></alert> 
-								<div class="careerfy-column-9">
-										<div class="careerfy-typo-wrap">
-												<!-- FilterAble -->
-												<div class="careerfy-filterable">
-														<h2>Showing 0-12 of 37 results</h2>
-														<ul>
-																<li>
-																		<i class="careerfy-icon careerfy-sort"></i>
-																		<div class="careerfy-filterable-select">
-																				<select>
-																						<option>Sort</option>
-																						<option>Sort</option>
-																						<option>Sort</option>
-																				</select>
-																		</div>
-																</li>
-																<li><a href="#"><i class="careerfy-icon careerfy-squares"></i> Grid</a></li>
-																<li><a href="#"><i class="careerfy-icon careerfy-list"></i> List</a></li>
-														</ul>
-												</div>
-												<!-- Candidate Listings -->
-												<div class="careerfy-candidate careerfy-candidate-default">
-														<ul class="careerfy-row">
-																<li class="careerfy-column-12" *ngFor="let user of users" >
-																		<div class="careerfy-candidate-default-wrap">
-																				<div class="careerfy-content-title"><h2>{{user?.user_type}}</h2></div>
-																				
-																				<figure><a href="#"><img src="assets/images/avatar.png" alt=""></a></figure>
-																				<div class="careerfy-candidate-editor">
-																						<div class="careerfy-jobdetail-services">
-																								<h2><a href="javascript:void(0);">{{user?.name | titleCase }}</a></h2>
-																								<ul class="careerfy-row">
-																										<li>Business Category <a href="#" class="careerfy-candidate-default-studio">{{user?.cat_name}}</a></li>
-																										<li><i class="fa fa-map-marker"></i> Sub Category: {{user?.sub_category}}</li>
-																										<li><i class="careerfy-icon careerfy-envelope"></i> 
-																											<p *ngIf="user?.user_type_id == this.global.SKILLED_PERSON"><b>Co Investment :</b> 
-																												<span *ngIf="user?.co_investment == this.global.CO_INVESTMENT_YES; else noCoInvestment" class="blue" >
-																													Yes
-																												</span></p>
-																												<ng-template #noCoInvestment>
-																													No
-																												</ng-template>
-																										</li>
-																								</ul>
-																						</div>
-																						<a href="#" class="careerfy-candidate-default-btn"><i class="careerfy-icon careerfy-add-list"></i> Shortlist</a>
-																				</div>
-																		</div>
-																</li>
-																
-														</ul>
-												</div>
-												<!-- Pagination -->
-												<div class="careerfy-pagination-blog">
-														<ul class="page-numbers">
-																<li><a class="prev page-numbers" href="#"><span><i class="careerfy-icon careerfy-arrows4"></i></span></a></li>
-																<li><span class="page-numbers current">01</span></li>
-																<li><a class="page-numbers" href="#">02</a></li>
-																<li><a class="page-numbers" href="#">03</a></li>
-																<li><a class="page-numbers" href="#">04</a></li>
-																<li><a class="next page-numbers" href="#"><span><i class="careerfy-icon careerfy-arrows4"></i></span></a></li>
-														</ul>
-												</div>
+								</li>
+								<li><a href="#"><i class="careerfy-icon careerfy-squares"></i> Grid</a></li>
+								<li><a href="#"><i class="careerfy-icon careerfy-list"></i> List</a></li>
+						</ul>
+					</div>-->
+					<div class="careerfy-job careerfy-joblisting-classic careerfy-jobdetail-joblisting">
+						<ul class="careerfy-row">
+							<li class="careerfy-column-12" *ngFor="let user of users">
+								<div class="careerfy-joblisting-classic-wrap">
+									<figure><a href="#"><img src="assets/images/avatar.png" alt=""></a></figure>
+									<div class="careerfy-joblisting-text">
+										<div class="careerfy-list-option">
+											<div class="careerfy-content-title"><h2><a href="#">{{user?.user_type}}</a></h2></div>
+											<ul>
+												<li><a href="#" style="font-size: 15px;">{{user?.name | titleCase }}</a></li>
+												<li><i class="careerfy-icon careerfy-maps-and-flags"></i>{{user?.city_name}}, {{ user?.state_name}}</li>
+												<li><i class="careerfy-icon careerfy-filter-tool-black-shape"></i>{{user?.cat_name}}, {{user?.sub_category}}</li>
+											</ul>
 										</div>
+										
+									<div class="clearfix"></div>
+									</div>
+									<div class="careerfy-jobdetail-services">
+                                        <ul class="careerfy-row">
+                                            <li class="careerfy-column-3">
+                                                <i class="careerfy-icon careerfy-salary"></i>
+                                                <div class="careerfy-services-text">Investment Range <small>{{user?.range}}</small></div>
+                                            </li>
+                                            <li class="careerfy-column-3">
+                                                <i class="careerfy-icon careerfy-social-media"></i>
+                                                <div class="careerfy-services-text">Relationship<small>{{user?.relation}}</small></div>
+                                            </li>
+                                            
+                                            <li class="careerfy-column-3">
+                                                <i class="careerfy-icon careerfy-user"></i>
+                                                <div class="careerfy-services-text">Gender <small><span *ngIf="user?.gender == this.global.MALE; else genderFemale" >Male, {{user?.date_of_birth | calculateAge}}yrs</span></small></div>
+												<ng-template #genderFemale>Female</ng-template>
+                                            </li>
+											<li class="careerfy-column-3"> 
+												<div class="careerfy-job-userlist">
+												<a href="#" class="careerfy-job-like"><i class="careerfy-icon careerfy-check-mark"></i></a>							
+												<a href="#" class="careerfy-option-btn" *ngIf="user?.is_connected == 1 else notConnected">Connected</a>
+												</div> 
+												<ng-template #notConnected><a href="javascript:;" (click)="connectNow(user?.user_id)" class="careerfy-option-btn">Connect Now</a></ng-template>
+                                            </li>
+                                            <li class="careerfy-column-3" style="clear:both">
+                                                <i class="careerfy-icon careerfy-network"></i>
+                                                <div class="careerfy-services-text">Mother Tounue <small>{{user?.mother_tongue}}</small></div>
+                                            </li>
+                                            <li class="careerfy-column-3">
+                                                <i class="careerfy-icon careerfy-mortarboard"></i>
+                                                <div class="careerfy-services-text">Qualification <small>{{user?.qualification}}</small></div>
+                                            </li>
+											<li class="careerfy-column-3">
+												<i class="careerfy-icon careerfy-briefcase"></i>
+                                                <div class="careerfy-services-text">Experience <small>{{ user?.experience}} </small></div>
+											</li>
+											<li class="careerfy-column-3"> 
+												
+												<span *ngIf="user?.is_connected == 0"><div class="careerfy-job-userlist">
+												<a href="#" class="careerfy-job-like"><i class="fa fa-heart"></i></a>												
+												<a href="#" class="careerfy-option-btn" *ngIf="user?.is_shortlisted == 1 else notShortlisted">Shortlisted</a>
+												</div> 
+												</span>
+												
+												<ng-template #notShortlisted><a href="javascript:;" (click)="shortlistNow(user?.user_id)" class="careerfy-option-btn">Shortlist Now</a></ng-template>
+                                            </li>
+											<li class="careerfy-column-3" style="clear:both">
+                                                <i class="careerfy-icon careerfy-technology"></i>
+                                                <div class="careerfy-services-text">Phone no <small>{{user?.mobile}}</small></div>
+                                            </li>											
+											<li class="careerfy-column-6">
+                                                <i class="careerfy-icon careerfy-mail"></i>
+                                                <div class="careerfy-services-text">Email <small>{{user?.email}}</small></div>
+                                            </li>
+											<li class="careerfy-column-3"> 
+												
+												<span *ngIf="user?.is_connected == 0"><div class="careerfy-job-userlist">
+												<a href="#" class="careerfy-job-like"><i class="fa fa-handshake-o"></i></a>
+																			
+												<a href="#" class="careerfy-option-btn" *ngIf="user?.is_invited == 1 else noInvitationSent">Invitation Sent</a>
+												</div> 
+												</span>
+												
+												<ng-template #noInvitationSent><a href="javascript:;" (click)="inviteNow(user?.user_id)" class="careerfy-option-btn">Invite to Connect</a></ng-template>
+                                            </li>
+                                        </ul>
+										
+                                    </div>
+									<div *ngIf="user?.user_type_id == this.global.SKILLED_PERSON; else userTypeInvestorAbout">
+                                    <div class="careerfy-list-option"><h2>About Me, My skill, Experience, Achivement, Growthrate</h2></div>
+                                    <div class="careerfy-description">
+                                        <p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+                                    </div> 
+									<div class="careerfy-list-option"><h2>No. Of clients/Customer/Average Sales/ I can achieve in a month</h2></div>
+                                    <div class="careerfy-description">
+                                        <p>{{user?.description_of_sales}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+                                    </div>
+                                    </div>
+									<ng-template #userTypeInvestorAbout>						
+										<div class="careerfy-list-option"><h2>Skill & Experience I am looking for</h2></div>
+										<div class="careerfy-description">
+											<p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+										</div>
+										<div class="careerfy-list-option"><h2>I want to invest in location</h2></div>
+										<div class="careerfy-description">
+											<p>{{user?.description_place_business}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+										</div>
+									</ng-template>
+                                
 								</div>
-
-						</div>
+							</li>							
+						</ul>
+					</div>
+					<!-- Pagination -->
+					<!--<div class="careerfy-pagination-blog">
+							<ul class="page-numbers">
+									<li><a class="prev page-numbers" href="#"><span><i class="careerfy-icon careerfy-arrows4"></i></span></a></li>
+									<li><span class="page-numbers current">01</span></li>
+									<li><a class="page-numbers" href="#">02</a></li>
+									<li><a class="page-numbers" href="#">03</a></li>
+									<li><a class="page-numbers" href="#">04</a></li>
+									<li><a class="next page-numbers" href="#"><span><i class="careerfy-icon careerfy-arrows4"></i></span></a></li>
+							</ul>
+					</div>-->
 				</div>
+			</div>
+
 		</div>
-		<!-- Main Section -->
+	</div>
+</div>
+<!-- Main Section -->
 
 </div>
 <!-- Main Content -->

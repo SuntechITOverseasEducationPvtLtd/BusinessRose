@@ -1,46 +1,46 @@
-    
-<section class="profile-main-sec1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-lg-offset-1 tetxcente">
-                <h6 ><b>Your Profile</b></h6>
-                <div class="row">
-                    <div class="col-lg-6"><p>Views : <span>{{this.views}}</span></p></div>
-                    <div class="col-lg-6"><p>Shortlists : <a [routerLink]="['/shortlists']" ><span>{{this.shortlists_count}}</span></a></p></div>
+<!-- SubHeader -->
+<div class="careerfy-subheader careerfy-subheader-without-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Your Profile</h1>
+					<div class="col-lg-6"><p>Views : <span style="color:#fff">{{this.views}}</span></p></div>
+                    <div class="col-lg-6"><p>Shortlists : <a [routerLink]="['/shortlists']" ><span style="color:#fff">{{this.shortlists_count}}</span></a></p></div>
                     <div class="clearfix"></div>
-                </div>
-            </div>
-            
-            <div class="col-lg-1" style="background:url(src/assets/images/border.png)"></div>
-            
-            <div class="col-lg-3 tetxcente" >
-                <h6><b>Credits</b></h6>
-                <div class="row">
-                    <div class="col-lg-6"><p>Available : <span>{{this.avail_credits}}</span></p></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Credits</h1>
+					<div class="col-lg-6"><p>Available : <span>{{this.avail_credits}}</span></p></div>
                     <div class="col-lg-6"><p>Used : <span>{{this.used_credits}}</span></p></div>
                     <div class="clearfix"></div>
-                </div>
-            </div>
-            
-            <div class="col-lg-1" style="background:url(src/assets/images/border.png)"></div>
-            
-            <div class="col-lg-3 tetxcente">
-                <h6 ><b>Invitation to Connect</b></h6>
-                <div class="row">
-                    <div class="col-lg-6"><p>Received : <a [routerLink]="['/invitations-received']" ><span>{{this.inv_received}}</span></a></p></div>
-                    <div class="col-lg-6"><p>Sent : <a [routerLink]="['/invitations-sent']" ><span>{{this.inv_sent}}</span></a></p></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Invitation to Connect</h1>
+					<div class="col-lg-6"><p>Received : <a [routerLink]="['/invitations-received']" ><span style="color:#fff">{{this.inv_received}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Sent : <a [routerLink]="['/invitations-sent']" ><span style="color:#fff">{{this.inv_sent}}</span></a></p></div>
                     <div class="clearfix"></div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>       
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- SubHeader -->      
       
-<section style="background:#f1f1f2;margin-top: 5px;">    
-    <div class="container">     
-         <div class="row">
-            <div class="col-lg-1"></div><div class="col-lg-10"><section class="profile-main-sec nstatitc"  ><h3 class="profileviewds"><span class="prvH">Invitation to Connect</span> - Invited Received ({{users?.length}}) <i class="fa fa-angle-double-down" aria-hidden="true"></i></h3></section>   </div>             
+<!-- Main Content -->
+<div class="careerfy-main-content">	
+	<!-- Main Section -->
+	<div class="careerfy-main-section careerfy-dashboard-fulltwo">   
+    <div class="container">
+		<div class="careerfy-typo-wrap">
+		<div class="careerfy-employer-dasboard">
+		<div class="careerfy-employer-box-section">
+		<div class="row">
+            <div class="col-lg-1"></div><div class="col-lg-10"><section class="profile-main-sec nstatitc"  ><h3 class="careerfy-profile-title"><span class="prvH">Invitation to Connect</span> - Invited Received ({{users?.length}}) <i class="fa fa-angle-double-down" aria-hidden="true"></i></h3></section>   </div>             
         </div> 
 		<alert></alert> 
 		<div class="row">
@@ -161,8 +161,12 @@
 				<ng-template #noresults><div class="main-box box-n" style="min-height:150px"><div class="row">No Results Found</div></div></ng-template>													
            </div>
         </div>    
+        </div>    
+        </div>    
+        </div>    
     </div>
-</section>
+	</div>
+</div>
  <div class="modal fade" id="exampleModalCenter1">
     <div class="modal-dialog modal-dialog-centered modal-dialog1" role="document">
       <div class="modal-content modal-content1">

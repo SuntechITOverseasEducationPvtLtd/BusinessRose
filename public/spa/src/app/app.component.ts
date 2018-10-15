@@ -20,6 +20,12 @@ export class AppComponent implements OnInit {
     submitted = false;
     returnUrl: string;
 	message = '';
+	public inv_received = 0;
+	public inv_sent = 0;
+	public shortlists_count = 0;
+	public views = 0;
+	public avail_credits = 0;
+	public used_credits = 0;
 	
 	
 	constructor(
@@ -40,7 +46,11 @@ export class AppComponent implements OnInit {
 		this.searchForm = this.formBuilder.group({
             search: ['', Validators.required]
         });
-		
+
+		if(localStorage.getItem('currentUserId') != '')
+		{
+			this.getAccountSettings();			
+		}
 		
         // reset login status
         //this.authenticationService.logout();
@@ -56,6 +66,21 @@ export class AppComponent implements OnInit {
 	}
 	get currentUserId(): any {
 		return btoa(localStorage.getItem('currentUserId'));
+	}
+	
+	getAccountSettings():void {
+		this.userService.accountSettings().subscribe(user => {
+                    this.users = user['data']['shortlists'];
+                    this.inv_received = user['data']['inv_received'];
+                    this.inv_sent = user['data']['inv_sent'];
+                    this.shortlists_count = user['data']['shortlists_count'];
+                    this.views = user['data']['views'];
+                    this.avail_credits = user['data']['avail_credits'];
+                    this.used_credits = user['data']['used_credits'];
+                },
+                error => {
+                    this.alertService.error(error);
+                });		
 	}
 
    onLogin() {

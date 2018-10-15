@@ -26,6 +26,12 @@ export class DashboardComponent implements OnInit {
 	public defaultChecked = true;
 	public checkConinvestment = true;
 	public user_id;
+	public inv_received = 0;
+	public inv_sent = 0;
+	public shortlists_count = 0;
+	public views = 0;
+	public avail_credits = 0;
+	public used_credits = 0;
 	
 	constructor(private userService:UserService, private alertService:AlertService, private global: GlobalService,private formBuilder: FormBuilder) {
 	const controlsCoinvest = this.coinvestment.map(c => new FormControl(false));
@@ -52,7 +58,13 @@ export class DashboardComponent implements OnInit {
   
 	getAllUserDetails():void {
 		this.userService.getAll().subscribe(users => {
-			this.users = users['data'];
+			this.users = users['data']['userInfo'];
+			this.inv_received = users['data']['inv_received'];
+			this.inv_sent = users['data']['inv_sent'];
+			this.shortlists_count = users['data']['shortlists_count'];
+			this.views = users['data']['views'];
+			this.avail_credits = users['data']['avail_credits'];
+			this.used_credits = users['data']['used_credits'];
 			$("#loadingModalCenter").modal("hide");
 		},
 		error => {

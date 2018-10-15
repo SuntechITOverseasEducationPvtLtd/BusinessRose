@@ -28,6 +28,7 @@ export class UserService {
 	private purchaseHistoryUrl = this.global.purchaseHistoryUrl;
 	private viewAlertUrl = this.global.viewAlertUrl;
 	private shortlistAlertUrl = this.global.shortlistAlertUrl;
+	private accountSettingsUrl = this.global.accountSettingsUrl;
 	private invitationAlertUrl = this.global.invitationAlertUrl;
 	private hideProfileUrl = this.global.hideProfileUrl;
 	private deleteProfileUrl = this.global.deleteProfileUrl;
@@ -139,6 +140,16 @@ export class UserService {
 		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
 		};
 		return this.http.get<User>(this.myShortlistsUrl, httpOptions).pipe(
+			  tap(_ => console.log(null),
+			  catchError(this.handleError<User>(null))
+			));
+    }
+	
+	accountSettings(): Observable<User> {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		return this.http.get<User>(this.accountSettingsUrl, httpOptions).pipe(
 			  tap(_ => console.log(null),
 			  catchError(this.handleError<User>(null))
 			));

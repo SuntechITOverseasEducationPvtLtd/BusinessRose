@@ -1,41 +1,36 @@
 
-<section class="profile-main-sec1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-lg-offset-1 tetxcente">
-                <h6 ><b>Your Profile</b></h6>
-                <div class="row">
-                    <div class="col-lg-6"><p>Views : <span>{{this.views}}</span></p></div>
-                    <div class="col-lg-6"><p>Shortlists : <a routerLink="/shortlists" ><span>{{this.shortlists_count}}</span></a></p></div>
+<!-- SubHeader -->
+<div class="careerfy-subheader careerfy-subheader-without-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Your Profile</h1>
+					<div class="col-lg-6"><p>Views : <span style="color:#fff">{{this.views}}</span></p></div>
+                    <div class="col-lg-6"><p>Shortlists : <a [routerLink]="['/shortlists']" ><span style="color:#fff">{{this.shortlists_count}}</span></a></p></div>
                     <div class="clearfix"></div>
-                </div>
-            </div>
-            
-            <div class="col-lg-1" style="background:url(src/assets/images/border.png)"></div>
-            
-            <div class="col-lg-3 tetxcente" >
-                <h6><b>Credits</b></h6>
-                <div class="row">
-                    <div class="col-lg-6"><p>Available : <span>{{this.avail_credits}}</span></p></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Credits</h1>
+					<div class="col-lg-6"><p>Available : <span>{{this.avail_credits}}</span></p></div>
                     <div class="col-lg-6"><p>Used : <span>{{this.used_credits}}</span></p></div>
                     <div class="clearfix"></div>
-                </div>
-            </div>
-            
-            <div class="col-lg-1" style="background:url(src/assets/images/border.png)"></div>
-            
-            <div class="col-lg-3 tetxcente">
-                <h6 ><b>Invitation to Connect</b></h6>
-                <div class="row">
-                    <div class="col-lg-6"><p>Received : <a routerLink="/invitations-received" ><span>{{this.inv_received}}</span></a></p></div>
-                    <div class="col-lg-6"><p>Sent : <a routerLink="/invitations-sent" ><span>{{this.inv_sent}}</span></a></p></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Invitation to Connect</h1>
+					<div class="col-lg-6"><p>Received : <a [routerLink]="['/invitations-received']" ><span style="color:#fff">{{this.inv_received}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Sent : <a [routerLink]="['/invitations-sent']" ><span style="color:#fff">{{this.inv_sent}}</span></a></p></div>
                     <div class="clearfix"></div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</section>     
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- SubHeader -->     
       
 <section style="background:#f1f1f2;margin-top: 5px;">    
     <div class="container">     

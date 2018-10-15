@@ -1,158 +1,351 @@
+<!-- SubHeader -->
+<div class="careerfy-subheader careerfy-subheader-without-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Your Profile</h1>
+					<div class="col-lg-6"><p>Available : <span>{{this.avail_credits}}</span></p></div>
+                    <div class="col-lg-6"><p>Used : <span>{{this.used_credits}}</span></p></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Credits</h1>
+					<div class="col-lg-6"><p>Views : <span>{{this.views}}</span></p></div>
+					<div class="col-lg-6"><p>Shortlists : <a routerLink="/shortlists" ><span>{{this.shortlists_count}}</span></a></p></div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="careerfy-page-title">
+					<h1>Invitation to Connect</h1>
+					<div class="col-lg-6"><p>Received : <a routerLink="/invitations-received" ><span>{{this.inv_received}}</span></a></p></div>
+                    <div class="col-lg-6"><p>Sent : <a routerLink="/invitations-sent" ><span>{{this.inv_sent}}</span></a></p></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- SubHeader -->
+<!-- Main Content -->
+<div class="careerfy-main-content">	
+	<!-- Main Section -->
+	<div class="careerfy-main-section careerfy-dashboard-fulltwo">
+		<div class="container">
+			<div class="row">
 
-<section style="background:#f1f1f2;margin-top: 5px;">
-    <div class="container">
-    
-       <div class="row">
-            <div class="col-lg-3" style="margin-top:40px">
-                <div class="white-box" style="margin-top:0px">
-                   <div class="verification">                   
-                       <b>Account Settings</b>
-                        <hr>
-                        <p class="emailscroll">Email</p>
-                        <hr>
-                        <p class="alertscroll">Alert</p>
-                         <hr>
-                        <p class="hidescroll">Hide Profile</p>
-                         <hr>
-                        <p class="delscroll">Delete Profile</p>
-                         <hr>
-                        <p class="passscroll">Change Password</p>
-                         <hr>
-                   </div>   
-                </div>
-                
-           </div> 
-           <div class="col-lg-9 emailhere">
-             
-                <div class="main-box">                  
-                
-					<div id="one">					  
-						   <div class="row alerthere">
-							 <div class="col-md-2"><label for="email"><b><h5>Email: </h5> </b></label></div> 
-							 <div class="col-md-10">{{ userEmail }}</div>
-						   </div>							
+				<aside class="careerfy-column-3">
+					<div class="careerfy-typo-wrap">
+						<div class="careerfy-employer-dashboard-nav">
+							
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#" data-toggle="tab" href="#myprofile"><i class="careerfy-icon careerfy-user"></i> My Profile</a></li>
+								<li><a href="#" data-toggle="tab" href="#alert"><i class="careerfy-icon careerfy-heart"></i>Alert</a></li>
+								<li><a href="#" data-toggle="tab" href="#hideprofile"><i class="careerfy-icon careerfy-briefcase-1"></i> Hide Profile</a></li>
+								<li><a href="#" data-toggle="tab" href="#deleteprofile"><i class="careerfy-icon careerfy-alarm"></i>Delete Profile</a></li>
+								<li><a href="#" data-toggle="tab" href="#changepassword"><i class="careerfy-icon careerfy-multimedia"></i> Change Password</a></li>
+								<li><a href="#" data-toggle="tab" href="#logout"><i class="careerfy-icon careerfy-logout"></i> Logout</a></li>
+							</ul>
+							<figure style="margin-top:10px">
+								<a href="#" class="employer-dashboard-thumb"><img src="extra-images/candidate-dashboard-navthumb.jpg" alt=""></a>
+								<figcaption>
+									<div class="careerfy-fileUpload">
+										<span><i class="careerfy-icon careerfy-add"></i> Upload Photo</span>
+										<input type="file" class="careerfy-upload" />
+									</div>
+									<h2>Nora Tsunoda</h2>
+									<span class="careerfy-dashboard-subtitle">UI/UX Designer</span>
+								</figcaption>
+							</figure>
+						</div>
 					</div>
-
-
-					<div class="row" style="margin-top:40px">
-						<div class="col-md-6">
-							<h5>Views</h5>
-							<p><b>Recent visitors who viewed your profile</b> </p>
-						</div> 
-						<div class="col-md-6">
-							<h5>Email  Alert</h5>
-							<div class="control-group">
-								<label class="control control--radio" (click)="setViewAlert(1)">Instant
-								<input type="radio" name="radio" [checked]="(viewAlert == 1) ? true : false"/>
-								<div class="control__indicator"></div>
-								</label>
-								<label class="control control--radio" (click)="setViewAlert(0)">Unsubscribe
-								<input type="radio" name="radio" [checked]="(viewAlert == 0) ? true : false"/>
-								<div class="control__indicator"></div>
-								</label>
+				</aside>
+				<div class="careerfy-column-9">
+					<div class="tab-content">
+					  <div id="myprofile" class="tab-pane fade in active">
+						<form class="careerfy-employer-dasboard"  [formGroup]="changePasswordForm" >
+							<div class="careerfy-employer-box-section">
+								<div class="careerfy-profile-title"><h2>Basic Information</h2></div>
+								<ul class="careerfy-row careerfy-employer-profile-form">
+									<li class="careerfy-column-6">
+										<label>Your Name *</label>
+										<input value="Jody Wisternoff" onblur="if(this.value == '') { this.value ='Jody Wisternoff'; }" onfocus="if(this.value =='Jody Wisternoff') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-6">
+										<label>Email *</label>
+										<input value="contact@jodywisternoff" onblur="if(this.value == '') { this.value ='contact@jodywisternoff'; }" onfocus="if(this.value =='contact@jodywisternoff') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-6">
+										<label>Date of Birth:</label>
+										<div class="careerfy-three-column-row">
+											<div class="careerfy-profile-select careerfy-three-column">
+												<select>
+													<option>dd</option>
+													<option>dd</option>
+												</select>
+											</div>
+											<div class="careerfy-profile-select careerfy-three-column">
+												<select>
+													<option>mm</option>
+													<option>mm</option>
+												</select>
+											</div>
+											<div class="careerfy-profile-select careerfy-three-column">
+												<select>
+													<option>yyyy</option>
+													<option>yyyy</option>
+												</select>
+											</div>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Phone *</label>
+										<input value="0979380947" onblur="if(this.value == '') { this.value ='0979380947'; }" onfocus="if(this.value =='0979380947') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-6">
+										<label>Category *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>PHP Developer</option>
+												<option>PHP Developer</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Job Title *</label>
+										<input value="PHP Developer at various agencies" onblur="if(this.value == '') { this.value ='PHP Developer at various agencies'; }" onfocus="if(this.value =='PHP Developer at various agencies') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-12">
+										<label>Description *</label>
+										<textarea>Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam pharetra vitae. Praesent vitae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt. Donec pretium gravida erat, a faucibus velit egestas eget. Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam itae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt. Donec pretium gravida erat, a faucibus velit egestas eget.</textarea>
+									</li>
+								</ul>
 							</div>
-						</div> 
-
-					</div> 
-                   <div class="row" style="margin-top:40px">
-                         <div class="col-md-6">
-                             <h5>Shortlists</h5>
-                             <p><b>Visitors who shortlisted your profile</b> </p>
-                         </div> 
-                         
-                         <div class="col-md-6">
-                             <h5>Email  Alert</h5>
-                             
-                             <div class="control-group">
-                                <label class="control control--radio" (click)="setShortlistAlert(1)">Instant
-                                <input type="radio" name="radio2" [checked]="(shortlistAlert == 1) ? true : false" />
-                                <div class="control__indicator"></div>
-                                </label>
-                                
-                                <label class="control control--radio" (click)="setShortlistAlert(0)">Unsubscribe
-                                <input type="radio" name="radio2" [checked]="(shortlistAlert == 0) ? true : false" />
-                                <div class="control__indicator"></div>
-                                </label>
-                             </div>
-                         </div> 
-                        
-                    </div>
-					<div class="row hidehere" style="margin-top:40px">
-						 <div class="col-md-6">
-							 <h5>Invitations to connect (Received)</h5>
-							 <p><b>Visitors who are interested in your profile requesting you to connect</b> </p>
-													  </div> 
-						 
-						 <div class="col-md-6">
-							 <h5>Email  Alert</h5>
-							 
-							 <div class="control-group">
-								<label class="control control--radio" (click)="setInvitationAlert(1)">Instant
-								<input type="radio" name="radio3" [checked]="(invitationAlert == 1) ? true : false" />
-								<div class="control__indicator"></div>
-								</label>
-								
-								<label class="control control--radio" (click)="setInvitationAlert(0)">Unsubscribe
-								<input type="radio" name="radio3" [checked]="(invitationAlert == 0) ? true : false" />
-								<div class="control__indicator"></div>
-								</label>
-							 </div>
-						 </div> 
-						
-					</div>
-                    <div class="row deletehere" style="margin-top:40px">
-                         <div class="col-md-12">
-                             <h5>Hide Profile</h5>
-                         </div> 
-                         
-                         <div class="col-md-12">
+							<div class="careerfy-employer-box-section">
+								<div class="careerfy-profile-title"><h2>Address / Location</h2></div>
+								<ul class="careerfy-row careerfy-employer-profile-form">
+									<li class="careerfy-column-6">
+										<label>Country *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>United Kingdom</option>
+												<option>United Kingdom</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Region *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>London</option>
+												<option>London</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>City / Town *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>London</option>
+												<option>London</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Postcode *</label>
+										<input value="746000" onblur="if(this.value == '') { this.value ='746000'; }" onfocus="if(this.value =='746000') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-10">
+										<label>Full Address *</label>
+										<input value="Ha Dong - Ha Noi - Viet Nam" onblur="if(this.value == '') { this.value ='Ha Dong - Ha Noi - Viet Nam'; }" onfocus="if(this.value =='Ha Dong - Ha Noi - Viet Nam') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-2">
+										<button class="careerfy-findmap-btn">Find on Map</button>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Latitude</label>
+										<input value="51.4935825" onblur="if(this.value == '') { this.value ='51.4935825'; }" onfocus="if(this.value =='51.4935825') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-6">
+										<label>Longitude</label>
+										<input value="-0.16803379999998924" onblur="if(this.value == '') { this.value ='-0.16803379999998924'; }" onfocus="if(this.value =='-0.16803379999998924') { this.value = ''; }" type="text">
+									</li>
+									<li class="careerfy-column-12">
+										<div class="careerfy-profile-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22589232.038285658!2d-103.9763543971716!3d46.28054447273778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1507595834401"></iframe></div>
+										<span class="careerfy-short-message">For the precise location, you can drag and drop the pin.</span>
+									</li>
+								</ul>
+							</div>
+							<div class="careerfy-employer-box-section">
+								<div class="careerfy-profile-title"><h2>Other Information</h2></div>
+								<ul class="careerfy-row careerfy-employer-profile-form">
+									<li class="careerfy-column-6">
+										<label>Experience *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>5 Years</option>
+												<option>5 Years</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Age *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>24</option>
+												<option>24</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Current Salary($) *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>$ 2400</option>
+												<option>$ 2400</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Expected Salary($) *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>$ 4500</option>
+												<option>$ 4500</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Languages *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>English</option>
+												<option>English</option>
+											</select>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Education Levels *</label>
+										<div class="careerfy-profile-select">
+											<select>
+												<option>B.sc Master</option>
+												<option>B.sc Master</option>
+											</select>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<input type="submit" class="careerfy-employer-profile-submit" value="Save Setting">
+						</form>
+					  </div>
+					  
+					  <div id="alert" class="tab-pane fade">
+						<div class="careerfy-employer-box-section">
+							<div class="careerfy-profile-title"><h2>Views</h2></div>
+							<div class="col-md-6">
+								<p><b>Recent visitors who viewed your profile</b> </p>
+							</div> 
+							<div class="col-md-6">
+								<h5>Email  Alert</h5>
+								<div class="control-group">
+									<label class="control control--radio" (click)="setViewAlert(1)">Instant
+									<input type="radio" name="radio" [checked]="(viewAlert == 1) ? true : false"/>
+									<div class="control__indicator"></div>
+									</label>
+									<label class="control control--radio" (click)="setViewAlert(0)">Unsubscribe
+									<input type="radio" name="radio" [checked]="(viewAlert == 0) ? true : false"/>
+									<div class="control__indicator"></div>
+									</label>
+								</div>
+							</div>
+							<div class="careerfy-profile-title"><h2>Shortlists</h2></div>
+							<div class="col-md-6">
+								<p><b>Visitors who shortlisted your profile</b> </p>
+							</div>
+							<div class="col-md-6">
+								 <h5>Email  Alert</h5>
+								 
+								 <div class="control-group">
+									<label class="control control--radio" (click)="setShortlistAlert(1)">Instant
+									<input type="radio" name="radio2" [checked]="(shortlistAlert == 1) ? true : false" />
+									<div class="control__indicator"></div>
+									</label>
+									
+									<label class="control control--radio" (click)="setShortlistAlert(0)">Unsubscribe
+									<input type="radio" name="radio2" [checked]="(shortlistAlert == 0) ? true : false" />
+									<div class="control__indicator"></div>
+									</label>
+								 </div>
+							</div>
+							<div class="careerfy-profile-title"><h2>Invitations to connect (Received)</h2></div>
+							<div class="col-md-6">
+								<p><b>Visitors who are interested in your profile requesting you to connect</b> </p>
+							</div>
+							<div class="col-md-6">
+								 <h5>Email  Alert</h5>
+								 
+								 <div class="control-group">
+									<label class="control control--radio" (click)="setInvitationAlert(1)">Instant
+									<input type="radio" name="radio3" [checked]="(invitationAlert == 1) ? true : false" />
+									<div class="control__indicator"></div>
+									</label>
+									
+									<label class="control control--radio" (click)="setInvitationAlert(0)">Unsubscribe
+									<input type="radio" name="radio3" [checked]="(invitationAlert == 0) ? true : false" />
+									<div class="control__indicator"></div>
+									</label>
+								 </div>
+							</div>							
+						</div>
+					  </div>
+					  
+					  <div id="hideprofile" class="tab-pane fade">
+						<div class="careerfy-profile-title"><h2>Hide Profile</h2></div>
+						<div class="col-md-12">
                              <p *ngIf="hideProfileAlert == 0 else showProfile"><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px" (click)="hideProfile(1)">Hide</button>
                              </b></p>
 							 <ng-template #showProfile><p><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px" (click)="hideProfile(0)">Show</button>
                              </b></p></ng-template>
-                             </div> 
-                        
-                    </div>
-					<div class="row changepasswordhere" style="margin-top:40px">
-                         <div class="col-md-12">
-                             <h5>Delete Profile </h5>
-                         </div> 
-                         
-                         <div class="col-md-12">
-                             <p><b>Delete your profile from businessrose.com <button type="submit" class="btn btn-default save-btn" style="margin-left:30px">Delete</button>  
-                         </b></p>
-					 </div> 
-                        
-                    </div>
-                    <div class="row " style="margin-top:40px">
-						<div class="col-md-12">
-						 <h5>Change Password </h5>
-						</div>                          
-						<div class="col-md-12">
-							<form class=""  [formGroup]="changePasswordForm" action="/action_page.php">
-								<div class="row">
-								<div class="col-md-2"><label for="email"><b>Old Password :</b></label></div> 
-								<div class="col-md-10"> <input type="text" class="form-control" id="password1"></div> 
-								<br><br>
-								<div class="col-md-2"><label for="email"><b>New Password :</b></label></div> 
-								<div class="col-md-10"> <input type="text" class="form-control" id="password2"></div> 
-
-								<div class="col-md-2"></div> 
-								<div class="col-md-10" style="margin-top:20px;"><button type="submit" class="btn btn-default save-btn">Save</button> or  <button type="submit" class="btn btn-default save-btn">Cancel</button></div> 
-								</div>
-							</form>
 						</div> 
-                        
-                    </div>
-                    
+					  </div>
+					  <div id="deleteprofile" class="tab-pane fade">
+						<div class="careerfy-profile-title"><h2>Delete Profile</h2></div>
+						<div class="col-md-12">
+							 <p><b>Delete your profile from businessrose.com <button type="submit" class="btn btn-default save-btn" style="margin-left:30px">Delete</button>  
+							 </b></p>
+						</div>
+					  </div>
+					  <div id="changepassword" class="tab-pane fade careerfy-employer-box-section">
+						<div class="careerfy-profile-title"><h2>Change Password</h2></div>
+						<div class="careerfy-row careerfy-employer-profile-form">
+							<form class=""  [formGroup]="changePasswordForm" action="/action_page.php">
+								<div>
+									<ul class="careerfy-row careerfy-employer-profile-form">
+										<li class="careerfy-column-12">
+											<div class="col-md-3"><label for="email"><b>Old Password :</b></label></div> 
+											<div class="col-md-9"> <input type="text" class="form-control" id="password1"></div> 
+										</li>
+										<li class="careerfy-column-12">
+											<div class="col-md-3"><label for="email"><b>New Password :</b></label></div> 
+											<div class="col-md-9"> <input type="text" class="form-control" id="password2"></div>
+										</li>
+										<li class="careerfy-column-12">
+											<div class="col-md-2"></div> 
+											<div class="col-md-10" style="margin-top:20px;"><button type="submit" class="btn btn-default save-btn">Save</button></div>
+										</li>										
+									</ul>
+								</div>
+								
+							</form>
+						</div>
+					  </div>
+					</div>					
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>	
+<!-- Main Section -->
 
 
-
-                </div>
-
-           </div>
-
-        </div>
-    
-    </div>
-</section>

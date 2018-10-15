@@ -2115,3 +2115,35 @@ li:hover .careerfy-read-more { background-color: transparent; }
 .connection-text{
     font-size:16px !important;
 }
+.careerfy-search-filter-wrap {
+    min-height: 160px;
+    overflow-y: auto;
+    max-height: 460px;
+}
+.careerfy-jobdetail-services .careerfy-job-userlist i {
+    font-size: 14px;
+    color: #337ab7;
+    float: none; 
+    padding-top: 0px;
+}
+.careerfy-job-like{
+	float:left;
+}
+.careerfy-job-userlist .careerfy-job-like {
+    border-color: #337ab7;
+}
+.careerfy-option-btn {
+    padding: 8px 10px 8px 10px;
+	background-color: #337ab7;
+}
+.careerfy-job-userlist .careerfy-option-btn{
+	margin-left: 5px;
+	margin-right:0px;
+}
+.careerfy-job-userlist {
+    float: left;
+    margin-top: 10px;
+}
+.careerfy-description p {
+    color: #000;
+}

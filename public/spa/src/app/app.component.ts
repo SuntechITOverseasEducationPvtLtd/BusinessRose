@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from './models';
 import { first } from 'rxjs/operators';
-import { AuthenticationService, GlobalService, AlertService } from './services';
+import { AuthenticationService, GlobalService, AlertService,UserService } from './services';
 
 declare var $: any;
 
@@ -14,6 +14,7 @@ declare var $: any;
 
 export class AppComponent implements OnInit { 
 
+	@Input() users: Array<User>=[];	
 	loginForm: FormGroup;
 	searchForm: FormGroup;
 	loading = false;
@@ -34,7 +35,8 @@ export class AppComponent implements OnInit {
         private router: Router,
 		private authenticationService: AuthenticationService,
 		private global: GlobalService,
-		private alertService:AlertService
+		private alertService:AlertService,
+		private userService:UserService
 		) {}
 
     ngOnInit() {

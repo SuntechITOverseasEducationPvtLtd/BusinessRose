@@ -2082,7 +2082,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     color: red;
 }
 .experFont {
-    font-weight: 300 !important;
+    font-size: 15px !important;
 }  
 .careerfy-candidate-download-btns {
     display: inline-block;

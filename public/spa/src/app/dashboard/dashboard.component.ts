@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit {
 	  
 		$("#loadingModalCenter").modal({backdrop: 'static', keyboard: false, show:true});
 		this.userService.getAllUsersByFilters(this.sidebarFilters.value).subscribe(users => {
-			this.users = users['data'];
+			this.users = users['data']['userInfo'];
 			$("#loadingModalCenter").modal("hide");
 		},
 		error => {

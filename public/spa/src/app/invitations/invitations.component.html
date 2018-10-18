@@ -45,119 +45,101 @@
 		<alert></alert> 
 		<div class="row">
 		<div class="col-lg-1"></div>
-           <div class="col-lg-10">   
-				<div class="invitations" *ngIf="users?.length > 0 else noresults">
-					<div class="main-box box-n" *ngFor="let user of users">
-						<div class="row">
-							<div class="col-lg-6">
-							<h5>{{user?.user_type}}</h5>
-							<p><b>Business Category : </b> <span class="blue">{{user?.cat_name}}</span> </p>
-							<p><b>Sub Category :</b> <span class="blue">{{user?.sub_category}}</span></p>
-
-							<p *ngIf="user?.user_type_id == this.global.SKILLED_PERSON"><b>Co Investment :</b> 
-							<span *ngIf="user?.co_investment == this.global.CO_INVESTMENT_YES; else noCoInvestment" class="blue" >
-							  Yes
-							</span></p>
-							<ng-template #noCoInvestment>
-							  No
-							</ng-template>
-							</div>
-
-							<div class="col-lg-6 padding-top30">
-								<div *ngIf="user?.user_type_id == this.global.SKILLED_PERSON; else userTypeInvestorExp">
-									<p><b>Experience:</b> <span class="blue"> {{user?.experience}} </span></p>                
-									<p><b>Investment Needed :</b> <span class="blue"> Rs {{user?.range}} </span></p>
-									<p><b>Financials :</b> <span class="blue"> {{user?.investment_type}}</span></p>
+           <div class="col-lg-10">
+				<div class="careerfy-job careerfy-joblisting-classic careerfy-jobdetail-joblisting">
+					<ul class="careerfy-row" *ngIf="users?.length > 0 else noresults">
+						<li class="careerfy-column-12" *ngFor="let user of users">
+							<div class="careerfy-joblisting-classic-wrap">
+								<figure><a href="#"><img src="assets/images/avatar.png" alt=""></a></figure>
+								<div class="careerfy-joblisting-text">
+									<div class="careerfy-list-option">
+										<div class="careerfy-content-title"><h2><a href="#">{{user?.user_type}}</a></h2></div>
+										<ul>
+											<li><a href="#" style="font-size: 15px;">{{user?.name | titleCase }}</a></li>
+											<li><i class="careerfy-icon careerfy-maps-and-flags"></i>{{user?.city_name}}, {{ user?.state_name}}</li>
+											<li><i class="careerfy-icon careerfy-filter-tool-black-shape"></i>{{user?.cat_name}}, {{user?.sub_category}}</li>
+										</ul>
+									</div>
+									
+								<div class="clearfix"></div>
 								</div>
-								<ng-template #userTypeInvestorExp>
-									<p><b>My Occupation :</b> <span class="blue">{{user?.experience}} </span></p>
-									<p><b>Investment :</b> <span class="blue">Rs {{user?.range}} </span></p>
-									<p class="icani">( I can invest )</p>
-								</ng-template>						
+								<div class="careerfy-jobdetail-services">
+									<ul class="careerfy-row">
+										<li class="careerfy-column-3">
+											<i class="careerfy-icon careerfy-salary"></i>
+											<div class="careerfy-services-text">Investment Range <small>{{user?.range}}</small></div>
+										</li>
+										<li class="careerfy-column-3">
+											<i class="careerfy-icon careerfy-social-media"></i>
+											<div class="careerfy-services-text">Relationship<small>{{user?.relation}}</small></div>
+										</li>
+										
+										<li class="careerfy-column-3">
+											<i class="careerfy-icon careerfy-user"></i>
+											<div class="careerfy-services-text">Gender <small><span *ngIf="user?.gender == this.global.MALE; else genderFemale" >Male, {{user?.date_of_birth | calculateAge}}yrs</span></small></div>
+											<ng-template #genderFemale>Female</ng-template>
+										</li>
+										<li class="careerfy-column-3"> 
+											<div class="careerfy-job-userlist">
+												<b>Waiting to response</b>
+												<span *ngIf="this.invitation_type == 'received'; else invitation_type_sent"class="careerfy-job-userlist">
+												 <p><i class="fa fa-check-circle" style="padding-top:0px;padding-left:10px"></i>Accept<i class="fa fa-times"  style="padding-top:0px;padding-left:10px"></i> Decline</p></span>
+												 <ng-template #invitation_type_sent>
+												 <p><i class="fa fa-handshake-o" style="padding-top:0px;padding-right:10px"></i> Pending</p>
+												 </ng-template>
+											</div>
+										</li>
+										<li class="careerfy-column-3" style="clear:both">
+											<i class="careerfy-icon careerfy-network"></i>
+											<div class="careerfy-services-text">Mother Tounue <small>{{user?.mother_tongue}}</small></div>
+										</li>
+										<li class="careerfy-column-3">
+											<i class="careerfy-icon careerfy-mortarboard"></i>
+											<div class="careerfy-services-text">Qualification <small>{{user?.qualification}}</small></div>
+										</li>
+										<li class="careerfy-column-3">
+											<i class="careerfy-icon careerfy-briefcase"></i>
+											<div class="careerfy-services-text">Experience <small>{{ user?.experience}} </small></div>
+										</li>
+										
+										<li class="careerfy-column-3" style="clear:both">
+											<i class="careerfy-icon careerfy-technology"></i>
+											<div class="careerfy-services-text">Phone no <small>{{user?.mobile}}</small></div>
+										</li>											
+										<li class="careerfy-column-6">
+											<i class="careerfy-icon careerfy-mail"></i>
+											<div class="careerfy-services-text">Email <small>{{user?.email}}</small></div>
+										</li>
+										
+									</ul>
+									
+								</div>
+								<div *ngIf="user?.user_type_id == this.global.SKILLED_PERSON; else userTypeInvestorAbout">
+								<div class="careerfy-list-option"><h2>About Me, My skill, Experience, Achivement, Growthrate</h2></div>
+								<div class="careerfy-description">
+									<p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+								</div> 
+								<div class="careerfy-list-option"><h2>No. Of clients/Customer/Average Sales/ I can achieve in a month</h2></div>
+								<div class="careerfy-description">
+									<p>{{user?.description_of_sales}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+								</div>
+								</div>
+								<ng-template #userTypeInvestorAbout>						
+									<div class="careerfy-list-option"><h2>Skill & Experience I am looking for</h2></div>
+									<div class="careerfy-description">
+										<p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+									</div>
+									<div class="careerfy-list-option"><h2>I want to invest in location</h2></div>
+									<div class="careerfy-description">
+										<p>{{user?.description_place_business}} <a [routerLink]="['/details', user?.user_id]" style="color: #337ab7;text-decoration:underline">more</a></p>
+									</div>
+								</ng-template>
 							
 							</div>
-						</div>
-						<div class="clearfix"></div>
-						<hr style="border-top: 1px groove #f1f1f245;">
-
-						<div class="row">
-							<div class="col-lg-2">
-							<a href="profileview.php"><img src="assets/images/avatar.png"  class="img-fluid bord"></a>
-							</div>
-							<div class="col-lg-7">
-								<div class="row">
-									<div class="col-lg-6">
-										<p><a href="javascript:;">{{user?.name | titleCase }}</a></p>
-										<p>Age : {{user?.date_of_birth | calculateAge}}yrs, <span *ngIf="user?.gender == this.global.MALE; else genderFemale" >Male</span>, R: {{user?.relation}} </p>
-										<p>City & State : {{user?.city_name}}, {{user?.state_name}}</p>
-										<p>Religion : {{user?.religion}} </p> 
-										<p>Mother Tongue : {{user?.mother_tongue}}</p> 
-										<p>Languages Known : {{user?.language}}</p>
-
-										<ng-template #genderFemale>Female</ng-template> 
-									</div>
-
-									<div class="col-lg-6">
-										<p>Email : {{user?.email}}</p> 
-										<p>Phone no : {{user?.mobile}} </p> 
-
-										<p>Whatsapp : {{user?.whatsup_number}} </p> 
-
-										<p>Facebook : www.xxxxxx.com  </p>
-
-										<p>Linkedin : {{user?.linked_in_url}}  </p>
-
-										<p>Education : {{user?.qualification}} </p>
-									</div>
-
-								</div>
-							</div>
-							<div class="col-lg-3 feature-wrap" >
-							 <p><b>Waiting to response</b></p> 
-							 <span *ngIf="this.invitation_type == 'received'; else invitation_type_sent">
-							 <p><i class="fa fa-check-circle" ></i> Accept</p>
-							 <p><i class="fa fa-times" style="    background: orange; border: 1px solid #ffa500"></i> Decline</p></span>
-							 <ng-template #invitation_type_sent>
-							 <p><i class="fa fa-handshake-o" style="    background: orange; border: 1px solid #ffa500"></i> Pending</p>
-							 </ng-template>
-							</div>
-
-							<div class="clearfix"></div>
-						</div>
-
-
-						<hr style="border-top:1px dashed #f0f0f0 ">
-						<div *ngIf="user?.user_type_id == this.global.SKILLED_PERSON; else userTypeInvestorAbout">
-							<div class="row">
-								<div class="col-lg-12 border_line "><p  class="border_linep" ><b>About Me, My skill, Experience, Achivement, Growthrate</b></p></div>
-
-								<div class="col-lg-12"><p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" >more</a></p></div>
-							</div> 
-							<div class="row">
-								<div class="col-lg-12 border_line "><p  class="border_linep" ><b>No. Of clients/Customer/Average Sales/ I can achieve in a month</b></p></div>
-
-								<div class="col-lg-12"><p>{{user?.description_of_sales}} <a [routerLink]="['/details', user?.user_id]" >more</a></p></div>
-							</div>
-						</div>
-						<ng-template #userTypeInvestorAbout>
-							<div class="row">
-								<div class="col-lg-12 border_line ">
-									<p  class="border_linep" ><b>Skill & Experience I am looking for</b></p>
-								</div>
-								<div class="col-lg-12"><p>{{user?.about_me}} <a [routerLink]="['/details', user?.user_id]" >more</a></p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12 border_line ">
-									<p  class="border_linep" ><b>I want to invest in location</b></p>
-								</div>
-								<div class="col-lg-12">
-								<p>{{user?.description_place_business}} <a [routerLink]="['/details', user?.user_id]" >more</a></p>
-								</div>
-							</div>
-						</ng-template>
-					</div>
+						</li>							
+					</ul>
 				</div>
+				
 				<ng-template #noresults><div class="main-box box-n" style="min-height:150px"><div class="row">No Results Found</div></div></ng-template>													
            </div>
         </div>    

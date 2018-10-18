@@ -47,15 +47,15 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="user_type" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<input type="checkbox" formControlName="user_type" id="r5" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
 																	<label for="r5"><span></span>Any</label>
 															</li>
 															<li>
-																	<input type="checkbox" formControlName="user_type" value="3" (change)="applyFilter()" />
+																	<input type="checkbox" id="r6" formControlName="user_type" value="3" (change)="applyFilter()" />
 																	<label for="r6"><span></span>Skilled / Experienced</label>
 															</li>
 															<li>
-																	<input type="checkbox" formControlName="user_type" value="2" (change)="applyFilter()" />
+																	<input type="checkbox" id="r7" formControlName="user_type" value="2" (change)="applyFilter()" />
 																	<label for="r7"><span></span>Investor</label>
 															</li>
 													</ul>
@@ -67,8 +67,8 @@
 													<ul class="careerfy-checkbox">
 															<li *ngIf="this.sidebarFilters.controls.coinvestment">
 																	<div *ngFor="let coinv of this.sidebarFilters.controls.coinvestment.controls; let i = index" formArrayName="coinvestment">
-																		<input type="checkbox" [formControlName]="i" (change)="applyFilter()" [checked]="i === 0"  [value]="i" />
-																		<label for="r5"><span></span>{{coinvestment[i].name}}</label>
+																		<input type="checkbox" id="cr{{i}}" [formControlName]="i" (change)="applyFilter()" [checked]="i === 0"  [value]="i" />
+																		<label for="cr{{i}}"><span></span>{{coinvestment[i].name}}</label>
 																	</div>
 															</li>
 													</ul>
@@ -79,14 +79,14 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="category" value="" [checked]="defaultChecked" (change)="applyFilter()" />
+																	<input type="checkbox" id="r17" formControlName="category" value="" [checked]="defaultChecked" (change)="applyFilter()" />
 																	<label for="r17"><span></span>Any</label>
 																	<small>456</small>
 															</li>
 															<li *ngFor="let category of filters['categories'] | keys;  let i=index">
 																	<span *ngIf="i<10">
-																		<input type="checkbox" formControlName="category" value="{{category.key}}" (change)="applyFilter()" />
-																		<label for="r18"><span></span>{{category.value}}</label>
+																		<input type="checkbox" id="car{{i}}" formControlName="category" value="{{category.key}}" (change)="applyFilter()" />
+																		<label for="car{{i}}"><span></span>{{category.value}}</label>
 																		<small>2</small>
 																	</span>
 															</li>
@@ -99,14 +99,14 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="state" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
-																	<label for="r11"><span></span>Any</label>
+																	<input type="checkbox" id="ar11" formControlName="state" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="ar11"><span></span>Any</label>
 																	<small></small>
 															</li>
 															<li *ngFor="let state of filters['states'] | keys; let i=index;">
 																	<span *ngIf="i<10">
-																		<input type="checkbox" formControlName="state" value="{{state.key}}" (change)="applyFilter()" />
-																		<label for="r12"><span></span>{{state.value}}</label>
+																		<input type="checkbox" id="sr{{i}}" formControlName="state" value="{{state.key}}" (change)="applyFilter()" />
+																		<label for="sr{{i}}"><span></span>{{state.value}}</label>
 																		<small>4</small>
 																	</span>
 															</li>																				
@@ -123,9 +123,9 @@
 																	<label for="r11"><span></span>Any</label>
 																	<small></small>
 															</li>
-															<li *ngFor="let range of filters['investmentRange'] | keys">
-																		<input type="checkbox" formControlName="investmentRange" value="{{range.key}}" (change)="applyFilter()" />
-																		<label for="r12"><span></span>{{range.value}}</label>
+															<li *ngFor="let range of filters['investmentRange'] | keys; let i=index;">
+																		<input type="checkbox" id=ir{{i}} formControlName="investmentRange" value="{{range.key}}" (change)="applyFilter()" />
+																		<label for="ir{{i}}"><span></span>{{range.value}}</label>
 																		<small></small>
 															</li>																				
 													</ul>
@@ -136,13 +136,13 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="qualification" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
-																	<label for="r11"><span></span>Any</label>
+																	<input type="checkbox" id="eda11" formControlName="qualification" value=""  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="eda11"><span></span>Any</label>
 																	<small></small>
 															</li>
-															<li *ngFor="let qualification of filters['qualifications'] | keys">
-																		<input type="checkbox" formControlName="qualification" value="{{qualification.key}}" (change)="applyFilter()" />
-																		<label for="r12"><span></span>{{qualification.value}}</label>
+															<li *ngFor="let qualification of filters['qualifications'] | keys; let i=index">
+																		<input type="checkbox" id="edr{{i}}" formControlName="qualification" value="{{qualification.key}}" (change)="applyFilter()" />
+																		<label for="edr{{i}}"><span></span>{{qualification.value}}</label>
 																		<small></small>
 															</li>																				
 													</ul>
@@ -153,13 +153,13 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="experience" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
-																	<label for="r11"><span></span>Any</label>
+																	<input type="checkbox" id="Be11" formControlName="experience" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="be11"><span></span>Any</label>
 																	<small></small>
 															</li>
-															<li *ngFor="let experience of filters['experiences'] | keys">
-																		<input type="checkbox" formControlName="experience" value="{{experience.key}}" (change)="applyFilter()" />
-																		<label for="r12"><span></span>{{experience.value}}</label>
+															<li *ngFor="let experience of filters['experiences'] | keys; let i=index">
+																		<input type="checkbox" id="er{{i}}" formControlName="experience" value="{{experience.key}}" (change)="applyFilter()" />
+																		<label for="er{{i}}"><span></span>{{experience.value}}</label>
 																		<small></small>
 															</li>																				
 													</ul>
@@ -170,13 +170,13 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="religion" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
-																	<label for="r11"><span></span>Any</label>
+																	<input type="checkbox" id="rr11" formControlName="religion" value="Bike"  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="rr11"><span></span>Any</label>
 																	<small></small>
 															</li>
-															<li *ngFor="let religion of filters['religions'] | keys">
-																		<input type="checkbox" formControlName="religion" value="{{religion.key}}" (change)="applyFilter()" />
-																		<label for="r12"><span></span>{{religion.value}}</label>
+															<li *ngFor="let religion of filters['religions'] | keys; let i=index">
+																		<input type="checkbox" id="rl{{i}}" formControlName="religion" value="{{religion.key}}" (change)="applyFilter()" />
+																		<label for="rl{{i}}"><span></span>{{religion.value}}</label>
 																		<small></small>
 															</li>																				
 													</ul>
@@ -187,13 +187,13 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="motherTounge" value="any"  [checked]="defaultChecked" (change)="applyFilter()" />
-																	<label for="r11"><span></span>Any</label>
+																	<input type="checkbox" id="mra11" formControlName="motherTounge" value="any"  [checked]="defaultChecked" (change)="applyFilter()" />
+																	<label for="mra11"><span></span>Any</label>
 																	<small></small>
 															</li>
-															<li *ngFor="let motherTounge of filters['motherTounges'] | keys">
-																		<input type="checkbox" formControlName="motherTounge" value="{{motherTounge.key}}" (change)="applyFilter()" />
-																		<label for="r12"><span></span>{{motherTounge.value}}</label>
+															<li *ngFor="let motherTounge of filters['motherTounges'] | keys; let i=index">
+																		<input type="checkbox" id="mr{{i}}" formControlName="motherTounge" value="{{motherTounge.key}}" (change)="applyFilter()" />
+																		<label for="mr{{i}}"><span></span>{{motherTounge.value}}</label>
 																		<small></small>
 															</li>																				
 													</ul>
@@ -215,13 +215,13 @@
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
 															<li>
-																	<input type="checkbox" formControlName="relationshipStatus" value="Boat"  [checked]="defaultChecked"  (change)="applyFilter()" />
-																	<label for="r11"><span></span>Any</label>
+																	<input type="checkbox" id=ral11 formControlName="relationshipStatus" value="Boat"  [checked]="defaultChecked"  (change)="applyFilter()" />
+																	<label for="ral11"><span></span>Any</label>
 																	<small></small>
 															</li>
-															<li *ngFor="let relationshipStatus of filters['relationshipStatuses'] | keys">
-																		<input type="checkbox" formControlName="relationshipStatus" value="{{relationshipStatus.key}}" (change)="applyFilter()" />
-																		<label for="r12"><span></span>{{relationshipStatus.value}}</label>
+															<li *ngFor="let relationshipStatus of filters['relationshipStatuses'] | keys; let i=index">
+																		<input type="checkbox" id="rer{{i}}" formControlName="relationshipStatus" value="{{relationshipStatus.key}}" (change)="applyFilter()" />
+																		<label for="rer{{i}}"><span></span>{{relationshipStatus.value}}</label>
 																		<small></small>
 															</li>																				
 													</ul>

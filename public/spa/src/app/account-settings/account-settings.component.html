@@ -63,179 +63,534 @@
 				<div class="careerfy-column-9">
 					<div class="tab-content">
 					  <div id="myprofile" class="tab-pane fade in active">
-						<form class="careerfy-employer-dasboard"  [formGroup]="changePasswordForm" >
+						<form class="careerfy-employer-dasboard"  [formGroup]="userForm" method="Post" (ngSubmit)="userFormSubmit()" >
 							<div class="careerfy-employer-box-section">
 								<div class="careerfy-profile-title"><h2>Basic Information</h2></div>
 								<ul class="careerfy-row careerfy-employer-profile-form">
 									<li class="careerfy-column-6">
-										<label>Your Name *</label>
-										<input value="Jody Wisternoff" onblur="if(this.value == '') { this.value ='Jody Wisternoff'; }" onfocus="if(this.value =='Jody Wisternoff') { this.value = ''; }" type="text">
+										<label>Name *</label>
+										<input value="{{user?.name}}" type="text" [ngClass]="{ 'is-invalid': submittedinv && inv.name.errors }">
 									</li>
 									<li class="careerfy-column-6">
 										<label>Email *</label>
-										<input value="contact@jodywisternoff" onblur="if(this.value == '') { this.value ='contact@jodywisternoff'; }" onfocus="if(this.value =='contact@jodywisternoff') { this.value = ''; }" type="text">
+										<input value="{{user?.email}}" [ngClass]="{ 'is-invalid': submittedinv && inv.email.errors }"  type="text">
 									</li>
 									<li class="careerfy-column-6">
-										<label>Date of Birth:</label>
-										<div class="careerfy-three-column-row">
-											<div class="careerfy-profile-select careerfy-three-column">
-												<select>
-													<option>dd</option>
-													<option>dd</option>
-												</select>
-											</div>
-											<div class="careerfy-profile-select careerfy-three-column">
-												<select>
-													<option>mm</option>
-													<option>mm</option>
-												</select>
-											</div>
-											<div class="careerfy-profile-select careerfy-three-column">
-												<select>
-													<option>yyyy</option>
-													<option>yyyy</option>
-												</select>
-											</div>
+										<label>DOB *</label>
+										<input class="form-control select2-focusser" type="date" formControlName="date_of_birth" value="{{user?.date_of_birth}}" placeholder="DOM" [ngClass]="{ 'is-invalid': submittedinv && inv.date_of_birth.errors }">
+										<div *ngIf="submittedinv && inv.date_of_birth.errors" class="invalid-feedback">
+											<div *ngIf="inv.date_of_birth.errors.required">DOB is required</div>
 										</div>
 									</li>
 									<li class="careerfy-column-6">
-										<label>Phone *</label>
-										<input value="0979380947" onblur="if(this.value == '') { this.value ='0979380947'; }" onfocus="if(this.value =='0979380947') { this.value = ''; }" type="text">
+										<label for="input-type">Gender *:</label>
+										<div id="input-type" class="row">
+											<div class="col-sm-6">
+												<label class="radio-inline">
+													<input type="radio" formControlName="gender" id="sp_gender_male" [value]="1" [checked]="(user?.gender == 1) ? true : false" class="form-control radio-width" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">Male
+												</label>
+											</div>
+											<div class="col-sm-6">
+												<label class="radio-inline">
+													<input type="radio" formControlName="gender" id="sp_gender_female" [checked]="(user?.gender == 2) ? true : false"  [value]="2"  class="form-control radio-width" [ngClass]="{ 'is-invalid': submittedinv && inv.gender.errors }">Female
+												</label>
+											</div>
+										</div>
+										<div *ngIf="submittedinv && inv.gender.errors" class="invalid-feedback">
+												<div *ngIf="inv.gender.errors.required">Gender is required</div>
+										</div>
 									</li>
-									<li class="careerfy-column-6">
-										<label>Category *</label>
-										<div class="careerfy-profile-select">
-											<select>
-												<option>PHP Developer</option>
-												<option>PHP Developer</option>
-											</select>
+									<li class="careerfy-column-6" style="clear:both">
+										<label>Phone No *</label>
+										<div class="input-group">
+											<span class="input-group-addon">+91</span>
+											<input class="form-control select2-focusser" type="text" formControlName="mobile" value="{{user?.mobile}}" placeholder="" [ngClass]="{ 'is-invalid': submittedinv && inv.mobile.errors }" [pattern]="mobnumPattern">
+										</div>
+										<div *ngIf="submittedinv && inv.mobile.errors" class="invalid-feedback">
+											<div *ngIf="inv.mobile.errors.required">Phone Number is required</div>
 										</div>
 									</li>
 									<li class="careerfy-column-6">
-										<label>Job Title *</label>
-										<input value="PHP Developer at various agencies" onblur="if(this.value == '') { this.value ='PHP Developer at various agencies'; }" onfocus="if(this.value =='PHP Developer at various agencies') { this.value = ''; }" type="text">
+										<label>Whatsapp No *</label>
+										<div class="input-group">
+											<span class="input-group-addon">+91</span>
+											<input class="form-control select2-focusser" type="text" formControlName="whatsup_number" value="{{user?.whatsup_number}}" placeholder="" [ngClass]="{ 'is-invalid': submittedinv && inv.whatsup_number.errors }" [pattern]="mobnumPattern">
+										</div>
+										<div *ngIf="submittedinv && inv.whatsup_number.errors" class="invalid-feedback">
+											<div *ngIf="inv.whatsup_number.errors.required">Whatsapp Number is required</div>
+										</div>
 									</li>
 									<li class="careerfy-column-12">
-										<label>Description *</label>
-										<textarea>Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam pharetra vitae. Praesent vitae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt. Donec pretium gravida erat, a faucibus velit egestas eget. Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam itae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt. Donec pretium gravida erat, a faucibus velit egestas eget.</textarea>
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<label id="field_label_id_type" for="id_type">Qualification</label>
+												</div>	 
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group form-group">
+													<div class="select2-container "  >
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="1" [checked]="(user?.qualification == 1) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control" > <font style="padding-left: 24px;">Doctorate</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="2" [checked]="(user?.qualification == 2) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">IIT / IIM</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+													</div>
+													<div class="select2-container "  >
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="3" [checked]="(user?.qualification == 3) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Masters</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="4" [checked]="(user?.qualification == 4) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Honors Degree</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+													</div>
+													<div class="select2-container">
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="5" [checked]="(user?.qualification == 5) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Bachelors</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="6" [checked]="(user?.qualification == 6) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Under Graduate</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+													</div>
+													<div class="select2-container">
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="7" [checked]="(user?.qualification == 7) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Associate Degree</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="8" [checked]="(user?.qualification == 8) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Diploma</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+													</div>
+													<div class="select2-container">
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="9" [checked]="(user?.qualification == 9) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Trade School</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="10" [checked]="(user?.qualification == 10) ? true : false"  [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">High School</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+													</div>
+													<div class="select2-container">	
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="qualification" value="11" [checked]="(user?.qualification == 11) ? true : false" [ngClass]="{ 'is-invalid': submittedinv && inv.qualification.errors }" class="form-control"> <font style="padding-left: 24px;">Less than High School</font>
+																<span class="inner"></span>
+																<div *ngIf="submittedinv && inv.qualification.errors" class="invalid-feedback">
+																	<div *ngIf="inv.qualification.errors.required">Qualification is required</div>
+																</div>
+																</label>
+															</div> 
+														</div>
+													</div>
+												</div>	 
+											</div>
+										</div>
 									</li>
+									<li class="careerfy-column-12">
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<label id="field_label_id_type" for="id_type">Occupation</label>
+												</div>	 
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group form-group">
+												 
+													<div class="select2-container "  >
+														<div class="radio" style="width: 33.33%;   float: left; padding-left: 18px;">
+															<label class="radio-inline">
+															<input type="radio" formControlName="occupation"  value="1" [checked]="(user?.occupation == 1) ? true : false" class="form-control radio-width" [ngClass]="{ 'is-invalid': submittedinv && inv.occupation.errors }">
+															<span class="inner"></span>
+															Employee
+															<div *ngIf="submittedinv && inv.occupation.errors" class="invalid-feedback">
+																	<div *ngIf="inv.occupation.errors.required">Occupation is required</div>
+															</div>
+															</label>
+														</div>
+														<div class="radio" style="width: 33.33%;   float: left;">
+															<label class="radio-inline">
+															<input type="radio" formControlName="occupation"  value="2" [checked]="(user?.occupation == 2) ? true : false"   class="form-control radio-width" [ngClass]="{ 'is-invalid': submittedinv && inv.occupation.errors }">
+															<span class="inner"></span>
+															Business
+															</label>
+														</div>
+														<div class="radio" style="width: 33.33%;   float: left;">
+															<label class="radio-inline">
+															<input type="radio" formControlName="occupation"  value="3" [checked]="(user?.occupation == 3) ? true : false"   class="form-control radio-width" [ngClass]="{ 'is-invalid': submittedinv && inv.occupation.errors }">
+															<span class="inner"></span>
+															None								
+															</label>
+														</div>
+													</div>
+												</div> 
+											</div>
+										</div>
+									</li>
+									<li class="careerfy-column-12"  >
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<label id="field_label_id_type" for="id_type">Experience</label>
+												</div> 
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group form-group">
+													<div class="select2-container "  >
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="experience" value="1" [checked]="(user?.experience == 1) ? true : false" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">1-5 Years</font>
+																<span class="inner"></span>									
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="experience" value="2" [checked]="(user?.experience == 2) ? true : false" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">5-10 Years</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+													</div>
+													<div class="select2-container "  >
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="experience" value="3" [checked]="(user?.experience == 3) ? true : false" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">10-20 Years</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="experience" value="4" [checked]="(user?.experience == 4) ? true : false" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">20-30 Years</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="experience" value="5" [checked]="(user?.experience == 5) ? true : false" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">30+ Years</font>
+																<span class="inner"></span>
+																</label>
+															</div> 
+														</div>
+														<div style="width: 50%; float: left; height: 30px;">
+															<div class="checkbox ubuntuRegText">
+																<label class="checkbox-inline">
+																<input type="checkbox" formControlName="experience" value="6" [checked]="(user?.experience == 6) ? true : false" [ngClass]="{ 'is-invalid': submittedinv && inv.experience.errors }" class="form-control"> <font style="padding-left: 24px;">None</font>
+																<span class="inner"></span>
+																<div *ngIf="submittedinv && inv.experience.errors" class="invalid-feedback">
+																	<div *ngIf="inv.experience.errors.required">Experience is required</div>
+																</div>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											 
+											</div>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+										<label>Business Category *</label>
+										<div class="careerfy-profile-select">
+											<select formControlName="category" [ngClass]="{ 'is-invalid': submittedinv && inv.category.errors }">
+													<option value="">Select Category</option>	
+													<option value="{{category.key}}"  *ngFor="let category of filters['categories'] | keys"  [selected]="(user?.category == category.key) ? true : false">{{category.value}}</option>      
+											</select> 
+											<div *ngIf="submittedinv && inv.category.errors" class="invalid-feedback">
+												<div *ngIf="inv.category.errors.required">Category is required</div>
+											</div>
+										</div>
+									</li>
+									<li class="careerfy-column-6">
+											<label>Sub-Category *</label>
+											<input class="form-control select2-focusser" type="text" formControlName="sub_category" value="{{user?.sub_category}}" [ngClass]="{ 'is-invalid': submittedinv && inv.sub_category.errors }">
+											<div *ngIf="submittedinv && inv.sub_category.errors" class="invalid-feedback">
+												<div *ngIf="inv.sub_category.errors.required">Sub Category is required</div>
+											</div>
+									</li>
+										
 								</ul>
 							</div>
 							<div class="careerfy-employer-box-section">
 								<div class="careerfy-profile-title"><h2>Address / Location</h2></div>
 								<ul class="careerfy-row careerfy-employer-profile-form">
 									<li class="careerfy-column-6">
-										<label>Country *</label>
+										<label>Religion *</label>
 										<div class="careerfy-profile-select">
-											<select>
-												<option>United Kingdom</option>
-												<option>United Kingdom</option>
-											</select>
+											<select formControlName="religion" [ngClass]="{ 'is-invalid': submittedinv && inv.religion.errors }"> 
+												<option value="">Select Religion</option>	
+												<option value="{{religion.key}}"  *ngFor="let religion of filters['religions'] | keys" [selected]="(user?.religion == religion.key) ? true : false">{{religion.value}}</option>      
+											</select> 
+											<div *ngIf="submittedinv && inv.religion.errors" class="invalid-feedback">
+												<div *ngIf="inv.religion.errors.required">Religion is required</div>
+											</div>
 										</div>
 									</li>
 									<li class="careerfy-column-6">
-										<label>Region *</label>
+										<label>Mother Tongue *</label>
 										<div class="careerfy-profile-select">
-											<select>
-												<option>London</option>
-												<option>London</option>
-											</select>
+											<select formControlName="mother_tongue" [ngClass]="{ 'is-invalid': submittedinv && inv.mother_tongue.errors }"> 
+												<option value="">Select</option>	
+												<option value="{{mother_tongue.key}}"  *ngFor="let mother_tongue of filters['motherTounges'] | keys" [selected]="(user?.mother_tongue == mother_tongue.key) ? true : false">{{mother_tongue.value}}</option>      
+											</select> 
+											<div *ngIf="submittedinv && inv.mother_tongue.errors" class="invalid-feedback">
+												<div *ngIf="inv.mother_tongue.errors.required">Mother Tongue is required</div>
+											</div>
+										</div>
+									</li>
+								</ul>	
+								<ul class="careerfy-row careerfy-employer-profile-form">	
+									<li class="careerfy-column-6">
+										<label>Language Know *</label>
+										<div class="careerfy-profile-select">
+											<select formControlName="known_languages" [ngClass]="{ 'is-invalid': submittedinv && inv.mother_tongue.errors }"> 
+												<option value="">Select</option>	
+												<option value="{{known_languages.key}}"  *ngFor="let known_languages of filters['motherTounges'] | keys" [selected]="(user?.known_languages == known_languages.key) ? true : false">{{known_languages.value}}</option>      
+											</select> 
+											<div *ngIf="submittedinv && inv.known_languages.errors" class="invalid-feedback">
+												<div *ngIf="inv.known_languages.errors.required">Known Languages is required</div>
+											</div>
 										</div>
 									</li>
 									<li class="careerfy-column-6">
-										<label>City / Town *</label>
+										<label>Country Living In *</label>
 										<div class="careerfy-profile-select">
-											<select>
-												<option>London</option>
-												<option>London</option>
-											</select>
+											<select formControlName="country" [ngClass]="{ 'is-invalid': submittedinv && inv.country.errors }">
+												<option value="101">India</option>
+											</select> 
+											<div *ngIf="submittedinv && inv.country.errors" class="invalid-feedback">
+												<div *ngIf="inv.country.errors.required">Country is required</div>
+											</div>
+										</div>
+									</li>
+								</ul>	
+								<ul class="careerfy-row careerfy-employer-profile-form">	
+									<li class="careerfy-column-6">
+										<label>State Living In *</label>
+										<div class="careerfy-profile-select">
+											<select formControlName="state" [ngClass]="{ 'is-invalid': submittedinv && inv.state.errors }"> 
+												<option value="">Select</option>	
+												<option value="{{state.key}}"  *ngFor="let state of filters['states'] | keys"  [selected]="(user?.state == state.key) ? true : false">{{state.value}}</option>      
+											</select> 
+											<div *ngIf="submittedinv && inv.state.errors" class="invalid-feedback">
+												<div *ngIf="inv.state.errors.required">State is required</div>
+											</div>
 										</div>
 									</li>
 									<li class="careerfy-column-6">
-										<label>Postcode *</label>
-										<input value="746000" onblur="if(this.value == '') { this.value ='746000'; }" onfocus="if(this.value =='746000') { this.value = ''; }" type="text">
+										<label>City Living In *</label>
+										<div class="careerfy-profile-select">
+											<select formControlName="city" [ngClass]="{ 'is-invalid': submittedinv && inv.city.errors }">
+												<option value="1">Hyderabad</option>
+											</select> 
+											<div *ngIf="submittedinv && inv.city.errors" class="invalid-feedback">
+												<div *ngIf="inv.city.errors.required">City is required</div>
+											</div>
+										</div>
 									</li>
-									<li class="careerfy-column-10">
-										<label>Full Address *</label>
-										<input value="Ha Dong - Ha Noi - Viet Nam" onblur="if(this.value == '') { this.value ='Ha Dong - Ha Noi - Viet Nam'; }" onfocus="if(this.value =='Ha Dong - Ha Noi - Viet Nam') { this.value = ''; }" type="text">
-									</li>
-									<li class="careerfy-column-2">
-										<button class="careerfy-findmap-btn">Find on Map</button>
-									</li>
-									<li class="careerfy-column-6">
-										<label>Latitude</label>
-										<input value="51.4935825" onblur="if(this.value == '') { this.value ='51.4935825'; }" onfocus="if(this.value =='51.4935825') { this.value = ''; }" type="text">
-									</li>
-									<li class="careerfy-column-6">
-										<label>Longitude</label>
-										<input value="-0.16803379999998924" onblur="if(this.value == '') { this.value ='-0.16803379999998924'; }" onfocus="if(this.value =='-0.16803379999998924') { this.value = ''; }" type="text">
-									</li>
+								</ul>	
+								<ul class="careerfy-row careerfy-employer-profile-form">	
 									<li class="careerfy-column-12">
-										<div class="careerfy-profile-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22589232.038285658!2d-103.9763543971716!3d46.28054447273778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1507595834401"></iframe></div>
-										<span class="careerfy-short-message">For the precise location, you can drag and drop the pin.</span>
+										<label>Relationship Status *</label>
+										<div class="careerfy-profile-select">
+											<select formControlName="relationship_status" [ngClass]="{ 'is-invalid': submittedinv && inv.relationship_status.errors }"> 
+												<option value="">Select</option>	
+												<option value="{{relationship_status.key}}"  *ngFor="let relationship_status of filters['relationshipStatuses'] | keys"  [selected]="(user?.relationship_status == relationship_status.key) ? true : false">{{relationship_status.value}}</option>      
+											</select> 
+											<div *ngIf="submittedinv && inv.relationship_status.errors" class="invalid-feedback">
+												<div *ngIf="inv.relationship_status.errors.required">Relationship is required</div>
+											</div>
+										</div>
 									</li>
+
+									<li class="careerfy-column-12">
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<label id="field_label_id_type" for="id_type">Investment Range</label>
+												</div>		 
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group form-group">			 
+													<div class="select2-container">	
+														<div class="radio" style="width: 50%;float: left; padding-left: 18px;margin: 0px;"  *ngFor="let investment_range of filters['investmentRange'] | keys">
+															<label class="radio-inline">
+															<input type="radio" formControlName="investment_range"  value="{{investment_range.key}}" [checked]="(user?.investment_range == investment_range.key) ? true : false"   class="form-control radio-width" [ngClass]="{ 'is-invalid': submittedinv && inv.investment_range.errors }" id="investment_range_1_5">
+															<span class="inner"></span>
+															{{investment_range.value}}
+															</label>
+															<div *ngIf="submittedinv && inv.investment_range.errors" class="invalid-feedback">
+																<div *ngIf="inv.investment_range.errors.required">Investment Range is required</div>
+															</div>	
+														</div>							
+														
+													</div>
+												</div> 
+											</div>
+										</div>
+									</li>
+									
 								</ul>
 							</div>
 							<div class="careerfy-employer-box-section">
 								<div class="careerfy-profile-title"><h2>Other Information</h2></div>
 								<ul class="careerfy-row careerfy-employer-profile-form">
-									<li class="careerfy-column-6">
-										<label>Experience *</label>
-										<div class="careerfy-profile-select">
-											<select>
-												<option>5 Years</option>
-												<option>5 Years</option>
-											</select>
+									<li class="careerfy-column-12" >
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<label id="field_label_id_description_of_business" for="description_of_skills_experience" class="field_label_id">Skill and  experience i am looking for...</label>
+													<span href="#" class="why-needed"  >Why is this needed?</span>
+												</div>
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group">
+													<textarea formControlName="description_of_skills_experience" value="{{user?.description_of_skills_experience}}"  [ngClass]="{ 'is-invalid': submittedinv && inv.description_of_skills_experience.errors }" class="form-control" autocomplete="off"   rows="4" cols="40"  ></textarea>
+													<div *ngIf="submittedinv && inv.description_of_skills_experience.errors" class="invalid-feedback">
+														<div *ngIf="inv.description_of_skills_experience.errors.required">Skill and  experience is required</div>
+													</div>
+												</div>
+											</div>	 
 										</div>
 									</li>
-									<li class="careerfy-column-6">
-										<label>Age *</label>
-										<div class="careerfy-profile-select">
-											<select>
-												<option>24</option>
-												<option>24</option>
-											</select>
+									<li class="careerfy-column-12" >
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<label id="field_label_id_description_of_business" for="description_place_business" class="field_label_id">Place of business , I want to invest in Odisha, Hyderabad. </label>
+													<span href="#" class="why-needed"  >Why is this needed?</span>
+												</div> 
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group">
+													<textarea formControlName="description_place_business" value="{{user?.description_place_business}}"  [ngClass]="{ 'is-invalid': submittedinv && inv.description_place_business.errors }" class="form-control" rows="4" cols="40" ></textarea> 
+													<div *ngIf="submittedinv && inv.description_place_business.errors" class="invalid-feedback">
+														<div *ngIf="inv.description_place_business.errors.required">Place of business is required</div>
+													</div>
+												</div>
+											</div> 
 										</div>
 									</li>
-									<li class="careerfy-column-6">
-										<label>Current Salary($) *</label>
-										<div class="careerfy-profile-select">
-											<select>
-												<option>$ 2400</option>
-												<option>$ 2400</option>
-											</select>
+									<li class="careerfy-column-12" >
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<label id="field_label_id_description_of_business" for="description_you_family" class="field_label_id">About Me  </label>
+													<span href="#" class="why-needed"  >Why is this needed?</span>
+												</div>	 
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group form-group">
+													<textarea  formControlName="description_you_family" value="{{user?.description_you_family}}"  [ngClass]="{ 'is-invalid': submittedinv && inv.description_you_family.errors }" class="form-control"  rows="4" cols="40" ></textarea>
+													<div *ngIf="submittedinv && inv.description_you_family.errors" class="invalid-feedback">
+														<div *ngIf="inv.description_you_family.errors.required">About Me is required</div>
+													</div>						
+												</div>
+											</div>	 
 										</div>
 									</li>
-									<li class="careerfy-column-6">
-										<label>Expected Salary($) *</label>
-										<div class="careerfy-profile-select">
-											<select>
-												<option>$ 4500</option>
-												<option>$ 4500</option>
-											</select>
+									<li class="careerfy-column-12" >
+										<div class="field-label-wrapper">
+											<div class="field-label">
+												<div class="bold-label">
+													<div style="width: 100%">
+														<div class="checkbox ubuntuRegText form-group">
+															<label class="checkbox-inline">
+															<input type="checkbox" formControlName="is_accept_terms" value=""  [ngClass]="{ 'is-invalid': submittedinv && inv.is_accept_terms.errors }" class="form-control" > 
+															
+															<font style="font-size: 14px;">I love by clarity that above like information is true and accurate, I will provied key info when required, I accept terms & condition.</font>
+															<div *ngIf="submittedinv && inv.is_accept_terms.errors" class="invalid-feedback">
+																<div *ngIf="inv.is_accept_terms.errors.required">Terms&Conditions is required</div>
+															</div>
+															<span class="inner"></span>
+															</label>
+														</div>
+													</div>
+												</div>		 
+											</div>
+										</div>
+										<div class="form-field-wrapper">
+											<div class="form-field ">
+												<div class="businessrole-input-group">					
+												<input type="submit" name="submit" value="Submit" class="submitbutton btn btn-custom">
+												</div>
+											</div>
 										</div>
 									</li>
-									<li class="careerfy-column-6">
-										<label>Languages *</label>
-										<div class="careerfy-profile-select">
-											<select>
-												<option>English</option>
-												<option>English</option>
-											</select>
-										</div>
-									</li>
-									<li class="careerfy-column-6">
-										<label>Education Levels *</label>
-										<div class="careerfy-profile-select">
-											<select>
-												<option>B.sc Master</option>
-												<option>B.sc Master</option>
-											</select>
-										</div>
-									</li>
+
 								</ul>
 							</div>
-							<input type="submit" class="careerfy-employer-profile-submit" value="Save Setting">
+							
 						</form>
 					  </div>
 					  
@@ -249,11 +604,11 @@
 								<h5>Email  Alert</h5>
 								<div class="control-group">
 									<label class="control control--radio" (click)="setViewAlert(1)">Instant
-									<input type="radio" name="radio" [checked]="(viewAlert == 1) ? true : false"/>
+									<input type="radio" name="radio" [checked]="(viewAlert == '1') ? true : false"/>
 									<div class="control__indicator"></div>
 									</label>
 									<label class="control control--radio" (click)="setViewAlert(0)">Unsubscribe
-									<input type="radio" name="radio" [checked]="(viewAlert == 0) ? true : false"/>
+									<input type="radio" name="radio" [checked]="(viewAlert == '0') ? true : false"/>
 									<div class="control__indicator"></div>
 									</label>
 								</div>
@@ -267,12 +622,12 @@
 								 
 								 <div class="control-group">
 									<label class="control control--radio" (click)="setShortlistAlert(1)">Instant
-									<input type="radio" name="radio2" [checked]="(shortlistAlert == 1) ? true : false" />
+									<input type="radio" name="radio2" [checked]="(shortlistAlert == '1') ? true : false" />
 									<div class="control__indicator"></div>
 									</label>
 									
 									<label class="control control--radio" (click)="setShortlistAlert(0)">Unsubscribe
-									<input type="radio" name="radio2" [checked]="(shortlistAlert == 0) ? true : false" />
+									<input type="radio" name="radio2" [checked]="(shortlistAlert == '0') ? true : false" />
 									<div class="control__indicator"></div>
 									</label>
 								 </div>
@@ -286,12 +641,12 @@
 								 
 								 <div class="control-group">
 									<label class="control control--radio" (click)="setInvitationAlert(1)">Instant
-									<input type="radio" name="radio3" [checked]="(invitationAlert == 1) ? true : false" />
+									<input type="radio" name="radio3" [checked]="(invitationAlert == '1') ? true : false" />
 									<div class="control__indicator"></div>
 									</label>
 									
 									<label class="control control--radio" (click)="setInvitationAlert(0)">Unsubscribe
-									<input type="radio" name="radio3" [checked]="(invitationAlert == 0) ? true : false" />
+									<input type="radio" name="radio3" [checked]="(invitationAlert == '0') ? true : false" />
 									<div class="control__indicator"></div>
 									</label>
 								 </div>
@@ -302,7 +657,7 @@
 					  <div id="hideprofile" class="tab-pane fade">
 						<div class="careerfy-profile-title"><h2>Hide Profile</h2></div>
 						<div class="col-md-12">
-                             <p *ngIf="hideProfileAlert == 0 else showProfile"><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px" (click)="hideProfile(1)">Hide</button>
+                             <p *ngIf="hideProfileAlert == '0' else showProfile"><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px" (click)="hideProfile(1)">Hide</button>
                              </b></p>
 							 <ng-template #showProfile><p><b>Your profile is currently visible <button type="submit" class="btn btn-default save-btn" style="margin-left:30px" (click)="hideProfile(0)">Show</button>
                              </b></p></ng-template>

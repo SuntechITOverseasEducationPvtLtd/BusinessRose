@@ -55,7 +55,7 @@
 																	<label for="r6"><span></span>Skilled / Experienced</label>
 															</li>
 															<li>
-																	<input type="checkbox" id="r7" formControlName="user_type" value="2" (change)="applyFilter()" />
+																	<input type="checkbox" id="r7" formControlName="user_type" value="2" (change)="applyFilter(2)" />
 																	<label for="r7"><span></span>Investor</label>
 															</li>
 													</ul>
@@ -78,7 +78,7 @@
 											<h2><a href="#" class="careerfy-click-btn">Categories</a></h2>
 											<div class="careerfy-checkbox-toggle">
 													<ul class="careerfy-checkbox">
-															<li>
+															<!-- <li>
 																	<input type="checkbox" id="r17" formControlName="category" value="" [checked]="defaultChecked" (change)="applyFilter()" />
 																	<label for="r17"><span></span>Any</label>
 																	<small>456</small>
@@ -89,7 +89,20 @@
 																		<label for="car{{i}}"><span></span>{{category.value}}</label>
 																		<small>2</small>
 																	</span>
-															</li>
+															</li> -->
+															<!-- <li *ngIf="this.sidebarFilters.controls.category">
+																<div *ngFor="let categ of this.sidebarFilters.controls.category.controls; let i = index" formArrayName="category">
+																	<input type="checkbox" id="car{{i}}" [formControlName]="i" (change)="applyFilter()" [checked]="i === 0"  [value]="i" />
+																	<label for="car{{i}}"><span></span>{{category[i].name}}</label>
+																</div>
+														</li> -->
+														<li *ngIf="this.sidebarFilters.controls.category">
+															<div *ngFor="let cat of this.sidebarFilters.controls.category.controls; let i = index" formArrayName="category">
+																<input type="checkbox" id="car{{i}}" [formControlName]="i" (change)="applyFilter()" [checked]="i === 0"  [value]="i" />
+																<label for="car{{i}}"><span></span>{{category[i].name}}</label>
+															</div>
+													</li>
+															
 													</ul>
 													<!--<a href="javascript:void(0);" class="careerfy-seemore" data-toggle="modal" data-target="#exampleModalCenter1">+see more</a>-->				
 											</div>

@@ -94,15 +94,15 @@ export class AppComponent implements OnInit {
             return;
         }
 		$("#loadingModalCenter").modal("show");
-		$("#exampleModalCenter").css({'opacity':'0.4'});
+		$("#JobSearchModalSignup").css({'opacity':'0.4'});
         this.loading = true;
 		this.authenticationService.login(this.f.email.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
 					$("#loadingModalCenter").modal("hide");
-					$("#exampleModalCenter").modal("hide");
-					$("#exampleModalCenter").css({'opacity':'1'});					
+					$("#JobSearchModalSignup").hide();
+					$("#JobSearchModalSignup").css({'opacity':'1'});					
 					$(".alert-warning").hide();					
 					this.router.navigate([this.returnUrl]);
                 },
@@ -111,7 +111,7 @@ export class AppComponent implements OnInit {
 					//this.alertService.error(error.errors);
 					$("#loadingModalCenter").modal("hide");	
 					$(".alert-warning").show();
-					$("#exampleModalCenter").css({'opacity':'1'});	
+					$("#JobSearchModalSignup").css({'opacity':'1'});	
 					var message;
 					/*if(error.error.length > 0)
 					{
@@ -126,6 +126,9 @@ export class AppComponent implements OnInit {
 					{
 						if(typeof error.error.message != 'undefined' )
 						$(".alert-warning").html(error.error.message);
+					}
+					else if(error.message.length > 0){
+						$(".alert-warning").html(error.message);
 					}
 					
                     this.loading = false;

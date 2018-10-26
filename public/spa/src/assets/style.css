@@ -1795,7 +1795,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
     width: 100%;
 }
 .careerfy-footer-one {
-    background-color: #26272b;
+    background-color: #1e3142;
     padding: 58px 0px 0px 0px;
 }
 .careerfy-footer-one p                         { color: #999999; }
@@ -2146,4 +2146,7 @@ li:hover .careerfy-read-more { background-color: transparent; }
 }
 .careerfy-description p {
     color: #000;
+}
+.careerfy-top-full {
+    padding-top: 0px;
 }

@@ -26,6 +26,8 @@ export class GlobalService {
 	public deleteProfileUrl = this.baseUrl+'/api/delete-profile';
 	public updateProfileUrl = this.baseUrl+'/api/update';
 	public accountSettingsUrl = this.baseUrl+'/api/account-settings';
+	public currentUserUrl = this.baseUrl+'/api/currentUserData';
+	public usersCountUrl = this.baseUrl+'/api/usersCount';
 	
 	//Alert Messages
 	public CONNECTED_NOW = "Your Successfully Connected";
@@ -40,6 +42,9 @@ export class GlobalService {
 	public FEMALE: number = 2;
 	public INVESTOR: number = 2;
 	public SKILLED_PERSON: number = 3;
+	public STARTUP_SKILLED_PERSON: number = 4;
+	public STARTUP_INVESTOR: number = 5;
+	public FRESHER: number = 6;
 	
 	
 }

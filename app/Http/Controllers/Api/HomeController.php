@@ -97,6 +97,26 @@ class HomeController extends Controller
 		$data = User::getMemberProfile($authUser, $userId); 		
 		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
 	}
+	public function getCurrentUserProfile(){ 
+		//$is_connected = Connection::checkConnection($authUser, $userId);		
+		$data = Auth::user(); 		
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
+	
+	public function getUsersCount(){ 
+		$data['investors'] = User::where('user_type', 2)->orWhere('user_type', 5)->count(); 		
+		$data['skilledPersons'] = User::where('user_type', 3)->orWhere('user_type', 4)->count(); 		
+		$data['freshers'] = User::where('user_type', 6)->count(); 		
+		$data['categories'][2] = User::where('category', 2)->count(); 		
+		$data['categories'][6] = User::where('category', 6)->count(); 		
+		$data['categories'][7] = User::where('category', 7)->count(); 		
+		$data['categories'][8] = User::where('category', 8)->count(); 		
+		$data['categories'][9] = User::where('category', 9)->count(); 		
+		$data['categories'][12] = User::where('category', 12)->count(); 		
+		$data['categories'][13] = User::where('category', 13)->count(); 		
+		$data['categories'][16] = User::where('category', 16)->count(); 		
+		return response()->json(['success'=>true,'data'=>$data], $this->successStatus);
+	}
 	
 	/**
      * Saving Shortlists(Members & Investors) api

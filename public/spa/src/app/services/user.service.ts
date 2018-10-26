@@ -32,6 +32,8 @@ export class UserService {
 	private invitationAlertUrl = this.global.invitationAlertUrl;
 	private hideProfileUrl = this.global.hideProfileUrl;
 	private deleteProfileUrl = this.global.deleteProfileUrl;
+	private currentUserUrl = this.global.currentUserUrl;
+	private usersCountUrl = this.global.usersCountUrl;
 	private currentEncUserId = btoa(localStorage.getItem('currentUserId')); 	
 	publicIP : string;
 	
@@ -41,6 +43,10 @@ export class UserService {
 		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
 		};
         return this.http.get<User[]>(this.getAllUsersUrl, httpOptions);
+    }
+	
+	usersCount() {
+        return this.http.get<User[]>(this.usersCountUrl);
     }
 	
 	getAllFilters() {
@@ -67,6 +73,14 @@ export class UserService {
 		return this.http.get<User>(this.detailsUrl + this.currentEncUserId + '/' + id, httpOptions).pipe(
 			  tap(_ => console.log(`fetched user id=${id}`)),
 			  catchError(this.handleError<User>(`getById id=${id}`))
+			);
+    }
+	getCurrentUser(): Observable<User> {
+		let httpOptions = {
+		  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : 'Bearer '+localStorage.getItem('userToken') })
+		};
+		return this.http.get<User>(this.currentUserUrl, httpOptions).pipe(
+			  
 			);
     }
 

@@ -7,7 +7,10 @@ import { UserService } from './../services';
 
 @Component({templateUrl: 'home.component.html'})
 export class HomeComponent implements OnInit {
-	
+	public investors=0;
+	public skilledPersons=0;
+	public freshers=0;
+	public categories=[];
 	constructor(
         private http: HttpClient, private userService: UserService
 		) {}
@@ -17,6 +20,17 @@ export class HomeComponent implements OnInit {
 		{
 			this.userService.getIpAddress();
 		}
+		this.usersCount();
 		//alert(localStorage.getItem('ipAddress'));	
     }
+	usersCount():void {
+		this.userService.usersCount().subscribe(users => {
+			this.investors = users['data']['investors'];
+			this.skilledPersons = users['data']['skilledPersons'];
+			this.freshers = users['data']['freshers'];
+			this.categories = users['data']['categories'];
+		},
+		error => {
+		});		
+	}
 }
